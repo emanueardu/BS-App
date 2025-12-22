@@ -23,7 +23,8 @@ Portal público y app privada para clientes de BS Electricidad & Domótica. Incl
 
 - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Proyecto Supabase (auth pública).
 - `SUPABASE_SERVICE_ROLE_KEY`: Llave de servicio para subir archivos en `/api/upload`.
-- `NEXT_PUBLIC_VOLTI_API_KEY`, `NEXT_PUBLIC_VOLTI_API_URL`: Credenciales/endpoint del bot Volti.
+- `OPENAI_API_KEY`: Para el bot Volti con LLM.
+- `NEXT_PUBLIC_VOLTI_API_KEY` (opcional), `NEXT_PUBLIC_VOLTI_API_URL` (por defecto `/api/volti`): Config del widget Volti.
 
 ## Supabase esperado
 

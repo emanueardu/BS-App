@@ -4,6 +4,7 @@ import {
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 type Message = {
   role: "user" | "assistant" | "system";
@@ -11,10 +12,11 @@ type Message = {
 };
 
 export const VoltiChat = () => {
+  const { user } = useAuth();
   const apiKey = process.env.NEXT_PUBLIC_VOLTI_API_KEY;
   const endpoint =
     process.env.NEXT_PUBLIC_VOLTI_API_URL ??
-    "https://api.volti.example/chat";
+    "/api/volti";
 
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -45,7 +47,10 @@ export const VoltiChat = () => {
           "Content-Type": "application/json",
           ...(apiKey ? { Authorization: `Bearer ${apiKey}` } : {}),
         },
-        body: JSON.stringify({ message: userMessage.text }),
+        body: JSON.stringify({
+          message: userMessage.text,
+          userId: user?.id,
+        }),
       });
 
       const data = await response.json().catch(() => ({}));
