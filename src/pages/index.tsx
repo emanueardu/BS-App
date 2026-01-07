@@ -12,39 +12,54 @@ import {
 
 const services = [
   {
-    title: "Instalación eléctrica segura",
+    title: "Instalacion electrica segura",
     description:
-      "Cableado certificado, tableros inteligentes y auditoría completa de tu obra.",
+      "Cableado certificado, tableros inteligentes y auditoria completa de tu obra.",
     icon: BoltIcon,
   },
   {
-    title: "Preparación domótica",
+    title: "Preparacion domotica",
     description:
-      "Infraestructura lista para IoT, sensores y automatización por escenarios.",
+      "Infraestructura lista para IoT, sensores y escenarios de automatizacion.",
     icon: HomeModernIcon,
   },
   {
-    title: "Domótica integral",
+    title: "Domotica integral",
     description:
-      "Control de iluminación, climatización y accesos con monitoreo en tiempo real.",
+      "Control de iluminacion, clima y accesos con monitoreo en tiempo real.",
     icon: ShieldCheckIcon,
+  },
+];
+
+const differentiators = [
+  {
+    title: "Respuesta en 24h",
+    desc: "Agenda rapida de visitas y seguimiento con avisos puntuales.",
+  },
+  {
+    title: "Ingenieria + obra",
+    desc: "Equipo tecnico para proyecto, montaje y puesta en marcha.",
+  },
+  {
+    title: "Portal de cliente",
+    desc: "Dashboard con presupuestos, fotos, documentos y chat Volti.",
   },
 ];
 
 const portfolio = [
   {
-    title: "Vivienda inteligente en Nordelta",
-    img: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1000&q=80",
-    tag: "Domótica",
+    title: "Vivienda inteligente",
+    img: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
+    tag: "Domotica",
   },
   {
-    title: "Oficinas energéticamente eficientes",
-    img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80",
+    title: "Oficinas eficientes",
+    img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
     tag: "Industria",
   },
   {
-    title: "Reforma eléctrica premium",
-    img: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80",
+    title: "Reforma premium",
+    img: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1100&q=80",
     tag: "Residencial",
   },
 ];
@@ -56,136 +71,134 @@ export default function Home() {
         <title>BS | Portal de clientes</title>
         <meta
           name="description"
-          content="Portal público y app privada para clientes de BS Electricidad & Domótica."
+          content="Portal publico y app privada para clientes de BS Electricidad & Domotica."
         />
       </Head>
 
-      <section className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-        <div className="space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-4 py-2 text-sm font-semibold text-orange-700">
-            <SparklesIcon className="h-5 w-5" />
-            Servicio técnico + portal de seguimiento
-          </div>
-          <h1 className="text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
-            Electricidad segura y domótica a medida con seguimiento en línea.
-          </h1>
-          <p className="max-w-2xl text-lg text-slate-700">
-            Coordinamos visitas técnicas, diseñamos la instalación y te damos
-            acceso a un panel privado para ver presupuestos, avances y
-            documentos de tu obra.
-          </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link
-              href="/contacto"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-orange-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-300/40 transition hover:-translate-y-0.5 hover:bg-orange-500"
-            >
-              Pedir visita técnica
-              <ArrowLongRightIcon className="h-5 w-5" />
-            </Link>
-            <Link
-              href="/login"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:border-orange-200 hover:text-orange-700"
-            >
-              Ingresar a mi panel
-            </Link>
+      <section className="relative isolate -mx-6 overflow-hidden rounded-none bg-gradient-to-br from-slate-900/70 via-slate-900/60 to-slate-800/60 p-6 shadow-2xl shadow-slate-900/30 backdrop-blur-sm lg:-mx-10 lg:rounded-3xl lg:p-12">
+        <div className="relative">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="space-y-6 text-white">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-orange-200">
+              <SparklesIcon className="h-5 w-5" />
+              Servicio tecnico + portal de cliente
+            </div>
+            <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
+              Electricidad segura, domotica a medida y seguimiento en linea.
+            </h1>
+            <p className="max-w-3xl text-lg text-slate-100/80">
+              Disenamos y ejecutamos tu instalacion electrica y domotica con un
+              panel privado para ver presupuestos, avances, documentos y chatear
+              con Volti.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Link
+                href="/contacto"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-400/40 transition hover:-translate-y-0.5 hover:bg-orange-400"
+              >
+                Pedir visita tecnica
+                <ArrowLongRightIcon className="h-5 w-5" />
+              </Link>
+              <Link
+                href="/login"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-orange-200 hover:text-orange-100"
+              >
+                Ingresar a mi panel
+              </Link>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {[
+                { label: "Visitas coordinadas", value: "<24h" },
+                { label: "Proyectos activos", value: "120+" },
+                { label: "Satisfaccion", value: "4.9/5" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 shadow-sm"
+                >
+                  <p className="text-2xl font-bold text-orange-300">
+                    {stat.value}
+                  </p>
+                  <p className="text-sm text-slate-100/80">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3">
-            {[
-              { label: "Tiempo de respuesta", value: "<24h" },
-              { label: "Proyectos activos", value: "120+" },
-              { label: "Satisfacción", value: "4.9/5" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl border border-orange-100 bg-white px-4 py-3 shadow-sm"
-              >
-                <p className="text-2xl font-bold text-orange-600">
-                  {stat.value}
-                </p>
-                <p className="text-sm text-slate-600">{stat.label}</p>
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-xl shadow-slate-900/30">
+              <div className="flex items-center justify-between bg-white/10 px-6 py-4 text-white backdrop-blur">
+                <div>
+                  <p className="text-sm uppercase tracking-wide text-orange-200">
+                    Seguimiento en vivo
+                  </p>
+                  <p className="text-lg font-semibold">
+                    Panel de avance de obra
+                  </p>
+                </div>
+                <div className="rounded-full bg-orange-500 px-4 py-1 text-xs font-semibold">
+                  Cliente
+                </div>
               </div>
-            ))}
+              <div className="space-y-4 px-6 py-6">
+                {["Provisions tableros", "Canalizaciones", "Automatizacion"].map(
+                  (item, idx) => (
+                    <div key={item}>
+                      <div className="flex items-center justify-between text-sm font-semibold text-white">
+                        <span>{item}</span>
+                        <span>{[80, 55, 30][idx]}%</span>
+                      </div>
+                      <div className="mt-2 h-2 rounded-full bg-white/10">
+                        <div
+                          className="h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-300"
+                          style={{ width: `${[80, 55, 30][idx]}%` }}
+                        />
+                      </div>
+                    </div>
+                  )
+                )}
+                <div className="grid grid-cols-2 gap-3 pt-4">
+                  <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white">
+                    <p className="text-xs text-white/70">Proxima visita</p>
+                    <p className="text-base font-semibold">Martes 10:00</p>
+                  </div>
+                  <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white">
+                    <p className="text-xs text-white/70">Documentos</p>
+                    <p className="text-base font-semibold">12 disponibles</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="relative">
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-orange-100">
-            <div className="flex items-center justify-between bg-slate-900 px-6 py-4 text-white">
-              <div>
-                <p className="text-sm uppercase tracking-wide text-orange-200">
-                  Seguimiento en vivo
-                </p>
-                <p className="text-lg font-semibold">
-                  Panel de avance de obra
-                </p>
-              </div>
-              <div className="rounded-full bg-orange-500 px-4 py-1 text-xs font-semibold">
-                Cliente
-              </div>
-            </div>
-            <div className="space-y-4 px-6 py-6">
-              {["Provisión tableros", "Canalizaciones", "Automatización"].map(
-                (item, idx) => (
-                  <div key={item}>
-                    <div className="flex items-center justify-between text-sm font-semibold text-slate-800">
-                      <span>{item}</span>
-                      <span>{[80, 55, 30][idx]}%</span>
-                    </div>
-                    <div className="mt-2 h-2 rounded-full bg-slate-100">
-                      <div
-                        className="h-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-400"
-                        style={{ width: `${[80, 55, 30][idx]}%` }}
-                      />
-                    </div>
-                  </div>
-                )
-              )}
-              <div className="grid grid-cols-2 gap-3 pt-4">
-                <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
-                  <p className="text-xs text-slate-500">Próxima visita</p>
-                  <p className="text-base font-semibold text-slate-900">
-                    Martes 10:00
-                  </p>
-                </div>
-                <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
-                  <p className="text-xs text-slate-500">Documentos</p>
-                  <p className="text-base font-semibold text-slate-900">
-                    12 disponibles
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      <section className="mt-16 grid gap-10 rounded-3xl bg-white/80 p-8 shadow-sm shadow-orange-100 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="mt-14 grid gap-10 rounded-3xl bg-white/90 p-8 shadow-sm shadow-orange-100 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-4">
           <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
-            Quiénes somos
+            Servicios
           </p>
           <h2 className="text-3xl font-semibold text-slate-900">
-            Equipo especializado en seguridad eléctrica y hogares conectados.
+            Instalacion electrica, domotica y seguimiento unificados.
           </h2>
           <p className="text-base text-slate-700">
-            Auditamos tu instalación, diseñamos tableros, gestionamos domótica y
-            centralizamos toda la documentación en un panel privado para que
-            tengas visibilidad real del proyecto.
+            Auditamos tu instalacion, disenamos tableros, gestionamos domotica y
+            centralizamos todo en un panel privado para que tengas visibilidad
+            real del proyecto.
           </p>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-              <p className="text-sm text-slate-500">Certificaciones</p>
-              <p className="text-lg font-semibold text-slate-900">
-                IRAM, TÜV, KNX Partner
-              </p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-              <p className="text-sm text-slate-500">Zona de cobertura</p>
-              <p className="text-lg font-semibold text-slate-900">
-                AMBA y proyectos especiales
-              </p>
-            </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {differentiators.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-4"
+              >
+                <p className="text-sm font-semibold text-orange-700">
+                  {item.title}
+                </p>
+                <p className="text-sm text-slate-600">{item.desc}</p>
+              </div>
+            ))}
           </div>
           <div className="flex gap-3">
             <a
@@ -208,7 +221,7 @@ export default function Home() {
             return (
               <div
                 key={service.title}
-                className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-100"
+                className="rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-100"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-orange-700">
                   <Icon className="h-6 w-6" />
@@ -225,25 +238,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-16">
-        <div className="flex items-center justify-between">
+      <section className="mt-14">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
-              Portfolio
+              Obras
             </p>
             <h3 className="text-2xl font-semibold text-slate-900">
-              Obras destacadas
+              Proyectos destacados
             </h3>
             <p className="text-sm text-slate-600">
-              Galería de trabajos recientes para clientes residenciales e
-              industriales.
+              Residenciales e industriales con control inteligente y ahorro
+              energetico.
             </p>
           </div>
           <Link
             href="/contacto"
-            className="hidden items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-orange-200 hover:text-orange-700 sm:inline-flex"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-orange-200 hover:text-orange-700"
           >
-            Agendar asesoría
+            Agendar asesoria
             <ArrowLongRightIcon className="h-5 w-5" />
           </Link>
         </div>
@@ -271,7 +284,7 @@ export default function Home() {
                   {item.title}
                 </p>
                 <p className="text-sm text-slate-600">
-                  Integración de tableros inteligentes, redes y sensórica.
+                  Integracion de tableros inteligentes, redes y sensorica.
                 </p>
               </div>
             </div>
@@ -279,7 +292,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-16 grid gap-6 rounded-3xl bg-slate-900 px-8 py-10 text-white shadow-lg shadow-slate-900/20 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="mt-14 grid gap-6 rounded-3xl bg-slate-900 px-8 py-10 text-white shadow-lg shadow-slate-900/20 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-4">
           <p className="text-sm font-semibold uppercase tracking-wide text-orange-200">
             Panel privado
@@ -296,7 +309,7 @@ export default function Home() {
               Presupuestos firmados digitalmente
             </span>
             <span className="rounded-full border border-slate-700 px-3 py-1">
-              Checklist de visitas técnicas
+              Checklist de visitas tecnicas
             </span>
             <span className="rounded-full border border-slate-700 px-3 py-1">
               Descarga de planos y memorias
@@ -322,7 +335,7 @@ export default function Home() {
             },
             {
               title: "Chat Volti",
-              description: "Consultas rápidas sobre el proyecto.",
+              description: "Consultas rapidas sobre el proyecto.",
               icon: SparklesIcon,
             },
           ].map((item) => {
@@ -342,6 +355,34 @@ export default function Home() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      <section className="mt-14 rounded-3xl bg-gradient-to-r from-orange-500 to-amber-400 px-8 py-10 text-slate-900 shadow-lg shadow-orange-300/40">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide">
+              ¿Listo para empezar?
+            </p>
+            <h3 className="text-2xl font-semibold">
+              Agenda una visita tecnica y recibe tu propuesta digital.
+            </h3>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/contacto"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
+            >
+              Pedir visita
+              <ArrowLongRightIcon className="h-5 w-5" />
+            </Link>
+            <Link
+              href="/login"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-900 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:bg-white/70"
+            >
+              Ingresar al panel
+            </Link>
+          </div>
         </div>
       </section>
     </>

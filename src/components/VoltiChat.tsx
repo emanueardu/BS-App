@@ -3,6 +3,7 @@ import {
   PaperAirplaneIcon,
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 
@@ -14,9 +15,7 @@ type Message = {
 export const VoltiChat = () => {
   const { user } = useAuth();
   const apiKey = process.env.NEXT_PUBLIC_VOLTI_API_KEY;
-  const endpoint =
-    process.env.NEXT_PUBLIC_VOLTI_API_URL ??
-    "/api/volti";
+  const endpoint = process.env.NEXT_PUBLIC_VOLTI_API_URL ?? "/api/volti";
 
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -138,10 +137,17 @@ export const VoltiChat = () => {
 
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center gap-2 rounded-full bg-orange-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-300/40 transition hover:-translate-y-0.5 hover:bg-orange-500"
+        className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-xl ring-2 ring-orange-200 transition hover:-translate-y-0.5 hover:shadow-2xl"
+        aria-label={open ? "Cerrar chat Volti" : "Abrir chat Volti"}
       >
-        <ChatBubbleLeftRightIcon className="h-5 w-5" />
-        {open ? "Cerrar Volti" : "Habla con Volti"}
+        <Image
+          src="/volti.gif"
+          alt="Volti chat"
+          width={80}
+          height={80}
+          className="h-18 w-18 rounded-full object-cover"
+          priority
+        />
       </button>
     </div>
   );

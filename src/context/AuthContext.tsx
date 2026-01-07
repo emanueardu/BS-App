@@ -26,6 +26,20 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const bypassInternal =
+  typeof process !== "undefined" &&
+  process.env.NEXT_PUBLIC_INTERNAL_BYPASS === "true";
+
+const makeBypassUser = () =>
+  ({
+    id: "dev-internal-user",
+    email:
+      process.env.NEXT_PUBLIC_INTERNAL_EMAILS?.split(",")[0]?.trim() ??
+      "internal@example.com",
+    app_metadata: { role: "internal" },
+    user_metadata: { role: "internal" },
+  } as unknown as User);
+
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
@@ -37,6 +51,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const { data, error } = await supabase.auth.getSession();
       if (error) {
         console.error("Error fetching session", error);
+        if (bypassInternal) {
+          const mockUser = makeBypassUser();
+          setSession({
+            access_token: "dev-token",
+            token_type: "bearer",
+          } as Session);
+          setUser(mockUser);
+          setLoading(false);
+          return;
+        }
       } else {
         setSession(data.session);
         setUser(data.session?.user ?? null);
@@ -61,6 +85,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const signIn = useCallback(
     async (email: string, password: string) => {
+      if (bypassInternal) {
+        const mockUser = makeBypassUser();
+        setUser(mockUser);
+        setSession({
+          access_token: "dev-token",
+          token_type: "bearer",
+        } as Session);
+        router.replace("/dashboard");
+        return;
+      }
+
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -76,6 +111,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const signUp = useCallback(async (email: string, password: string) => {
+    if (bypassInternal) {
+      const mockUser = makeBypassUser();
+      setUser(mockUser);
+      setSession({
+        access_token: "dev-token",
+        token_type: "bearer",
+      } as Session);
+      return;
+    }
+
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -87,6 +132,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signOut = useCallback(async () => {
+    if (bypassInternal) {
+      setUser(null);
+      setSession(null);
+      router.push("/");
+      return;
+    }
+
     const { error } = await supabase.auth.signOut();
     if (error) {
       throw error;

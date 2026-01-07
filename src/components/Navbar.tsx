@@ -1,13 +1,10 @@
 import { Disclosure } from "@headlessui/react";
-import {
-  Bars3Icon,
-  BoltIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3Icon, BoltIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
 import { useAuth } from "@/context/AuthContext";
+import { isInternalUser } from "@/utils/auth";
 
 const classNames = (...classes: Array<string | boolean | undefined>) =>
   classes.filter(Boolean).join(" ");
@@ -15,22 +12,32 @@ const classNames = (...classes: Array<string | boolean | undefined>) =>
 export const Navbar = () => {
   const { user, signOut } = useAuth();
   const router = useRouter();
+  const isInternal = isInternalUser(user);
 
   const links = useMemo(
     () => [
       { name: "Inicio", href: "/" },
+      { name: "Servicios", href: "/servicios" },
+      { name: "Proceso", href: "/proceso" },
+      { name: "Proyectos", href: "/proyectos" },
+      { name: "Soporte", href: "/soporte" },
+      { name: "Nosotros", href: "/nosotros" },
       { name: "Contacto", href: "/contacto" },
+      { name: "Portal", href: "/portal" },
       { name: "Dashboard", href: "/dashboard", private: true },
+      { name: "Mi casa", href: "/app/home", private: true, internal: true },
     ],
     []
   );
 
-  const visibleLinks = links.filter((link) => !link.private || user);
+  const visibleLinks = links.filter(
+    (link) => (!link.private || user) && (!link.internal || isInternal)
+  );
 
   return (
     <Disclosure
       as="nav"
-      className="sticky top-0 z-30 w-full border-b border-slate-200 bg-white/90 backdrop-blur"
+      className="sticky top-0 z-30 w-full border-b border-slate-800/50 bg-[#0a1330]/95 text-white backdrop-blur"
     >
       {({ open }) => (
         <>
@@ -40,8 +47,8 @@ export const Navbar = () => {
                 <BoltIcon className="h-6 w-6" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-orange-600">BS</p>
-                <p className="text-base font-semibold text-slate-900">
+                <p className="text-sm font-semibold text-orange-300">BS</p>
+                <p className="text-base font-semibold text-white drop-shadow">
                   Electricidad & Domótica
                 </p>
               </div>
@@ -55,8 +62,8 @@ export const Navbar = () => {
                     key={item.name}
                     href={item.href}
                     className={classNames(
-                      "text-sm font-medium transition-colors hover:text-orange-600",
-                      active ? "text-orange-600" : "text-slate-700"
+                      "text-sm font-semibold transition-colors",
+                      active ? "text-white" : "text-white/85 hover:text-white"
                     )}
                   >
                     {item.name}
@@ -67,22 +74,28 @@ export const Navbar = () => {
 
             <div className="hidden items-center gap-3 md:flex">
               <Link
-                href="/contacto"
-                className="rounded-full border border-orange-200 px-4 py-2 text-sm font-semibold text-orange-700 transition hover:border-orange-300 hover:text-orange-800"
+                href="/portal"
+                className="rounded-full border border-orange-300 px-4 py-2 text-sm font-semibold text-orange-100 transition hover:border-orange-200 hover:text-white"
               >
-                Pedir visita técnica
+                Área Clientes
+              </Link>
+              <Link
+                href="/contacto"
+                className="rounded-full bg-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/30"
+              >
+                Pedir relevamiento
               </Link>
               {user ? (
                 <button
                   onClick={signOut}
-                  className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                  className="rounded-full bg-white/25 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/35"
                 >
                   Salir
                 </button>
               ) : (
                 <Link
                   href="/login"
-                  className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                  className="rounded-full border border-white/40 px-4 py-2 text-sm font-semibold text-white transition hover:border-orange-200 hover:text-orange-100"
                 >
                   Ingresar
                 </Link>
@@ -90,7 +103,7 @@ export const Navbar = () => {
             </div>
 
             <div className="md:hidden">
-              <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus:outline-none">
+              <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-white/10 hover:text-orange-200 focus:outline-none">
                 {open ? (
                   <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                 ) : (
@@ -100,7 +113,7 @@ export const Navbar = () => {
             </div>
           </div>
 
-          <Disclosure.Panel className="border-t border-slate-200 bg-white md:hidden">
+          <Disclosure.Panel className="border-t border-slate-800/50 bg-[#0a1330] md:hidden">
             <div className="space-y-1 px-4 pb-4 pt-2">
               {visibleLinks.map((item) => {
                 const active = router.pathname === item.href;
@@ -110,10 +123,10 @@ export const Navbar = () => {
                     as={Link}
                     href={item.href}
                     className={classNames(
-                      "block rounded-lg px-3 py-2 text-base font-medium",
+                      "block rounded-lg px-3 py-2 text-base font-semibold",
                       active
-                        ? "bg-orange-50 text-orange-700"
-                        : "text-slate-700 hover:bg-slate-50 hover:text-orange-700"
+                        ? "bg-orange-100 text-slate-900"
+                        : "text-white hover:bg-white/10 hover:text-white"
                     )}
                   >
                     {item.name}
@@ -123,24 +136,24 @@ export const Navbar = () => {
 
               <div className="flex flex-col gap-2 pt-2">
                 <Link
-                  href="/contacto"
-                  className="block rounded-lg border border-orange-200 px-3 py-2 text-center text-sm font-semibold text-orange-700"
+                  href="/portal"
+                  className="block rounded-lg border border-orange-200 px-3 py-2 text-center text-sm font-semibold text-orange-200"
                 >
-                  Pedir visita técnica
+                  Área Clientes
                 </Link>
                 {user ? (
                   <button
                     onClick={signOut}
-                    className="rounded-lg bg-slate-900 px-3 py-2 text-sm font-semibold text-white"
+                    className="rounded-lg bg-white/20 px-3 py-2 text-sm font-semibold text-white"
                   >
                     Salir
                   </button>
                 ) : (
                   <Link
-                    href="/login"
-                    className="block rounded-lg bg-slate-900 px-3 py-2 text-center text-sm font-semibold text-white"
+                    href="/contacto"
+                    className="block rounded-lg bg-white/10 px-3 py-2 text-center text-sm font-semibold text-white"
                   >
-                    Ingresar
+                    Pedir relevamiento
                   </Link>
                 )}
               </div>
@@ -150,4 +163,4 @@ export const Navbar = () => {
       )}
     </Disclosure>
   );
-};
+}
