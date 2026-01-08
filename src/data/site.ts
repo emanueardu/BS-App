@@ -10,6 +10,20 @@ import {
   Zap,
 } from "lucide-react";
 
+export const icons = {
+  Zap,
+  Home,
+  Lightbulb,
+  Gauge,
+  ClipboardList,
+  FileText,
+  ShieldCheck,
+  BadgeCheck,
+  ArrowBigRight,
+} as const;
+
+export type IconName = keyof typeof icons;
+
 export type Service = {
   id: string;
   title: string;
@@ -18,10 +32,10 @@ export type Service = {
   includes: string[];
   excludes: string[];
   deliverables: string[];
-  icon: string;
+  icon: IconName;
 };
 
-export type Step = { title: string; detail: string; icon: string };
+export type Step = { title: string; detail: string; icon: IconName };
 
 export type Project = {
   id: string;
@@ -107,17 +121,17 @@ export const differentiators = [
   {
     title: "Respuesta 24h",
     detail: "Confirmamos tu consulta y agendamos relevamiento en menos de 24h.",
-    icon: "Gauge",
+    icon: "Gauge" as IconName,
   },
   {
     title: "Ingenieria + obra",
     detail: "Proyecto, montaje y puesta en marcha con un solo equipo.",
-    icon: "ClipboardList",
+    icon: "ClipboardList" as IconName,
   },
   {
     title: "Portal cliente",
     detail: "Avances, fotos, documentos y tickets en un mismo lugar.",
-    icon: "FileText",
+    icon: "FileText" as IconName,
   },
 ];
 
@@ -235,15 +249,3 @@ export const portalFeatures = [
   "Historial de cambios y tickets de soporte",
   "Acceso a Volti para consultas rapidas",
 ];
-
-export const icons = {
-  Zap,
-  Home,
-  Lightbulb,
-  Gauge,
-  ClipboardList,
-  FileText,
-  ShieldCheck,
-  BadgeCheck,
-  ArrowBigRight,
-};

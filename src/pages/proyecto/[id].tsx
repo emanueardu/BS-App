@@ -189,7 +189,7 @@ export default function ProyectoDetalle() {
                   </span>
                 </div>
                 <div className="space-y-3">
-                  {(project.progress_items ?? fallbackProject.progress_items).map(
+                  {(project.progress_items ?? fallbackProject.progress_items ?? []).map(
                     (item) => (
                       <div
                         key={item.title}
@@ -226,20 +226,18 @@ export default function ProyectoDetalle() {
                   </span>
                 </div>
                 <div className="space-y-3">
-                  {(project.documents ?? fallbackProject.documents)?.map(
-                    (doc) => (
-                      <a
-                        key={doc.id}
-                        href={doc.url}
-                        className="flex items-center justify-between rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 transition hover:border-orange-200 hover:text-orange-700"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {doc.title}
-                        <span className="text-xs text-orange-600">Descargar</span>
-                      </a>
-                    )
-                  )}
+                  {(project.documents ?? fallbackProject.documents ?? []).map((doc) => (
+                    <a
+                      key={doc.id}
+                      href={doc.url}
+                      className="flex items-center justify-between rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 transition hover:border-orange-200 hover:text-orange-700"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {doc.title}
+                      <span className="text-xs text-orange-600">Descargar</span>
+                    </a>
+                  ))}
                   {!project.documents && (
                     <p className="text-sm text-slate-600">
                       Carga documentos desde el panel de administración o arrastra
