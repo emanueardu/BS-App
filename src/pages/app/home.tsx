@@ -73,22 +73,25 @@ export default function HomeModule() {
         "postgres_changes",
         { event: "*", schema: "public", table: "devices", filter: `home_id=eq.${homeId}` },
         (payload) => {
-          if (!payload?.new) return;
+          if (!payload?.new || typeof payload.new !== "object") return;
+          const raw = payload.new as Partial<Device> & { id?: string | number };
+
           setHomeState((current) => {
             if (!current) return current;
+
             const mapped = current.devices.find(
-              (device) => device.id === String(payload.new.id)
+              (device) => device.id === String(raw.id ?? "")
             );
+
             const updatedDevice: Device = {
-              id: String(payload.new.id ?? ""),
-              home_id: String(payload.new.home_id ?? ""),
-              room_id: String(payload.new.room_id ?? ""),
-              type: (payload.new as Device).type ?? "light",
-              name: (payload.new as Device).name ?? "Dispositivo",
-              position:
-                (payload.new as Device).position ?? mapped?.position ?? { x: 0.5, y: 0.5 },
-              is_on: Boolean((payload.new as Device).is_on),
-              last_changed_at: (payload.new as Device).last_changed_at,
+              id: String(raw.id ?? ""),
+              home_id: String(raw.home_id ?? ""),
+              room_id: String(raw.room_id ?? ""),
+              type: (raw.type as Device["type"]) ?? "light",
+              name: raw.name ?? mapped?.name ?? "Dispositivo",
+              position: raw.position ?? mapped?.position ?? { x: 0.5, y: 0.5 },
+              is_on: Boolean(raw.is_on),
+              last_changed_at: raw.last_changed_at,
             };
 
             const devices = mapped
