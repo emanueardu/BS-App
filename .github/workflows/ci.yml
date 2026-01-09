@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: anon-key
+      SUPABASE_SERVICE_ROLE_KEY: service-role-key
+      OPENAI_API_KEY: sk-test
+      NEXT_PUBLIC_VOLTI_API_KEY: public-volti-key
+      NEXT_PUBLIC_VOLTI_API_URL: /api/volti
+      NEXT_PUBLIC_INTERNAL_EMAILS: internal@example.com
+      NEXT_PUBLIC_INTERNAL_BYPASS: "false"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
