@@ -31,11 +31,13 @@ export type Room = {
   id: string;
   home_id: string;
   name: string;
+  slug?: string;
   polygon: RoomPolygonPoint[];
   bbox?: RoomBBox | null;
   sort_order?: number | null;
   telemetry?: RoomTelemetry | null;
   plan_asset_url?: string | null;
+  detail_image_url?: string | null;
 };
 
 export type DeviceType = "light" | "ac";
@@ -62,8 +64,28 @@ export type Home = {
   created_at?: string | null;
 };
 
+export type RoutineAction = {
+  rooms?: string[];
+  device_types?: DeviceType[];
+  set_state?: boolean;
+};
+
+export type Routine = {
+  id: string;
+  home_id: string;
+  name: string;
+  description?: string | null;
+  status: "active" | "paused";
+  cadence?: string | null;
+  next_run_at?: string | null;
+  last_run_at?: string | null;
+  actions?: RoutineAction[] | null;
+  sort_order?: number | null;
+};
+
 export type HomeState = {
   home: Home;
   rooms: Room[];
   devices: Device[];
+  routines?: Routine[];
 };

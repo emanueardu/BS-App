@@ -10,6 +10,8 @@ type Props = {
   onClose: () => void;
   onToggle: (id: string, next: boolean) => void;
   togglingIds?: string[];
+  editMode?: boolean;
+  onUpdateDevice?: (deviceId: string, position: { x: number; y: number }) => void;
 };
 
 export const RoomZoomView = ({
@@ -19,6 +21,8 @@ export const RoomZoomView = ({
   onClose,
   onToggle,
   togglingIds = [],
+  editMode = false,
+  onUpdateDevice,
 }: Props) => {
   if (!room) {
     return (
@@ -71,7 +75,13 @@ export const RoomZoomView = ({
             </span>
             {room.telemetry?.temperature_c && (
               <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-3 py-1 text-orange-700 ring-1 ring-orange-100">
-                {room.telemetry.temperature_c.toFixed(1)}°C
+                {room.telemetry.temperature_c.toFixed(1)}
+                {"\u00b0"}C
+              </span>
+            )}
+            {editMode && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-slate-900/10 px-3 py-1 text-[11px] font-semibold text-slate-800 ring-1 ring-slate-200">
+                Modo edición
               </span>
             )}
           </div>
@@ -121,6 +131,8 @@ export const RoomZoomView = ({
                   device={device}
                   onToggle={onToggle}
                   busy={togglingIds.includes(device.id)}
+                  editable={editMode}
+                  onMove={(pos) => onUpdateDevice?.(device.id, pos)}
                 />
               ))}
             </div>

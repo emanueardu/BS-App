@@ -12,6 +12,8 @@ type Props = {
   onFocusRoom: (roomId: string) => void;
   loadingPlan?: boolean;
   onReloadPlan?: () => void;
+  editMode?: boolean;
+  onUpdatePolygon?: (roomId: string, polygon: Room["polygon"]) => void;
 };
 
 export const FloorPlanView = ({
@@ -23,6 +25,8 @@ export const FloorPlanView = ({
   loadingPlan,
   onFocusRoom,
   onReloadPlan,
+  editMode = false,
+  onUpdatePolygon,
 }: Props) => {
   const width = planImage?.width ?? 1200;
   const height = planImage?.height ?? 850;
@@ -46,6 +50,11 @@ export const FloorPlanView = ({
           <p className="text-sm text-slate-600">
             Click en un ambiente para hacer zoom y ver dispositivos.
           </p>
+          {editMode && (
+            <p className="text-xs font-semibold text-amber-700">
+              Modo edición: Alt+click en el plano para mover el polígono del ambiente activo.
+            </p>
+          )}
         </div>
         <div className="flex flex-wrap gap-2 text-xs font-semibold">
           <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-emerald-700 ring-1 ring-emerald-100">
@@ -72,6 +81,22 @@ export const FloorPlanView = ({
               viewBox={`0 0 ${width} ${height}`}
               className="h-full w-full"
               preserveAspectRatio="xMidYMid meet"
+              onClick={(event) => {
+                if (!editMode || !activeRoomId || !onUpdatePolygon) return;
+                if (!event.altKey) return;
+                const rect = event.currentTarget.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width;
+                const y = (event.clientY - rect.top) / rect.height;
+                const size = 0.15;
+                const half = size / 2;
+                const polygon = [
+                  { x: Math.max(0, x - half), y: Math.max(0, y - half) },
+                  { x: Math.min(1, x + half), y: Math.max(0, y - half) },
+                  { x: Math.min(1, x + half), y: Math.min(1, y + half) },
+                  { x: Math.max(0, x - half), y: Math.min(1, y + half) },
+                ];
+                onUpdatePolygon(activeRoomId, polygon);
+              }}
             >
               <image
                 href={planImage.src}
