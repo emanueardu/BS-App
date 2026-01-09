@@ -76,8 +76,30 @@ Portal publico y app privada para clientes de BS Electricidad & Domotica. Incluy
 - Actualiza `devices.is_on` + `last_changed_at` y valida que el device pertenezca al `home`.
 - La UI hace update optimista y revierte si falla el endpoint.
 
-## Despliegue en Vercel
+## Despliegue en Vercel (checklist)
 
-- Next.js 16 con Pages Router y Tailwind CSS (v4). `next.config.ts` ya habilita imagenes de Unsplash.
-- Define variables en el dashboard de Vercel. Sin `SUPABASE_*` la app no inicia.
-- Conecta el repo y despliega: `vercel --prod` (opcional `vercel.json` para edge).
+1. Importa el repo en Vercel con rama `main` como produccion y habilita Preview Deploys para PR y ramas (`feature/*`).
+2. Build:
+   - Install: `npm ci`
+   - Build: `npm run build`
+   - Output: `.next` (default). Node 20 en runtime de Vercel.
+   - No se requiere `vercel.json` por ahora; agregalo si necesitas rewrites/headers/edge.
+3. Variables en Vercel (Production y Preview):
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+   - `OPENAI_API_KEY`
+   - `NEXT_PUBLIC_VOLTI_API_KEY`
+   - `NEXT_PUBLIC_VOLTI_API_URL` (usa `/api/volti` por defecto)
+   - `NEXT_PUBLIC_INTERNAL_EMAILS`
+   - `NEXT_PUBLIC_INTERNAL_BYPASS` (`false` en prod; opcional `true` en preview/local)
+4. Resultado esperado:
+   - Push/PR => Vercel genera Preview URL automatica.
+   - Merge en `main` => deploy a produccion sin pasos manuales.
+
+## Workflow Git con Codex
+
+- Rama base: `main`. Trabaja en `feature/<nombre>` para cada cambio.
+- Antes de pushear: `npm run lint` y `npm run build` (usa `.env.local` copiado del example).
+- Push de la feature => CI (GitHub Actions) corre lint + build y Vercel crea Preview Deploy.
+- Abre PR contra `main`, revisa/mergea. Vercel despliega a produccion al merge, sin copiar codigo ni comandos manuales.
