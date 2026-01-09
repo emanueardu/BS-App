@@ -1,9 +1,9 @@
 declare module "pdfjs-dist/legacy/build/pdf" {
-  const pdfjs: any;
+  const pdfjs: typeof import("pdfjs-dist");
   export = pdfjs;
 }
 
 declare module "pdfjs-dist/build/pdf.worker.min.mjs" {
-  const worker: { default: string };
-  export = worker;
+  const workerSrc: string;
+  export default workerSrc;
 }
