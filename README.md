@@ -1,105 +1,97 @@
-# BS Portal (Next.js + Supabase)
+# BS Portal � Client Platform (Next.js + Supabase)
 
-Portal publico y app privada para clientes de BS Electricidad & Domotica. Incluye landing, contacto, login/registro, dashboard y detalle de proyecto con documentos y avance de obra. Integra Supabase para auth, base de datos y storage, y un widget "Volti" configurable por API.
+Public website + private client app for an electrical and home automation business. It includes a marketing landing, contact flow, authentication, a project dashboard, and a "My Home" interactive module. Supabase powers auth, database, storage, and realtime, and a Volti assistant is configurable via API.
 
-## Stack y requisitos
+## Recruiter Highlights
 
-- Next.js 16 (Pages Router) con React 19 y TypeScript.
-- Tailwind CSS v4.
-- Node 18.18+ (recomendado Node 20) y npm como package manager.
-- Scripts: `npm run dev`, `npm run lint`, `npm run build`, `npm run start`.
-- Build output: `.next/`.
+- End-to-end product: marketing site, client onboarding, project tracking, and document delivery.
+- Secure by design: Supabase Auth + Row Level Security by user and internal roles.
+- Interactive UX: floor plans with zones, devices, and realtime state.
+- Clean API surface: uploads, device toggles, and routines endpoints.
+- Modern stack: Next.js, React, TypeScript, Tailwind, Supabase.
 
-## Setup local
+## Core Features
 
-1. Instala Node 18.18+ (20 recomendado) y npm.
-2. Copia el entorno: `cp .env.local.example .env.local`.
-3. Completa las variables en `.env.local` con tu proyecto Supabase y OpenAI. Para probar sin auth real, puedes usar `NEXT_PUBLIC_INTERNAL_BYPASS=true` solo en local (no usar en produccion).
-4. Instala dependencias: `npm install`.
-5. Corre en desarrollo: `npm run dev` (http://localhost:3000).
-6. Chequeos opcionales: `npm run lint` y `npm run build` deben pasar con las variables cargadas.
+- Landing page with services, portfolio, and CTA.
+- Contact form with basic validation.
+- Client login and registration.
+- Project dashboard with progress and documents.
+- Document downloads via Supabase Storage.
+- Volti assistant (LLM) via API.
+- "My Home" module: plans, devices, telemetry, and routines.
 
-## Variables de entorno (todas)
+## Tech Stack
 
-- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`: proyecto Supabase (auth publica).
-- `SUPABASE_SERVICE_ROLE_KEY`: llave de servicio para subir archivos en `/api/upload` y endpoints internos (solo server-side).
-- `OPENAI_API_KEY`: para el bot Volti con LLM.
-- `NEXT_PUBLIC_VOLTI_API_KEY` (opcional): API key publica si usas un backend externo para Volti.
-- `NEXT_PUBLIC_VOLTI_API_URL` (opcional): endpoint del bot; por defecto `/api/volti`.
-- `NEXT_PUBLIC_INTERNAL_EMAILS`: lista separada por coma con correos internos/admin (ej: `emanuel.s@live.com.ar`).
-- `NEXT_PUBLIC_INTERNAL_BYPASS`: si `true`, permite logueo/uso interno sin Supabase (solo para desarrollo).
+- Next.js (Pages Router) + React + TypeScript
+- Tailwind CSS v4
+- Supabase (Auth, Database, Storage, Realtime)
+- Node 18.18+ (recommended 20) + npm
 
-## Supabase esperado (core)
+## Scripts
 
-- Tablas: `clients`, `projects`, `estimates`, `documents`, `progress` (con RLS por usuario).
-- Storage: bucket `documents` para archivos de proyecto.
-- Auth por correo: `supabase.auth.signInWithPassword` y `signUp` ya conectados.
+- `npm run dev`
+- `npm run lint`
+- `npm run build`
+- `npm run start`
 
-## Rutas principales
+## Local Setup
 
-- `/` Landing con servicios, portfolio y CTA "Pedir visita tecnica".
-- `/contacto` Formulario con validacion basica.
-- `/login` y `/registro` Autenticacion de clientes.
-- `/dashboard` Lista de proyectos (usa Supabase; cae a datos demo si falla).
-- `/proyecto/[id]` Detalle con avance, checklist y documentos descargables.
-- `/api/upload` Carga base64 a Storage (`documents/`), pensado para llamar desde formularios o edge functions.
+1. Install Node 18.18+ (20 recommended).
+2. Copy env file: `cp .env.local.example .env.local`.
+3. Fill Supabase and OpenAI variables (see below).
+4. Install dependencies: `npm install`.
+5. Run dev server: `npm run dev` (http://localhost:3000).
 
-## Modulo interno "Mi casa" (/app/home)
+## Environment Variables
 
-- Solo visible para usuarios internos/admin (metadata `role=internal` o email incluido en `NEXT_PUBLIC_INTERNAL_EMAILS`).
-- Ruta: `/app/home`. Usa el plano `public/planos/home-plan.jpg` para vista general y planos por ambiente (`/planos/living.png`, `/planos/cocina.png`, `/planos/habitacion-leon.jpg`, `/planos/habitacion-eloy.jpg`).
-- Render directo de imagen o PDF (pdf.js). Si cambias un plano, reemplaza el asset correspondiente o ajusta `plan_asset_url` por ambiente en BD.
-- Zonas por ambiente (poligonos normalizados 0..1) + estado de Luces/Aires y zoom con toggles optimistas (API `/api/home/toggle`).
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `OPENAI_API_KEY`
+- `NEXT_PUBLIC_VOLTI_API_KEY` (optional)
+- `NEXT_PUBLIC_VOLTI_API_URL` (optional, default `/api/volti`)
+- `NEXT_PUBLIC_INTERNAL_EMAILS` (comma-separated)
+- `NEXT_PUBLIC_INTERNAL_BYPASS` (local only)
 
-### My Home post-obra (assets reales)
-- Planos y detalles en `public/planos/emanuel.s@live.com.ar/` (copiados desde `Media/Planos/emanuel.s@live.com.ar/`).
-- Plano general: `plano_general.jpg`. Ambientes con slug: `living`, `comedor`, `cocina`, `lavadero`, `pasillo`, `habitacion-principal`, `habitacion-secundaria`, `bano-principal`, `bano-secundario`.
-- Cada ambiente tiene `detail_image_url` apuntando a su imagen; las luminarias se sembraron a partir de las cruces rojas de cada detalle.
-- Consumo simulado (luces 12W, aires 1200W) recalculado en tiempo real.
-- Rutinas simuladas (`routines` table) con API `/api/home/routines` para pausar/ejecutar y afectar luces/aires virtuales.
-- Modo edición solo interno: toggle “Editar”; Alt+click en el plano general mueve el polígono del ambiente activo, y en el zoom puedes arrastrar cada dispositivo para moverlo (persiste vía `/api/home/room` y `/api/home/device`).
+## Supabase Core Schema
 
-### Schema y seed en Supabase
-1. Importa `supabase/home-schema.sql` en el editor SQL.
-   - Reemplaza `:OWNER_USER_ID` por el `id` del usuario interno.
-   - El `plan_asset_url` apunta a `/planos/emanuel.s@live.com.ar/plano_general.jpg` por defecto.
-2. Marca el usuario interno con metadata `role=internal` (Auth > Users) o agrega su correo en `NEXT_PUBLIC_INTERNAL_EMAILS`.
-3. Ajusta poligonos/bbox/positions (json normalizado):
-   - `polygon`: lista `{x:0..1,y:0..1}` respecto del ancho/alto del plano.
-   - `bbox`: rectangulo de apoyo `{x,y,width,height}` opcional.
-   - `devices.position`: coords normalizadas sobre el plano.
-   - `room_telemetry`: opcional `temperature_c`, `humidity`.
-4. Realtime: el cliente se subscribe a `devices` y cae a polling cada 4.5s; RLS limita a owner.
+- Tables: `clients`, `projects`, `estimates`, `documents`, `progress`
+- Storage: `documents` bucket
+- Email auth with `signInWithPassword` and `signUp`
 
-### Toggle / feedback
-- `/api/home/toggle` requiere header `Authorization: Bearer <supabase_access_token>`.
-- Actualiza `devices.is_on` + `last_changed_at` y valida que el device pertenezca al `home`.
-- La UI hace update optimista y revierte si falla el endpoint.
+## Key Routes
 
-## Despliegue en Vercel (checklist)
+- `/` landing
+- `/contacto`
+- `/login`, `/registro`
+- `/dashboard`
+- `/proyecto/[id]`
+- `/api/upload`
 
-1. Importa el repo en Vercel con rama `main` como produccion y habilita Preview Deploys para PR y ramas (`feature/*`).
-2. Build:
-   - Install: `npm ci`
-   - Build: `npm run build`
-   - Output: `.next` (default). Node 20 en runtime de Vercel.
-   - No se requiere `vercel.json` por ahora; agregalo si necesitas rewrites/headers/edge.
-3. Variables en Vercel (Production y Preview):
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `SUPABASE_SERVICE_ROLE_KEY`
-   - `OPENAI_API_KEY`
-   - `NEXT_PUBLIC_VOLTI_API_KEY`
-   - `NEXT_PUBLIC_VOLTI_API_URL` (usa `/api/volti` por defecto)
-   - `NEXT_PUBLIC_INTERNAL_EMAILS`
-   - `NEXT_PUBLIC_INTERNAL_BYPASS` (`false` en prod; opcional `true` en preview/local)
-4. Resultado esperado:
-   - Push/PR => Vercel genera Preview URL automatica.
-   - Merge en `main` => deploy a produccion sin pasos manuales.
+## "My Home" Module (/app/home)
 
-## Workflow Git con Codex
+- Internal users only (metadata `role=internal` or `NEXT_PUBLIC_INTERNAL_EMAILS`).
+- Interactive plans with zones and devices, optimistic toggles (`/api/home/toggle`).
+- Image or PDF rendering (pdf.js).
 
-- Rama base: `main`. Trabaja en `feature/<nombre>` para cada cambio.
-- Antes de pushear: `npm run lint` y `npm run build` (usa `.env.local` copiado del example).
-- Push de la feature => CI (GitHub Actions) corre lint + build y Vercel crea Preview Deploy.
-- Abre PR contra `main`, revisa/mergea. Vercel despliega a produccion al merge, sin copiar codigo ni comandos manuales.
+### Supabase Schema + Seed
+
+1. Import `supabase/home-schema.sql`.
+2. Replace `:OWNER_USER_ID` with the internal user id.
+3. Adjust normalized polygons and positions (0..1).
+
+## Deployment (Vercel)
+
+- Build: `npm ci` -> `npm run build`
+- Output: `.next`
+- Environment variables: same as `.env.local`
+
+## Note for Recruiters
+
+This project demonstrates:
+- Full-stack delivery with Next.js and Supabase.
+- Security and permissions with RLS.
+- Interactive UX on floor plans and simulated devices.
+- API integrations and automation.
+
+If you want, I can add a **Live Demo**, **Screenshots**, and a **Responsibilities** section tailored to your role.
