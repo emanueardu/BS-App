@@ -42,7 +42,7 @@ const differentiators = [
   },
   {
     title: "Portal de cliente",
-    desc: "Dashboard con presupuestos, fotos, documentos y chat Volti.",
+    desc: "Dashboard con presupuestos, fotos y documentacion",
   },
 ];
 
@@ -87,9 +87,8 @@ export default function Home() {
               Electricidad segura, domotica a medida y seguimiento en linea.
             </h1>
             <p className="max-w-3xl text-lg text-slate-100/80">
-              Disenamos y ejecutamos tu instalacion electrica y domotica con un
-              panel privado para ver presupuestos, avances, documentos y chatear
-              con Volti.
+              Diseñamos y ejecutamos tu instalacion electrica y domotica con un
+              panel privado para ver presupuestos, avances y documentacion.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
@@ -109,7 +108,7 @@ export default function Home() {
             <div className="grid gap-4 sm:grid-cols-3">
               {[
                 { label: "Visitas coordinadas", value: "<24h" },
-                { label: "Proyectos activos", value: "120+" },
+                { label: "Proyectos activos", value: "30+" },
                 { label: "Satisfaccion", value: "4.9/5" },
               ].map((stat) => (
                 <div
@@ -371,7 +370,7 @@ export default function Home() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/contacto"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:text-white hover:bg-slate-800"
             >
               Pedir visita
               <ArrowLongRightIcon className="h-5 w-5" />
