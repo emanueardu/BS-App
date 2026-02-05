@@ -20,7 +20,6 @@ export const Navbar = () => {
       { name: "Servicios", href: "/servicios" },
       { name: "Proceso", href: "/proceso" },
       { name: "Proyectos", href: "/proyectos" },
-      { name: "Soporte", href: "/soporte" },
       { name: "Nosotros", href: "/nosotros" },
       { name: "Contacto", href: "/contacto" },
       { name: "Portal", href: "/portal" },
