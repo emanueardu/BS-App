@@ -283,4 +283,87 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
       footnote: "Priorizamos seguridad y cumplimiento por encima de atajos.",
     },
   },
+  domotica: {
+    metaDescription:
+      "Domótica residencial escalable para controlar iluminación, clima, audio y accesos desde un único panel inteligente.",
+    heroDescription:
+      "Diseñamos e implementamos sistemas de domótica residencial que integran tecnología útil al día a día. Soluciones pensadas para simplificar el uso de la vivienda, mejorar el confort y optimizar consumos.",
+    heroActions: [
+      { label: "Consultar", href: "/contacto", variant: "primary" },
+      { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
+    ],
+    sections: [
+      {
+        type: "text",
+        title: "Qué hacemos",
+        copy:
+          "Implementamos sistemas de domótica residencial que permiten controlar y automatizar distintos aspectos de la vivienda desde un único entorno. Cada solución se diseña según las necesidades reales del cliente y preparada para crecer en el futuro.",
+      },
+      {
+        type: "bullets",
+        title: "Qué se puede automatizar",
+        bullets: [
+          "Iluminación interior y exterior",
+          "Escenas y rutinas personalizadas",
+          "Control de tomas y circuitos eléctricos",
+          "Climatización (integración con aires y sistemas existentes)",
+          "Sonorización y multimedia",
+          "Acceso y control remoto desde el celular",
+        ],
+      },
+      {
+        type: "bullets",
+        title: "Nuestro enfoque",
+        copy:
+          "La domótica debe ser confiable, simple de usar y mantenible. Evitamos soluciones cerradas o experimentales que luego no puedan ampliarse o mantenerse.",
+        bullets: [
+          "Soluciones escalables",
+          "Integración entre sistemas",
+          "Tecnología probada",
+          "Uso simple para el usuario",
+          "Preparada para futuras ampliaciones",
+        ],
+      },
+      {
+        type: "steps",
+        title: "Cómo trabajamos",
+        steps: [
+          "Relevamiento de la vivienda y hábitos de uso.",
+          "Definición de funcionalidades y alcances.",
+          "Selección de tecnología adecuada.",
+          "Instalación, configuración y pruebas.",
+          "Explicación de uso al cliente.",
+        ],
+      },
+      {
+        type: "bullets",
+        title: "Cuándo conviene implementar domótica",
+        bullets: [
+          "Viviendas nuevas",
+          "Reformas integrales",
+          "Mejora de confort y eficiencia",
+          "Centralización de controles",
+          "Usuarios que buscan tecnología útil, no compleja",
+        ],
+      },
+    ],
+    galleryItems: [
+      { title: "Iluminación inteligente en vivienda" },
+      { title: "Control domótico desde celular" },
+      { title: "Panel / interfaz de control" },
+      { title: "Integración de dispositivos en el hogar" },
+    ],
+    finalCta: {
+      title: "La tecnología tiene que simplificar la vida",
+      text:
+        "Consultanos y diseñamos una solución de domótica adaptada a tu vivienda y a tu forma de vivir.",
+      primary: { label: "Consultar", href: "/contacto", variant: "primary" },
+      secondary: {
+        label: "Volver a Servicios",
+        href: "/servicios",
+        variant: "secondary",
+      },
+      footnote: "No instalamos sistemas que no podamos mantener o escalar.",
+    },
+  },
 };
