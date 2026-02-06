@@ -9,42 +9,7 @@ import {
   ShieldCheckIcon,
   SparklesIcon,
 } from "@heroicons/react/24/outline";
-
-const services = [
-  {
-    title: "Instalacion electrica segura",
-    description:
-      "Cableado certificado, tableros inteligentes y auditoria completa de tu obra.",
-    icon: BoltIcon,
-  },
-  {
-    title: "Preparacion domotica",
-    description:
-      "Infraestructura lista para IoT, sensores y escenarios de automatizacion.",
-    icon: HomeModernIcon,
-  },
-  {
-    title: "Domotica integral",
-    description:
-      "Control de iluminacion, clima y accesos con monitoreo en tiempo real.",
-    icon: ShieldCheckIcon,
-  },
-];
-
-const differentiators = [
-  {
-    title: "Respuesta en 24h",
-    desc: "Agenda rapida de visitas y seguimiento con avisos puntuales.",
-  },
-  {
-    title: "Ingenieria + obra",
-    desc: "Equipo tecnico para proyecto, montaje y puesta en marcha.",
-  },
-  {
-    title: "Portal de cliente",
-    desc: "Dashboard con presupuestos, fotos y documentacion",
-  },
-];
+import { homeServices } from "@/data/services";
 
 const portfolio = [
   {
@@ -65,6 +30,14 @@ const portfolio = [
 ];
 
 export default function Home() {
+  const scrollToService = (targetId: string) => {
+    if (typeof document === "undefined") {
+      return;
+    }
+    const target = document.getElementById(targetId);
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <>
       <Head>
@@ -173,67 +146,103 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-14 grid gap-10 rounded-3xl bg-white/90 p-8 shadow-sm shadow-orange-100 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-4">
+      <section
+        className="mt-14 space-y-10 rounded-3xl bg-white/90 p-8 shadow-sm shadow-orange-100"
+        aria-labelledby="servicios-home-title"
+      >
+        <div className="space-y-3 max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
             Servicios
           </p>
-          <h2 className="text-3xl font-semibold text-slate-900">
-            Instalacion electrica, domotica y seguimiento unificados.
+          <h2
+            id="servicios-home-title"
+            className="text-3xl font-semibold text-slate-900"
+          >
+            Servicios eléctricos y domóticos hechos para tu proyecto
           </h2>
           <p className="text-base text-slate-700">
-            Auditamos tu instalacion, disenamos tableros, gestionamos domotica y
-            centralizamos todo en un panel privado para que tengas visibilidad
-            real del proyecto.
+            Relevamos, diseñamos y ejecutamos cada etapa con materiales certificados,
+            documentación ordenada y seguimiento transparente en tu panel privado.
           </p>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {differentiators.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-2xl border border-slate-200 bg-slate-50 p-4"
-              >
-                <p className="text-sm font-semibold text-orange-700">
-                  {item.title}
-                </p>
-                <p className="text-sm text-slate-600">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex gap-3">
-            <a
-              href="https://www.linkedin.com"
-              className="text-sm font-semibold text-slate-700 underline"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://www.instagram.com"
-              className="text-sm font-semibold text-slate-700 underline"
-            >
-              Instagram
-            </a>
-          </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
+
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {homeServices.map((service) => (
+            <article
+              key={service.id}
+              className="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 text-white shadow-lg transition hover:-translate-y-1 hover:shadow-xl"
+            >
               <div
-                key={service.title}
-                className="rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-100"
+                className="relative h-56 w-full transition duration-300"
+                style={{
+                  backgroundImage: `linear-gradient(to bottom, rgba(15,23,42,0.15), rgba(2,6,23,0.85)), url(${service.imageSrc})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-orange-700">
-                  <Icon className="h-6 w-6" />
+                <div className="absolute inset-0" />
+                <div className="absolute inset-0 flex flex-col justify-between p-5">
+                  <p className="max-w-xs truncate text-xs font-semibold uppercase tracking-widest text-orange-200">
+                    {service.subtitle}
+                  </p>
+                  <div className="space-y-1">
+                    <h3 className="text-2xl font-semibold leading-tight">
+                      {service.title}
+                    </h3>
+                  </div>
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-slate-900">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  {service.description}
-                </p>
               </div>
-            );
-          })}
+              <div className="flex flex-1 items-end justify-start border-t border-white/10 px-5 py-4">
+                <button
+                  type="button"
+                  onClick={() => scrollToService(service.id)}
+                  aria-label={`Ver más sobre ${service.title}`}
+                  className="rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+                >
+                  Ver más
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="space-y-8">
+          {homeServices.map((service) => (
+            <article
+              key={`${service.id}-detail`}
+              id={service.id}
+              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+                    {service.subtitle}
+                  </p>
+                  <h3 className="text-2xl font-semibold text-slate-900">
+                    {service.title}
+                  </h3>
+                  <p className="text-base text-slate-600">{service.description}</p>
+                </div>
+                <Link
+                  href="/contacto"
+                  aria-label={`Consultar por ${service.title}`}
+                  className="inline-flex items-center justify-center rounded-full border border-slate-900 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+                >
+                  Consultar
+                </Link>
+              </div>
+              <ul className="mt-4 grid gap-2 text-sm text-slate-600 sm:grid-cols-2 lg:grid-cols-3">
+                {service.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-2">
+                    <span aria-hidden="true" className="text-orange-500">
+                      •
+                    </span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </div>
       </section>
 
