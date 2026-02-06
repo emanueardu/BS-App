@@ -20,7 +20,7 @@ export const services: HomeService[] = [
       "Montaje con cableado certificado, protecciones selectivas y etiquetado claro",
       "Verificación final con mediciones, pruebas de puesta en marcha y registro fotográfico",
     ],
-    imageSrc: "/images/services/placeholder-electricidad.jpg",
+    imageSrc: "/images/services/instalaciones-electricas.jpg",
   },
   {
     id: "planos-y-proyectos",
@@ -33,7 +33,7 @@ export const services: HomeService[] = [
       "Coordinación con arquitectos y equipo de obra para evitar interferencias",
       "Documentación lista para permisos, distribuidora y aprobación AEA/IRAM",
     ],
-    imageSrc: "/images/services/placeholder-planos.jpg",
+    imageSrc: "/images/services/planos-y-proyectos.jpg",
   },
   {
     id: "habilitacion",
@@ -46,7 +46,7 @@ export const services: HomeService[] = [
       "Presentación técnica con planos, memoria y listado de materiales",
       "Seguimiento del trámite con la distribuidora y certificaciones finales",
     ],
-    imageSrc: "/images/services/placeholder-habilitacion.jpg",
+    imageSrc: "/images/services/habilitacion.jpg",
   },
   {
     id: "domotica",
@@ -59,7 +59,7 @@ export const services: HomeService[] = [
       "Integración de clima, luces y accesos en un mismo ecosistema",
       "Capacitación y soporte en el portal privado para ajustar parámetros",
     ],
-    imageSrc: "/images/services/placeholder-domotica.jpg",
+    imageSrc: "/images/services/domotica.jpg",
   },
   {
     id: "automatizacion-exteriores",
@@ -72,7 +72,7 @@ export const services: HomeService[] = [
       "Control remoto de bombas, filtros y luminarias exteriores",
       "Sensores climáticos y alarmas que reaccionan a variaciones de suelo y clima",
     ],
-    imageSrc: "/images/services/placeholder-exteriores.jpg",
+    imageSrc: "/images/services/automatizacion-exteriores.jpg",
   },
   {
     id: "climatizacion",
@@ -85,7 +85,7 @@ export const services: HomeService[] = [
       "Montaje de ductos, rejillas y mandos con estética cuidada",
       "Puesta en marcha con balanceo, mediciones y entrega de manuales",
     ],
-    imageSrc: "/images/services/placeholder-climatizacion.jpg",
+    imageSrc: "/images/services/climatizacion.jpg",
   },
   {
     id: "seguridad-electronica",
@@ -98,6 +98,6 @@ export const services: HomeService[] = [
       "Integración con alarmas, cerraduras y monitoreo en el portal",
       "Alertas y soporte 24/7 para que la operación esté siempre bajo control",
     ],
-    imageSrc: "/images/services/placeholder-seguridad.jpg",
+    imageSrc: "/images/services/seguridad-electronica.jpg",
   },
 ];
