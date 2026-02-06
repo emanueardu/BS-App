@@ -88,13 +88,22 @@ export default function Servicios() {
                   <h2 className="text-2xl font-semibold text-slate-900">{service.title}</h2>
                   <p className="text-base text-slate-600">{service.description}</p>
                 </div>
-                <Link
-                  href="/contacto"
-                  aria-label={`Consultar por ${service.title}`}
-                  className="inline-flex items-center justify-center rounded-full border border-slate-900 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
-                >
-                  Consultar
-                </Link>
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/contacto"
+                    aria-label={`Consultar por ${service.title}`}
+                    className="inline-flex items-center justify-center rounded-full border border-slate-900 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+                  >
+                    Consultar
+                  </Link>
+                  <Link
+                    href={`/servicios/${service.slug}`}
+                    aria-label={`Ver más detalles de ${service.title}`}
+                    className="inline-flex items-center justify-center rounded-full bg-orange-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+                  >
+                    Ver más
+                  </Link>
+                </div>
               </div>
               <ul className="mt-4 grid gap-2 text-sm text-slate-600 sm:grid-cols-2 lg:grid-cols-3">
                 {service.bullets.map((bullet) => (

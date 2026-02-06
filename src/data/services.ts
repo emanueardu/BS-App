@@ -1,5 +1,6 @@
-export type HomeService = {
+export type Service = {
   id: string;
+  slug: string;
   title: string;
   subtitle: string;
   description: string;
@@ -8,9 +9,10 @@ export type HomeService = {
 };
 
 // Replace each imageSrc with the real service asset located in /public/images/services (or import the asset directly).
-export const services: HomeService[] = [
+export const services: Service[] = [
   {
     id: "instalaciones-electricas",
+    slug: "instalaciones-electricas",
     title: "Instalaciones eléctricas",
     subtitle: "Instalaciones nuevas y reformas seguras, prolijas y normalizadas.",
     description:
@@ -24,6 +26,7 @@ export const services: HomeService[] = [
   },
   {
     id: "planos-y-proyectos",
+    slug: "planos-y-proyectos",
     title: "Planos y proyectos eléctricos",
     subtitle: "Diseño eléctrico profesional para viviendas nuevas y reformas.",
     description:
@@ -37,6 +40,7 @@ export const services: HomeService[] = [
   },
   {
     id: "habilitacion",
+    slug: "habilitacion",
     title: "Habilitación de servicios eléctricos",
     subtitle: "Asesoramiento técnico y adecuación para altas y regularizaciones.",
     description:
@@ -50,6 +54,7 @@ export const services: HomeService[] = [
   },
   {
     id: "domotica",
+    slug: "domotica",
     title: "Domótica",
     subtitle: "Control inteligente del hogar: confort, eficiencia y tecnología.",
     description:
@@ -63,6 +68,7 @@ export const services: HomeService[] = [
   },
   {
     id: "automatizacion-exteriores",
+    slug: "automatizacion-exteriores",
     title: "Automatización de exteriores",
     subtitle: "Riego y piscina automatizados, con control y programación.",
     description:
@@ -76,6 +82,7 @@ export const services: HomeService[] = [
   },
   {
     id: "climatizacion",
+    slug: "climatizacion",
     title: "Climatización",
     subtitle: "Asesoramiento e instalación de aires y sistemas de climatización.",
     description:
@@ -89,6 +96,7 @@ export const services: HomeService[] = [
   },
   {
     id: "seguridad-electronica",
+    slug: "seguridad-electronica",
     title: "Seguridad electrónica",
     subtitle: "Cámaras, alarmas y cerraduras electrónicas integradas.",
     description:
