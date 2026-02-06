@@ -550,4 +550,106 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
       footnote: "Priorizamos soluciones eficientes y fáciles de mantener.",
     },
   },
+  "seguridad-electronica": {
+    metaDescription:
+      "Diseñamos sistemas de seguridad electrónica con cámaras, alarmas y control de accesos integrados para viviendas.",
+    heroDescription:
+      "Diseñamos e instalamos sistemas de seguridad electrónica confiables y fáciles de usar: cámaras, alarmas y control de accesos. Priorizamos cobertura real, instalación prolija y configuración clara.",
+    heroActions: [
+      { label: "Consultar", href: "/contacto", variant: "primary" },
+      { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
+    ],
+    sections: [
+      {
+        type: "text",
+        title: "Qué hacemos",
+        copy:
+          "Implementamos soluciones de seguridad adaptadas a cada vivienda. Definimos puntos críticos, alcance y nivel de integración deseado, para lograr un sistema efectivo y mantenible.",
+      },
+      {
+        type: "bullets",
+        title: "Soluciones disponibles",
+        bullets: [
+          "Cámaras de seguridad (CCTV)",
+          "Sistemas de alarma",
+          "Cerraduras electrónicas y control de accesos",
+          "Monitoreo y acceso remoto (si aplica)",
+          "Integración con domótica (si corresponde)",
+        ],
+      },
+      {
+        type: "text",
+        title: "Diseño de cobertura",
+        copy:
+          "La seguridad no es poner ‘una cámara’. Es diseñar cobertura: qué se ve, desde dónde y con qué calidad.",
+      },
+      {
+        type: "bullets",
+        title: "Cobertura bien pensada",
+        bullets: [
+          "Definición de puntos críticos",
+          "Ángulos, alcance y zonas ciegas",
+          "Ubicación y protección de equipos",
+          "Orden y trazado de cableado/alimentación",
+          "Configuración y pruebas finales",
+        ],
+      },
+      {
+        type: "text",
+        title: "Instalación prolija y configuración",
+        copy:
+          "Una instalación prolija mejora confiabilidad y evita problemas futuros. Dejamos el sistema configurado, probado y explicado al usuario.",
+      },
+      {
+        type: "bullets",
+        title: "Qué garantizamos",
+        bullets: [
+          "Cableado ordenado y seguro",
+          "Montaje firme y discreto",
+          "Configuración de grabación/notificaciones (si aplica)",
+          "Acceso y uso claro para el cliente",
+          "Preparado para mantenimiento y ampliación",
+        ],
+      },
+      {
+        type: "steps",
+        title: "Cómo trabajamos",
+        steps: [
+          "Relevamiento del lugar y objetivos del cliente.",
+          "Definición de alcance y cobertura.",
+          "Propuesta técnica clara.",
+          "Instalación y configuración.",
+          "Pruebas, ajustes y explicación de uso.",
+        ],
+      },
+      {
+        type: "bullets",
+        title: "Cuándo conviene",
+        bullets: [
+          "Mejorar seguridad en accesos",
+          "Monitoreo de perímetro y exteriores",
+          "Control de ingresos/salidas",
+          "Necesidad de acceso remoto",
+          "Integración con domótica y automatizaciones",
+        ],
+      },
+    ],
+    galleryItems: [
+      { title: "Cámara de seguridad instalada (exterior)" },
+      { title: "Cerradura electrónica en puerta moderna" },
+      { title: "App / monitoreo (pantalla genérica sin marcas)" },
+      { title: "Instalación prolija / detalle de montaje" },
+    ],
+    finalCta: {
+      title: "Seguridad clara, sin complejidad",
+      text: "Consultanos y definimos una solución de seguridad adaptada a tu vivienda.",
+      primary: { label: "Consultar", href: "/contacto", variant: "primary" },
+      secondary: {
+        label: "Volver a Servicios",
+        href: "/servicios",
+        variant: "secondary",
+      },
+      footnote: "Todo sistema se entrega configurado y probado, con explicación de uso.",
+    },
+  },
 };
