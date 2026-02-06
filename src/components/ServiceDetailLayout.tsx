@@ -124,18 +124,18 @@ export function ServiceDetailLayout({ service, config }: Props) {
 
       <section className={sectionClass}>
         <h2 className="text-xl font-semibold text-slate-900">Galería</h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          {config.galleryItems.map((item) => {
-            const hasImage = Boolean(item.imageSrc);
-            return (
-              <div
-                key={item.title}
-                className={`flex h-32 flex-col items-start justify-between rounded-2xl border border-dashed border-slate-300 bg-gradient-to-br from-slate-100 to-slate-200 p-4 text-xs font-semibold uppercase tracking-wide ${
-                  hasImage ? "text-white" : "text-slate-600"
-                }`}
-                style={
-                  hasImage
-                    ? {
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        {config.galleryItems.map((item) => {
+          const hasImage = Boolean(item.imageSrc);
+          return (
+            <div
+              key={item.title}
+              className={`flex h-44 flex-col items-end justify-end rounded-2xl border border-dashed border-slate-300 bg-gradient-to-br from-slate-100 to-slate-200 p-4 text-xs font-semibold uppercase tracking-wide ${
+                hasImage ? "text-white" : "text-slate-600"
+              }`}
+              style={
+                hasImage
+                  ? {
                         backgroundImage: `linear-gradient(to bottom, rgba(15,23,42,0.15), rgba(2,6,23,0.6)), url(${item.imageSrc})`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
@@ -144,11 +144,6 @@ export function ServiceDetailLayout({ service, config }: Props) {
                 }
               >
                 <span>{item.title}</span>
-                {item.description && (
-                  <span className="text-[0.55rem] uppercase tracking-[0.15em]">
-                    {item.description}
-                  </span>
-                )}
               </div>
             );
           })}
