@@ -448,4 +448,106 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
       footnote: "Todo sistema se entrega documentado y preparado para mantenimiento.",
     },
   },
+  climatizacion: {
+    metaDescription:
+      "Asesoramiento e instalación de sistemas de climatización eficientes en cada ambiente del hogar.",
+    heroDescription:
+      "Te ayudamos a definir la mejor solución de climatización para cada ambiente: asesoramiento de compra, instalación y configuración. Confort, eficiencia y una instalación prolija.",
+    heroActions: [
+      { label: "Consultar", href: "/contacto", variant: "primary" },
+      { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
+    ],
+    sections: [
+      {
+        type: "text",
+        title: "Qué hacemos",
+        copy:
+          "Brindamos soluciones integrales de climatización para viviendas: desde la elección del equipo hasta la instalación final. Nuestro enfoque es técnico: cada ambiente requiere un equipo adecuado, con una instalación segura y eficiente.",
+      },
+      {
+        type: "bullets",
+        title: "Qué incluye el servicio",
+        bullets: [
+          "Asesoramiento para selección de equipos",
+          "Instalación de aires acondicionados",
+          "Definición de ubicación óptima (unidad interior/exterior)",
+          "Alimentación eléctrica y protecciones (si aplica)",
+          "Configuración y pruebas de funcionamiento",
+          "Recomendaciones de uso eficiente",
+        ],
+      },
+      {
+        type: "text",
+        title: "Asesoramiento de compra",
+        copy:
+          "Antes de comprar, definimos qué equipo conviene según el ambiente y el uso. Esto evita sobredimensionar (más costo) o quedarse corto (bajo rendimiento).",
+      },
+      {
+        type: "bullets",
+        title: "Factores que estudiamos",
+        bullets: [
+          "Superficie y características del ambiente",
+          "Aislación y orientación",
+          "Uso real y cantidad de personas",
+          "Eficiencia energética y consumo",
+        ],
+      },
+      {
+        type: "text",
+        title: "Instalación prolija y segura",
+        copy:
+          "Una buena instalación impacta en rendimiento y vida útil del equipo. Priorizamos terminaciones prolijas, seguridad eléctrica y funcionamiento estable.",
+      },
+      {
+        type: "bullets",
+        title: "Qué garantizamos",
+        bullets: [
+          "Terminaciones limpias",
+          "Soportes y fijaciones seguras",
+          "Tendido ordenado",
+          "Protecciones eléctricas cuando corresponde",
+          "Pruebas y verificación final",
+        ],
+      },
+      {
+        type: "steps",
+        title: "Cómo trabajamos",
+        steps: [
+          "Relevamiento del ambiente y necesidades.",
+          "Recomendación de equipo (si el cliente lo solicita).",
+          "Definición de ubicación y trazado de instalación.",
+          "Instalación y pruebas.",
+          "Explicación de uso y recomendaciones.",
+        ],
+      },
+      {
+        type: "bullets",
+        title: "Cuándo conviene",
+        bullets: [
+          "Instalación en vivienda nueva",
+          "Recambio de equipos antiguos",
+          "Ambientes que no climatizan bien",
+          "Búsqueda de eficiencia y menor consumo",
+          "Integración con domótica (si aplica)",
+        ],
+      },
+    ],
+    galleryItems: [
+      { title: "Aire acondicionado instalado en living moderno" },
+      { title: "Unidad exterior instalada prolija" },
+      { title: "Detalle de instalación / terminaciones" },
+      { title: "Ambiente confortable y moderno" },
+    ],
+    finalCta: {
+      title: "Confort real, con instalación profesional",
+      text: "Consultanos y definimos la mejor solución de climatización para tu casa.",
+      primary: { label: "Consultar", href: "/contacto", variant: "primary" },
+      secondary: {
+        label: "Volver a Servicios",
+        href: "/servicios",
+        variant: "secondary",
+      },
+      footnote: "Priorizamos soluciones eficientes y fáciles de mantener.",
+    },
+  },
 };
