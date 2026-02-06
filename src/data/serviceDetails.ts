@@ -172,10 +172,26 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
       },
     ],
     galleryItems: [
-      { title: "Plano eléctrico unifilar" },
-      { title: "Planos sobre mesa de trabajo" },
-      { title: "Detalle de esquema eléctrico" },
-      { title: "Documentación técnica impresa/digital" },
+      {
+        title: "Plano eléctrico unifilar",
+        imageSrc:
+          "/images/services/Gallery/planos-y-proyectos-electricos/plano-electrico-unifilar.gif",
+      },
+      {
+        title: "Planos sobre mesa de trabajo",
+        imageSrc:
+          "/images/services/Gallery/planos-y-proyectos-electricos/planos-sobre-mesa-trabajo.jpg",
+      },
+      {
+        title: "Detalle de esquema eléctrico",
+        imageSrc:
+          "/images/services/Gallery/planos-y-proyectos-electricos/detalle-esquema-electrico.webp",
+      },
+      {
+        title: "Documentación técnica impresa/digital",
+        imageSrc:
+          "/images/services/Gallery/planos-y-proyectos-electricos/documentacion-tecnica.jpg",
+      },
     ],
     finalCta: {
       title: "Un buen proyecto evita problemas en la obra",
