@@ -205,4 +205,87 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
       },
     },
   },
+  habilitacion: {
+    metaDescription:
+      "Acompañamos la habilitación y regularización eléctrica con relevamiento técnico, correcciones y documentación clara para avanzar sin improvisaciones.",
+    heroDescription:
+      "Acompañamos el proceso de alta o regularización del servicio eléctrico con relevamiento técnico, correcciones necesarias y documentación mínima. Un camino claro, sin improvisaciones.",
+    heroActions: [
+      { label: "Consultar", href: "/contacto", variant: "primary" },
+      { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
+    ],
+    sections: [
+      {
+        type: "text",
+        title: "Qué hacemos",
+        copy:
+          "Realizamos el relevamiento de la instalación y definimos las adecuaciones necesarias para que el sistema cumpla criterios de seguridad y reglamentos vigentes. Te acompañamos en el proceso con explicaciones claras y pasos concretos.",
+      },
+      {
+        type: "bullets",
+        title: "Qué incluye el servicio",
+        bullets: [
+          "Relevamiento técnico de la instalación",
+          "Detección de desvíos o riesgos",
+          "Adecuación de protecciones eléctricas",
+          "Recomendaciones y correcciones necesarias",
+          "Documentación mínima para presentar/avanzar",
+          "Acompañamiento técnico durante el proceso",
+        ],
+      },
+      {
+        type: "bullets",
+        title: "Qué se revisa en la instalación",
+        copy:
+          "Según el caso, se verifican puntos críticos que impactan en seguridad y funcionamiento.",
+        bullets: [
+          "Tablero eléctrico: orden, protecciones y circuitos",
+          "Protección diferencial (si aplica)",
+          "Termomagnéticas y dimensionamiento",
+          "Puesta a tierra y continuidad",
+          "Estado general de conductores y conexiones",
+          "Separación de circuitos y cargas",
+        ],
+      },
+      {
+        type: "steps",
+        title: "Cómo trabajamos",
+        steps: [
+          "Relevamiento previo y diagnóstico.",
+          "Definición de alcance: qué hay que corregir y por qué.",
+          "Ejecución de adecuaciones (si corresponde) con terminación prolija.",
+          "Entrega de documentación mínima y guía de próximos pasos.",
+        ],
+      },
+      {
+        type: "bullets",
+        title: "Cuándo conviene",
+        bullets: [
+          "Alta de un servicio nuevo",
+          "Regularización de una instalación existente",
+          "Viviendas con instalación antigua",
+          "Tableros sin protecciones o desordenados",
+          "Antes de una reforma importante",
+        ],
+      },
+    ],
+    galleryItems: [
+      { title: "Medidor/entrada de servicio" },
+      { title: "Revisión de tablero eléctrico" },
+      { title: "Medición/verificación (instrumentación)" },
+      { title: "Documentación técnica / checklist" },
+    ],
+    finalCta: {
+      title: "Hacemos el proceso claro y seguro",
+      text:
+        "Contanos tu situación y te indicamos el camino correcto para habilitar o regularizar tu servicio.",
+      primary: { label: "Consultar", href: "/contacto", variant: "primary" },
+      secondary: {
+        label: "Volver a Servicios",
+        href: "/servicios",
+        variant: "secondary",
+      },
+      footnote: "Priorizamos seguridad y cumplimiento por encima de atajos.",
+    },
+  },
 };
