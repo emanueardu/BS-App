@@ -1,123 +1,114 @@
 import Head from "next/head";
 import Link from "next/link";
-import { services } from "@/data/site";
-import { openVoltiChat } from "@/utils/volti";
-import { icons } from "@/data/site";
+import { useCallback } from "react";
+import { services } from "@/data/services";
 
-const getIcon = (name: keyof typeof icons) => {
-  const Icon = icons[name];
-  return Icon ? <Icon className="h-6 w-6" /> : null;
+const scrollToService = (serviceId: string) => {
+  if (typeof document === "undefined") return;
+  const target = document.getElementById(serviceId);
+  if (target) {
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 };
 
 export default function Servicios() {
+  const onCardClick = useCallback((id: string) => scrollToService(id), []);
+
   return (
     <>
       <Head>
         <title>Servicios | BS</title>
+        <meta
+          name="description"
+          content="Servicios eléctricos, domóticos y de seguridad con seguimiento premium."
+        />
       </Head>
-      <section className="rounded-3xl bg-white/90 p-8 shadow-sm shadow-orange-100">
-        <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
-          Servicios
-        </p>
-        <h1 className="text-3xl font-semibold text-slate-900">
-          Instalacion electrica, domotica y seguimiento premium.
-        </h1>
-        <p className="text-sm text-slate-600">
-          Si no se puede hacer bien, no se hace. Cumplimiento AEA/IRAM y
-          materiales certificados.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link
-            href="/contacto"
-            className="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white"
-          >
-            Pedir relevamiento
-          </Link>
-          <button
-            onClick={openVoltiChat}
-            className="rounded-full border border-orange-200 px-5 py-2 text-sm font-semibold text-orange-700"
-          >
-            Hablar con Volti
-          </button>
+
+      <section className="space-y-10 rounded-3xl bg-white/90 p-8 shadow-sm shadow-orange-100">
+        <div className="space-y-3 max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+            Servicios
+          </p>
+          <h1 className="text-3xl font-semibold text-slate-900">
+            Instalaciones eléctricas, domótica y sistemas inteligentes a medida.
+          </h1>
+          <p className="text-base text-slate-700">
+            Ejecutamos cada etapa con documentación actualizada, materiales certificados y seguimiento digital para
+            que tengas visibilidad completa del avance.
+          </p>
         </div>
-      </section>
 
-      <section className="mt-10 space-y-10">
-        {services.map((service) => (
-          <div
-            key={service.id}
-            className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
-          >
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-orange-700">
-                {getIcon(service.icon)}
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {services.map((service) => (
+            <article
+              key={service.id}
+              className="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 text-white shadow-lg transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div
+                className="relative h-56 w-full transition duration-300"
+                style={{
+                  backgroundImage: `linear-gradient(to bottom, rgba(15,23,42,0.15), rgba(2,6,23,0.85)), url(${service.imageSrc})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div className="absolute inset-0 flex flex-col justify-between p-5">
+                  <p className="max-w-xs text-xs font-semibold uppercase tracking-widest text-orange-200">
+                    {service.subtitle}
+                  </p>
+                  <h2 className="text-2xl font-semibold leading-tight">{service.title}</h2>
+                </div>
               </div>
-              <div>
-                <h2 className="text-xl font-semibold text-slate-900">
-                  {service.title}
-                </h2>
-                <p className="text-sm text-slate-600">{service.description}</p>
+              <div className="flex flex-1 items-end justify-start border-t border-white/10 px-5 py-4">
+                <button
+                  type="button"
+                  onClick={() => onCardClick(service.id)}
+                  aria-label={`Ver más sobre ${service.title}`}
+                  className="rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+                >
+                  Ver más
+                </button>
               </div>
-            </div>
+            </article>
+          ))}
+        </div>
 
-            <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">
-                  Para quién es
-                </p>
-                <ul className="mt-2 space-y-1 text-sm text-slate-600">
-                  {service.for.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
+        <div className="space-y-8">
+          {services.map((service) => (
+            <article
+              key={service.id}
+              id={service.id}
+              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+                    {service.subtitle}
+                  </p>
+                  <h2 className="text-2xl font-semibold text-slate-900">{service.title}</h2>
+                  <p className="text-base text-slate-600">{service.description}</p>
+                </div>
+                <Link
+                  href="/contacto"
+                  aria-label={`Consultar por ${service.title}`}
+                  className="inline-flex items-center justify-center rounded-full border border-slate-900 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+                >
+                  Consultar
+                </Link>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">
-                  Qué incluye
-                </p>
-                <ul className="mt-2 space-y-1 text-sm text-slate-600">
-                  {service.includes.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">
-                  Qué no incluye
-                </p>
-                <ul className="mt-2 space-y-1 text-sm text-slate-600">
-                  {service.excludes.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">
-                  Entregables
-                </p>
-                <ul className="mt-2 space-y-1 text-sm text-slate-600">
-                  {service.deliverables.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <Link
-                href="/contacto"
-                className="rounded-full bg-orange-600 px-4 py-2 text-sm font-semibold text-white"
-              >
-                Pedir relevamiento
-              </Link>
-              <button
-                onClick={openVoltiChat}
-                className="rounded-full border border-orange-200 px-4 py-2 text-sm font-semibold text-orange-700"
-              >
-                Hablar con Volti
-              </button>
-            </div>
-          </div>
-        ))}
+              <ul className="mt-4 grid gap-2 text-sm text-slate-600 sm:grid-cols-2 lg:grid-cols-3">
+                {service.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-2">
+                    <span aria-hidden className="text-orange-500">
+                      •
+                    </span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
       </section>
     </>
   );

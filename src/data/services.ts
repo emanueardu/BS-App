@@ -8,7 +8,7 @@ export type HomeService = {
 };
 
 // Replace each imageSrc with the real service asset located in /public/images/services (or import the asset directly).
-export const homeServices: HomeService[] = [
+export const services: HomeService[] = [
   {
     id: "instalaciones-electricas",
     title: "Instalaciones eléctricas",
