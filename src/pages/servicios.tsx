@@ -24,7 +24,7 @@ export default function Servicios() {
         />
       </Head>
 
-      <section className="space-y-10 rounded-3xl bg-white/90 p-8 shadow-sm shadow-orange-100">
+      <section className="space-y-10 rounded-3xl bg-white/60 backdrop-blur-sm p-8 shadow-sm shadow-orange-100">
         <div className="space-y-3 max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
             Servicios
@@ -42,7 +42,7 @@ export default function Servicios() {
           {services.map((service) => (
             <article
               key={service.id}
-              className="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 text-white shadow-lg transition hover:-translate-y-1 hover:shadow-xl"
+            className="flex flex-col overflow-hidden rounded-3xl border border-white/30 bg-slate-900/80 text-white shadow-lg transition hover:-translate-y-1 hover:shadow-xl backdrop-blur-sm"
             >
               <div
                 className="relative h-56 w-full transition duration-300"
@@ -78,7 +78,7 @@ export default function Servicios() {
             <article
               key={service.id}
               id={service.id}
-              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm"
             >
               <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                 <div className="space-y-2">
