@@ -366,4 +366,86 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
       footnote: "No instalamos sistemas que no podamos mantener o escalar.",
     },
   },
+  "automatizacion-exteriores": {
+    metaDescription:
+      "Automatizamos sistemas de riego, bombas y piscina con programación y control remoto para exteriores eficientes.",
+    heroDescription:
+      "Diseñamos e instalamos automatizaciones para espacios exteriores: riego, bombas, válvulas y funcionamiento de piscina. Soluciones confiables para reducir trabajo manual y optimizar consumo.",
+    heroActions: [
+      { label: "Consultar", href: "/contacto", variant: "primary" },
+      { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
+    ],
+    sections: [
+      {
+        type: "text",
+        title: "Qué hacemos",
+        copy:
+          "Automatizamos sistemas exteriores para que funcionen de forma previsible y eficiente. Integramos control de riego y piscina, con programación por horarios y posibilidad de control remoto según el caso.",
+      },
+      {
+        type: "bullets",
+        title: "Qué podemos automatizar",
+        bullets: [
+          "Programación de riego por zonas",
+          "Control de electroválvulas",
+          "Control de bombas (encendido/apagado y tiempos)",
+          "Filtrado y limpieza de piscina",
+          "Temporizaciones y rutinas automáticas",
+          "Integración con domótica (si aplica)",
+        ],
+      },
+      {
+        type: "bullets",
+        title: "Beneficios",
+        copy: "La automatización exterior mejora confort y reduce desperdicios.",
+        bullets: [
+          "Menor consumo de agua y energía",
+          "Menos intervención manual",
+          "Funcionamiento previsible",
+          "Mayor vida útil de equipos por uso controlado",
+          "Control centralizado y ordenado",
+        ],
+      },
+      {
+        type: "steps",
+        title: "Cómo trabajamos",
+        steps: [
+          "Relevamiento del exterior y de los equipos existentes.",
+          "Definición de zonas, rutinas y necesidades reales.",
+          "Diseño de la solución (tablero, protecciones y control).",
+          "Instalación y configuración.",
+          "Pruebas y explicación de uso.",
+        ],
+      },
+      {
+        type: "bullets",
+        title: "Cuándo conviene",
+        bullets: [
+          "Casas con jardín y riego por sectores",
+          "Piscinas con filtrado manual o poco ordenado",
+          "Usuarios que quieren previsibilidad y ahorro",
+          "Necesidad de centralizar control de bombas y válvulas",
+          "Proyectos que buscan confort y mantenimiento simple",
+        ],
+      },
+    ],
+    galleryItems: [
+      { title: "Piscina exterior moderna" },
+      { title: "Riego automatizado funcionando" },
+      { title: "Tablero/control exterior (detalle técnico prolijo)" },
+      { title: "Control desde celular (si aplica)" },
+    ],
+    finalCta: {
+      title: "Exteriores funcionando solos, sin complicaciones",
+      text:
+        "Consultanos y diseñamos una automatización confiable para tu jardín y piscina.",
+      primary: { label: "Consultar", href: "/contacto", variant: "primary" },
+      secondary: {
+        label: "Volver a Servicios",
+        href: "/servicios",
+        variant: "secondary",
+      },
+      footnote: "Todo sistema se entrega documentado y preparado para mantenimiento.",
+    },
+  },
 };
