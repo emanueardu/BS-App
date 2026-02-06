@@ -83,31 +83,45 @@ function renderSectionContent(section: ServiceDetailSection) {
 }
 
 export function ServiceDetailLayout({ service, config }: Props) {
+  const heroBackgroundStyle = service.imageSrc
+    ? {
+        backgroundImage: `linear-gradient(to bottom, rgba(15,23,42,0.7), rgba(2,6,23,0.85)), url(${service.imageSrc})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }
+    : { backgroundColor: "rgba(15,23,42,0.9)" };
+
   return (
     <div className="space-y-12 px-6 py-10 sm:px-10 lg:px-16">
-      <section className="rounded-3xl bg-slate-900/80 p-8 text-white shadow-lg backdrop-blur-sm">
-        <p className="text-sm font-semibold uppercase tracking-wide text-orange-200">
-          Servicios
-        </p>
-        <h1 className="mt-4 text-3xl font-semibold">{service.title}</h1>
-        {service.subtitle && (
-          <p className="mt-2 text-base text-slate-200">{service.subtitle}</p>
-        )}
-        <p className="mt-4 text-sm text-slate-200">{config.heroDescription}</p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          {config.heroActions.map((action) => (
-            <Link
-              key={action.label}
-              href={action.href}
-              aria-label={action.ariaLabel ?? action.label}
-              className={`${actionBaseClasses}${getActionClass(
-                action.variant
-              )}`}
-            >
-              {action.label}
-            </Link>
-          ))}
+      <section
+        className="relative overflow-hidden rounded-3xl bg-slate-900/90 p-8 text-white shadow-lg backdrop-blur-sm"
+        style={heroBackgroundStyle}
+      >
+        <div className="relative z-10">
+          <p className="text-sm font-semibold uppercase tracking-wide text-orange-200">
+            Servicios
+          </p>
+          <h1 className="mt-4 text-3xl font-semibold">{service.title}</h1>
+          {service.subtitle && (
+            <p className="mt-2 text-base text-slate-200">{service.subtitle}</p>
+          )}
+          <p className="mt-4 text-sm text-slate-200">{config.heroDescription}</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {config.heroActions.map((action) => (
+              <Link
+                key={action.label}
+                href={action.href}
+                aria-label={action.ariaLabel ?? action.label}
+                className={`${actionBaseClasses}${getActionClass(
+                  action.variant
+                )}`}
+              >
+                {action.label}
+              </Link>
+            ))}
+          </div>
         </div>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/70 to-slate-900/90" />
       </section>
 
       {config.sections.map((section) => (
