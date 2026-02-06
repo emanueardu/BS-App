@@ -269,12 +269,7 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
         ],
       },
     ],
-    galleryItems: [
-      { title: "Medidor/entrada de servicio" },
-      { title: "Revisión de tablero eléctrico" },
-      { title: "Medición/verificación (instrumentación)" },
-      { title: "Documentación técnica / checklist" },
-    ],
+    galleryItems: [],
     finalCta: {
       title: "Hacemos el proceso claro y seguro",
       text:
