@@ -1,4 +1,4 @@
-import {
+﻿import {
   ChatBubbleLeftRightIcon,
   PaperAirplaneIcon,
 } from "@heroicons/react/24/outline";
@@ -22,7 +22,7 @@ export const VoltiChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      text: "Soy Volti, ¿en qué puedo ayudarte con tu obra o instalación?",
+      text: "Soy Volti, ¿en que puedo ayudarte con tu obra o instalacion?",
     },
   ]);
   const [loading, setLoading] = useState(false);
@@ -53,9 +53,10 @@ export const VoltiChat = () => {
       });
 
       const data = await response.json().catch(() => ({}));
-      const reply =
-        (data && (data.reply || data.answer)) ??
-        "Recibí tu mensaje. Configura la API de Volti para responder aquí.";
+      const reply = response.ok
+        ? (data && (data.reply || data.answer)) ??
+          "En este momento no tengo una respuesta precisa. Si quieres, puedo derivarte con soporte."
+        : "Ahora mismo no puedo responder. Intenta nuevamente en unos minutos.";
 
       setMessages((prev) => [
         ...prev,
@@ -67,7 +68,7 @@ export const VoltiChat = () => {
         ...prev,
         {
           role: "system",
-          text: "No pudimos contactar al bot. Verifica la API key y el endpoint.",
+          text: "No pudimos contactar a Volti en este momento. Intenta nuevamente.",
         },
       ]);
     } finally {
@@ -99,7 +100,7 @@ export const VoltiChat = () => {
                     ? "ml-auto bg-orange-50 text-slate-900"
                     : message.role === "assistant"
                       ? "bg-white text-slate-900"
-                      : "bg-slate-100 text-slate-700 border border-dashed border-slate-300"
+                      : "border border-dashed border-slate-300 bg-slate-100 text-slate-700"
                 )}
               >
                 {message.text}
@@ -109,12 +110,6 @@ export const VoltiChat = () => {
           </div>
 
           <div className="border-t border-slate-200 px-4 py-3">
-            {!apiKey && (
-              <p className="mb-2 rounded-lg bg-orange-50 px-3 py-2 text-xs text-orange-700">
-                Agrega <strong>NEXT_PUBLIC_VOLTI_API_KEY</strong> para conectar
-                con el bot real.
-              </p>
-            )}
             <div className="flex items-end gap-2">
               <textarea
                 value={input}
