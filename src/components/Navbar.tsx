@@ -25,9 +25,9 @@ export const Navbar = () => {
         : []),
       { name: "Nosotros", href: "/nosotros" },
       { name: "Contacto", href: "/contacto" },
-      { name: "Portal", href: "/portal" },
-      { name: "Dashboard", href: "/dashboard", private: true },
-      { name: "Mi casa", href: "/app/home", private: true, internal: true },
+      { name: "Demo Portal", href: "/portal" },
+      { name: "Mi Portal", href: "/dashboard", private: true },
+      { name: "Mi Home", href: "/app/home", private: true, internal: true },
     ],
     []
   );
@@ -51,7 +51,7 @@ export const Navbar = () => {
               <div>
                 <p className="text-sm font-semibold text-orange-300">BS</p>
                 <p className="text-base font-semibold text-white drop-shadow">
-                  Electricidad & Domótica
+                  Electricidad & Domotica
                 </p>
               </div>
             </div>
@@ -76,24 +76,26 @@ export const Navbar = () => {
 
             <div className="hidden items-center gap-3 md:flex">
               <Link
-                href="/portal"
-                className="rounded-full border border-orange-300 px-4 py-2 text-sm font-semibold text-orange-100 transition hover:border-orange-200 hover:text-white"
-              >
-                Área Clientes
-              </Link>
-              <Link
                 href="/contacto"
                 className="rounded-full bg-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/30"
               >
                 Pedir relevamiento
               </Link>
               {user ? (
-                <button
-                  onClick={signOut}
-                  className="rounded-full bg-white/25 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/35"
-                >
-                  Salir
-                </button>
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="rounded-full border border-orange-300 px-4 py-2 text-sm font-semibold text-orange-100 transition hover:border-orange-200 hover:text-white"
+                  >
+                    Mi portal
+                  </Link>
+                  <button
+                    onClick={signOut}
+                    className="rounded-full bg-white/25 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/35"
+                  >
+                    Salir
+                  </button>
+                </>
               ) : (
                 <Link
                   href="/login"
@@ -137,26 +139,36 @@ export const Navbar = () => {
               })}
 
               <div className="flex flex-col gap-2 pt-2">
-                <Link
-                  href="/portal"
-                  className="block rounded-lg border border-orange-200 px-3 py-2 text-center text-sm font-semibold text-orange-200"
-                >
-                  Área Clientes
-                </Link>
                 {user ? (
-                  <button
-                    onClick={signOut}
-                    className="rounded-lg bg-white/20 px-3 py-2 text-sm font-semibold text-white"
-                  >
-                    Salir
-                  </button>
+                  <>
+                    <Link
+                      href="/dashboard"
+                      className="block rounded-lg border border-orange-200 px-3 py-2 text-center text-sm font-semibold text-orange-200"
+                    >
+                      Mi portal
+                    </Link>
+                    <button
+                      onClick={signOut}
+                      className="rounded-lg bg-white/20 px-3 py-2 text-sm font-semibold text-white"
+                    >
+                      Salir
+                    </button>
+                  </>
                 ) : (
-                  <Link
-                    href="/contacto"
-                    className="block rounded-lg bg-white/10 px-3 py-2 text-center text-sm font-semibold text-white"
-                  >
-                    Pedir relevamiento
-                  </Link>
+                  <>
+                    <Link
+                      href="/contacto"
+                      className="block rounded-lg bg-white/10 px-3 py-2 text-center text-sm font-semibold text-white"
+                    >
+                      Pedir relevamiento
+                    </Link>
+                    <Link
+                      href="/login"
+                      className="block rounded-lg border border-white/30 px-3 py-2 text-center text-sm font-semibold text-white"
+                    >
+                      Ingresar
+                    </Link>
+                  </>
                 )}
               </div>
             </div>
@@ -165,4 +177,4 @@ export const Navbar = () => {
       )}
     </Disclosure>
   );
-}
+};

@@ -1,115 +1,582 @@
+import {
+  ArrowTopRightOnSquareIcon,
+  CalendarDaysIcon,
+  CameraIcon,
+  ChartBarIcon,
+  DocumentTextIcon,
+  HomeModernIcon,
+  WrenchScrewdriverIcon,
+} from "@heroicons/react/24/outline";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
-import { openVoltiChat } from "@/utils/volti";
+import { useMemo, useState } from "react";
+import { demoHomeState } from "@/lib/homeService";
 
-const timeline = [
-  "Relevamiento completado",
-  "Diseño aprobado",
-  "Compras iniciadas",
-  "Obra en curso",
-  "Entrega + soporte",
+type TabId = "avance" | "documentacion" | "home";
+
+type DemoDocument = {
+  id: string;
+  title: string;
+  category: "Habilitacion" | "Planos" | "Obra" | "Garantias";
+  extension: string;
+  updatedAt: string;
+  status: "Aprobado" | "Vigente" | "Revision";
+};
+
+const projectTimeline = [
+  { stage: "Relevamiento tecnico", status: "completado", progress: 100 },
+  { stage: "Ingenieria y aprobacion", status: "completado", progress: 100 },
+  { stage: "Canalizaciones y tableros", status: "en-curso", progress: 72 },
+  { stage: "Automatizacion y puesta en marcha", status: "pendiente", progress: 28 },
+  { stage: "Entrega y capacitacion", status: "pendiente", progress: 0 },
+] as const;
+
+const photoLog = [
+  {
+    title: "Montaje de tablero principal",
+    date: "12 Feb 2026",
+    image: "/images/services/Gallery/Instalaciones-electricas/tablero-electrico-moderno-ordenado.jpg",
+  },
+  {
+    title: "Canalizacion y tendido",
+    date: "10 Feb 2026",
+    image: "/images/services/Gallery/Instalaciones-electricas/canalizacion-cableado.jfif",
+  },
+  {
+    title: "Mediciones y verificacion",
+    date: "08 Feb 2026",
+    image: "/images/services/Gallery/Instalaciones-electricas/medicion-verificacion.jfif",
+  },
+  {
+    title: "Planificacion de proyecto",
+    date: "05 Feb 2026",
+    image: "/images/services/Gallery/planos-y-proyectos-electricos/planos-sobre-mesa-trabajo.jpg",
+  },
 ];
 
-const checklist = [
-  { item: "Tablero principal", status: "Completado" },
-  { item: "Canalizaciones", status: "En progreso" },
-  { item: "Automatización escenas", status: "Pendiente" },
+const demoDocuments: DemoDocument[] = [
+  {
+    id: "doc-hab-01",
+    title: "Certificado de habilitacion municipal",
+    category: "Habilitacion",
+    extension: "PDF",
+    updatedAt: "11 Feb 2026",
+    status: "Aprobado",
+  },
+  {
+    id: "doc-hab-02",
+    title: "Memoria tecnica firmada",
+    category: "Habilitacion",
+    extension: "PDF",
+    updatedAt: "09 Feb 2026",
+    status: "Vigente",
+  },
+  {
+    id: "doc-plan-01",
+    title: "Plano unifilar general",
+    category: "Planos",
+    extension: "PDF",
+    updatedAt: "12 Feb 2026",
+    status: "Vigente",
+  },
+  {
+    id: "doc-plan-02",
+    title: "Plano de domicilio - distribucion",
+    category: "Planos",
+    extension: "PDF",
+    updatedAt: "12 Feb 2026",
+    status: "Vigente",
+  },
+  {
+    id: "doc-plan-03",
+    title: "Esquema de tableros y protecciones",
+    category: "Planos",
+    extension: "DWG",
+    updatedAt: "07 Feb 2026",
+    status: "Revision",
+  },
+  {
+    id: "doc-obra-01",
+    title: "Checklist de avance por ambiente",
+    category: "Obra",
+    extension: "XLSX",
+    updatedAt: "13 Feb 2026",
+    status: "Vigente",
+  },
+  {
+    id: "doc-obra-02",
+    title: "Registro fotografico de obra",
+    category: "Obra",
+    extension: "ZIP",
+    updatedAt: "13 Feb 2026",
+    status: "Vigente",
+  },
+  {
+    id: "doc-gar-01",
+    title: "Garantias de materiales certificados",
+    category: "Garantias",
+    extension: "PDF",
+    updatedAt: "06 Feb 2026",
+    status: "Aprobado",
+  },
 ];
 
-const documentos = [
-  "Plano unifilar.pdf",
-  "Cotización firmada.pdf",
-  "Certificado medición.pdf",
-  "Manual de uso.pdf",
+const categories: DemoDocument["category"][] = [
+  "Habilitacion",
+  "Planos",
+  "Obra",
+  "Garantias",
 ];
 
-const cambios = [
-  "07/02 - Cliente aprobó escenas de iluminación",
-  "05/02 - Se cargaron fotos de canalizaciones",
-  "02/02 - Se actualizó cronograma de entregas",
-];
+const LIGHT_WATT = 12;
+const AC_WATT = 1200;
+const LIGHT_HOURS = 4;
+const AC_HOURS = 6;
+
+const statusClass = (status: DemoDocument["status"]) => {
+  if (status === "Aprobado") return "bg-emerald-100 text-emerald-700";
+  if (status === "Vigente") return "bg-sky-100 text-sky-700";
+  return "bg-amber-100 text-amber-700";
+};
+
+const stageClass = (status: (typeof projectTimeline)[number]["status"]) => {
+  if (status === "completado") return "bg-emerald-500";
+  if (status === "en-curso") return "bg-orange-500";
+  return "bg-slate-300";
+};
 
 export default function PortalDemo() {
+  const [activeTab, setActiveTab] = useState<TabId>("avance");
+  const [devices, setDevices] = useState(() =>
+    demoHomeState.devices.map((device) => ({ ...device }))
+  );
+
+  const overallProgress = useMemo(
+    () =>
+      Math.round(
+        projectTimeline.reduce((acc, stage) => acc + stage.progress, 0) /
+          projectTimeline.length
+      ),
+    []
+  );
+
+  const lightsOn = useMemo(
+    () => devices.filter((device) => device.type === "light" && device.is_on).length,
+    [devices]
+  );
+  const acOn = useMemo(
+    () => devices.filter((device) => device.type === "ac" && device.is_on).length,
+    [devices]
+  );
+
+  const consumption = useMemo(() => {
+    const instant = lightsOn * LIGHT_WATT + acOn * AC_WATT;
+    const daily =
+      (lightsOn * LIGHT_WATT * LIGHT_HOURS) / 1000 +
+      (acOn * AC_WATT * AC_HOURS) / 1000;
+    const monthly = daily * 30;
+    return { instant, daily, monthly };
+  }, [acOn, lightsOn]);
+
+  const roomsWithDevices = useMemo(
+    () =>
+      [...demoHomeState.rooms]
+        .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0))
+        .map((room) => ({
+          room,
+          devices: devices.filter((device) => device.room_id === room.id),
+        })),
+    [devices]
+  );
+
+  const toggleDevice = (deviceId: string) => {
+    setDevices((prev) =>
+      prev.map((device) =>
+        device.id === deviceId ? { ...device, is_on: !device.is_on } : device
+      )
+    );
+  };
+
   return (
     <>
       <Head>
-        <title>Demo Portal | BS</title>
+        <title>Demo Portal Cliente | BS</title>
+        <meta
+          name="description"
+          content="Experiencia demo del portal cliente con avance de obra, documentacion y Mi Home."
+        />
       </Head>
+
       <section className="rounded-3xl bg-white/60 p-8 shadow-sm shadow-orange-100 backdrop-blur-sm">
-        <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
-          Demo del portal
-        </p>
-        <h1 className="text-3xl font-semibold text-slate-900">
-          Visión del cliente: avances, checklist, documentos y tickets.
-        </h1>
-        <p className="text-sm text-slate-600">
-          Ejemplo de cómo cada cliente sigue su obra. No es autenticación real.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <Link
-            href="/contacto"
-            className="rounded-full bg-orange-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
-          >
-            Pedir relevamiento
-          </Link>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+              Demo cliente
+            </p>
+            <h1 className="text-3xl font-semibold text-slate-900">
+              Portal de seguimiento: Casa Emanuel
+            </h1>
+            <p className="max-w-3xl text-sm text-slate-600">
+              Simulacion de un cliente real con acceso a avance de obra,
+              documentacion y Mi Home. Base de ejemplo: usuario
+              emanuel.s@live.com.ar.
+            </p>
+          </div>
+          <div className="w-full rounded-2xl border border-slate-300 bg-white/70 p-4 shadow-sm backdrop-blur-sm lg:max-w-xs">
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              Estado global
+            </p>
+            <p className="mt-1 text-2xl font-semibold text-slate-900">
+              {overallProgress}% completado
+            </p>
+            <p className="text-xs text-slate-600">Proxima visita: 20 Feb 2026 - 10:00</p>
+            <div className="mt-3 h-2 w-full rounded-full bg-slate-200">
+              <div
+                className="h-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-400"
+                style={{ width: `${overallProgress}%` }}
+              />
+            </div>
+            <Link
+              href="/login"
+              className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-orange-700"
+            >
+              Ingresar con mi cuenta
+              <ArrowTopRightOnSquareIcon className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="mt-6 flex flex-wrap gap-2">
           <button
-            onClick={openVoltiChat}
-            className="rounded-full border border-slate-900 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+            type="button"
+            onClick={() => setActiveTab("avance")}
+            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+              activeTab === "avance"
+                ? "bg-slate-900 text-white"
+                : "border border-slate-300 bg-white/70 text-slate-700"
+            }`}
           >
-            Hablar con Volti
+            Avance de obra
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("documentacion")}
+            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+              activeTab === "documentacion"
+                ? "bg-slate-900 text-white"
+                : "border border-slate-300 bg-white/70 text-slate-700"
+            }`}
+          >
+            Documentacion
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("home")}
+            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+              activeTab === "home"
+                ? "bg-slate-900 text-white"
+                : "border border-slate-300 bg-white/70 text-slate-700"
+            }`}
+          >
+            Mi Home
           </button>
         </div>
       </section>
 
-      <section className="mt-8 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-          <h2 className="text-xl font-semibold text-slate-900">
-            Timeline de obra
-          </h2>
-          <ol className="mt-3 space-y-2 text-sm text-slate-700">
-            {timeline.map((item) => (
-              <li key={item}>• {item}</li>
-            ))}
-          </ol>
-        </div>
-        <div className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-          <h2 className="text-xl font-semibold text-slate-900">Checklist</h2>
-          <ul className="mt-3 space-y-2 text-sm text-slate-700">
-            {checklist.map((item) => (
-              <li key={item.item}>
-                • {item.item} — {item.status}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      {activeTab === "avance" && (
+        <section className="mt-8 space-y-6">
+          <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+            <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-slate-900">
+                <ChartBarIcon className="h-5 w-5" />
+                <h2 className="text-xl font-semibold">Etapas de obra</h2>
+              </div>
+              <div className="mt-4 space-y-4">
+                {projectTimeline.map((stage) => (
+                  <div key={stage.stage}>
+                    <div className="flex items-center justify-between text-sm font-semibold text-slate-800">
+                      <span>{stage.stage}</span>
+                      <span>{stage.progress}%</span>
+                    </div>
+                    <div className="mt-2 h-2 w-full rounded-full bg-slate-200">
+                      <div
+                        className={`h-2 rounded-full ${stageClass(stage.status)}`}
+                        style={{ width: `${stage.progress}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </article>
 
-      <section className="mt-8 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-          <h2 className="text-xl font-semibold text-slate-900">Documentos</h2>
-          <ul className="mt-3 space-y-2 text-sm text-slate-700">
-            {documentos.map((doc) => (
-              <li key={doc}>• {doc}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-          <h2 className="text-xl font-semibold text-slate-900">
-            Historial de cambios
-          </h2>
-          <ul className="mt-3 space-y-2 text-sm text-slate-700">
-            {cambios.map((cambio) => (
-              <li key={cambio}>• {cambio}</li>
-            ))}
-          </ul>
-          <button
-            onClick={openVoltiChat}
-            className="mt-4 rounded-full border border-slate-900 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
-          >
-            Crear ticket / pedir soporte
-          </button>
-        </div>
-      </section>
+            <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-slate-900">
+                <CalendarDaysIcon className="h-5 w-5" />
+                <h2 className="text-xl font-semibold">Proxima coordinacion</h2>
+              </div>
+              <div className="mt-4 rounded-2xl border border-orange-200 bg-orange-50/60 p-4">
+                <p className="text-sm font-semibold text-slate-900">Visita tecnica</p>
+                <p className="text-sm text-slate-700">20 Feb 2026 - 10:00</p>
+                <p className="mt-2 text-xs text-slate-600">
+                  Objetivo: pruebas de automatizacion, revision de protecciones y
+                  cierre de pendientes del checklist.
+                </p>
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-slate-200 bg-white/70 p-4">
+                <p className="text-sm font-semibold text-slate-900">Ultima actualizacion</p>
+                <p className="text-xs text-slate-600">
+                  18 Feb 2026 - Carga de evidencia fotografica y ajuste del
+                  cronograma de puesta en marcha.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+            <div className="flex items-center gap-2 text-slate-900">
+              <CameraIcon className="h-5 w-5" />
+              <h2 className="text-xl font-semibold">Registro fotografico</h2>
+            </div>
+            <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {photoLog.map((photo) => (
+                <div
+                  key={photo.title}
+                  className="overflow-hidden rounded-2xl border border-slate-200 bg-white/70"
+                >
+                  <div className="relative h-36 w-full">
+                    <Image
+                      src={photo.image}
+                      alt={photo.title}
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <p className="text-sm font-semibold text-slate-900">{photo.title}</p>
+                    <p className="text-xs text-slate-600">{photo.date}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </article>
+        </section>
+      )}
+
+      {activeTab === "documentacion" && (
+        <section className="mt-8 space-y-5 rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+          <div className="flex items-center gap-2 text-slate-900">
+            <DocumentTextIcon className="h-5 w-5" />
+            <h2 className="text-xl font-semibold">Documentacion del proyecto</h2>
+          </div>
+          <p className="text-sm text-slate-600">
+            Incluye documentos tecnicos y administrativos que el cliente necesita
+            para control de obra, habilitacion y mantenimiento.
+          </p>
+
+          {categories.map((category) => {
+            const docs = demoDocuments.filter((doc) => doc.category === category);
+            return (
+              <div
+                key={category}
+                className="rounded-2xl border border-slate-200 bg-white/70 p-4"
+              >
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-700">
+                  {category}
+                </h3>
+                <div className="mt-3 space-y-2">
+                  {docs.map((doc) => (
+                    <div
+                      key={doc.id}
+                      className="flex flex-col gap-2 rounded-xl border border-slate-200 bg-slate-50/70 px-3 py-3 sm:flex-row sm:items-center sm:justify-between"
+                    >
+                      <div>
+                        <p className="text-sm font-semibold text-slate-900">{doc.title}</p>
+                        <p className="text-xs text-slate-600">
+                          {doc.extension} - Actualizado: {doc.updatedAt}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`rounded-full px-2 py-1 text-xs font-semibold ${statusClass(
+                            doc.status
+                          )}`}
+                        >
+                          {doc.status}
+                        </span>
+                        <button
+                          type="button"
+                          className="rounded-full border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700 transition hover:border-orange-300 hover:text-orange-700"
+                        >
+                          Descargar
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </section>
+      )}
+
+      {activeTab === "home" && (
+        <section className="mt-8 space-y-6">
+          <article className="rounded-3xl border border-slate-300 bg-slate-900 p-6 text-white shadow-lg shadow-slate-900/30">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-orange-200">
+                  Mi Home (demo app)
+                </p>
+                <h2 className="mt-1 text-2xl font-semibold">
+                  {demoHomeState.home.name}
+                </h2>
+                <p className="text-sm text-slate-200">
+                  Version demo para mostrar el control de la vivienda antes de
+                  migrar esta experiencia a app dedicada.
+                </p>
+              </div>
+              <div className="grid gap-2 text-xs sm:grid-cols-2">
+                <span className="rounded-full bg-white/10 px-3 py-1">
+                  Luces encendidas: {lightsOn}
+                </span>
+                <span className="rounded-full bg-white/10 px-3 py-1">
+                  Aires activos: {acOn}
+                </span>
+                <span className="rounded-full bg-white/10 px-3 py-1">
+                  Potencia instantanea: {consumption.instant.toFixed(0)}W
+                </span>
+                <span className="rounded-full bg-white/10 px-3 py-1">
+                  Consumo diario: {consumption.daily.toFixed(2)} kWh
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="rounded-2xl border border-slate-300 bg-white/60 p-4 shadow-sm backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Luces activas
+              </p>
+              <p className="mt-1 text-2xl font-semibold text-slate-900">{lightsOn}</p>
+            </div>
+            <div className="rounded-2xl border border-slate-300 bg-white/60 p-4 shadow-sm backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Aires activos
+              </p>
+              <p className="mt-1 text-2xl font-semibold text-slate-900">{acOn}</p>
+            </div>
+            <div className="rounded-2xl border border-slate-300 bg-white/60 p-4 shadow-sm backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Consumo diario
+              </p>
+              <p className="mt-1 text-2xl font-semibold text-slate-900">
+                {consumption.daily.toFixed(2)} kWh
+              </p>
+            </div>
+            <div className="rounded-2xl border border-slate-300 bg-white/60 p-4 shadow-sm backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Proyeccion mensual
+              </p>
+              <p className="mt-1 text-2xl font-semibold text-slate-900">
+                {consumption.monthly.toFixed(1)} kWh
+              </p>
+            </div>
+          </div>
+
+          <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+            <div className="flex items-center gap-2 text-slate-900">
+              <HomeModernIcon className="h-5 w-5" />
+              <h2 className="text-xl font-semibold">Ambientes y dispositivos</h2>
+            </div>
+            <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {roomsWithDevices.map(({ room, devices: roomDevices }) => (
+                <div
+                  key={room.id}
+                  className="rounded-2xl border border-slate-200 bg-white/80 p-4"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">{room.name}</p>
+                      <p className="text-xs text-slate-500">
+                        {roomDevices.length} dispositivo(s)
+                      </p>
+                    </div>
+                    {room.telemetry ? (
+                      <span className="rounded-full bg-slate-100 px-2 py-1 text-[11px] font-semibold text-slate-700">
+                        {room.telemetry.temperature_c ?? "-"} C
+                      </span>
+                    ) : null}
+                  </div>
+
+                  <div className="mt-3 space-y-2">
+                    {roomDevices.map((device) => (
+                      <div
+                        key={device.id}
+                        className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50/70 px-3 py-2"
+                      >
+                        <div>
+                          <p className="text-sm font-semibold text-slate-900">{device.name}</p>
+                          <p className="text-[11px] uppercase tracking-wide text-slate-500">
+                            {device.type === "ac" ? "Aire" : "Luz"}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => toggleDevice(device.id)}
+                          className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
+                            device.is_on
+                              ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
+                              : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+                          }`}
+                        >
+                          {device.is_on ? "Encendido" : "Apagado"}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+            <div className="flex items-center gap-2 text-slate-900">
+              <WrenchScrewdriverIcon className="h-5 w-5" />
+              <h2 className="text-xl font-semibold">Rutinas configuradas</h2>
+            </div>
+            <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+              {(demoHomeState.routines ?? []).map((routine) => (
+                <div
+                  key={routine.id}
+                  className="rounded-2xl border border-slate-200 bg-white/80 p-4"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-sm font-semibold text-slate-900">{routine.name}</p>
+                    <span
+                      className={`rounded-full px-2 py-1 text-[11px] font-semibold ${
+                        routine.status === "active"
+                          ? "bg-emerald-100 text-emerald-700"
+                          : "bg-slate-200 text-slate-700"
+                      }`}
+                    >
+                      {routine.status === "active" ? "Activa" : "Pausada"}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-xs text-slate-600">{routine.description}</p>
+                  {routine.cadence ? (
+                    <p className="mt-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                      Cadencia: {routine.cadence}
+                    </p>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </article>
+        </section>
+      )}
     </>
   );
 }

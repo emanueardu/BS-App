@@ -8,7 +8,7 @@ export const Footer = () => {
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm font-semibold text-slate-900">
-            BS Electricidad & Domótica
+            BS Electricidad & Domotica
           </p>
           <p className="text-sm text-slate-600">
             Seguridad, prolijidad y cumplimiento. Si no se puede hacer bien, no
@@ -25,7 +25,7 @@ export const Footer = () => {
             </Link>
           ) : null}
           <Link href="/portal" className="hover:text-orange-700">
-            Área Clientes
+            Demo Portal
           </Link>
           <button
             onClick={openVoltiChat}
