@@ -22,7 +22,7 @@ export default function Proceso() {
       <Head>
         <title>Cómo trabajamos | BS</title>
       </Head>
-      <section className="rounded-3xl bg-white/90 p-8 shadow-sm shadow-orange-100">
+      <section className="rounded-3xl bg-white/60 p-8 shadow-sm shadow-orange-100 backdrop-blur-sm">
         <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
           Proceso
         </p>
@@ -36,13 +36,13 @@ export default function Proceso() {
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
             href="/contacto"
-            className="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white"
+            className="rounded-full bg-orange-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
           >
             Pedir relevamiento
           </Link>
           <button
             onClick={openVoltiChat}
-            className="rounded-full border border-orange-200 px-5 py-2 text-sm font-semibold text-orange-700"
+            className="rounded-full border border-slate-900 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
           >
             Hablar con Volti
           </button>
@@ -53,7 +53,7 @@ export default function Proceso() {
         {steps.map((step) => (
           <div
             key={step.title}
-            className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+            className="rounded-2xl border border-slate-300 bg-white/60 p-5 shadow-sm backdrop-blur-sm"
           >
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-orange-700">
               {getIcon(step.icon)}
@@ -67,7 +67,7 @@ export default function Proceso() {
       </section>
 
       <section className="mt-10 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
           <h2 className="text-xl font-semibold text-slate-900">
             Presupuesto claro
           </h2>
@@ -80,7 +80,7 @@ export default function Proceso() {
             <li>• Excluye: equipos no aprobados, trabajos sin plano o sin checklist.</li>
           </ul>
         </div>
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
           <h2 className="text-xl font-semibold text-slate-900">
             Documentación mínima entregada
           </h2>

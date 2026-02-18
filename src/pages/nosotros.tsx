@@ -16,7 +16,7 @@ export default function Nosotros() {
       <Head>
         <title>Nosotros | BS</title>
       </Head>
-      <section className="rounded-3xl bg-white/90 p-8 shadow-sm shadow-orange-100">
+      <section className="rounded-3xl bg-white/60 p-8 shadow-sm shadow-orange-100 backdrop-blur-sm">
         <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
           Nosotros
         </p>
@@ -31,20 +31,20 @@ export default function Nosotros() {
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
             href="/contacto"
-            className="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white"
+            className="rounded-full bg-orange-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
           >
             Pedir relevamiento
           </Link>
           <button
             onClick={openVoltiChat}
-            className="rounded-full border border-orange-200 px-5 py-2 text-sm font-semibold text-orange-700"
+            className="rounded-full border border-slate-900 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
           >
             Hablar con Volti
           </button>
         </div>
       </section>
 
-      <section className="mt-10 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <section className="mt-10 rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
         <h2 className="text-xl font-semibold text-slate-900">Valores</h2>
         <ul className="mt-3 space-y-2 text-sm text-slate-700">
           {valores.map((item) => (

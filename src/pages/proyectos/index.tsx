@@ -11,7 +11,7 @@ export default function Proyectos() {
       <Head>
         <title>Proyectos | BS</title>
       </Head>
-      <section className="rounded-3xl bg-white/90 p-8 shadow-sm shadow-orange-100">
+      <section className="rounded-3xl bg-white/60 p-8 shadow-sm shadow-orange-100 backdrop-blur-sm">
         <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
           Proyectos
         </p>
@@ -24,13 +24,13 @@ export default function Proyectos() {
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
             href="/contacto"
-            className="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white"
+            className="rounded-full bg-orange-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
           >
             Pedir relevamiento
           </Link>
           <button
             onClick={openVoltiChat}
-            className="rounded-full border border-orange-200 px-5 py-2 text-sm font-semibold text-orange-700"
+            className="rounded-full border border-slate-900 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
           >
             Hablar con Volti
           </button>
@@ -42,7 +42,7 @@ export default function Proyectos() {
           {categories.map((cat) => (
             <span
               key={cat}
-              className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-700"
+              className="rounded-full border border-slate-300 bg-white/50 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm"
             >
               {cat}
             </span>
@@ -53,7 +53,7 @@ export default function Proyectos() {
             <Link
               key={project.id}
               href={`/proyectos/${project.id}`}
-              className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-100"
+              className="rounded-2xl border border-slate-300 bg-white/60 p-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-100"
             >
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-orange-600">
                 <span>{project.category}</span>

@@ -3,7 +3,7 @@ import { openVoltiChat } from "@/utils/volti";
 
 export const Footer = () => {
   return (
-    <footer className="mt-16 border-t border-slate-200 bg-white/80">
+    <footer className="mt-16 border-t border-slate-300/70 bg-white/60 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm font-semibold text-slate-900">
@@ -26,7 +26,7 @@ export const Footer = () => {
           </Link>
           <button
             onClick={openVoltiChat}
-            className="rounded-full border border-orange-200 px-4 py-2 text-sm font-semibold text-orange-700 transition hover:border-orange-300 hover:text-orange-800"
+            className="rounded-full border border-slate-900 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
           >
             Hablar con Volti
           </button>

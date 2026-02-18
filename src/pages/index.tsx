@@ -5,7 +5,6 @@ import {
   ArrowLongRightIcon,
   BoltIcon,
   DocumentTextIcon,
-  HomeModernIcon,
   ShieldCheckIcon,
   SparklesIcon,
 } from "@heroicons/react/24/outline";
@@ -152,7 +151,7 @@ export default function Home() {
           </div>
           <Link
             href="/contacto"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-orange-200 hover:text-orange-700"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-900 bg-white/60 px-4 py-2 text-sm font-semibold text-slate-900 backdrop-blur-sm transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
           >
             Agendar asesoria
             <ArrowLongRightIcon className="h-5 w-5" />
@@ -163,7 +162,7 @@ export default function Home() {
           {portfolio.map((item) => (
             <div
               key={item.title}
-              className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100"
+              className="group overflow-hidden rounded-2xl border border-slate-300 bg-white/60 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100"
             >
               <div className="relative h-48 w-full overflow-hidden">
                 <Image

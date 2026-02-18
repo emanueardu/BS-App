@@ -47,7 +47,7 @@ export default function Registro() {
         <title>Registro | BS</title>
       </Head>
 
-      <div className="mx-auto max-w-xl rounded-3xl bg-white p-8 shadow-xl shadow-orange-100">
+      <div className="mx-auto max-w-xl rounded-3xl bg-white/60 p-8 shadow-xl shadow-orange-100 backdrop-blur-sm">
         <h1 className="text-3xl font-semibold text-slate-900">
           Crear cuenta de cliente
         </h1>
@@ -65,7 +65,7 @@ export default function Registro() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+              className="mt-2 w-full rounded-lg border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
               placeholder="cliente@correo.com"
             />
           </div>
@@ -78,7 +78,7 @@ export default function Registro() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+              className="mt-2 w-full rounded-lg border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
               placeholder="Mínimo 6 caracteres"
             />
           </div>
@@ -91,7 +91,7 @@ export default function Registro() {
               value={confirm}
               onChange={(e) => setConfirm(e.target.value)}
               required
-              className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+              className="mt-2 w-full rounded-lg border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
               placeholder="Repite tu contraseña"
             />
           </div>
@@ -110,7 +110,7 @@ export default function Registro() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-full bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+            className="w-full rounded-full bg-orange-600 px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-orange-500 disabled:cursor-not-allowed disabled:bg-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
           >
             {submitting ? "Creando..." : "Crear cuenta"}
           </button>
