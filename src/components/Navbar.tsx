@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
 import { useAuth } from "@/context/AuthContext";
+import { SHOW_PROJECTS_SECTION } from "@/data/site";
 import { isInternalUser } from "@/utils/auth";
 
 const classNames = (...classes: Array<string | boolean | undefined>) =>
@@ -19,7 +20,9 @@ export const Navbar = () => {
       { name: "Inicio", href: "/" },
       { name: "Servicios", href: "/servicios" },
       { name: "Proceso", href: "/proceso" },
-      { name: "Proyectos", href: "/proyectos" },
+      ...(SHOW_PROJECTS_SECTION
+        ? [{ name: "Proyectos", href: "/proyectos" }]
+        : []),
       { name: "Nosotros", href: "/nosotros" },
       { name: "Contacto", href: "/contacto" },
       { name: "Portal", href: "/portal" },

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SHOW_PROJECTS_SECTION } from "@/data/site";
 import { openVoltiChat } from "@/utils/volti";
 
 export const Footer = () => {
@@ -18,9 +19,11 @@ export const Footer = () => {
           <Link href="/servicios" className="hover:text-orange-700">
             Servicios
           </Link>
-          <Link href="/proyectos" className="hover:text-orange-700">
-            Proyectos
-          </Link>
+          {SHOW_PROJECTS_SECTION ? (
+            <Link href="/proyectos" className="hover:text-orange-700">
+              Proyectos
+            </Link>
+          ) : null}
           <Link href="/portal" className="hover:text-orange-700">
             Área Clientes
           </Link>

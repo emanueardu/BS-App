@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { projects } from "@/data/site";
+import { projects, SHOW_PROJECTS_SECTION } from "@/data/site";
 import { openVoltiChat } from "@/utils/volti";
 
 const gallery = ["Vista general", "Tablero", "Domotica", "Documentacion"];
@@ -88,3 +89,11 @@ export default function ProyectoDetalle() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  if (!SHOW_PROJECTS_SECTION) {
+    return { notFound: true };
+  }
+
+  return { props: {} };
+};

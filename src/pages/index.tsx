@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { SHOW_PROJECTS_SECTION } from "@/data/site";
 import {
   ArrowLongRightIcon,
   BoltIcon,
@@ -70,7 +71,7 @@ export default function Home() {
             <div className="grid gap-4 sm:grid-cols-3">
               {[
                 { label: "Visitas coordinadas", value: "<24h" },
-                { label: "Proyectos activos", value: "30+" },
+                { label: "Obras activas", value: "30+" },
                 { label: "Satisfaccion", value: "4.9/5" },
               ].map((stat) => (
                 <div
@@ -135,59 +136,61 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-14">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
-              Obras
-            </p>
-            <h3 className="text-2xl font-semibold text-slate-900">
-              Proyectos destacados
-            </h3>
-            <p className="text-sm text-slate-600">
-              Residenciales e industriales con control inteligente y ahorro
-              energetico.
-            </p>
-          </div>
-          <Link
-            href="/contacto"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-900 bg-white/60 px-4 py-2 text-sm font-semibold text-slate-900 backdrop-blur-sm transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
-          >
-            Agendar asesoria
-            <ArrowLongRightIcon className="h-5 w-5" />
-          </Link>
-        </div>
-
-        <div className="mt-6 grid gap-6 md:grid-cols-3">
-          {portfolio.map((item) => (
-            <div
-              key={item.title}
-              className="group overflow-hidden rounded-2xl border border-slate-300 bg-white/60 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100"
-            >
-              <div className="relative h-48 w-full overflow-hidden">
-                <Image
-                  src={item.img}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                />
-                <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-800">
-                  {item.tag}
-                </span>
-              </div>
-              <div className="p-4">
-                <p className="text-base font-semibold text-slate-900">
-                  {item.title}
-                </p>
-                <p className="text-sm text-slate-600">
-                  Integracion de tableros inteligentes, redes y sensorica.
-                </p>
-              </div>
+      {SHOW_PROJECTS_SECTION && (
+        <section className="mt-14">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+                Obras
+              </p>
+              <h3 className="text-2xl font-semibold text-slate-900">
+                Proyectos destacados
+              </h3>
+              <p className="text-sm text-slate-600">
+                Residenciales e industriales con control inteligente y ahorro
+                energetico.
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
+            <Link
+              href="/contacto"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-900 bg-white/60 px-4 py-2 text-sm font-semibold text-slate-900 backdrop-blur-sm transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+            >
+              Agendar asesoria
+              <ArrowLongRightIcon className="h-5 w-5" />
+            </Link>
+          </div>
+
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
+            {portfolio.map((item) => (
+              <div
+                key={item.title}
+                className="group overflow-hidden rounded-2xl border border-slate-300 bg-white/60 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100"
+              >
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-800">
+                    {item.tag}
+                  </span>
+                </div>
+                <div className="p-4">
+                  <p className="text-base font-semibold text-slate-900">
+                    {item.title}
+                  </p>
+                  <p className="text-sm text-slate-600">
+                    Integracion de tableros inteligentes, redes y sensorica.
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="mt-14 grid gap-6 rounded-3xl bg-slate-900 px-8 py-10 text-white shadow-lg shadow-slate-900/20 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-4">

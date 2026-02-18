@@ -10,6 +10,8 @@ import {
   Zap,
 } from "lucide-react";
 
+export const SHOW_PROJECTS_SECTION = false;
+
 export const icons = {
   Zap,
   Home,

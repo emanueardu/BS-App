@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import { projects } from "@/data/site";
+import { GetServerSideProps } from "next";
+import { projects, SHOW_PROJECTS_SECTION } from "@/data/site";
 import { openVoltiChat } from "@/utils/volti";
 
 const categories = ["Todos", "Electrica", "Domotica", "Seguridad", "Automatizacion"] as const;
@@ -79,3 +80,11 @@ export default function Proyectos() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  if (!SHOW_PROJECTS_SECTION) {
+    return { notFound: true };
+  }
+
+  return { props: {} };
+};
