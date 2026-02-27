@@ -182,7 +182,7 @@ export const fetchHomeState = async (
 export const demoHomeState: HomeState = {
   home: {
     id: "demo-home",
-    name: "Casa Emanuel",
+    name: "Casa Usuario",
     owner_user_id: "demo-user",
     plan_asset_url: fallbackPlan.url,
   },

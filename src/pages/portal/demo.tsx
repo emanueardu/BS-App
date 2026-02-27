@@ -488,58 +488,113 @@ export default function PortalDemo() {
           </div>
 
           <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-slate-900">
-              <HomeModernIcon className="h-5 w-5" />
-              <h2 className="text-xl font-semibold">Ambientes y dispositivos</h2>
-            </div>
-            <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {roomsWithDevices.map(({ room, devices: roomDevices }) => (
-                <div
-                  key={room.id}
-                  className="rounded-2xl border border-slate-200 bg-white/80 p-4"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-sm font-semibold text-slate-900">{room.name}</p>
-                      <p className="text-xs text-slate-500">
-                        {roomDevices.length} dispositivo(s)
-                      </p>
-                    </div>
-                    {room.telemetry ? (
-                      <span className="rounded-full bg-slate-100 px-2 py-1 text-[11px] font-semibold text-slate-700">
-                        {room.telemetry.temperature_c ?? "-"} C
-                      </span>
-                    ) : null}
-                  </div>
-
-                  <div className="mt-3 space-y-2">
-                    {roomDevices.map((device) => (
-                      <div
-                        key={device.id}
-                        className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50/70 px-3 py-2"
-                      >
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div>
+                <div className="flex items-center gap-2 text-slate-900">
+                  <HomeModernIcon className="h-5 w-5" />
+                  <h2 className="text-xl font-semibold">Ambientes y dispositivos</h2>
+                </div>
+                <div className="mt-4 grid gap-4 md:grid-cols-2">
+                  {roomsWithDevices.map(({ room, devices: roomDevices }) => (
+                    <div
+                      key={room.id}
+                      className="rounded-2xl border border-slate-200 bg-white/80 p-4"
+                    >
+                      <div className="flex items-start justify-between gap-3">
                         <div>
-                          <p className="text-sm font-semibold text-slate-900">{device.name}</p>
-                          <p className="text-[11px] uppercase tracking-wide text-slate-500">
-                            {device.type === "ac" ? "Aire" : "Luz"}
+                          <p className="text-sm font-semibold text-slate-900">{room.name}</p>
+                          <p className="text-xs text-slate-500">
+                            {roomDevices.length} dispositivo(s)
                           </p>
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => toggleDevice(device.id)}
-                          className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
-                            device.is_on
-                              ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
-                              : "bg-slate-200 text-slate-700 hover:bg-slate-300"
-                          }`}
-                        >
-                          {device.is_on ? "Encendido" : "Apagado"}
-                        </button>
+                        {room.telemetry ? (
+                          <span className="rounded-full bg-slate-100 px-2 py-1 text-[11px] font-semibold text-slate-700">
+                            {room.telemetry.temperature_c ?? "-"} C
+                          </span>
+                        ) : null}
                       </div>
-                    ))}
-                  </div>
+
+                      <div className="mt-3 space-y-2">
+                        {roomDevices.map((device) => (
+                          <div
+                            key={device.id}
+                            className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50/70 px-3 py-2"
+                          >
+                            <div>
+                              <p className="text-sm font-semibold text-slate-900">
+                                {device.name}
+                              </p>
+                              <p className="text-[11px] uppercase tracking-wide text-slate-500">
+                                {device.type === "ac" ? "Aire" : "Luz"}
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => toggleDevice(device.id)}
+                              className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
+                                device.is_on
+                                  ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
+                                  : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+                              }`}
+                            >
+                              {device.is_on ? "Encendido" : "Apagado"}
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <aside className="rounded-2xl border border-slate-200 bg-white/80 p-4">
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-700">
+                  Plano con dispositivos
+                </h3>
+                <p className="mt-1 text-xs text-slate-600">
+                  Visualizacion general de todos los equipos de la vivienda.
+                </p>
+                <div className="relative mt-3 aspect-[4/3] overflow-hidden rounded-xl border border-slate-200 bg-slate-900/80">
+                  <Image
+                    src={demoHomeState.home.plan_asset_url}
+                    alt="Plano general de la vivienda"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-contain"
+                  />
+                  {devices.map((device) => {
+                    const roomName =
+                      demoHomeState.rooms.find((room) => room.id === device.room_id)?.name ??
+                      "Ambiente";
+                    return (
+                      <div
+                        key={device.id}
+                        className="absolute -translate-x-1/2 -translate-y-1/2"
+                        style={{
+                          left: `${device.position.x * 100}%`,
+                          top: `${device.position.y * 100}%`,
+                        }}
+                      >
+                        <span
+                          className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-semibold ring-1 ${
+                            device.is_on
+                              ? "bg-emerald-100/95 text-emerald-700 ring-emerald-200"
+                              : "bg-slate-100/95 text-slate-700 ring-slate-300"
+                          }`}
+                          title={`${roomName} - ${device.name}`}
+                        >
+                          <span
+                            className={`h-1.5 w-1.5 rounded-full ${
+                              device.type === "ac" ? "bg-sky-500" : "bg-amber-500"
+                            }`}
+                          />
+                          {device.type === "ac" ? "Aire" : "Luz"}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </aside>
             </div>
           </article>
 
