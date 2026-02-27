@@ -215,12 +215,12 @@ export default function PortalDemo() {
               Demo cliente
             </p>
             <h1 className="text-3xl font-semibold text-slate-900">
-              Portal de seguimiento: Casa Emanuel
+              Tu portal de seguimiento de obra y hogar
             </h1>
             <p className="max-w-3xl text-sm text-slate-600">
-              Simulacion de un cliente real con acceso a avance de obra,
-              documentacion y Mi Home. Base de ejemplo: usuario
-              emanuel.s@live.com.ar.
+              Al ingresar con tu cuenta, vas a encontrar el estado de avance de
+              tu obra, toda la documentacion disponible y el acceso a Mi Home en
+              un solo lugar.
             </p>
           </div>
           <div className="w-full rounded-2xl border border-slate-300 bg-white/70 p-4 shadow-sm backdrop-blur-sm lg:max-w-xs">
@@ -428,14 +428,15 @@ export default function PortalDemo() {
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-orange-200">
-                  Mi Home (demo app)
+                  Mi Home
                 </p>
                 <h2 className="mt-1 text-2xl font-semibold">
                   {demoHomeState.home.name}
                 </h2>
                 <p className="text-sm text-slate-200">
-                  Version demo para mostrar el control de la vivienda antes de
-                  migrar esta experiencia a app dedicada.
+                  Desde aqui podes controlar luces y climatizacion por ambiente,
+                  y revisar consumos y estado general de tu vivienda en tiempo
+                  real.
                 </p>
               </div>
               <div className="grid gap-2 text-xs sm:grid-cols-2">

@@ -44,12 +44,12 @@ export default function PortalLanding() {
           Demo Portal
         </p>
         <h1 className="mt-2 text-3xl font-semibold text-slate-900">
-          Asi se vera el portal del cliente cuando ingrese con su cuenta.
+          Conoce como vas a gestionar tu proyecto y tu vivienda desde un solo portal.
         </h1>
         <p className="mt-3 text-sm text-slate-600">
-          El acceso real del cliente se hace desde Ingresar. Esta pagina muestra
-          una demo funcional para validar experiencia, contenidos y estructura
-          antes de paquetizarlo como app.
+          Antes de ingresar, podes recorrer esta demo para ver como se visualizan
+          el avance de obra, la documentacion y Mi Home. Con tu cuenta activa,
+          accederas a esta misma experiencia desde Ingresar a mi portal.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <Link
