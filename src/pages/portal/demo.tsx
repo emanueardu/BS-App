@@ -535,7 +535,7 @@ export default function PortalDemo() {
           </div>
 
           <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-            <div className="grid gap-6 lg:grid-cols-2">
+            <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
               <div>
                 <div className="flex items-center gap-2 text-slate-900">
                   <HomeModernIcon className="h-5 w-5" />
@@ -602,41 +602,43 @@ export default function PortalDemo() {
                   Visualizacion general de todos los equipos de la vivienda.
                 </p>
                 <div className="relative mt-3 aspect-[4/3] overflow-hidden rounded-xl border border-slate-200 bg-slate-900/80">
-                  <Image
-                    src={demoHomeState.home.plan_asset_url}
-                    alt="Plano general de la vivienda"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-fill"
-                  />
-                  {planDevices.map((device) => {
-                    return (
-                      <div
-                        key={device.id}
-                        className="absolute -translate-x-1/2 -translate-y-1/2"
-                        style={{
-                          left: `${device.displayPosition.x * 100}%`,
-                          top: `${device.displayPosition.y * 100}%`,
-                        }}
-                      >
-                        <span
-                          className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-semibold ring-1 ${
-                            device.is_on
-                              ? "bg-emerald-100/95 text-emerald-700 ring-emerald-200"
-                              : "bg-slate-100/95 text-slate-700 ring-slate-300"
-                          }`}
-                          title={`${device.roomName} - ${device.name}`}
+                  <div className="absolute inset-0 origin-center scale-[1.7]">
+                    <Image
+                      src={demoHomeState.home.plan_asset_url}
+                      alt="Plano general de la vivienda"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-contain object-center"
+                    />
+                    {planDevices.map((device) => {
+                      return (
+                        <div
+                          key={device.id}
+                          className="absolute -translate-x-1/2 -translate-y-1/2"
+                          style={{
+                            left: `${device.displayPosition.x * 100}%`,
+                            top: `${device.displayPosition.y * 100}%`,
+                          }}
                         >
                           <span
-                            className={`h-1.5 w-1.5 rounded-full ${
-                              device.type === "ac" ? "bg-sky-500" : "bg-amber-500"
+                            className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-semibold ring-1 ${
+                              device.is_on
+                                ? "bg-emerald-100/95 text-emerald-700 ring-emerald-200"
+                                : "bg-slate-100/95 text-slate-700 ring-slate-300"
                             }`}
-                          />
-                          {device.type === "ac" ? "Aire" : "Luz"}
-                        </span>
-                      </div>
-                    );
-                  })}
+                            title={`${device.roomName} - ${device.name}`}
+                          >
+                            <span
+                              className={`h-1.5 w-1.5 rounded-full ${
+                                device.type === "ac" ? "bg-sky-500" : "bg-amber-500"
+                              }`}
+                            />
+                            {device.type === "ac" ? "Aire" : "Luz"}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </aside>
             </div>
