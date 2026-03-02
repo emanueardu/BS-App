@@ -10,7 +10,7 @@ import {
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { demoHomeState } from "@/lib/homeService";
 
 type TabId = "avance" | "documentacion" | "home";
@@ -133,6 +133,7 @@ const LIGHT_WATT = 12;
 const AC_WATT = 1200;
 const LIGHT_HOURS = 4;
 const AC_HOURS = 6;
+const DEVICE_POSITIONS_STORAGE_KEY = "portal_demo_device_positions_v1";
 
 const statusClass = (status: DemoDocument["status"]) => {
   if (status === "Aprobado") return "bg-emerald-100 text-emerald-700";
@@ -151,6 +152,10 @@ export default function PortalDemo() {
   const [devices, setDevices] = useState(() =>
     demoHomeState.devices.map((device) => ({ ...device }))
   );
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [draggingDeviceId, setDraggingDeviceId] = useState<string | null>(null);
+  const [saveNotice, setSaveNotice] = useState<string>("");
+  const planContainerRef = useRef<HTMLDivElement | null>(null);
 
   const overallProgress = useMemo(
     () =>
@@ -202,6 +207,68 @@ export default function PortalDemo() {
         device.id === deviceId ? { ...device, is_on: !device.is_on } : device
       )
     );
+  };
+
+  const updateDevicePosition = (deviceId: string, x: number, y: number) => {
+    const clampedX = Math.min(0.98, Math.max(0.02, x));
+    const clampedY = Math.min(0.98, Math.max(0.02, y));
+    setDevices((prev) =>
+      prev.map((device) =>
+        device.id === deviceId
+          ? { ...device, position: { x: clampedX, y: clampedY } }
+          : device
+      )
+    );
+  };
+
+  const getPositionFromPointer = (clientX: number, clientY: number) => {
+    const rect = planContainerRef.current?.getBoundingClientRect();
+    if (!rect) return null;
+    return {
+      x: (clientX - rect.left) / rect.width,
+      y: (clientY - rect.top) / rect.height,
+    };
+  };
+
+  const startDeviceDrag = (
+    event: React.PointerEvent<HTMLDivElement>,
+    deviceId: string
+  ) => {
+    if (!isEditMode) return;
+    event.preventDefault();
+    setDraggingDeviceId(deviceId);
+
+    const startPosition = getPositionFromPointer(event.clientX, event.clientY);
+    if (startPosition) {
+      updateDevicePosition(deviceId, startPosition.x, startPosition.y);
+    }
+
+    const onPointerMove = (moveEvent: PointerEvent) => {
+      const position = getPositionFromPointer(moveEvent.clientX, moveEvent.clientY);
+      if (!position) return;
+      updateDevicePosition(deviceId, position.x, position.y);
+    };
+
+    const onPointerUp = () => {
+      setDraggingDeviceId((current) => (current === deviceId ? null : current));
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerUp);
+    };
+
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", onPointerUp);
+  };
+
+  const saveDevicePositions = () => {
+    if (typeof window === "undefined") return;
+    const payload = devices.map((device) => ({
+      id: device.id,
+      position: device.position,
+    }));
+    window.localStorage.setItem(DEVICE_POSITIONS_STORAGE_KEY, JSON.stringify(payload));
+    setSaveNotice("Posiciones guardadas en este navegador.");
+    setIsEditMode(false);
+    setDraggingDeviceId(null);
   };
 
   return (
@@ -554,13 +621,56 @@ export default function PortalDemo() {
               </div>
 
               <aside className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white/80 p-4">
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-700">
-                  Plano con dispositivos
-                </h3>
-                <p className="mt-1 text-xs text-slate-600">
-                  Visualizacion general de todos los equipos de la vivienda.
-                </p>
-                <div className="relative mt-3 h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 lg:h-auto">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-700">
+                      Plano con dispositivos
+                    </h3>
+                    <p className="mt-1 text-xs text-slate-600">
+                      Visualizacion general de todos los equipos de la vivienda.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsEditMode((prev) => !prev);
+                        setSaveNotice("");
+                        setDraggingDeviceId(null);
+                      }}
+                      className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
+                        isEditMode
+                          ? "bg-slate-900 text-white"
+                          : "border border-slate-300 bg-white text-slate-700 hover:bg-slate-100"
+                      }`}
+                    >
+                      {isEditMode ? "Cancelar edicion" : "Editar posiciones"}
+                    </button>
+                    {isEditMode ? (
+                      <button
+                        type="button"
+                        onClick={saveDevicePositions}
+                        className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white transition hover:bg-emerald-500"
+                      >
+                        Guardar posiciones
+                      </button>
+                    ) : null}
+                  </div>
+                </div>
+                {isEditMode ? (
+                  <p className="mt-2 text-xs font-semibold text-orange-700">
+                    Modo edicion activo: arrastra los iconos para reubicarlos.
+                  </p>
+                ) : null}
+                {saveNotice ? (
+                  <p className="mt-2 text-xs font-semibold text-emerald-700">
+                    {saveNotice}
+                  </p>
+                ) : null}
+                <div
+                  ref={planContainerRef}
+                  className="relative mt-3 h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 lg:h-auto"
+                >
                   <Image
                     src={demoHomeState.home.plan_asset_url}
                     alt="Plano general de la vivienda"
@@ -573,7 +683,12 @@ export default function PortalDemo() {
                     return (
                       <div
                         key={device.id}
-                        className="absolute -translate-x-1/2 -translate-y-1/2"
+                        role={isEditMode ? "button" : undefined}
+                        tabIndex={isEditMode ? 0 : -1}
+                        onPointerDown={(event) => startDeviceDrag(event, device.id)}
+                        className={`absolute -translate-x-1/2 -translate-y-1/2 ${
+                          isEditMode ? "cursor-grab" : ""
+                        } ${draggingDeviceId === device.id ? "cursor-grabbing" : ""}`}
                         style={{
                           left: `${device.position.x * 100}%`,
                           top: `${device.position.y * 100}%`,
