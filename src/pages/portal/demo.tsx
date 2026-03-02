@@ -226,6 +226,7 @@ export default function PortalDemo() {
   const [selectedMusicRoomIds, setSelectedMusicRoomIds] = useState<string[]>(() =>
     musicRooms[0]?.id ? [musicRooms[0].id] : []
   );
+  const [isMusicPlaying, setIsMusicPlaying] = useState(true);
   const [isMusicIconEditMode, setIsMusicIconEditMode] = useState(false);
   const [draggingMusicRoomId, setDraggingMusicRoomId] = useState<string | null>(null);
   const [musicSaveNotice, setMusicSaveNotice] = useState("");
@@ -840,9 +841,58 @@ export default function PortalDemo() {
                           style={{
                             height: `${12 + (index % 3) * 5}px`,
                             animationDelay: `${index * 0.14}s`,
+                            animationPlayState: isMusicPlaying ? "running" : "paused",
                           }}
                         />
                       ))}
+                    </div>
+                    <div className="mt-3 flex flex-wrap items-center gap-2">
+                      <button
+                        type="button"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-100"
+                        title="Tema anterior"
+                      >
+                        <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+                          <path fill="currentColor" d="M7 6h2v12H7V6Zm10.5 0L10 12l7.5 6V6Z" />
+                        </svg>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setIsMusicPlaying((prev) => !prev)}
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-white transition hover:bg-slate-800"
+                        title={isMusicPlaying ? "Pausar" : "Reproducir"}
+                      >
+                        {isMusicPlaying ? (
+                          <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+                            <path fill="currentColor" d="M8 6h3v12H8V6Zm5 0h3v12h-3V6Z" />
+                          </svg>
+                        ) : (
+                          <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+                            <path fill="currentColor" d="M8 5v14l11-7L8 5Z" />
+                          </svg>
+                        )}
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-100"
+                        title="Siguiente tema"
+                      >
+                        <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+                          <path fill="currentColor" d="M15 6h2v12h-2V6ZM6.5 6 14 12l-7.5 6V6Z" />
+                        </svg>
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-100"
+                        title="Buscar tema"
+                      >
+                        <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+                          <path
+                            fill="currentColor"
+                            d="m19.6 18.2-3.5-3.5a6.5 6.5 0 1 0-1.4 1.4l3.5 3.5a1 1 0 0 0 1.4-1.4ZM5 10.5a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Z"
+                          />
+                        </svg>
+                      </button>
                     </div>
                   </div>
                 </div>
