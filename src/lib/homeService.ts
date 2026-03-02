@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabaseClient";
+﻿import { supabase } from "@/lib/supabaseClient";
 import {
   Device,
   Home,
@@ -273,7 +273,7 @@ export const demoHomeState: HomeState = {
     {
       id: "demo-room-master",
       home_id: "demo-home",
-      name: "Habitación Principal",
+      name: "HabitaciÃ³n Principal",
       slug: "habitacion-principal",
       polygon: [
         { x: 0.05, y: 0.62 },
@@ -290,7 +290,7 @@ export const demoHomeState: HomeState = {
     {
       id: "demo-room-bedroom2",
       home_id: "demo-home",
-      name: "Habitación Secundaria",
+      name: "HabitaciÃ³n Secundaria",
       slug: "habitacion-secundaria",
       polygon: [
         { x: 0.05, y: 0.42 },
@@ -307,7 +307,7 @@ export const demoHomeState: HomeState = {
     {
       id: "demo-room-bano-principal",
       home_id: "demo-home",
-      name: "Baño Principal",
+      name: "BaÃ±o Principal",
       slug: "bano-principal",
       polygon: [
         { x: 0.53, y: 0.49 },
@@ -323,7 +323,7 @@ export const demoHomeState: HomeState = {
     {
       id: "demo-room-bano-secundario",
       home_id: "demo-home",
-      name: "Baño Secundario",
+      name: "BaÃ±o Secundario",
       slug: "bano-secundario",
       polygon: [
         { x: 0.34, y: 0.22 },
@@ -344,7 +344,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-living",
       type: "light",
       name: "Luz central",
-      position: { x: 0.325, y: 0.172 },
+      position: { x: 0.56, y: 0.73 },
       is_on: true,
     },
     {
@@ -353,7 +353,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-living",
       type: "light",
       name: "Lampara pie",
-      position: { x: 0.618, y: 0.172 },
+      position: { x: 0.7, y: 0.73 },
       is_on: false,
     },
     {
@@ -362,7 +362,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-living",
       type: "ac",
       name: "Aire split",
-      position: { x: 0.86, y: 0.18 },
+      position: { x: 0.78, y: 0.6 },
       is_on: true,
     },
     {
@@ -371,7 +371,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-comedor",
       type: "light",
       name: "Cielorraso 1",
-      position: { x: 0.332, y: 0.19 },
+      position: { x: 0.6, y: 0.36 },
       is_on: true,
     },
     {
@@ -380,7 +380,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-comedor",
       type: "light",
       name: "Cielorraso 2",
-      position: { x: 0.441, y: 0.268 },
+      position: { x: 0.72, y: 0.36 },
       is_on: false,
     },
     {
@@ -389,7 +389,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-comedor",
       type: "light",
       name: "Barra",
-      position: { x: 0.624, y: 0.123 },
+      position: { x: 0.66, y: 0.46 },
       is_on: true,
     },
     {
@@ -398,7 +398,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-comedor",
       type: "ac",
       name: "Aire Comedor",
-      position: { x: 0.82, y: 0.2 },
+      position: { x: 0.82, y: 0.39 },
       is_on: false,
     },
     {
@@ -407,7 +407,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-cocina",
       type: "light",
       name: "Cocina central",
-      position: { x: 0.358, y: 0.385 },
+      position: { x: 0.9, y: 0.28 },
       is_on: true,
     },
     {
@@ -416,7 +416,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-lavadero",
       type: "light",
       name: "Lavadero techo",
-      position: { x: 0.456, y: 0.453 },
+      position: { x: 0.455, y: 0.12 },
       is_on: false,
     },
     {
@@ -425,7 +425,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-pasillo",
       type: "light",
       name: "Pasillo central",
-      position: { x: 0.423, y: 0.146 },
+      position: { x: 0.435, y: 0.54 },
       is_on: false,
     },
     {
@@ -434,7 +434,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-master",
       type: "light",
       name: "Cabecera",
-      position: { x: 0.409, y: 0.566 },
+      position: { x: 0.16, y: 0.73 },
       is_on: false,
     },
     {
@@ -443,7 +443,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-master",
       type: "light",
       name: "Velador",
-      position: { x: 0.32, y: 0.65 },
+      position: { x: 0.28, y: 0.83 },
       is_on: true,
     },
     {
@@ -452,7 +452,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-master",
       type: "ac",
       name: "Aire dormitorio",
-      position: { x: 0.86, y: 0.46 },
+      position: { x: 0.31, y: 0.67 },
       is_on: false,
     },
     {
@@ -461,7 +461,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-bedroom2",
       type: "light",
       name: "Luz principal",
-      position: { x: 0.427, y: 0.14 },
+      position: { x: 0.2, y: 0.52 },
       is_on: true,
     },
     {
@@ -469,8 +469,8 @@ export const demoHomeState: HomeState = {
       home_id: "demo-home",
       room_id: "demo-room-bano-principal",
       type: "light",
-      name: "Baño Principal",
-      position: { x: 0.575, y: 0.55 },
+      name: "BaÃ±o Principal",
+      position: { x: 0.575, y: 0.545 },
       is_on: false,
     },
     {
@@ -478,8 +478,8 @@ export const demoHomeState: HomeState = {
       home_id: "demo-home",
       room_id: "demo-room-bano-secundario",
       type: "light",
-      name: "Baño Secundario",
-      position: { x: 0.422, y: 0.248 },
+      name: "BaÃ±o Secundario",
+      position: { x: 0.395, y: 0.28 },
       is_on: false,
     },
   ],
@@ -488,9 +488,9 @@ export const demoHomeState: HomeState = {
       id: "demo-routine-pool",
       home_id: "demo-home",
       name: "Limpieza de pileta",
-      description: "3 veces por día · 30 minutos",
+      description: "3 veces por dÃ­a Â· 30 minutos",
       status: "active",
-      cadence: "3x/día 30m",
+      cadence: "3x/dÃ­a 30m",
       next_run_at: undefined,
       last_run_at: undefined,
       actions: [{ rooms: ["lavadero"], device_types: ["light"], set_state: true }],
@@ -499,9 +499,9 @@ export const demoHomeState: HomeState = {
       id: "demo-routine-irrigation",
       home_id: "demo-home",
       name: "Sistema de riego",
-      description: "40 minutos mañana y noche",
+      description: "40 minutos maÃ±ana y noche",
       status: "active",
-      cadence: "2x/día 40m",
+      cadence: "2x/dÃ­a 40m",
       next_run_at: undefined,
       last_run_at: undefined,
       actions: [{ rooms: ["pasillo"], device_types: ["light"], set_state: true }],
@@ -510,7 +510,7 @@ export const demoHomeState: HomeState = {
       id: "demo-routine-luces-exterior",
       home_id: "demo-home",
       name: "Luces exteriores",
-      description: "Encender de noche, apagar de día",
+      description: "Encender de noche, apagar de dÃ­a",
       status: "active",
       cadence: "Nocturno",
       actions: [{ rooms: ["living", "comedor"], device_types: ["light"], set_state: true }],
@@ -519,7 +519,7 @@ export const demoHomeState: HomeState = {
       id: "demo-routine-persianas",
       home_id: "demo-home",
       name: "Persianas",
-      description: "Abiertas de día · cerradas de noche",
+      description: "Abiertas de dÃ­a Â· cerradas de noche",
       status: "paused",
       cadence: "Diario",
       actions: [{ rooms: ["living", "comedor"], device_types: ["light"], set_state: false }],
@@ -548,7 +548,7 @@ export const demoHomeState: HomeState = {
       id: "demo-routine-aires",
       home_id: "demo-home",
       name: "Aires acondicionados",
-      description: "Apagados día · encender 16:30",
+      description: "Apagados dÃ­a Â· encender 16:30",
       status: "active",
       cadence: "Diario 16:30",
       actions: [
@@ -557,3 +557,4 @@ export const demoHomeState: HomeState = {
     },
   ],
 };
+
