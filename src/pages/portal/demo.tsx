@@ -34,24 +34,29 @@ const projectTimeline = [
 
 const photoLog = [
   {
-    title: "Montaje de tablero principal",
-    date: "12 Feb 2026",
-    image: "/images/services/Gallery/Instalaciones-electricas/tablero-electrico-moderno-ordenado.jpg",
+    title: "Canalizacion 1",
+    date: "Relevamiento demo",
+    image: "/images/relevamiento-demo/Canalizacion 1.jpg",
   },
   {
-    title: "Canalizacion y tendido",
-    date: "10 Feb 2026",
-    image: "/images/services/Gallery/Instalaciones-electricas/canalizacion-cableado.jfif",
+    title: "Canalizacion 2",
+    date: "Relevamiento demo",
+    image: "/images/relevamiento-demo/Canalizacion 2.jpg",
   },
   {
-    title: "Mediciones y verificacion",
-    date: "08 Feb 2026",
-    image: "/images/services/Gallery/Instalaciones-electricas/medicion-verificacion.jfif",
+    title: "Canalizacion 3",
+    date: "Relevamiento demo",
+    image: "/images/relevamiento-demo/Canalizacion 3.jpg",
   },
   {
-    title: "Planificacion de proyecto",
-    date: "05 Feb 2026",
-    image: "/images/services/Gallery/planos-y-proyectos-electricos/planos-sobre-mesa-trabajo.jpg",
+    title: "Diagrama electrico",
+    date: "Relevamiento demo",
+    image: "/images/relevamiento-demo/Diagrama electrico.jpg",
+  },
+  {
+    title: "Tablero electrico",
+    date: "Relevamiento demo",
+    image: "/images/relevamiento-demo/Tablero electrico.jpg",
   },
 ];
 
