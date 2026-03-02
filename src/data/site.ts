@@ -140,7 +140,7 @@ export const differentiators = [
 export const steps: Step[] = [
   {
     title: "Relevamiento",
-    detail: "Visita y toma de datos. Si no se puede hacer bien, no se hace.",
+    detail: "Visita y toma de datos con criterios tecnicos, seguridad y alcance definido.",
     icon: "ShieldCheck",
   },
   {

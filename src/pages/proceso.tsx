@@ -27,7 +27,7 @@ export default function Proceso() {
           Proceso
         </p>
         <h1 className="text-3xl font-semibold text-slate-900">
-          Si no se puede hacer bien, no se hace.
+          Proceso tecnico claro y documentado de principio a fin.
         </h1>
         <p className="text-sm text-slate-600">
           Seguridad, calidad, cumplimiento normativo (AEA/IRAM) y documentación
