@@ -190,6 +190,21 @@ export default function PortalDemo() {
     [devices]
   );
 
+  const musicRooms = useMemo(
+    () =>
+      roomsWithDevices
+        .map(({ room }) => room)
+        .filter((room) => {
+          const slug = (room.slug ?? "").toLowerCase();
+          const name = room.name.toLowerCase();
+          return !slug.includes("bano") && !slug.includes("lavadero") && !name.includes("bano");
+        }),
+    [roomsWithDevices]
+  );
+
+  const [selectedMusicRoomId, setSelectedMusicRoomId] = useState<string | null>(null);
+  const activeMusicRoomId = selectedMusicRoomId ?? musicRooms[0]?.id ?? null;
+
   const roomNameById = useMemo(
     () =>
       new Map(demoHomeState.rooms.map((room) => [room.id, room.name] as const)),
@@ -603,6 +618,104 @@ export default function PortalDemo() {
           </article>
 
           <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2 text-slate-900">
+                <h2 className="text-xl font-semibold">Música en casa</h2>
+              </div>
+              <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-600">
+                Integración simulada
+              </span>
+            </div>
+
+            <div className="mt-4 grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
+              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
+                <article className="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-4 shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#1DB954] text-white">
+                      <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
+                        <path
+                          fill="currentColor"
+                          d="M12 1.8A10.2 10.2 0 1 0 12 22.2 10.2 10.2 0 0 0 12 1.8Zm4.73 14.7a.64.64 0 0 1-.88.2 8.7 8.7 0 0 0-8.82-.48.64.64 0 1 1-.58-1.14 9.97 9.97 0 0 1 10.13.56.64.64 0 0 1 .15.86Zm1.26-2.24a.8.8 0 0 1-1.1.25 10.77 10.77 0 0 0-10.93-.6.8.8 0 1 1-.71-1.43 12.35 12.35 0 0 1 12.57.69.8.8 0 0 1 .17 1.09Zm.1-2.36a13.17 13.17 0 0 0-13.36-.73.96.96 0 0 1-.86-1.71 15.09 15.09 0 0 1 15.31.84.96.96 0 1 1-1.1 1.6Z"
+                        />
+                      </svg>
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">Spotify</p>
+                      <p className="text-xs text-slate-600">Reproduciendo ahora</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article className="rounded-2xl border border-slate-200 bg-white/70 p-4 shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#FF0000] text-white">
+                      <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
+                        <path fill="currentColor" d="M10 8.5v7l6-3.5-6-3.5ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z" />
+                      </svg>
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">YouTube Music</p>
+                      <p className="text-xs text-slate-500">Disponible (inactiva)</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <article className="rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="h-20 w-20 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-300 via-cyan-300 to-sky-500 p-[1px]">
+                    <div className="flex h-full w-full items-center justify-center rounded-2xl bg-slate-900 text-xs font-semibold uppercase tracking-wide text-white">
+                      Album
+                    </div>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-slate-900">Midnight City Lights</p>
+                    <p className="text-xs text-slate-600">North Avenue</p>
+                    <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
+                      <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                      Reproduciendo ahora
+                    </div>
+                    <div className="mt-3 flex h-8 items-end gap-1">
+                      {[0, 1, 2, 3, 4].map((index) => (
+                        <span
+                          key={index}
+                          className="equalizer-bar w-1.5 rounded-full bg-emerald-500/90"
+                          style={{
+                            height: `${12 + (index % 3) * 5}px`,
+                            animationDelay: `${index * 0.14}s`,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div className="mt-5 rounded-2xl border border-slate-200 bg-white/70 p-4">
+              <p className="text-sm font-semibold text-slate-900">
+                ¿Dónde querés reproducirlo?
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {musicRooms.map((room) => (
+                  <button
+                    key={room.id}
+                    type="button"
+                    onClick={() => setSelectedMusicRoomId(room.id)}
+                    className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+                      activeMusicRoomId === room.id
+                        ? "bg-slate-900 text-white"
+                        : "border border-slate-300 bg-white text-slate-700 hover:border-emerald-300 hover:text-emerald-700"
+                    }`}
+                  >
+                    {room.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </article>
+
+          <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
             <div className="flex items-center gap-2 text-slate-900">
               <WrenchScrewdriverIcon className="h-5 w-5" />
               <h2 className="text-xl font-semibold">Rutinas configuradas</h2>
@@ -637,6 +750,22 @@ export default function PortalDemo() {
           </article>
         </section>
       )}
+      <style jsx>{`
+        @keyframes equalizer-wave {
+          0%,
+          100% {
+            transform: scaleY(0.35);
+          }
+          50% {
+            transform: scaleY(1);
+          }
+        }
+
+        .equalizer-bar {
+          transform-origin: bottom;
+          animation: equalizer-wave 1s ease-in-out infinite;
+        }
+      `}</style>
     </>
   );
 }
