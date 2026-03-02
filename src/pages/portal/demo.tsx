@@ -495,7 +495,7 @@ export default function PortalDemo() {
 
           <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
             <div className="grid gap-6 lg:grid-cols-2">
-              <div>
+              <div className="order-2 lg:order-1">
                 <div className="flex items-center gap-2 text-slate-900">
                   <HomeModernIcon className="h-5 w-5" />
                   <h2 className="text-xl font-semibold">Ambientes y dispositivos</h2>
@@ -553,14 +553,14 @@ export default function PortalDemo() {
                 </div>
               </div>
 
-              <aside className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white/80 p-4">
+              <aside className="order-1 flex h-full flex-col rounded-2xl border border-slate-200 bg-white/80 p-4 lg:order-2">
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-700">
                   Plano con dispositivos
                 </h3>
                 <p className="mt-1 text-xs text-slate-600">
                   Visualizacion general de todos los equipos de la vivienda.
                 </p>
-                <div className="relative mt-3 h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 lg:h-auto">
+                <div className="relative mt-3 h-[440px] overflow-hidden rounded-xl border border-slate-200 bg-slate-100 sm:h-[520px] lg:h-auto lg:flex-1">
                   <Image
                     src={demoHomeState.home.plan_asset_url}
                     alt="Plano general de la vivienda"
