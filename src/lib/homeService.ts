@@ -344,7 +344,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-living",
       type: "light",
       name: "Luz central",
-      position: { x: 0.56, y: 0.73 },
+      position: { x: 0.5986111958821615, y: 0.7602621641966483 },
       is_on: true,
     },
     {
@@ -353,7 +353,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-living",
       type: "light",
       name: "Lampara pie",
-      position: { x: 0.7, y: 0.73 },
+      position: { x: 0.7013888041178385, y: 0.7285270634166405 },
       is_on: false,
     },
     {
@@ -362,7 +362,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-living",
       type: "ac",
       name: "Aire split",
-      position: { x: 0.78, y: 0.6 },
+      position: { x: 0.5902778625488281, y: 0.8720248362756741 },
       is_on: true,
     },
     {
@@ -371,7 +371,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-comedor",
       type: "light",
       name: "Cielorraso 1",
-      position: { x: 0.6, y: 0.36 },
+      position: { x: 0.5763888041178385, y: 0.3145912409017303 },
       is_on: true,
     },
     {
@@ -380,7 +380,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-comedor",
       type: "light",
       name: "Cielorraso 2",
-      position: { x: 0.72, y: 0.36 },
+      position: { x: 0.7208333333333333, y: 0.28147637510053747 },
       is_on: false,
     },
     {
@@ -389,7 +389,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-comedor",
       type: "light",
       name: "Barra",
-      position: { x: 0.66, y: 0.46 },
+      position: { x: 0.6541666666666667, y: 0.3753018492577818 },
       is_on: true,
     },
     {
@@ -398,7 +398,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-comedor",
       type: "ac",
       name: "Aire Comedor",
-      position: { x: 0.82, y: 0.39 },
+      position: { x: 0.8069445292154948, y: 0.2469817126973626 },
       is_on: false,
     },
     {
@@ -407,7 +407,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-cocina",
       type: "light",
       name: "Cocina central",
-      position: { x: 0.9, y: 0.28 },
+      position: { x: 0.5763888041178385, y: 0.44705070410650155 },
       is_on: true,
     },
     {
@@ -416,7 +416,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-lavadero",
       type: "light",
       name: "Lavadero techo",
-      position: { x: 0.455, y: 0.12 },
+      position: { x: 0.41527786254882815, y: 0.3518454649280722 },
       is_on: false,
     },
     {
@@ -425,7 +425,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-pasillo",
       type: "light",
       name: "Pasillo central",
-      position: { x: 0.435, y: 0.54 },
+      position: { x: 0.3986111958821615, y: 0.5298378686094836 },
       is_on: false,
     },
     {
@@ -434,7 +434,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-master",
       type: "light",
       name: "Cabecera",
-      position: { x: 0.16, y: 0.73 },
+      position: { x: 0.2819445292154948, y: 0.6774749996936663 },
       is_on: false,
     },
     {
@@ -443,7 +443,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-master",
       type: "light",
       name: "Velador",
-      position: { x: 0.28, y: 0.83 },
+      position: { x: 0.15416666666666667, y: 0.7271472983954554 },
       is_on: true,
     },
     {
@@ -452,7 +452,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-master",
       type: "ac",
       name: "Aire dormitorio",
-      position: { x: 0.31, y: 0.67 },
+      position: { x: 0.2680554707845052, y: 0.750603619563571 },
       is_on: false,
     },
     {
@@ -461,7 +461,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-bedroom2",
       type: "light",
       name: "Luz principal",
-      position: { x: 0.2, y: 0.52 },
+      position: { x: 0.22638880411783854, y: 0.4332528644098692 },
       is_on: true,
     },
     {
@@ -470,7 +470,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-bano-principal",
       type: "light",
       name: "Bano Principal",
-      position: { x: 0.575, y: 0.545 },
+      position: { x: 0.42916666666666664, y: 0.4332528644098692 },
       is_on: false,
     },
     {
@@ -479,7 +479,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-bano-secundario",
       type: "light",
       name: "Bano Secundario",
-      position: { x: 0.395, y: 0.28 },
+      position: { x: 0.42361119588216145, y: 0.2138668468961698 },
       is_on: false,
     },
   ],
