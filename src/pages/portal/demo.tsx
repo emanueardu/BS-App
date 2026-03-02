@@ -146,6 +146,22 @@ const stageClass = (status: (typeof projectTimeline)[number]["status"]) => {
   return "bg-slate-300";
 };
 
+const getRoomBounds = (
+  room: (typeof demoHomeState.rooms)[number]
+): { x: number; y: number; width: number; height: number } | null => {
+  if (room.bbox) return room.bbox;
+  if (!room.polygon?.length) return null;
+
+  const xs = room.polygon.map((point) => point.x);
+  const ys = room.polygon.map((point) => point.y);
+  const minX = Math.min(...xs);
+  const maxX = Math.max(...xs);
+  const minY = Math.min(...ys);
+  const maxY = Math.max(...ys);
+
+  return { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
+};
+
 export default function PortalDemo() {
   const [activeTab, setActiveTab] = useState<TabId>("avance");
   const [devices, setDevices] = useState(() =>
@@ -188,6 +204,37 @@ export default function PortalDemo() {
           devices: devices.filter((device) => device.room_id === room.id),
         })),
     [devices]
+  );
+
+  const planDevices = useMemo(
+    () =>
+      roomsWithDevices.flatMap(({ room, devices: roomDevices }) => {
+        const bounds = getRoomBounds(room);
+        if (!bounds || roomDevices.length === 0) {
+          return roomDevices.map((device) => ({
+            ...device,
+            displayPosition: device.position,
+            roomName: room.name,
+          }));
+        }
+
+        const cols = Math.max(1, Math.ceil(Math.sqrt(roomDevices.length)));
+        const rows = Math.max(1, Math.ceil(roomDevices.length / cols));
+
+        return roomDevices.map((device, index) => {
+          const col = index % cols;
+          const row = Math.floor(index / cols);
+          const x = bounds.x + ((col + 1) * bounds.width) / (cols + 1);
+          const y = bounds.y + ((row + 1) * bounds.height) / (rows + 1);
+
+          return {
+            ...device,
+            displayPosition: { x, y },
+            roomName: room.name,
+          };
+        });
+      }),
+    [roomsWithDevices]
   );
 
   const toggleDevice = (deviceId: string) => {
@@ -560,19 +607,16 @@ export default function PortalDemo() {
                     alt="Plano general de la vivienda"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-contain"
+                    className="object-fill"
                   />
-                  {devices.map((device) => {
-                    const roomName =
-                      demoHomeState.rooms.find((room) => room.id === device.room_id)?.name ??
-                      "Ambiente";
+                  {planDevices.map((device) => {
                     return (
                       <div
                         key={device.id}
                         className="absolute -translate-x-1/2 -translate-y-1/2"
                         style={{
-                          left: `${device.position.x * 100}%`,
-                          top: `${device.position.y * 100}%`,
+                          left: `${device.displayPosition.x * 100}%`,
+                          top: `${device.displayPosition.y * 100}%`,
                         }}
                       >
                         <span
@@ -581,7 +625,7 @@ export default function PortalDemo() {
                               ? "bg-emerald-100/95 text-emerald-700 ring-emerald-200"
                               : "bg-slate-100/95 text-slate-700 ring-slate-300"
                           }`}
-                          title={`${roomName} - ${device.name}`}
+                          title={`${device.roomName} - ${device.name}`}
                         >
                           <span
                             className={`h-1.5 w-1.5 rounded-full ${
