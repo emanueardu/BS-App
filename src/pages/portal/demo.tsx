@@ -202,8 +202,37 @@ export default function PortalDemo() {
     [roomsWithDevices]
   );
 
-  const [selectedMusicRoomId, setSelectedMusicRoomId] = useState<string | null>(null);
-  const activeMusicRoomId = selectedMusicRoomId ?? musicRooms[0]?.id ?? null;
+  const [selectedMusicRoomIds, setSelectedMusicRoomIds] = useState<string[]>(() =>
+    musicRooms[0]?.id ? [musicRooms[0].id] : []
+  );
+
+  const musicIndicatorRooms = useMemo(
+    () =>
+      demoHomeState.rooms
+        .filter((room) => selectedMusicRoomIds.includes(room.id))
+        .map((room) => {
+          if (room.bbox) {
+            return {
+              id: room.id,
+              x: room.bbox.x + room.bbox.width / 2,
+              y: room.bbox.y + room.bbox.height / 2,
+            };
+          }
+          if (room.polygon.length > 0) {
+            const sum = room.polygon.reduce(
+              (acc, point) => ({ x: acc.x + point.x, y: acc.y + point.y }),
+              { x: 0, y: 0 }
+            );
+            return {
+              id: room.id,
+              x: sum.x / room.polygon.length,
+              y: sum.y / room.polygon.length,
+            };
+          }
+          return { id: room.id, x: 0.5, y: 0.5 };
+        }),
+    [selectedMusicRoomIds]
+  );
 
   const roomNameById = useMemo(
     () =>
@@ -216,6 +245,12 @@ export default function PortalDemo() {
       prev.map((device) =>
         device.id === deviceId ? { ...device, is_on: !device.is_on } : device
       )
+    );
+  };
+
+  const toggleMusicRoom = (roomId: string) => {
+    setSelectedMusicRoomIds((prev) =>
+      prev.includes(roomId) ? prev.filter((id) => id !== roomId) : [...prev, roomId]
     );
   };
 
@@ -583,6 +618,28 @@ export default function PortalDemo() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover object-center"
                   />
+                  {musicIndicatorRooms.map((room) => (
+                    <div
+                      key={`music-${room.id}`}
+                      className="absolute -translate-x-1/2 -translate-y-1/2"
+                      style={{
+                        left: `${room.x * 100}%`,
+                        top: `${room.y * 100}%`,
+                      }}
+                    >
+                      <span
+                        className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-white shadow-md ring-2 ring-white/80"
+                        title="Musica reproduciendose"
+                      >
+                        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" aria-hidden>
+                          <path
+                            fill="currentColor"
+                            d="M14 3v10.55a3.5 3.5 0 1 1-2-3.15V5h7v2h-5Z"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  ))}
                   {devices.map((device) => {
                     const roomName = roomNameById.get(device.room_id) ?? "Ambiente";
                     return (
@@ -701,9 +758,9 @@ export default function PortalDemo() {
                   <button
                     key={room.id}
                     type="button"
-                    onClick={() => setSelectedMusicRoomId(room.id)}
+                    onClick={() => toggleMusicRoom(room.id)}
                     className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
-                      activeMusicRoomId === room.id
+                      selectedMusicRoomIds.includes(room.id)
                         ? "bg-slate-900 text-white"
                         : "border border-slate-300 bg-white text-slate-700 hover:border-emerald-300 hover:text-emerald-700"
                     }`}
