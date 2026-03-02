@@ -10,7 +10,7 @@ import {
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { demoHomeState } from "@/lib/homeService";
 
 type TabId = "avance" | "documentacion" | "home";
@@ -133,6 +133,7 @@ const LIGHT_WATT = 12;
 const AC_WATT = 1200;
 const LIGHT_HOURS = 4;
 const AC_HOURS = 6;
+const MUSIC_ICON_POSITIONS_STORAGE_KEY = "portal_demo_music_icon_positions_v1";
 
 const statusClass = (status: DemoDocument["status"]) => {
   if (status === "Aprobado") return "bg-emerald-100 text-emerald-700";
@@ -144,6 +145,26 @@ const stageClass = (status: (typeof projectTimeline)[number]["status"]) => {
   if (status === "completado") return "bg-emerald-500";
   if (status === "en-curso") return "bg-orange-500";
   return "bg-slate-300";
+};
+
+const getRoomCenter = (room: (typeof demoHomeState.rooms)[number]) => {
+  if (room.bbox) {
+    return {
+      x: room.bbox.x + room.bbox.width / 2,
+      y: room.bbox.y + room.bbox.height / 2,
+    };
+  }
+  if (room.polygon.length > 0) {
+    const sum = room.polygon.reduce(
+      (acc, point) => ({ x: acc.x + point.x, y: acc.y + point.y }),
+      { x: 0, y: 0 }
+    );
+    return {
+      x: sum.x / room.polygon.length,
+      y: sum.y / room.polygon.length,
+    };
+  }
+  return { x: 0.5, y: 0.5 };
 };
 
 export default function PortalDemo() {
@@ -205,33 +226,44 @@ export default function PortalDemo() {
   const [selectedMusicRoomIds, setSelectedMusicRoomIds] = useState<string[]>(() =>
     musicRooms[0]?.id ? [musicRooms[0].id] : []
   );
+  const [isMusicIconEditMode, setIsMusicIconEditMode] = useState(false);
+  const [draggingMusicRoomId, setDraggingMusicRoomId] = useState<string | null>(null);
+  const [musicSaveNotice, setMusicSaveNotice] = useState("");
+  const mapContainerRef = useRef<HTMLDivElement | null>(null);
+  const [musicIconPositions, setMusicIconPositions] = useState<
+    Record<string, { x: number; y: number }>
+  >(() => {
+    const defaults = Object.fromEntries(
+      musicRooms.map((room) => [room.id, getRoomCenter(room)])
+    ) as Record<string, { x: number; y: number }>;
+
+    if (typeof window === "undefined") return defaults;
+    try {
+      const raw = window.localStorage.getItem(MUSIC_ICON_POSITIONS_STORAGE_KEY);
+      if (!raw) return defaults;
+      const parsed = JSON.parse(raw) as Record<string, { x?: number; y?: number }>;
+      const merged = { ...defaults };
+      Object.entries(parsed).forEach(([id, pos]) => {
+        if (typeof pos?.x === "number" && typeof pos?.y === "number") {
+          merged[id] = { x: pos.x, y: pos.y };
+        }
+      });
+      return merged;
+    } catch {
+      return defaults;
+    }
+  });
 
   const musicIndicatorRooms = useMemo(
     () =>
       demoHomeState.rooms
         .filter((room) => selectedMusicRoomIds.includes(room.id))
-        .map((room) => {
-          if (room.bbox) {
-            return {
-              id: room.id,
-              x: room.bbox.x + room.bbox.width / 2,
-              y: room.bbox.y + room.bbox.height / 2,
-            };
-          }
-          if (room.polygon.length > 0) {
-            const sum = room.polygon.reduce(
-              (acc, point) => ({ x: acc.x + point.x, y: acc.y + point.y }),
-              { x: 0, y: 0 }
-            );
-            return {
-              id: room.id,
-              x: sum.x / room.polygon.length,
-              y: sum.y / room.polygon.length,
-            };
-          }
-          return { id: room.id, x: 0.5, y: 0.5 };
-        }),
-    [selectedMusicRoomIds]
+        .map((room) => ({
+          id: room.id,
+          ...((musicIconPositions[room.id] as { x: number; y: number }) ??
+            getRoomCenter(room)),
+        })),
+    [musicIconPositions, selectedMusicRoomIds]
   );
 
   const roomNameById = useMemo(
@@ -252,6 +284,62 @@ export default function PortalDemo() {
     setSelectedMusicRoomIds((prev) =>
       prev.includes(roomId) ? prev.filter((id) => id !== roomId) : [...prev, roomId]
     );
+  };
+
+  const getMapPointerPosition = (clientX: number, clientY: number) => {
+    const rect = mapContainerRef.current?.getBoundingClientRect();
+    if (!rect) return null;
+    return {
+      x: (clientX - rect.left) / rect.width,
+      y: (clientY - rect.top) / rect.height,
+    };
+  };
+
+  const updateMusicIconPosition = (roomId: string, x: number, y: number) => {
+    const clampedX = Math.min(0.98, Math.max(0.02, x));
+    const clampedY = Math.min(0.98, Math.max(0.02, y));
+    setMusicIconPositions((prev) => ({
+      ...prev,
+      [roomId]: { x: clampedX, y: clampedY },
+    }));
+  };
+
+  const startMusicIconDrag = (
+    event: React.PointerEvent<HTMLDivElement>,
+    roomId: string
+  ) => {
+    if (!isMusicIconEditMode) return;
+    event.preventDefault();
+    setDraggingMusicRoomId(roomId);
+
+    const initial = getMapPointerPosition(event.clientX, event.clientY);
+    if (initial) updateMusicIconPosition(roomId, initial.x, initial.y);
+
+    const onMove = (moveEvent: PointerEvent) => {
+      const next = getMapPointerPosition(moveEvent.clientX, moveEvent.clientY);
+      if (!next) return;
+      updateMusicIconPosition(roomId, next.x, next.y);
+    };
+
+    const onUp = () => {
+      setDraggingMusicRoomId((current) => (current === roomId ? null : current));
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  };
+
+  const saveMusicIconPositions = () => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(
+      MUSIC_ICON_POSITIONS_STORAGE_KEY,
+      JSON.stringify(musicIconPositions)
+    );
+    setMusicSaveNotice("Posiciones de simbolos guardadas en este navegador.");
+    setIsMusicIconEditMode(false);
+    setDraggingMusicRoomId(null);
   };
 
   return (
@@ -610,7 +698,10 @@ export default function PortalDemo() {
                 <p className="mt-1 text-xs text-slate-600">
                   Visualizacion general de todos los equipos de la vivienda.
                 </p>
-                <div className="relative mt-3 h-[440px] overflow-hidden rounded-xl border border-slate-200 bg-slate-100 sm:h-[520px] lg:h-auto lg:flex-1">
+                <div
+                  ref={mapContainerRef}
+                  className="relative mt-3 h-[440px] overflow-hidden rounded-xl border border-slate-200 bg-slate-100 sm:h-[520px] lg:h-auto lg:flex-1"
+                >
                   <Image
                     src={demoHomeState.home.plan_asset_url}
                     alt="Plano general de la vivienda"
@@ -621,22 +712,31 @@ export default function PortalDemo() {
                   {musicIndicatorRooms.map((room) => (
                     <div
                       key={`music-${room.id}`}
-                      className="absolute -translate-x-1/2 -translate-y-1/2"
+                      role={isMusicIconEditMode ? "button" : undefined}
+                      tabIndex={isMusicIconEditMode ? 0 : -1}
+                      onPointerDown={(event) => startMusicIconDrag(event, room.id)}
+                      className={`absolute -translate-x-1/2 -translate-y-1/2 ${
+                        isMusicIconEditMode ? "cursor-grab" : ""
+                      } ${draggingMusicRoomId === room.id ? "cursor-grabbing" : ""}`}
                       style={{
                         left: `${room.x * 100}%`,
                         top: `${room.y * 100}%`,
                       }}
                     >
-                      <span
-                        className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-white shadow-md ring-2 ring-white/80"
-                        title="Musica reproduciendose"
-                      >
-                        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" aria-hidden>
-                          <path
-                            fill="currentColor"
-                            d="M14 3v10.55a3.5 3.5 0 1 1-2-3.15V5h7v2h-5Z"
-                          />
-                        </svg>
+                      <span className="relative inline-flex items-center justify-center">
+                        <span className="music-wave wave-a" />
+                        <span className="music-wave wave-b" />
+                        <span
+                          className="music-speaker inline-flex h-7 w-7 items-center justify-center rounded-full bg-amber-500 text-white shadow-md ring-2 ring-white/80"
+                          title="Musica reproduciendose"
+                        >
+                          <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+                            <path
+                              fill="currentColor"
+                              d="M10 7.8 6.7 10H4v4h2.7L10 16.2V7.8Zm3.2 2.37a1 1 0 0 0-1.4 1.42 1.98 1.98 0 0 1 0 2.82 1 1 0 1 0 1.4 1.42 3.98 3.98 0 0 0 0-5.66Zm2.7-2.63a1 1 0 0 0-1.4 1.42 5.7 5.7 0 0 1 0 8.04 1 1 0 1 0 1.4 1.42 7.7 7.7 0 0 0 0-10.88Z"
+                            />
+                          </svg>
+                        </span>
                       </span>
                     </div>
                   ))}
@@ -750,9 +850,45 @@ export default function PortalDemo() {
             </div>
 
             <div className="mt-5 rounded-2xl border border-slate-200 bg-white/70 p-4">
-              <p className="text-sm font-semibold text-slate-900">
-                ¿Dónde querés reproducirlo?
-              </p>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="text-sm font-semibold text-slate-900">
+                  ¿Dónde querés reproducirlo?
+                </p>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMusicIconEditMode((prev) => !prev);
+                      setMusicSaveNotice("");
+                      setDraggingMusicRoomId(null);
+                    }}
+                    className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
+                      isMusicIconEditMode
+                        ? "bg-slate-900 text-white"
+                        : "border border-slate-300 bg-white text-slate-700 hover:bg-slate-100"
+                    }`}
+                  >
+                    {isMusicIconEditMode ? "Cancelar ajuste" : "Ubicar simbolos"}
+                  </button>
+                  {isMusicIconEditMode ? (
+                    <button
+                      type="button"
+                      onClick={saveMusicIconPositions}
+                      className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white transition hover:bg-emerald-500"
+                    >
+                      Guardar simbolos
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+              {isMusicIconEditMode ? (
+                <p className="mt-2 text-xs font-semibold text-orange-700">
+                  Ajuste activo: arrastra los simbolos de musica en el plano.
+                </p>
+              ) : null}
+              {musicSaveNotice ? (
+                <p className="mt-2 text-xs font-semibold text-emerald-700">{musicSaveNotice}</p>
+              ) : null}
               <div className="mt-3 flex flex-wrap gap-2">
                 {musicRooms.map((room) => (
                   <button
@@ -821,6 +957,47 @@ export default function PortalDemo() {
         .equalizer-bar {
           transform-origin: bottom;
           animation: equalizer-wave 1s ease-in-out infinite;
+        }
+
+        @keyframes speaker-pulse {
+          0% {
+            transform: translate(-50%, -50%) scale(0.7);
+            opacity: 0.6;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0;
+          }
+        }
+
+        @keyframes speaker-bob {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-1px);
+          }
+        }
+
+        .music-speaker {
+          animation: speaker-bob 1.2s ease-in-out infinite;
+        }
+
+        .music-wave {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 18px;
+          height: 18px;
+          border-radius: 9999px;
+          border: 1.5px solid rgba(245, 158, 11, 0.7);
+          animation: speaker-pulse 1.3s linear infinite;
+          pointer-events: none;
+        }
+
+        .wave-b {
+          animation-delay: 0.6s;
         }
       `}</style>
     </>
