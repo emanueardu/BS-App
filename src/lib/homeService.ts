@@ -470,7 +470,7 @@ export const demoHomeState: HomeState = {
       room_id: "demo-room-bano-principal",
       type: "light",
       name: "Baño Principal",
-      position: { x: 0.475, y: 0.222 },
+      position: { x: 0.575, y: 0.55 },
       is_on: false,
     },
     {

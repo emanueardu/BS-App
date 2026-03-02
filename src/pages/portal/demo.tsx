@@ -146,22 +146,6 @@ const stageClass = (status: (typeof projectTimeline)[number]["status"]) => {
   return "bg-slate-300";
 };
 
-const getRoomBounds = (
-  room: (typeof demoHomeState.rooms)[number]
-): { x: number; y: number; width: number; height: number } | null => {
-  if (room.bbox) return room.bbox;
-  if (!room.polygon?.length) return null;
-
-  const xs = room.polygon.map((point) => point.x);
-  const ys = room.polygon.map((point) => point.y);
-  const minX = Math.min(...xs);
-  const maxX = Math.max(...xs);
-  const minY = Math.min(...ys);
-  const maxY = Math.max(...ys);
-
-  return { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
-};
-
 export default function PortalDemo() {
   const [activeTab, setActiveTab] = useState<TabId>("avance");
   const [devices, setDevices] = useState(() =>
@@ -206,35 +190,10 @@ export default function PortalDemo() {
     [devices]
   );
 
-  const planDevices = useMemo(
+  const roomNameById = useMemo(
     () =>
-      roomsWithDevices.flatMap(({ room, devices: roomDevices }) => {
-        const bounds = getRoomBounds(room);
-        if (!bounds || roomDevices.length === 0) {
-          return roomDevices.map((device) => ({
-            ...device,
-            displayPosition: device.position,
-            roomName: room.name,
-          }));
-        }
-
-        const cols = Math.max(1, Math.ceil(Math.sqrt(roomDevices.length)));
-        const rows = Math.max(1, Math.ceil(roomDevices.length / cols));
-
-        return roomDevices.map((device, index) => {
-          const col = index % cols;
-          const row = Math.floor(index / cols);
-          const x = bounds.x + ((col + 1) * bounds.width) / (cols + 1);
-          const y = bounds.y + ((row + 1) * bounds.height) / (rows + 1);
-
-          return {
-            ...device,
-            displayPosition: { x, y },
-            roomName: room.name,
-          };
-        });
-      }),
-    [roomsWithDevices]
+      new Map(demoHomeState.rooms.map((room) => [room.id, room.name] as const)),
+    []
   );
 
   const toggleDevice = (deviceId: string) => {
@@ -535,7 +494,7 @@ export default function PortalDemo() {
           </div>
 
           <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-            <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
+            <div className="grid gap-6 lg:grid-cols-2">
               <div>
                 <div className="flex items-center gap-2 text-slate-900">
                   <HomeModernIcon className="h-5 w-5" />
@@ -594,51 +553,50 @@ export default function PortalDemo() {
                 </div>
               </div>
 
-              <aside className="rounded-2xl border border-slate-200 bg-white/80 p-4">
+              <aside className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white/80 p-4">
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-700">
                   Plano con dispositivos
                 </h3>
                 <p className="mt-1 text-xs text-slate-600">
                   Visualizacion general de todos los equipos de la vivienda.
                 </p>
-                <div className="relative mt-3 aspect-[4/3] overflow-hidden rounded-xl border border-slate-200 bg-slate-900/80">
-                  <div className="absolute inset-0 origin-center scale-[1.7]">
-                    <Image
-                      src={demoHomeState.home.plan_asset_url}
-                      alt="Plano general de la vivienda"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-contain object-center"
-                    />
-                    {planDevices.map((device) => {
-                      return (
-                        <div
-                          key={device.id}
-                          className="absolute -translate-x-1/2 -translate-y-1/2"
-                          style={{
-                            left: `${device.displayPosition.x * 100}%`,
-                            top: `${device.displayPosition.y * 100}%`,
-                          }}
+                <div className="relative mt-3 h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 lg:h-auto">
+                  <Image
+                    src={demoHomeState.home.plan_asset_url}
+                    alt="Plano general de la vivienda"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center"
+                  />
+                  {devices.map((device) => {
+                    const roomName = roomNameById.get(device.room_id) ?? "Ambiente";
+                    return (
+                      <div
+                        key={device.id}
+                        className="absolute -translate-x-1/2 -translate-y-1/2"
+                        style={{
+                          left: `${device.position.x * 100}%`,
+                          top: `${device.position.y * 100}%`,
+                        }}
+                      >
+                        <span
+                          className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-semibold ring-1 ${
+                            device.is_on
+                              ? "bg-emerald-100/95 text-emerald-700 ring-emerald-200"
+                              : "bg-slate-100/95 text-slate-700 ring-slate-300"
+                          }`}
+                          title={`${roomName} - ${device.name}`}
                         >
                           <span
-                            className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-semibold ring-1 ${
-                              device.is_on
-                                ? "bg-emerald-100/95 text-emerald-700 ring-emerald-200"
-                                : "bg-slate-100/95 text-slate-700 ring-slate-300"
+                            className={`h-1.5 w-1.5 rounded-full ${
+                              device.type === "ac" ? "bg-sky-500" : "bg-amber-500"
                             }`}
-                            title={`${device.roomName} - ${device.name}`}
-                          >
-                            <span
-                              className={`h-1.5 w-1.5 rounded-full ${
-                                device.type === "ac" ? "bg-sky-500" : "bg-amber-500"
-                              }`}
-                            />
-                            {device.type === "ac" ? "Aire" : "Luz"}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
+                          />
+                          {device.type === "ac" ? "Aire" : "Luz"}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </aside>
             </div>
