@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+﻿import "@/styles/globals.css";
 import { Navbar } from "@/components/Navbar";
 import { VoltiChat } from "@/components/VoltiChat";
 import { AuthProvider } from "@/context/AuthContext";
@@ -24,23 +24,23 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="SUR INGENIERÍA - Domótica & Electricidad Residencial con ejecución técnica, documentación y seguimiento digital."
+          content="SUR INGENIERÃA - DomÃ³tica & Electricidad Residencial con ejecuciÃ³n tÃ©cnica, documentaciÃ³n y seguimiento digital."
         />
-        <meta property="og:site_name" content="SUR INGENIERÍA" />
+        <meta property="og:site_name" content="SUR INGENIERÃA" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="SUR INGENIERÍA" />
+        <meta property="og:title" content="SUR INGENIERÃA" />
         <meta
           property="og:description"
-          content="Domótica & Electricidad Residencial con enfoque técnico, sobrio y premium."
+          content="DomÃ³tica & Electricidad Residencial con enfoque tÃ©cnico, sobrio y premium."
         />
-        <meta property="og:image" content="/hero-casa.jpg" />
+        <meta property="og:image" content="/brand/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SUR INGENIERÍA" />
+        <meta name="twitter:title" content="SUR INGENIERÃA" />
         <meta
           name="twitter:description"
-          content="Domótica & Electricidad Residencial con ejecución y seguimiento profesional."
+          content="DomÃ³tica & Electricidad Residencial con ejecuciÃ³n y seguimiento profesional."
         />
-        <meta name="twitter:image" content="/hero-casa.jpg" />
+        <meta name="twitter:image" content="/brand/logo.png" />
       </Head>
       <div
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-transparent text-brand-text`}

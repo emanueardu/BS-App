@@ -1,5 +1,6 @@
-import { Disclosure } from "@headlessui/react";
-import { Bars3Icon, BoltIcon, XMarkIcon } from "@heroicons/react/24/outline";
+﻿import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
@@ -38,87 +39,102 @@ export const Navbar = () => {
 
   return (
     <Disclosure
-      as="nav"
+      as="header"
       className="sticky top-0 z-30 w-full border-b border-brand-blue/50 bg-brand-navy/95 text-brand-text-on-dark backdrop-blur"
     >
       {({ open }) => (
         <>
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-brand-copper to-brand-blue-mid text-brand-text-on-dark shadow-md">
-                <BoltIcon className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-brand-sand">SUR INGENIERÍA</p>
-                <p className="text-base font-semibold text-brand-text-on-dark drop-shadow">
-                  Domótica & Electricidad Residencial
-                </p>
-              </div>
-            </div>
-
-            <div className="hidden items-center gap-8 md:flex">
-              {visibleLinks.map((item) => {
-                const active = router.pathname === item.href;
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={classNames(
-                      "text-sm font-semibold transition-colors",
-                      active ? "text-brand-text-on-dark" : "text-brand-text-on-dark/85 hover:text-brand-text-on-dark"
-                    )}
-                  >
-                    {item.name}
-                  </Link>
-                );
-              })}
-            </div>
-
-            <div className="hidden items-center gap-3 md:flex">
-              <Link
-                href="/contacto"
-                className="rounded-full bg-brand-surface/20 px-4 py-2 text-sm font-semibold text-brand-text-on-dark transition hover:bg-brand-surface/30"
-              >
-                Pedir relevamiento
+          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+            <div className="flex items-center justify-between py-4 sm:py-5">
+              <Link href="/" className="flex items-center gap-3 sm:gap-4">
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-brand-copper-soft/50 bg-brand-surface/10 shadow-brand-soft sm:h-16 sm:w-16">
+                  <Image
+                    src="/brand/logo.png"
+                    alt="Logo SUR INGENIERÍA"
+                    fill
+                    sizes="(max-width: 640px) 56px, 64px"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <div className="leading-tight">
+                  <p className="text-xl font-bold tracking-wide text-brand-text-on-dark sm:text-2xl lg:text-3xl">
+                    SUR INGENIERÍA
+                  </p>
+                  <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.18em] text-brand-sand sm:text-xs lg:text-sm">
+                    Domótica & Electricidad Residencial
+                  </p>
+                </div>
               </Link>
-              {user ? (
-                <>
-                  <Link
-                    href="/dashboard"
-                    className="rounded-full border border-brand-copper-soft px-4 py-2 text-sm font-semibold text-brand-sand transition hover:border-brand-copper-soft hover:text-brand-text-on-dark"
-                  >
-                    Mi portal
-                  </Link>
-                  <button
-                    onClick={signOut}
-                    className="rounded-full bg-brand-surface/25 px-4 py-2 text-sm font-semibold text-brand-text-on-dark transition hover:bg-brand-surface/35"
-                  >
-                    Salir
-                  </button>
-                </>
-              ) : (
-                <Link
-                  href="/login"
-                  className="rounded-full border border-white/40 px-4 py-2 text-sm font-semibold text-brand-text-on-dark transition hover:border-brand-copper-soft hover:text-brand-sand"
-                >
-                  Ingresar
-                </Link>
-              )}
+
+              <div className="md:hidden">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-brand-text-on-dark hover:bg-brand-surface/10 hover:text-brand-sand focus:outline-none">
+                  {open ? (
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
             </div>
 
-            <div className="md:hidden">
-              <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-brand-text-on-dark hover:bg-brand-surface/10 hover:text-brand-sand focus:outline-none">
-                {open ? (
-                  <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+            <div className="hidden border-t border-brand-blue/60 md:flex md:items-center md:justify-between md:gap-6 md:py-3">
+              <nav className="flex flex-wrap items-center gap-2 lg:gap-3">
+                {visibleLinks.map((item) => {
+                  const active = router.pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={classNames(
+                        "rounded-full px-3 py-1.5 text-sm font-semibold transition-colors",
+                        active
+                          ? "bg-brand-surface/15 text-brand-text-on-dark"
+                          : "text-brand-text-on-dark/85 hover:bg-brand-surface/10 hover:text-brand-text-on-dark"
+                      )}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
+              </nav>
+
+              <div className="flex items-center gap-2 lg:gap-3">
+                <Link
+                  href="/contacto"
+                  className="rounded-full bg-brand-copper px-4 py-2 text-sm font-semibold text-brand-text-on-dark transition hover:bg-brand-copper-soft"
+                >
+                  Pedir relevamiento
+                </Link>
+                {user ? (
+                  <>
+                    <Link
+                      href="/dashboard"
+                      className="rounded-full border border-brand-copper-soft px-4 py-2 text-sm font-semibold text-brand-sand transition hover:border-brand-sand hover:text-brand-text-on-dark"
+                    >
+                      Mi portal
+                    </Link>
+                    <button
+                      onClick={signOut}
+                      className="rounded-full border border-brand-surface/35 px-4 py-2 text-sm font-semibold text-brand-text-on-dark transition hover:bg-brand-surface/15"
+                    >
+                      Salir
+                    </button>
+                  </>
                 ) : (
-                  <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                  <Link
+                    href="/login"
+                    className="rounded-full border border-brand-surface/45 px-4 py-2 text-sm font-semibold text-brand-text-on-dark transition hover:border-brand-copper-soft hover:text-brand-sand"
+                  >
+                    Ingresar
+                  </Link>
                 )}
-              </Disclosure.Button>
+              </div>
             </div>
           </div>
 
           <Disclosure.Panel className="border-t border-brand-blue/50 bg-brand-navy md:hidden">
-            <div className="space-y-1 px-4 pb-4 pt-2">
+            <div className="space-y-1 px-4 pb-4 pt-3 sm:px-6">
               {visibleLinks.map((item) => {
                 const active = router.pathname === item.href;
                 return (
@@ -139,6 +155,12 @@ export const Navbar = () => {
               })}
 
               <div className="flex flex-col gap-2 pt-2">
+                <Link
+                  href="/contacto"
+                  className="block rounded-lg bg-brand-copper px-3 py-2 text-center text-sm font-semibold text-brand-text-on-dark"
+                >
+                  Pedir relevamiento
+                </Link>
                 {user ? (
                   <>
                     <Link
@@ -155,20 +177,12 @@ export const Navbar = () => {
                     </button>
                   </>
                 ) : (
-                  <>
-                    <Link
-                      href="/contacto"
-                      className="block rounded-lg bg-brand-surface/10 px-3 py-2 text-center text-sm font-semibold text-brand-text-on-dark"
-                    >
-                      Pedir relevamiento
-                    </Link>
-                    <Link
-                      href="/login"
-                      className="block rounded-lg border border-white/30 px-3 py-2 text-center text-sm font-semibold text-brand-text-on-dark"
-                    >
-                      Ingresar
-                    </Link>
-                  </>
+                  <Link
+                    href="/login"
+                    className="block rounded-lg border border-brand-surface/30 px-3 py-2 text-center text-sm font-semibold text-brand-text-on-dark"
+                  >
+                    Ingresar
+                  </Link>
                 )}
               </div>
             </div>
