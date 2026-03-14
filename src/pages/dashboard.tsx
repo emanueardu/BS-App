@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 type Project = {
   id: string;
   name: string;
-  status: "En ejecuciÃ³n" | "Finalizado" | "Planificado" | string;
+  status: "En ejecución" | "Finalizado" | "Planificado" | string;
   progress: number;
   next_visit?: string | null;
 };
@@ -23,8 +23,8 @@ type ProjectRow = {
 const fallbackProjects: Project[] = [
   {
     id: "demo-1",
-    name: "Obra domÃ³tica - Casa MartÃ­nez",
-    status: "En ejecuciÃ³n",
+    name: "Obra domótica - Casa Martínez",
+    status: "En ejecución",
     progress: 68,
     next_visit: "Martes 10:00",
   },
@@ -39,7 +39,7 @@ const fallbackProjects: Project[] = [
 
 const statusColor = (status: string) => {
   switch (status) {
-    case "En ejecuciÃ³n":
+    case "En ejecución":
       return "bg-brand-sand text-brand-blue";
     case "Finalizado":
       return "bg-emerald-100 text-emerald-800";
@@ -72,7 +72,7 @@ export default function Dashboard() {
           (data as ProjectRow[]).map((item) => ({
             id: String(item.id),
             name: item.name ?? "Proyecto",
-            status: item.status ?? "En ejecuciÃ³n",
+            status: item.status ?? "En ejecución",
             progress: Number(item.progress ?? 0),
             next_visit: item.next_visit ?? "A coordinar",
           }))
@@ -138,7 +138,7 @@ export default function Dashboard() {
                   </span>
                 </div>
                 <p className="text-sm text-brand-text-muted">
-                  PrÃ³xima visita: {project.next_visit ?? "A coordinar"}
+                  Próxima visita: {project.next_visit ?? "A coordinar"}
                 </p>
                 <div className="mt-3 h-2 rounded-full bg-brand-bg-alt">
                   <div
@@ -151,7 +151,7 @@ export default function Dashboard() {
                     Avance {Math.min(project.progress, 100)}%
                   </span>
                   <span className="text-xs text-brand-text-muted group-hover:text-brand-copper">
-                    Ver detalle â†’
+                    Ver detalle →
                   </span>
                 </div>
               </Link>

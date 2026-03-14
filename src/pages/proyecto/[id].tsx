@@ -52,19 +52,19 @@ type DocumentRow = {
 
 const fallbackProject: ProjectDetail = {
   id: "demo-1",
-  name: "Obra domÃ³tica - Casa MartÃ­nez",
-  status: "En ejecuciÃ³n",
+  name: "Obra domótica - Casa Martínez",
+  status: "En ejecución",
   progress: 68,
   summary:
-    "InstalaciÃ³n de tablero inteligente, cableado estructurado y configuraciÃ³n de escenas de iluminaciÃ³n.",
+    "Instalación de tablero inteligente, cableado estructurado y configuración de escenas de iluminación.",
   progress_items: [
-    { title: "Tableros y protecciones", percent: 80, note: "Falta seÃ±alÃ©tica" },
+    { title: "Tableros y protecciones", percent: 80, note: "Falta señalética" },
     { title: "Canalizaciones y tendido", percent: 55, note: "Cableado en curso" },
-    { title: "AutomatizaciÃ³n", percent: 30, note: "ConfiguraciÃ³n inicial" },
+    { title: "Automatización", percent: 30, note: "Configuración inicial" },
   ],
   documents: [
-    { id: "doc-1", title: "Plano elÃ©ctrico.pdf", url: "#" },
-    { id: "doc-2", title: "Memoria tÃ©cnica.docx", url: "#" },
+    { id: "doc-1", title: "Plano eléctrico.pdf", url: "#" },
+    { id: "doc-2", title: "Memoria técnica.docx", url: "#" },
   ],
 };
 
@@ -108,7 +108,7 @@ export default function ProyectoDetalle() {
         setProject({
           id: String((data as ProjectRow).id),
           name: (data as ProjectRow).name ?? "Proyecto",
-          status: (data as ProjectRow).status ?? "En ejecuciÃ³n",
+          status: (data as ProjectRow).status ?? "En ejecución",
           progress: Number((data as ProjectRow).progress ?? 0),
           summary: (data as ProjectRow).summary ?? "",
           progress_items: (progressData as ProgressRow[] | null)?.map((item) => ({
@@ -145,14 +145,14 @@ export default function ProyectoDetalle() {
               {project.name}
             </h1>
             <p className="text-sm text-brand-text-muted">
-              Estado: {project.status} Â· Avance {project.progress}%
+              Estado: {project.status} · Avance {project.progress}%
             </p>
           </div>
           <Link
             href="/dashboard"
             className="rounded-full border border-brand-navy bg-brand-surface/60 px-4 py-2 text-sm font-semibold text-brand-text backdrop-blur-sm transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
           >
-            â† Volver al dashboard
+            ← Volver al dashboard
           </Link>
         </div>
 
@@ -240,7 +240,7 @@ export default function ProyectoDetalle() {
                   ))}
                   {!project.documents && (
                     <p className="text-sm text-brand-text-muted">
-                      Carga documentos desde el panel de administraciÃ³n o arrastra
+                      Carga documentos desde el panel de administración o arrastra
                       archivos al Storage de Supabase.
                     </p>
                   )}

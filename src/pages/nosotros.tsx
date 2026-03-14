@@ -5,7 +5,7 @@ import { openVoltiChat } from "@/utils/volti";
 const valores = [
   "Seguridad y cumplimiento AEA/IRAM",
   "Calidad y prolijidad en montaje",
-  "Procesos claros y documentaciÃ³n entregable",
+  "Procesos claros y documentación entregable",
   "Escalabilidad y soporte post-obra",
   "Si no se puede hacer bien, no se hace",
 ];
@@ -21,12 +21,12 @@ export default function Nosotros() {
           Nosotros
         </p>
         <h1 className="text-3xl font-semibold text-brand-text">
-          Empresa tÃ©cnica, prolija y previsible. No competimos por precio, sino
+          Empresa técnica, prolija y previsible. No competimos por precio, sino
           por calidad.
         </h1>
         <p className="text-sm text-brand-text-muted">
-          No instalamos nada que no estÃ© bien hecho, aunque el cliente lo pida.
-          Trabajamos con procesos, documentaciÃ³n y materiales certificados.
+          No instalamos nada que no esté bien hecho, aunque el cliente lo pida.
+          Trabajamos con procesos, documentación y materiales certificados.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
@@ -48,7 +48,7 @@ export default function Nosotros() {
         <h2 className="text-xl font-semibold text-brand-text">Valores</h2>
         <ul className="mt-3 space-y-2 text-sm text-brand-text-muted">
           {valores.map((item) => (
-            <li key={item}>â€¢ {item}</li>
+            <li key={item}>• {item}</li>
           ))}
         </ul>
       </section>

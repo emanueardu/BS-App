@@ -50,7 +50,7 @@ export default function Home() {
               Electricidad segura, domótica a medida y seguimiento en linea.
             </h1>
             <p className="max-w-3xl text-lg text-brand-text-on-dark/80">
-              DiseÃ±amos y ejecutamos tu instalacion electrica y domótica con un
+              Diseñamos y ejecutamos tu instalacion electrica y domótica con un
               panel privado para ver presupuestos, avances y documentacion.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -262,7 +262,7 @@ export default function Home() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide">
-              Â¿Listo para empezar?
+              ¿Listo para empezar?
             </p>
             <h3 className="text-2xl font-semibold">
               Agenda una visita tecnica y recibe tu propuesta digital.

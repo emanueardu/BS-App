@@ -29,22 +29,22 @@ export default function Contacto() {
       <div className="grid gap-10 rounded-3xl bg-brand-surface/60 p-8 shadow-lg shadow-brand-sand backdrop-blur-sm lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-4">
           <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
-            ContÃ¡ctanos
+            Contáctanos
           </p>
           <h1 className="text-3xl font-semibold text-brand-text">
             Agenda un relevamiento o solicita una propuesta.
           </h1>
           <p className="text-base text-brand-text-muted">
             Completa el formulario y coordinamos una visita para evaluar tu
-            obra. Respondemos en menos de 24 horas hÃ¡biles.
+            obra. Respondemos en menos de 24 horas hábiles.
           </p>
 
           <div className="rounded-2xl border border-brand-border/70 bg-brand-surface/50 p-4 backdrop-blur-sm">
             <p className="text-sm font-semibold text-brand-text">
-              TambiÃ©n puedes escribirnos
+              También puedes escribirnos
             </p>
             <p className="text-sm text-brand-text-muted">
-              TelÃ©fono: +54 11 5555-0000
+              Teléfono: +54 11 5555-0000
               <br />
               Email: hola@suringenieria.com
             </p>
@@ -74,7 +74,7 @@ export default function Contacto() {
               value={form.nombre}
               onChange={(e) => setForm({ ...form, nombre: e.target.value })}
               className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
-              placeholder="Ej: SofÃ­a RodrÃ­guez"
+              placeholder="Ej: Sofía Rodríguez"
             />
           </div>
 

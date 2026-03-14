@@ -20,34 +20,34 @@ export function ServicePageTemplate({ service }: Props) {
 
       <section className="rounded-3xl border border-brand-border bg-brand-surface/70 p-8 shadow-sm backdrop-blur-sm">
         <h2 className="text-xl font-semibold text-brand-text">
-          DescripciÃ³n del servicio
+          Descripción del servicio
         </h2>
         <p className="mt-3 text-sm text-brand-text-muted">
-          En proceso de armado. AquÃ­ podrÃ¡s describir quÃ© hace y cÃ³mo se diferencia
-          cada opciÃ³n cuando estÃ© listo.
+          En proceso de armado. Aquí podrás describir qué hace y cómo se diferencia
+          cada opción cuando esté listo.
         </p>
       </section>
 
       <section className="rounded-3xl border border-brand-border bg-brand-surface/70 p-8 shadow-sm backdrop-blur-sm">
-        <h2 className="text-xl font-semibold text-brand-text">QuÃ© incluye</h2>
+        <h2 className="text-xl font-semibold text-brand-text">Qué incluye</h2>
         <p className="mt-3 text-sm text-brand-text-muted">
-          Pronto listaremos cada Ã­tem. Mientras tanto, mantÃ©n el foco en puntos clave
+          Pronto listaremos cada ítem. Mientras tanto, mantén el foco en puntos clave
           como tiempos, entregables y servicios adicionales.
         </p>
       </section>
 
       <section className="rounded-3xl border border-brand-border bg-brand-surface/70 p-8 shadow-sm backdrop-blur-sm">
-        <h2 className="text-xl font-semibold text-brand-text">GalerÃ­a</h2>
+        <h2 className="text-xl font-semibold text-brand-text">Galería</h2>
         <p className="mt-3 text-sm text-brand-text-muted">
-          Espacio reservado para imÃ¡genes o ejemplos del servicio.
+          Espacio reservado para imágenes o ejemplos del servicio.
         </p>
       </section>
 
       <section className="rounded-3xl border border-brand-border bg-brand-surface/70 p-8 shadow-sm backdrop-blur-sm">
         <h2 className="text-xl font-semibold text-brand-text">Consultar</h2>
         <p className="mt-3 text-sm text-brand-text-muted">
-          Compartiremos prÃ³ximamente el formulario o contacto especÃ­fico. Por ahora
-          puedes usar el botÃ³n de abajo para escribirnos.
+          Compartiremos próximamente el formulario o contacto específico. Por ahora
+          puedes usar el botón de abajo para escribirnos.
         </p>
         <Link
           href="/contacto"

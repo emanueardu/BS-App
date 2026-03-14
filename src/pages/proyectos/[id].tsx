@@ -56,24 +56,24 @@ export default function ProyectoDetalle() {
         <div className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
           <h2 className="text-xl font-semibold text-brand-text">Alcance</h2>
           <ul className="mt-3 space-y-2 text-sm text-brand-text-muted">
-            <li>â€¢ Relevamiento y diseÃ±o aprobado por el cliente.</li>
-            <li>â€¢ EjecuciÃ³n con materiales certificados.</li>
-            <li>â€¢ Checklist y evidencias cargadas en portal.</li>
+            <li>• Relevamiento y diseño aprobado por el cliente.</li>
+            <li>• Ejecución con materiales certificados.</li>
+            <li>• Checklist y evidencias cargadas en portal.</li>
           </ul>
         </div>
         <div className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
           <h2 className="text-xl font-semibold text-brand-text">Entregables</h2>
           <ul className="mt-3 space-y-2 text-sm text-brand-text-muted">
-            <li>â€¢ Planos y esquemas as-built.</li>
-            <li>â€¢ Manual de uso y accesos.</li>
-            <li>â€¢ Certificados / mediciones (si aplica).</li>
+            <li>• Planos y esquemas as-built.</li>
+            <li>• Manual de uso y accesos.</li>
+            <li>• Certificados / mediciones (si aplica).</li>
           </ul>
         </div>
       </section>
 
       <section className="mt-8 rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
         <h3 className="text-lg font-semibold text-brand-text">
-          GalerÃ­a (placeholder)
+          Galería (placeholder)
         </h3>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
           {gallery.map((item) => (

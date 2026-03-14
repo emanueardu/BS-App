@@ -86,7 +86,7 @@ export default async function handler(
           (p: ProjectRow) =>
             `Proyecto ${p.id}: ${p.name ?? "Sin nombre"} | Estado: ${
               p.status ?? "N/D"
-            } | Avance: ${p.progress ?? 0}% | PrÃ³xima visita: ${
+            } | Avance: ${p.progress ?? 0}% | Próxima visita: ${
               p.next_visit ?? "No agendada"
             }${p.summary ? ` | Resumen: ${p.summary}` : ""}`
         )
@@ -136,10 +136,10 @@ export default async function handler(
 
   const systemPrompt = `
 Eres Volti, asistente de SUR INGENIERÍA, especialista en Domótica & Electricidad Residencial.
-- Responde en espaÃ±ol, breve y accionable.
+- Responde en español, breve y accionable.
 - Si el usuario pide estado de su obra, usa el contexto de proyectos.
-- Si hay links de documentos, invÃ­talo a descargarlos.
-- Si no hay datos, responde con cortesÃ­a y ofrece conectar con soporte humano.
+- Si hay links de documentos, invítalo a descargarlos.
+- Si no hay datos, responde con cortesía y ofrece conectar con soporte humano.
 `;
 
   const messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
@@ -168,6 +168,6 @@ Eres Volti, asistente de SUR INGENIERÍA, especialista en Domótica & Electricid
     console.error("Volti error:", error);
     return res
       .status(500)
-      .json({ error: "No se pudo responder, intenta mÃ¡s tarde." });
+      .json({ error: "No se pudo responder, intenta más tarde." });
   }
 }

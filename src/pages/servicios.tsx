@@ -20,7 +20,7 @@ export default function Servicios() {
         <title>Servicios | SUR INGENIERÍA</title>
         <meta
           name="description"
-          content="Servicios elÃ©ctricos, domÃ³ticos y de seguridad con seguimiento premium."
+          content="Servicios eléctricos, domóticos y de seguridad con seguimiento premium."
         />
       </Head>
 
@@ -30,10 +30,10 @@ export default function Servicios() {
             Servicios
           </p>
           <h1 className="text-3xl font-semibold text-brand-text">
-            Instalaciones elÃ©ctricas, domÃ³tica y sistemas inteligentes a medida.
+            Instalaciones eléctricas, domótica y sistemas inteligentes a medida.
           </h1>
           <p className="text-base text-brand-text-muted">
-            Ejecutamos cada etapa con documentaciÃ³n actualizada, materiales certificados y seguimiento digital para
+            Ejecutamos cada etapa con documentación actualizada, materiales certificados y seguimiento digital para
             que tengas visibilidad completa del avance.
           </p>
         </div>
@@ -63,10 +63,10 @@ export default function Servicios() {
                 <button
                   type="button"
                   onClick={() => onCardClick(service.id)}
-                  aria-label={`Ver mÃ¡s sobre ${service.title}`}
+                  aria-label={`Ver más sobre ${service.title}`}
                   className="rounded-full bg-brand-surface/80 px-4 py-2 text-sm font-semibold text-brand-text transition hover:bg-brand-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
                 >
-                  Ver mÃ¡s
+                  Ver más
                 </button>
               </div>
             </article>
@@ -98,10 +98,10 @@ export default function Servicios() {
                   </Link>
                   <Link
                     href={`/servicios/${service.slug}`}
-                    aria-label={`Ver mÃ¡s detalles de ${service.title}`}
+                    aria-label={`Ver más detalles de ${service.title}`}
                     className="inline-flex items-center justify-center rounded-full bg-brand-copper px-5 py-3 text-sm font-semibold text-brand-text-on-dark transition hover:bg-brand-copper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
                   >
-                    Ver mÃ¡s
+                    Ver más
                   </Link>
                 </div>
               </div>
@@ -109,7 +109,7 @@ export default function Servicios() {
                 {service.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-2">
                     <span aria-hidden className="text-brand-copper">
-                      â€¢
+                      •
                     </span>
                     <span>{bullet}</span>
                   </li>

@@ -20,7 +20,7 @@ export default function Proceso() {
   return (
     <>
       <Head>
-        <title>CÃ³mo trabajamos | SUR INGENIERÍA</title>
+        <title>Cómo trabajamos | SUR INGENIERÍA</title>
       </Head>
       <section className="rounded-3xl bg-brand-surface/60 p-8 shadow-sm shadow-brand-sand backdrop-blur-sm">
         <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
@@ -30,7 +30,7 @@ export default function Proceso() {
           Proceso tecnico claro y documentado de principio a fin.
         </h1>
         <p className="text-sm text-brand-text-muted">
-          Seguridad, calidad, cumplimiento normativo (AEA/IRAM) y documentaciÃ³n
+          Seguridad, calidad, cumplimiento normativo (AEA/IRAM) y documentación
           entregable.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
@@ -76,17 +76,17 @@ export default function Proceso() {
             alcances para evitar sorpresas.
           </p>
           <ul className="mt-3 space-y-2 text-sm text-brand-text-muted">
-            <li>â€¢ Incluye: materiales certificados, mano de obra, puesta en marcha.</li>
-            <li>â€¢ Excluye: equipos no aprobados, trabajos sin plano o sin checklist.</li>
+            <li>• Incluye: materiales certificados, mano de obra, puesta en marcha.</li>
+            <li>• Excluye: equipos no aprobados, trabajos sin plano o sin checklist.</li>
           </ul>
         </div>
         <div className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
           <h2 className="text-xl font-semibold text-brand-text">
-            DocumentaciÃ³n mÃ­nima entregada
+            Documentación mínima entregada
           </h2>
           <ul className="mt-3 space-y-2 text-sm text-brand-text-muted">
             {docs.map((item) => (
-              <li key={item}>â€¢ {item}</li>
+              <li key={item}>• {item}</li>
             ))}
           </ul>
         </div>

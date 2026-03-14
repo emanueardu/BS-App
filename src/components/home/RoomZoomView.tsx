@@ -81,7 +81,7 @@ export const RoomZoomView = ({
             )}
             {editMode && (
               <span className="inline-flex items-center gap-1 rounded-full bg-brand-navy/10 px-3 py-1 text-[11px] font-semibold text-brand-text ring-1 ring-brand-border">
-                Modo ediciÃ³n
+                Modo edición
               </span>
             )}
           </div>

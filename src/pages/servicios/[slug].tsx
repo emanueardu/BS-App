@@ -33,7 +33,7 @@ export default function ServicePage({ service }: Props) {
         <title>{service.title} | SUR INGENIERÍA</title>
         <meta
           name="description"
-          content={`MÃ¡s informaciÃ³n sobre ${service.title}: pronto estarÃ¡ disponible con detalles personalizados.`}
+          content={`Más información sobre ${service.title}: pronto estará disponible con detalles personalizados.`}
         />
       </Head>
       <ServicePageTemplate service={service} />

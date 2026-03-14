@@ -45,7 +45,7 @@ export const Navbar = () => {
       {({ open }) => (
         <>
           <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-            <div className="flex items-center justify-between py-4 sm:py-5">
+            <div className="relative flex items-center justify-center py-4 sm:py-5">
               <Link href="/" className="flex items-center gap-3 sm:gap-4">
                 <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-brand-copper-soft/50 bg-brand-surface/10 shadow-brand-soft sm:h-16 sm:w-16">
                   <Image
@@ -61,13 +61,13 @@ export const Navbar = () => {
                   <p className="text-xl font-bold tracking-wide text-brand-text-on-dark sm:text-2xl lg:text-3xl">
                     SUR INGENIERÍA
                   </p>
-                  <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.18em] text-brand-sand sm:text-xs lg:text-sm">
+                  <p className="mt-1 hidden text-[11px] font-medium uppercase tracking-[0.18em] text-brand-sand sm:block sm:text-xs lg:text-sm">
                     Domótica & Electricidad Residencial
                   </p>
                 </div>
               </Link>
 
-              <div className="md:hidden">
+              <div className="absolute right-0 md:hidden">
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-brand-text-on-dark hover:bg-brand-surface/10 hover:text-brand-sand focus:outline-none">
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />

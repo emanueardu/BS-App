@@ -24,21 +24,21 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="SUR INGENIERÃA - DomÃ³tica & Electricidad Residencial con ejecuciÃ³n tÃ©cnica, documentaciÃ³n y seguimiento digital."
+          content="SUR INGENIERÍA - Domótica & Electricidad Residencial con ejecución técnica, documentación y seguimiento digital."
         />
-        <meta property="og:site_name" content="SUR INGENIERÃA" />
+        <meta property="og:site_name" content="SUR INGENIERÍA" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="SUR INGENIERÃA" />
+        <meta property="og:title" content="SUR INGENIERÍA" />
         <meta
           property="og:description"
-          content="DomÃ³tica & Electricidad Residencial con enfoque tÃ©cnico, sobrio y premium."
+          content="Domótica & Electricidad Residencial con enfoque técnico, sobrio y premium."
         />
         <meta property="og:image" content="/brand/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SUR INGENIERÃA" />
+        <meta name="twitter:title" content="SUR INGENIERÍA" />
         <meta
           name="twitter:description"
-          content="DomÃ³tica & Electricidad Residencial con ejecuciÃ³n y seguimiento profesional."
+          content="Domótica & Electricidad Residencial con ejecución y seguimiento profesional."
         />
         <meta name="twitter:image" content="/brand/logo.png" />
       </Head>

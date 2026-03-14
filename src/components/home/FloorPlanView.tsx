@@ -52,7 +52,7 @@ export const FloorPlanView = ({
           </p>
           {editMode && (
             <p className="text-xs font-semibold text-brand-copper">
-              Modo ediciÃ³n: Alt+click en el plano para mover el polÃ­gono del ambiente activo.
+              Modo edición: Alt+click en el plano para mover el polígono del ambiente activo.
             </p>
           )}
         </div>

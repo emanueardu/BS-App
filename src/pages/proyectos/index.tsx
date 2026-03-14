@@ -20,7 +20,7 @@ export default function Proyectos() {
           Obras destacadas y casos de referencia.
         </h1>
         <p className="text-sm text-brand-text-muted">
-          Seguridad, prolijidad y documentaciÃ³n. Si no estamos orgullosos, no lo entregamos.
+          Seguridad, prolijidad y documentación. Si no estamos orgullosos, no lo entregamos.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link

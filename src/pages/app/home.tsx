@@ -75,10 +75,10 @@ const RoutineList = ({
             <div className="text-[11px] text-brand-text-muted">
               {routine.cadence && <span className="font-semibold">{routine.cadence}</span>}
               {routine.next_run_at && (
-                <span className="ml-2">PrÃ³xima: {new Date(routine.next_run_at).toLocaleString()}</span>
+                <span className="ml-2">Próxima: {new Date(routine.next_run_at).toLocaleString()}</span>
               )}
               {routine.last_run_at && (
-                <span className="ml-2">Ãšltima: {new Date(routine.last_run_at).toLocaleString()}</span>
+                <span className="ml-2">Última: {new Date(routine.last_run_at).toLocaleString()}</span>
               )}
             </div>
             <div className="flex flex-wrap gap-2">
@@ -119,11 +119,11 @@ const ConsumptionPanel = ({ consumption }: { consumption: Consumption }) => (
     <div className="mt-4 grid gap-3 sm:grid-cols-3">
       <div className="rounded-2xl bg-brand-navy px-4 py-3 text-brand-text-on-dark shadow">
         <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-on-dark/85">
-          Potencia instantÃ¡nea
+          Potencia instantánea
         </p>
         <p className="text-3xl font-semibold">{consumption.instant.toFixed(0)} W</p>
         <p className="text-[11px] text-brand-text-on-dark/85">
-          Luces ON: {consumption.lightsOn} Â· Aires ON: {consumption.acOn}
+          Luces ON: {consumption.lightsOn} · Aires ON: {consumption.acOn}
         </p>
       </div>
       <div className="rounded-2xl border border-brand-copper-soft bg-brand-bg-alt px-4 py-3 text-brand-blue">
@@ -131,7 +131,7 @@ const ConsumptionPanel = ({ consumption }: { consumption: Consumption }) => (
         <p className="text-2xl font-semibold">
           {consumption.daily.toFixed(2)} kWh
         </p>
-        <p className="text-[11px]">Supone {LIGHT_HOURS}h luces Â· {AC_HOURS}h aires</p>
+        <p className="text-[11px]">Supone {LIGHT_HOURS}h luces · {AC_HOURS}h aires</p>
       </div>
       <div className="rounded-2xl border border-brand-border/70 bg-brand-surface px-4 py-3 text-brand-text">
         <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-muted">
@@ -140,7 +140,7 @@ const ConsumptionPanel = ({ consumption }: { consumption: Consumption }) => (
         <p className="text-2xl font-semibold">
           {consumption.monthly.toFixed(2)} kWh
         </p>
-        <p className="text-[11px] text-brand-text-muted">ProyecciÃ³n 30 dÃ­as</p>
+        <p className="text-[11px] text-brand-text-muted">Proyección 30 días</p>
       </div>
     </div>
   </div>
@@ -539,7 +539,7 @@ export default function HomeModule() {
         <div className="rounded-3xl border border-brand-border bg-brand-surface p-8 text-sm text-brand-text-muted">
           {loading
             ? "Cargando credenciales..."
-            : "Esta secciÃ³n es solo para usuarios internos."}
+            : "Esta sección es solo para usuarios internos."}
         </div>
       </>
     );

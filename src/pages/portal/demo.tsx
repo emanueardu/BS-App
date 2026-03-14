@@ -783,10 +783,10 @@ export default function PortalDemo() {
           <article className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2 text-brand-text">
-                <h2 className="text-xl font-semibold">MÃºsica en casa</h2>
+                <h2 className="text-xl font-semibold">Música en casa</h2>
               </div>
               <span className="rounded-full bg-brand-bg-alt px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand-text-muted">
-                IntegraciÃ³n simulada
+                Integración simulada
               </span>
             </div>
 
@@ -907,7 +907,7 @@ export default function PortalDemo() {
             <div className="mt-5 rounded-2xl border border-brand-border bg-brand-surface/70 p-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="text-sm font-semibold text-brand-text">
-                  Â¿DÃ³nde querÃ©s reproducirlo?
+                  ¿Dónde querés reproducirlo?
                 </p>
                 <div className="flex gap-2">
                   <button

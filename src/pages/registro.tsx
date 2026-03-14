@@ -18,7 +18,7 @@ export default function Registro() {
     setError(null);
 
     if (password !== confirm) {
-      setError("Las contraseÃ±as no coinciden.");
+      setError("Las contraseñas no coinciden.");
       return;
     }
 
@@ -34,7 +34,7 @@ export default function Registro() {
     } catch (err) {
       const errMsg =
         (err as Error)?.message ??
-        "No pudimos registrar la cuenta. Intenta mÃ¡s tarde.";
+        "No pudimos registrar la cuenta. Intenta más tarde.";
       setError(errMsg);
     } finally {
       setSubmitting(false);
@@ -71,7 +71,7 @@ export default function Registro() {
           </div>
           <div>
             <label className="block text-sm font-semibold text-brand-text">
-              ContraseÃ±a
+              Contraseña
             </label>
             <input
               type="password"
@@ -79,12 +79,12 @@ export default function Registro() {
               onChange={(e) => setPassword(e.target.value)}
               required
               className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-3 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
-              placeholder="MÃ­nimo 6 caracteres"
+              placeholder="Mínimo 6 caracteres"
             />
           </div>
           <div>
             <label className="block text-sm font-semibold text-brand-text">
-              Confirmar contraseÃ±a
+              Confirmar contraseña
             </label>
             <input
               type="password"
@@ -92,7 +92,7 @@ export default function Registro() {
               onChange={(e) => setConfirm(e.target.value)}
               required
               className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-3 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
-              placeholder="Repite tu contraseÃ±a"
+              placeholder="Repite tu contraseña"
             />
           </div>
 
@@ -117,7 +117,7 @@ export default function Registro() {
         </form>
 
         <p className="mt-4 text-sm text-brand-text-muted">
-          Â¿Ya tienes cuenta?{" "}
+          ¿Ya tienes cuenta?{" "}
           <Link href="/login" className="font-semibold text-brand-copper">
             Ingresar
           </Link>

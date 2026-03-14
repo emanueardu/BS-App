@@ -58,7 +58,7 @@ function renderSectionContent(section: ServiceDetailSection) {
           {section.bullets.map((bullet) => (
             <li key={bullet} className="flex items-start gap-2">
               <span aria-hidden className="text-brand-copper">
-                â€¢
+                •
               </span>
               <span>{bullet}</span>
             </li>
@@ -138,7 +138,7 @@ export function ServiceDetailLayout({ service, config }: Props) {
 
       {config.galleryItems.length > 0 && (
         <section className={sectionClass}>
-          <h2 className="text-xl font-semibold text-brand-text">GalerÃ­a</h2>
+          <h2 className="text-xl font-semibold text-brand-text">Galería</h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             {config.galleryItems.map((item) => {
               const hasImage = Boolean(item.imageSrc);
