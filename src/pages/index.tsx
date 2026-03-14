@@ -271,7 +271,7 @@ export default function Home() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/contacto"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-navy px-6 py-3 text-sm font-semibold text-brand-text-on-dark transition hover:-translate-y-0.5 hover:text-brand-text-on-dark hover:bg-brand-blue focus-visible:text-brand-text-on-dark active:text-brand-text-on-dark"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-navy px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-brand-blue hover:text-white focus-visible:text-white active:text-white"
             >
               Pedir visita
               <ArrowLongRightIcon className="h-5 w-5" />
