@@ -44,9 +44,9 @@ export default function Contacto() {
               También puedes escribirnos
             </p>
             <p className="text-sm text-brand-text-muted">
-              Teléfono: +54 11 5555-0000
+              Teléfono: 11 2520-7068
               <br />
-              Email: hola@suringenieria.com
+              Email: info@suringenieriasrl.com
             </p>
           </div>
           <button
