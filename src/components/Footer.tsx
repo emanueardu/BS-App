@@ -22,9 +22,6 @@ export const Footer = () => {
             <p className="text-xs font-semibold uppercase tracking-wide text-brand-copper">
               Domótica & Electricidad Residencial
             </p>
-            <p className="mt-1 text-sm text-brand-text-muted">
-              Seguridad, prolijidad y cumplimiento. Si no se puede hacer bien, no se hace.
-            </p>
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-brand-text">
