@@ -1,4 +1,4 @@
-import { useProtectedRoute } from "@/hooks/useProtectedRoute";
+﻿import { useProtectedRoute } from "@/hooks/useProtectedRoute";
 import { supabase } from "@/lib/supabaseClient";
 import Head from "next/head";
 import Link from "next/link";
@@ -52,19 +52,19 @@ type DocumentRow = {
 
 const fallbackProject: ProjectDetail = {
   id: "demo-1",
-  name: "Obra domótica - Casa Martínez",
-  status: "En ejecución",
+  name: "Obra domÃ³tica - Casa MartÃ­nez",
+  status: "En ejecuciÃ³n",
   progress: 68,
   summary:
-    "Instalación de tablero inteligente, cableado estructurado y configuración de escenas de iluminación.",
+    "InstalaciÃ³n de tablero inteligente, cableado estructurado y configuraciÃ³n de escenas de iluminaciÃ³n.",
   progress_items: [
-    { title: "Tableros y protecciones", percent: 80, note: "Falta señalética" },
+    { title: "Tableros y protecciones", percent: 80, note: "Falta seÃ±alÃ©tica" },
     { title: "Canalizaciones y tendido", percent: 55, note: "Cableado en curso" },
-    { title: "Automatización", percent: 30, note: "Configuración inicial" },
+    { title: "AutomatizaciÃ³n", percent: 30, note: "ConfiguraciÃ³n inicial" },
   ],
   documents: [
-    { id: "doc-1", title: "Plano eléctrico.pdf", url: "#" },
-    { id: "doc-2", title: "Memoria técnica.docx", url: "#" },
+    { id: "doc-1", title: "Plano elÃ©ctrico.pdf", url: "#" },
+    { id: "doc-2", title: "Memoria tÃ©cnica.docx", url: "#" },
   ],
 };
 
@@ -108,7 +108,7 @@ export default function ProyectoDetalle() {
         setProject({
           id: String((data as ProjectRow).id),
           name: (data as ProjectRow).name ?? "Proyecto",
-          status: (data as ProjectRow).status ?? "En ejecución",
+          status: (data as ProjectRow).status ?? "En ejecuciÃ³n",
           progress: Number((data as ProjectRow).progress ?? 0),
           summary: (data as ProjectRow).summary ?? "",
           progress_items: (progressData as ProgressRow[] | null)?.map((item) => ({
@@ -132,59 +132,59 @@ export default function ProyectoDetalle() {
   return (
     <>
       <Head>
-        <title>Proyecto | BS</title>
+        <title>Proyecto | SUR INGENIERÍA</title>
       </Head>
 
       <div className="space-y-6">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
               Proyecto
             </p>
-            <h1 className="text-3xl font-semibold text-slate-900">
+            <h1 className="text-3xl font-semibold text-brand-text">
               {project.name}
             </h1>
-            <p className="text-sm text-slate-600">
-              Estado: {project.status} · Avance {project.progress}%
+            <p className="text-sm text-brand-text-muted">
+              Estado: {project.status} Â· Avance {project.progress}%
             </p>
           </div>
           <Link
             href="/dashboard"
-            className="rounded-full border border-slate-900 bg-white/60 px-4 py-2 text-sm font-semibold text-slate-900 backdrop-blur-sm transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+            className="rounded-full border border-brand-navy bg-brand-surface/60 px-4 py-2 text-sm font-semibold text-brand-text backdrop-blur-sm transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
           >
-            ← Volver al dashboard
+            â† Volver al dashboard
           </Link>
         </div>
 
         {error && (
-          <p className="rounded-lg bg-orange-50 px-3 py-2 text-sm text-orange-700">
+          <p className="rounded-lg bg-brand-bg-alt px-3 py-2 text-sm text-brand-copper">
             {error}
           </p>
         )}
 
         {fetching || loading ? (
-          <p className="text-sm text-slate-600">Cargando proyecto...</p>
+          <p className="text-sm text-brand-text-muted">Cargando proyecto...</p>
         ) : (
           <>
-            <div className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-              <div className="h-3 w-full rounded-full bg-slate-100">
+            <div className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+              <div className="h-3 w-full rounded-full bg-brand-bg-alt">
                 <div
-                  className="h-3 rounded-full bg-gradient-to-r from-orange-500 to-amber-400"
+                  className="h-3 rounded-full bg-gradient-to-r from-brand-copper to-brand-copper-soft"
                   style={{ width: `${Math.min(project.progress, 100)}%` }}
                 />
               </div>
               {project.summary && (
-                <p className="mt-4 text-sm text-slate-700">{project.summary}</p>
+                <p className="mt-4 text-sm text-brand-text-muted">{project.summary}</p>
               )}
             </div>
 
             <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-              <div className="space-y-3 rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+              <div className="space-y-3 rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-slate-900">
+                  <h2 className="text-lg font-semibold text-brand-text">
                     Avance por etapas
                   </h2>
-                  <span className="rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700">
+                  <span className="rounded-full bg-brand-bg-alt px-3 py-1 text-xs font-semibold text-brand-copper">
                     Checklist
                   </span>
                 </div>
@@ -193,20 +193,20 @@ export default function ProyectoDetalle() {
                     (item) => (
                       <div
                         key={item.title}
-                        className="rounded-2xl border border-slate-300/70 bg-white/50 p-4 backdrop-blur-sm"
+                        className="rounded-2xl border border-brand-border/70 bg-brand-surface/50 p-4 backdrop-blur-sm"
                       >
-                        <div className="flex items-center justify-between text-sm font-semibold text-slate-900">
+                        <div className="flex items-center justify-between text-sm font-semibold text-brand-text">
                           <span>{item.title}</span>
                           <span>{Math.min(item.percent, 100)}%</span>
                         </div>
-                        <div className="mt-2 h-2 rounded-full bg-white">
+                        <div className="mt-2 h-2 rounded-full bg-brand-surface">
                           <div
-                            className="h-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-400"
+                            className="h-2 rounded-full bg-gradient-to-r from-brand-copper to-brand-copper-soft"
                             style={{ width: `${Math.min(item.percent, 100)}%` }}
                           />
                         </div>
                         {item.note && (
-                          <p className="mt-2 text-xs text-slate-600">
+                          <p className="mt-2 text-xs text-brand-text-muted">
                             {item.note}
                           </p>
                         )}
@@ -216,12 +216,12 @@ export default function ProyectoDetalle() {
                 </div>
               </div>
 
-              <div className="space-y-4 rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+              <div className="space-y-4 rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-slate-900">
+                  <h2 className="text-lg font-semibold text-brand-text">
                     Documentos
                   </h2>
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+                  <span className="rounded-full bg-brand-bg-alt px-3 py-1 text-xs font-semibold text-brand-text-muted">
                     Storage
                   </span>
                 </div>
@@ -230,17 +230,17 @@ export default function ProyectoDetalle() {
                     <a
                       key={doc.id}
                       href={doc.url}
-                      className="flex items-center justify-between rounded-2xl border border-slate-300/70 bg-white/50 px-4 py-3 text-sm font-semibold text-slate-800 backdrop-blur-sm transition hover:border-orange-200 hover:text-orange-700"
+                      className="flex items-center justify-between rounded-2xl border border-brand-border/70 bg-brand-surface/50 px-4 py-3 text-sm font-semibold text-brand-text backdrop-blur-sm transition hover:border-brand-copper-soft hover:text-brand-copper"
                       target="_blank"
                       rel="noreferrer"
                     >
                       {doc.title}
-                      <span className="text-xs text-orange-600">Descargar</span>
+                      <span className="text-xs text-brand-copper">Descargar</span>
                     </a>
                   ))}
                   {!project.documents && (
-                    <p className="text-sm text-slate-600">
-                      Carga documentos desde el panel de administración o arrastra
+                    <p className="text-sm text-brand-text-muted">
+                      Carga documentos desde el panel de administraciÃ³n o arrastra
                       archivos al Storage de Supabase.
                     </p>
                   )}

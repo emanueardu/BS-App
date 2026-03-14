@@ -1,4 +1,4 @@
-import { isInternalUser } from "@/utils/auth";
+﻿import { isInternalUser } from "@/utils/auth";
 import { createClient } from "@supabase/supabase-js";
 import type { NextApiRequest, NextApiResponse } from "next";
 

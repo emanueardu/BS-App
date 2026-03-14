@@ -1,4 +1,4 @@
-import {
+﻿import {
   ArrowTopRightOnSquareIcon,
   CalendarDaysIcon,
   CameraIcon,
@@ -143,13 +143,13 @@ const MUSIC_ICON_POSITIONS_STORAGE_KEY = "portal_demo_music_icon_positions_v1";
 const statusClass = (status: DemoDocument["status"]) => {
   if (status === "Aprobado") return "bg-emerald-100 text-emerald-700";
   if (status === "Vigente") return "bg-sky-100 text-sky-700";
-  return "bg-amber-100 text-amber-700";
+  return "bg-brand-sand text-brand-copper";
 };
 
 const stageClass = (status: (typeof projectTimeline)[number]["status"]) => {
   if (status === "completado") return "bg-emerald-500";
-  if (status === "en-curso") return "bg-orange-500";
-  return "bg-slate-300";
+  if (status === "en-curso") return "bg-brand-copper";
+  return "bg-brand-border";
 };
 
 const getRoomCenter = (room: (typeof demoHomeState.rooms)[number]) => {
@@ -351,45 +351,45 @@ export default function PortalDemo() {
   return (
     <>
       <Head>
-        <title>Demo Portal Cliente | BS</title>
+        <title>Demo Portal Cliente | SUR INGENIERÍA</title>
         <meta
           name="description"
           content="Experiencia demo del portal cliente con avance de obra, documentacion y Mi Home."
         />
       </Head>
 
-      <section className="rounded-3xl bg-white/60 p-8 shadow-sm shadow-orange-100 backdrop-blur-sm">
+      <section className="rounded-3xl bg-brand-surface/60 p-8 shadow-sm shadow-brand-sand backdrop-blur-sm">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
               Demo cliente
             </p>
-            <h1 className="text-3xl font-semibold text-slate-900">
+            <h1 className="text-3xl font-semibold text-brand-text">
               Tu portal de seguimiento de obra y hogar
             </h1>
-            <p className="max-w-3xl text-sm text-slate-600">
+            <p className="max-w-3xl text-sm text-brand-text-muted">
               Al ingresar con tu cuenta, vas a encontrar el estado de avance de
               tu obra, toda la documentacion disponible y el acceso a Mi Home en
               un solo lugar.
             </p>
           </div>
-          <div className="w-full rounded-2xl border border-slate-300 bg-white/70 p-4 shadow-sm backdrop-blur-sm lg:max-w-xs">
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <div className="w-full rounded-2xl border border-brand-border bg-brand-surface/70 p-4 shadow-sm backdrop-blur-sm lg:max-w-xs">
+            <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-muted">
               Estado global
             </p>
-            <p className="mt-1 text-2xl font-semibold text-slate-900">
+            <p className="mt-1 text-2xl font-semibold text-brand-text">
               {overallProgress}% completado
             </p>
-            <p className="text-xs text-slate-600">Proxima visita: 20 Feb 2026 - 10:00</p>
-            <div className="mt-3 h-2 w-full rounded-full bg-slate-200">
+            <p className="text-xs text-brand-text-muted">Proxima visita: 20 Feb 2026 - 10:00</p>
+            <div className="mt-3 h-2 w-full rounded-full bg-brand-bg-alt">
               <div
-                className="h-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-400"
+                className="h-2 rounded-full bg-gradient-to-r from-brand-copper to-brand-copper-soft"
                 style={{ width: `${overallProgress}%` }}
               />
             </div>
             <Link
               href="/login"
-              className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-orange-700"
+              className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand-copper"
             >
               Ingresar con mi cuenta
               <ArrowTopRightOnSquareIcon className="h-4 w-4" />
@@ -403,8 +403,8 @@ export default function PortalDemo() {
             onClick={() => setActiveTab("avance")}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
               activeTab === "avance"
-                ? "bg-slate-900 text-white"
-                : "border border-slate-300 bg-white/70 text-slate-700"
+                ? "bg-brand-navy text-brand-text-on-dark"
+                : "border border-brand-border bg-brand-surface/70 text-brand-text-muted"
             }`}
           >
             Avance de obra
@@ -414,8 +414,8 @@ export default function PortalDemo() {
             onClick={() => setActiveTab("documentacion")}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
               activeTab === "documentacion"
-                ? "bg-slate-900 text-white"
-                : "border border-slate-300 bg-white/70 text-slate-700"
+                ? "bg-brand-navy text-brand-text-on-dark"
+                : "border border-brand-border bg-brand-surface/70 text-brand-text-muted"
             }`}
           >
             Documentacion
@@ -425,8 +425,8 @@ export default function PortalDemo() {
             onClick={() => setActiveTab("home")}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
               activeTab === "home"
-                ? "bg-slate-900 text-white"
-                : "border border-slate-300 bg-white/70 text-slate-700"
+                ? "bg-brand-navy text-brand-text-on-dark"
+                : "border border-brand-border bg-brand-surface/70 text-brand-text-muted"
             }`}
           >
             Mi Home
@@ -437,19 +437,19 @@ export default function PortalDemo() {
       {activeTab === "avance" && (
         <section className="mt-8 space-y-6">
           <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-            <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-slate-900">
+            <article className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-brand-text">
                 <ChartBarIcon className="h-5 w-5" />
                 <h2 className="text-xl font-semibold">Etapas de obra</h2>
               </div>
               <div className="mt-4 space-y-4">
                 {projectTimeline.map((stage) => (
                   <div key={stage.stage}>
-                    <div className="flex items-center justify-between text-sm font-semibold text-slate-800">
+                    <div className="flex items-center justify-between text-sm font-semibold text-brand-text">
                       <span>{stage.stage}</span>
                       <span>{stage.progress}%</span>
                     </div>
-                    <div className="mt-2 h-2 w-full rounded-full bg-slate-200">
+                    <div className="mt-2 h-2 w-full rounded-full bg-brand-bg-alt">
                       <div
                         className={`h-2 rounded-full ${stageClass(stage.status)}`}
                         style={{ width: `${stage.progress}%` }}
@@ -460,23 +460,23 @@ export default function PortalDemo() {
               </div>
             </article>
 
-            <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-slate-900">
+            <article className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-brand-text">
                 <CalendarDaysIcon className="h-5 w-5" />
                 <h2 className="text-xl font-semibold">Proxima coordinacion</h2>
               </div>
-              <div className="mt-4 rounded-2xl border border-orange-200 bg-orange-50/60 p-4">
-                <p className="text-sm font-semibold text-slate-900">Visita tecnica</p>
-                <p className="text-sm text-slate-700">20 Feb 2026 - 10:00</p>
-                <p className="mt-2 text-xs text-slate-600">
+              <div className="mt-4 rounded-2xl border border-brand-copper-soft bg-brand-bg-alt/60 p-4">
+                <p className="text-sm font-semibold text-brand-text">Visita tecnica</p>
+                <p className="text-sm text-brand-text-muted">20 Feb 2026 - 10:00</p>
+                <p className="mt-2 text-xs text-brand-text-muted">
                   Objetivo: pruebas de automatizacion, revision de protecciones y
                   cierre de pendientes del checklist.
                 </p>
               </div>
 
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-white/70 p-4">
-                <p className="text-sm font-semibold text-slate-900">Ultima actualizacion</p>
-                <p className="text-xs text-slate-600">
+              <div className="mt-4 rounded-2xl border border-brand-border bg-brand-surface/70 p-4">
+                <p className="text-sm font-semibold text-brand-text">Ultima actualizacion</p>
+                <p className="text-xs text-brand-text-muted">
                   18 Feb 2026 - Carga de evidencia fotografica y ajuste del
                   cronograma de puesta en marcha.
                 </p>
@@ -484,8 +484,8 @@ export default function PortalDemo() {
             </article>
           </div>
 
-          <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-slate-900">
+          <article className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+            <div className="flex items-center gap-2 text-brand-text">
               <CameraIcon className="h-5 w-5" />
               <h2 className="text-xl font-semibold">Registro fotografico</h2>
             </div>
@@ -493,7 +493,7 @@ export default function PortalDemo() {
               {photoLog.map((photo) => (
                 <div
                   key={photo.title}
-                  className="overflow-hidden rounded-2xl border border-slate-200 bg-white/70"
+                  className="overflow-hidden rounded-2xl border border-brand-border bg-brand-surface/70"
                 >
                   <div className="relative h-36 w-full">
                     <Image
@@ -505,8 +505,8 @@ export default function PortalDemo() {
                     />
                   </div>
                   <div className="p-3">
-                    <p className="text-sm font-semibold text-slate-900">{photo.title}</p>
-                    <p className="text-xs text-slate-600">{photo.date}</p>
+                    <p className="text-sm font-semibold text-brand-text">{photo.title}</p>
+                    <p className="text-xs text-brand-text-muted">{photo.date}</p>
                   </div>
                 </div>
               ))}
@@ -516,12 +516,12 @@ export default function PortalDemo() {
       )}
 
       {activeTab === "documentacion" && (
-        <section className="mt-8 space-y-5 rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-          <div className="flex items-center gap-2 text-slate-900">
+        <section className="mt-8 space-y-5 rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+          <div className="flex items-center gap-2 text-brand-text">
             <DocumentTextIcon className="h-5 w-5" />
             <h2 className="text-xl font-semibold">Documentacion del proyecto</h2>
           </div>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-brand-text-muted">
             Incluye documentos tecnicos y administrativos que el cliente necesita
             para control de obra, habilitacion y mantenimiento.
           </p>
@@ -531,20 +531,20 @@ export default function PortalDemo() {
             return (
               <div
                 key={category}
-                className="rounded-2xl border border-slate-200 bg-white/70 p-4"
+                className="rounded-2xl border border-brand-border bg-brand-surface/70 p-4"
               >
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-700">
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-brand-text-muted">
                   {category}
                 </h3>
                 <div className="mt-3 space-y-2">
                   {docs.map((doc) => (
                     <div
                       key={doc.id}
-                      className="flex flex-col gap-2 rounded-xl border border-slate-200 bg-slate-50/70 px-3 py-3 sm:flex-row sm:items-center sm:justify-between"
+                      className="flex flex-col gap-2 rounded-xl border border-brand-border bg-brand-bg/70 px-3 py-3 sm:flex-row sm:items-center sm:justify-between"
                     >
                       <div>
-                        <p className="text-sm font-semibold text-slate-900">{doc.title}</p>
-                        <p className="text-xs text-slate-600">
+                        <p className="text-sm font-semibold text-brand-text">{doc.title}</p>
+                        <p className="text-xs text-brand-text-muted">
                           {doc.extension} - Actualizado: {doc.updatedAt}
                         </p>
                       </div>
@@ -558,7 +558,7 @@ export default function PortalDemo() {
                         </span>
                         <button
                           type="button"
-                          className="rounded-full border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700 transition hover:border-orange-300 hover:text-orange-700"
+                          className="rounded-full border border-brand-border px-3 py-1 text-xs font-semibold text-brand-text-muted transition hover:border-brand-copper-soft hover:text-brand-copper"
                         >
                           Descargar
                         </button>
@@ -574,32 +574,32 @@ export default function PortalDemo() {
 
       {activeTab === "home" && (
         <section className="mt-8 space-y-6">
-          <article className="rounded-3xl border border-slate-300 bg-slate-900 p-6 text-white shadow-lg shadow-slate-900/30">
+          <article className="rounded-3xl border border-brand-border bg-brand-navy p-6 text-brand-text-on-dark shadow-lg shadow-brand-navy/30">
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-orange-200">
+                <p className="text-xs font-semibold uppercase tracking-wide text-brand-sand">
                   Mi Home
                 </p>
                 <h2 className="mt-1 text-2xl font-semibold">
                   {demoHomeState.home.name}
                 </h2>
-                <p className="text-sm text-slate-200">
+                <p className="text-sm text-brand-text-on-dark/85">
                   Desde aqui podes controlar luces y climatizacion por ambiente,
                   y revisar consumos y estado general de tu vivienda en tiempo
                   real.
                 </p>
               </div>
               <div className="grid gap-2 text-xs sm:grid-cols-2">
-                <span className="rounded-full bg-white/10 px-3 py-1">
+                <span className="rounded-full bg-brand-surface/10 px-3 py-1">
                   Luces encendidas: {lightsOn}
                 </span>
-                <span className="rounded-full bg-white/10 px-3 py-1">
+                <span className="rounded-full bg-brand-surface/10 px-3 py-1">
                   Aires activos: {acOn}
                 </span>
-                <span className="rounded-full bg-white/10 px-3 py-1">
+                <span className="rounded-full bg-brand-surface/10 px-3 py-1">
                   Potencia instantanea: {consumption.instant.toFixed(0)}W
                 </span>
-                <span className="rounded-full bg-white/10 px-3 py-1">
+                <span className="rounded-full bg-brand-surface/10 px-3 py-1">
                   Consumo diario: {consumption.daily.toFixed(2)} kWh
                 </span>
               </div>
@@ -607,40 +607,40 @@ export default function PortalDemo() {
           </article>
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-2xl border border-slate-300 bg-white/60 p-4 shadow-sm backdrop-blur-sm">
-              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <div className="rounded-2xl border border-brand-border bg-brand-surface/60 p-4 shadow-sm backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-muted">
                 Luces activas
               </p>
-              <p className="mt-1 text-2xl font-semibold text-slate-900">{lightsOn}</p>
+              <p className="mt-1 text-2xl font-semibold text-brand-text">{lightsOn}</p>
             </div>
-            <div className="rounded-2xl border border-slate-300 bg-white/60 p-4 shadow-sm backdrop-blur-sm">
-              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <div className="rounded-2xl border border-brand-border bg-brand-surface/60 p-4 shadow-sm backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-muted">
                 Aires activos
               </p>
-              <p className="mt-1 text-2xl font-semibold text-slate-900">{acOn}</p>
+              <p className="mt-1 text-2xl font-semibold text-brand-text">{acOn}</p>
             </div>
-            <div className="rounded-2xl border border-slate-300 bg-white/60 p-4 shadow-sm backdrop-blur-sm">
-              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <div className="rounded-2xl border border-brand-border bg-brand-surface/60 p-4 shadow-sm backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-muted">
                 Consumo diario
               </p>
-              <p className="mt-1 text-2xl font-semibold text-slate-900">
+              <p className="mt-1 text-2xl font-semibold text-brand-text">
                 {consumption.daily.toFixed(2)} kWh
               </p>
             </div>
-            <div className="rounded-2xl border border-slate-300 bg-white/60 p-4 shadow-sm backdrop-blur-sm">
-              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <div className="rounded-2xl border border-brand-border bg-brand-surface/60 p-4 shadow-sm backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-muted">
                 Proyeccion mensual
               </p>
-              <p className="mt-1 text-2xl font-semibold text-slate-900">
+              <p className="mt-1 text-2xl font-semibold text-brand-text">
                 {consumption.monthly.toFixed(1)} kWh
               </p>
             </div>
           </div>
 
-          <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+          <article className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
             <div className="grid gap-6 lg:grid-cols-2">
               <div className="order-2 lg:order-1">
-                <div className="flex items-center gap-2 text-slate-900">
+                <div className="flex items-center gap-2 text-brand-text">
                   <HomeModernIcon className="h-5 w-5" />
                   <h2 className="text-xl font-semibold">Ambientes y dispositivos</h2>
                 </div>
@@ -648,17 +648,17 @@ export default function PortalDemo() {
                   {roomsWithDevices.map(({ room, devices: roomDevices }) => (
                     <div
                       key={room.id}
-                      className="rounded-2xl border border-slate-200 bg-white/80 p-4"
+                      className="rounded-2xl border border-brand-border bg-brand-surface/80 p-4"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <p className="text-sm font-semibold text-slate-900">{room.name}</p>
-                          <p className="text-xs text-slate-500">
+                          <p className="text-sm font-semibold text-brand-text">{room.name}</p>
+                          <p className="text-xs text-brand-text-muted">
                             {roomDevices.length} dispositivo(s)
                           </p>
                         </div>
                         {room.telemetry ? (
-                          <span className="rounded-full bg-slate-100 px-2 py-1 text-[11px] font-semibold text-slate-700">
+                          <span className="rounded-full bg-brand-bg-alt px-2 py-1 text-[11px] font-semibold text-brand-text-muted">
                             {room.telemetry.temperature_c ?? "-"} C
                           </span>
                         ) : null}
@@ -668,13 +668,13 @@ export default function PortalDemo() {
                         {roomDevices.map((device) => (
                           <div
                             key={device.id}
-                            className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50/70 px-3 py-2"
+                            className="flex items-center justify-between rounded-xl border border-brand-border bg-brand-bg/70 px-3 py-2"
                           >
                             <div>
-                              <p className="text-sm font-semibold text-slate-900">
+                              <p className="text-sm font-semibold text-brand-text">
                                 {device.name}
                               </p>
-                              <p className="text-[11px] uppercase tracking-wide text-slate-500">
+                              <p className="text-[11px] uppercase tracking-wide text-brand-text-muted">
                                 {device.type === "ac" ? "Aire" : "Luz"}
                               </p>
                             </div>
@@ -684,7 +684,7 @@ export default function PortalDemo() {
                               className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
                                 device.is_on
                                   ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
-                                  : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+                                  : "bg-brand-bg-alt text-brand-text-muted hover:bg-brand-border"
                               }`}
                             >
                               {device.is_on ? "Encendido" : "Apagado"}
@@ -697,16 +697,16 @@ export default function PortalDemo() {
                 </div>
               </div>
 
-              <aside className="order-1 flex h-full flex-col rounded-2xl border border-slate-200 bg-white/80 p-4 lg:order-2">
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-700">
+              <aside className="order-1 flex h-full flex-col rounded-2xl border border-brand-border bg-brand-surface/80 p-4 lg:order-2">
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-brand-text-muted">
                   Plano con dispositivos
                 </h3>
-                <p className="mt-1 text-xs text-slate-600">
+                <p className="mt-1 text-xs text-brand-text-muted">
                   Visualizacion general de todos los equipos de la vivienda.
                 </p>
                 <div
                   ref={mapContainerRef}
-                  className="relative mt-3 h-[440px] overflow-hidden rounded-xl border border-slate-200 bg-slate-100 sm:h-[520px] lg:h-auto lg:flex-1"
+                  className="relative mt-3 h-[440px] overflow-hidden rounded-xl border border-brand-border bg-brand-bg-alt sm:h-[520px] lg:h-auto lg:flex-1"
                 >
                   <Image
                     src={demoHomeState.home.plan_asset_url}
@@ -733,7 +733,7 @@ export default function PortalDemo() {
                         <span className="music-wave wave-a" />
                         <span className="music-wave wave-b" />
                         <span
-                          className="music-speaker inline-flex h-7 w-7 items-center justify-center rounded-full bg-amber-500 text-white shadow-md ring-2 ring-white/80"
+                          className="music-speaker inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-copper text-brand-text-on-dark shadow-md ring-2 ring-brand-surface/80"
                           title="Musica reproduciendose"
                         >
                           <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
@@ -761,13 +761,13 @@ export default function PortalDemo() {
                           className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-semibold ring-1 ${
                             device.is_on
                               ? "bg-emerald-100/95 text-emerald-700 ring-emerald-200"
-                              : "bg-slate-100/95 text-slate-700 ring-slate-300"
+                              : "bg-brand-bg-alt/95 text-brand-text-muted ring-brand-border"
                           }`}
                           title={`${roomName} - ${device.name}`}
                         >
                           <span
                             className={`h-1.5 w-1.5 rounded-full ${
-                              device.type === "ac" ? "bg-sky-500" : "bg-amber-500"
+                              device.type === "ac" ? "bg-sky-500" : "bg-brand-copper"
                             }`}
                           />
                           {device.type === "ac" ? "Aire" : "Luz"}
@@ -780,13 +780,13 @@ export default function PortalDemo() {
             </div>
           </article>
 
-          <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+          <article className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="flex items-center gap-2 text-slate-900">
-                <h2 className="text-xl font-semibold">Música en casa</h2>
+              <div className="flex items-center gap-2 text-brand-text">
+                <h2 className="text-xl font-semibold">MÃºsica en casa</h2>
               </div>
-              <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-600">
-                Integración simulada
+              <span className="rounded-full bg-brand-bg-alt px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand-text-muted">
+                IntegraciÃ³n simulada
               </span>
             </div>
 
@@ -794,7 +794,7 @@ export default function PortalDemo() {
               <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
                 <article className="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-4 shadow-sm">
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#1DB954] text-white">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#1DB954] text-brand-text-on-dark">
                       <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
                         <path
                           fill="currentColor"
@@ -803,37 +803,37 @@ export default function PortalDemo() {
                       </svg>
                     </span>
                     <div>
-                      <p className="text-sm font-semibold text-slate-900">Spotify</p>
-                      <p className="text-xs text-slate-600">Reproduciendo ahora</p>
+                      <p className="text-sm font-semibold text-brand-text">Spotify</p>
+                      <p className="text-xs text-brand-text-muted">Reproduciendo ahora</p>
                     </div>
                   </div>
                 </article>
 
-                <article className="rounded-2xl border border-slate-200 bg-white/70 p-4 shadow-sm">
+                <article className="rounded-2xl border border-brand-border bg-brand-surface/70 p-4 shadow-sm">
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#FF0000] text-white">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#FF0000] text-brand-text-on-dark">
                       <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
                         <path fill="currentColor" d="M10 8.5v7l6-3.5-6-3.5ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z" />
                       </svg>
                     </span>
                     <div>
-                      <p className="text-sm font-semibold text-slate-900">YouTube Music</p>
-                      <p className="text-xs text-slate-500">Disponible (inactiva)</p>
+                      <p className="text-sm font-semibold text-brand-text">YouTube Music</p>
+                      <p className="text-xs text-brand-text-muted">Disponible (inactiva)</p>
                     </div>
                   </div>
                 </article>
               </div>
 
-              <article className="rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm">
+              <article className="rounded-2xl border border-brand-border bg-brand-surface/80 p-4 shadow-sm">
                 <div className="flex items-start gap-4">
                   <div className="h-20 w-20 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-300 via-cyan-300 to-sky-500 p-[1px]">
-                    <div className="flex h-full w-full items-center justify-center rounded-2xl bg-slate-900 text-xs font-semibold uppercase tracking-wide text-white">
+                    <div className="flex h-full w-full items-center justify-center rounded-2xl bg-brand-navy text-xs font-semibold uppercase tracking-wide text-brand-text-on-dark">
                       Album
                     </div>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-slate-900">Midnight City Lights</p>
-                    <p className="text-xs text-slate-600">North Avenue</p>
+                    <p className="text-sm font-semibold text-brand-text">Midnight City Lights</p>
+                    <p className="text-xs text-brand-text-muted">North Avenue</p>
                     <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
                       <span className="h-2 w-2 rounded-full bg-emerald-500" />
                       Reproduciendo ahora
@@ -854,7 +854,7 @@ export default function PortalDemo() {
                     <div className="mt-3 flex flex-wrap items-center gap-2">
                       <button
                         type="button"
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-100"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-brand-border bg-brand-surface text-brand-text-muted transition hover:bg-brand-bg-alt"
                         title="Tema anterior"
                       >
                         <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
@@ -864,7 +864,7 @@ export default function PortalDemo() {
                       <button
                         type="button"
                         onClick={() => setIsMusicPlaying((prev) => !prev)}
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-white transition hover:bg-slate-800"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-navy text-brand-text-on-dark transition hover:bg-brand-blue"
                         title={isMusicPlaying ? "Pausar" : "Reproducir"}
                       >
                         {isMusicPlaying ? (
@@ -879,7 +879,7 @@ export default function PortalDemo() {
                       </button>
                       <button
                         type="button"
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-100"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-brand-border bg-brand-surface text-brand-text-muted transition hover:bg-brand-bg-alt"
                         title="Siguiente tema"
                       >
                         <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
@@ -888,7 +888,7 @@ export default function PortalDemo() {
                       </button>
                       <button
                         type="button"
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-100"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-brand-border bg-brand-surface text-brand-text-muted transition hover:bg-brand-bg-alt"
                         title="Buscar tema"
                       >
                         <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
@@ -904,10 +904,10 @@ export default function PortalDemo() {
               </article>
             </div>
 
-            <div className="mt-5 rounded-2xl border border-slate-200 bg-white/70 p-4">
+            <div className="mt-5 rounded-2xl border border-brand-border bg-brand-surface/70 p-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="text-sm font-semibold text-slate-900">
-                  ¿Dónde querés reproducirlo?
+                <p className="text-sm font-semibold text-brand-text">
+                  Â¿DÃ³nde querÃ©s reproducirlo?
                 </p>
                 <div className="flex gap-2">
                   <button
@@ -919,8 +919,8 @@ export default function PortalDemo() {
                     }}
                     className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
                       isMusicIconEditMode
-                        ? "bg-slate-900 text-white"
-                        : "border border-slate-300 bg-white text-slate-700 hover:bg-slate-100"
+                        ? "bg-brand-navy text-brand-text-on-dark"
+                        : "border border-brand-border bg-brand-surface text-brand-text-muted hover:bg-brand-bg-alt"
                     }`}
                   >
                     {isMusicIconEditMode ? "Cancelar ajuste" : "Ubicar simbolos"}
@@ -929,7 +929,7 @@ export default function PortalDemo() {
                     <button
                       type="button"
                       onClick={saveMusicIconPositions}
-                      className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white transition hover:bg-emerald-500"
+                      className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-brand-text-on-dark transition hover:bg-emerald-500"
                     >
                       Guardar simbolos
                     </button>
@@ -937,7 +937,7 @@ export default function PortalDemo() {
                 </div>
               </div>
               {isMusicIconEditMode ? (
-                <p className="mt-2 text-xs font-semibold text-orange-700">
+                <p className="mt-2 text-xs font-semibold text-brand-copper">
                   Ajuste activo: arrastra los simbolos de musica en el plano.
                 </p>
               ) : null}
@@ -952,8 +952,8 @@ export default function PortalDemo() {
                     onClick={() => toggleMusicRoom(room.id)}
                     className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
                       selectedMusicRoomIds.includes(room.id)
-                        ? "bg-slate-900 text-white"
-                        : "border border-slate-300 bg-white text-slate-700 hover:border-emerald-300 hover:text-emerald-700"
+                        ? "bg-brand-navy text-brand-text-on-dark"
+                        : "border border-brand-border bg-brand-surface text-brand-text-muted hover:border-emerald-300 hover:text-emerald-700"
                     }`}
                   >
                     {room.name}
@@ -963,8 +963,8 @@ export default function PortalDemo() {
             </div>
           </article>
 
-          <article className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-slate-900">
+          <article className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+            <div className="flex items-center gap-2 text-brand-text">
               <WrenchScrewdriverIcon className="h-5 w-5" />
               <h2 className="text-xl font-semibold">Rutinas configuradas</h2>
             </div>
@@ -972,23 +972,23 @@ export default function PortalDemo() {
               {(demoHomeState.routines ?? []).map((routine) => (
                 <div
                   key={routine.id}
-                  className="rounded-2xl border border-slate-200 bg-white/80 p-4"
+                  className="rounded-2xl border border-brand-border bg-brand-surface/80 p-4"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <p className="text-sm font-semibold text-slate-900">{routine.name}</p>
+                    <p className="text-sm font-semibold text-brand-text">{routine.name}</p>
                     <span
                       className={`rounded-full px-2 py-1 text-[11px] font-semibold ${
                         routine.status === "active"
                           ? "bg-emerald-100 text-emerald-700"
-                          : "bg-slate-200 text-slate-700"
+                          : "bg-brand-bg-alt text-brand-text-muted"
                       }`}
                     >
                       {routine.status === "active" ? "Activa" : "Pausada"}
                     </span>
                   </div>
-                  <p className="mt-2 text-xs text-slate-600">{routine.description}</p>
+                  <p className="mt-2 text-xs text-brand-text-muted">{routine.description}</p>
                   {routine.cadence ? (
-                    <p className="mt-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                    <p className="mt-2 text-[11px] font-semibold uppercase tracking-wide text-brand-text-muted">
                       Cadencia: {routine.cadence}
                     </p>
                   ) : null}

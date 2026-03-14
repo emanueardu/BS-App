@@ -1,4 +1,4 @@
-import { useAuth } from "@/context/AuthContext";
+﻿import { useAuth } from "@/context/AuthContext";
 import Head from "next/head";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
@@ -18,7 +18,7 @@ export default function Registro() {
     setError(null);
 
     if (password !== confirm) {
-      setError("Las contraseñas no coinciden.");
+      setError("Las contraseÃ±as no coinciden.");
       return;
     }
 
@@ -34,7 +34,7 @@ export default function Registro() {
     } catch (err) {
       const errMsg =
         (err as Error)?.message ??
-        "No pudimos registrar la cuenta. Intenta más tarde.";
+        "No pudimos registrar la cuenta. Intenta mÃ¡s tarde.";
       setError(errMsg);
     } finally {
       setSubmitting(false);
@@ -44,20 +44,20 @@ export default function Registro() {
   return (
     <>
       <Head>
-        <title>Registro | BS</title>
+        <title>Registro | SUR INGENIERÍA</title>
       </Head>
 
-      <div className="mx-auto max-w-xl rounded-3xl bg-white/60 p-8 shadow-xl shadow-orange-100 backdrop-blur-sm">
-        <h1 className="text-3xl font-semibold text-slate-900">
+      <div className="mx-auto max-w-xl rounded-3xl bg-brand-surface/60 p-8 shadow-xl shadow-brand-sand backdrop-blur-sm">
+        <h1 className="text-3xl font-semibold text-brand-text">
           Crear cuenta de cliente
         </h1>
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-brand-text-muted">
           Registra tu correo para seguir tus obras y descargar documentos.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-slate-800">
+            <label className="block text-sm font-semibold text-brand-text">
               Correo
             </label>
             <input
@@ -65,39 +65,39 @@ export default function Registro() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="mt-2 w-full rounded-lg border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+              className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-3 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
               placeholder="cliente@correo.com"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-800">
-              Contraseña
+            <label className="block text-sm font-semibold text-brand-text">
+              ContraseÃ±a
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="mt-2 w-full rounded-lg border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
-              placeholder="Mínimo 6 caracteres"
+              className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-3 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
+              placeholder="MÃ­nimo 6 caracteres"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-800">
-              Confirmar contraseña
+            <label className="block text-sm font-semibold text-brand-text">
+              Confirmar contraseÃ±a
             </label>
             <input
               type="password"
               value={confirm}
               onChange={(e) => setConfirm(e.target.value)}
               required
-              className="mt-2 w-full rounded-lg border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
-              placeholder="Repite tu contraseña"
+              className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-3 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
+              placeholder="Repite tu contraseÃ±a"
             />
           </div>
 
           {error && (
-            <p className="rounded-lg bg-orange-50 px-3 py-2 text-sm text-orange-700">
+            <p className="rounded-lg bg-brand-bg-alt px-3 py-2 text-sm text-brand-copper">
               {error}
             </p>
           )}
@@ -110,15 +110,15 @@ export default function Registro() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-full bg-orange-600 px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-orange-500 disabled:cursor-not-allowed disabled:bg-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+            className="w-full rounded-full bg-brand-copper px-4 py-3 text-sm font-semibold text-brand-text-on-dark transition hover:-translate-y-0.5 hover:bg-brand-copper disabled:cursor-not-allowed disabled:bg-brand-border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
           >
             {submitting ? "Creando..." : "Crear cuenta"}
           </button>
         </form>
 
-        <p className="mt-4 text-sm text-slate-700">
-          ¿Ya tienes cuenta?{" "}
-          <Link href="/login" className="font-semibold text-orange-700">
+        <p className="mt-4 text-sm text-brand-text-muted">
+          Â¿Ya tienes cuenta?{" "}
+          <Link href="/login" className="font-semibold text-brand-copper">
             Ingresar
           </Link>
         </p>

@@ -1,4 +1,4 @@
-import Head from "next/head";
+﻿import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { services, Service } from "@/data/services";
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
@@ -16,7 +16,7 @@ export default function ServicePage({ service }: Props) {
     return (
       <>
         <Head>
-          <title>{service.title} | BS</title>
+          <title>{service.title} | SUR INGENIERÍA</title>
           <meta
             name="description"
             content={detailConfig.metaDescription ?? service.description}
@@ -30,10 +30,10 @@ export default function ServicePage({ service }: Props) {
   return (
     <>
       <Head>
-        <title>{service.title} | BS</title>
+        <title>{service.title} | SUR INGENIERÍA</title>
         <meta
           name="description"
-          content={`Más información sobre ${service.title}: pronto estará disponible con detalles personalizados.`}
+          content={`MÃ¡s informaciÃ³n sobre ${service.title}: pronto estarÃ¡ disponible con detalles personalizados.`}
         />
       </Head>
       <ServicePageTemplate service={service} />

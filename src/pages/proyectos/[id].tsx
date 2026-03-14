@@ -1,11 +1,11 @@
-import Head from "next/head";
+﻿import Head from "next/head";
 import Link from "next/link";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { projects, SHOW_PROJECTS_SECTION } from "@/data/site";
 import { openVoltiChat } from "@/utils/volti";
 
-const gallery = ["Vista general", "Tablero", "Domotica", "Documentacion"];
+const gallery = ["Vista general", "Tablero", "Domótica", "Documentacion"];
 
 export default function ProyectoDetalle() {
   const router = useRouter();
@@ -15,22 +15,22 @@ export default function ProyectoDetalle() {
   return (
     <>
       <Head>
-        <title>{project.title} | BS</title>
+        <title>{project.title} | SUR INGENIERÍA</title>
       </Head>
 
-      <section className="rounded-3xl bg-white/60 p-8 shadow-sm shadow-orange-100 backdrop-blur-sm">
-        <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+      <section className="rounded-3xl bg-brand-surface/60 p-8 shadow-sm shadow-brand-sand backdrop-blur-sm">
+        <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
           {project.category}
         </p>
-        <h1 className="text-3xl font-semibold text-slate-900">
+        <h1 className="text-3xl font-semibold text-brand-text">
           {project.title}
         </h1>
-        <p className="text-sm text-slate-600">{project.summary}</p>
+        <p className="text-sm text-brand-text-muted">{project.summary}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-slate-300/70 bg-white/50 px-2 py-1 text-xs text-slate-700 backdrop-blur-sm"
+              className="rounded-full border border-brand-border/70 bg-brand-surface/50 px-2 py-1 text-xs text-brand-text-muted backdrop-blur-sm"
             >
               {tag}
             </span>
@@ -39,13 +39,13 @@ export default function ProyectoDetalle() {
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
             href="/contacto"
-            className="rounded-full bg-orange-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+            className="rounded-full bg-brand-copper px-5 py-2 text-sm font-semibold text-brand-text-on-dark transition hover:bg-brand-copper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
           >
             Pedir relevamiento
           </Link>
           <button
             onClick={openVoltiChat}
-            className="rounded-full border border-slate-900 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+            className="rounded-full border border-brand-navy px-5 py-2 text-sm font-semibold text-brand-text transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
           >
             Hablar con Volti
           </button>
@@ -53,33 +53,33 @@ export default function ProyectoDetalle() {
       </section>
 
       <section className="mt-8 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-          <h2 className="text-xl font-semibold text-slate-900">Alcance</h2>
-          <ul className="mt-3 space-y-2 text-sm text-slate-700">
-            <li>• Relevamiento y diseño aprobado por el cliente.</li>
-            <li>• Ejecución con materiales certificados.</li>
-            <li>• Checklist y evidencias cargadas en portal.</li>
+        <div className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+          <h2 className="text-xl font-semibold text-brand-text">Alcance</h2>
+          <ul className="mt-3 space-y-2 text-sm text-brand-text-muted">
+            <li>â€¢ Relevamiento y diseÃ±o aprobado por el cliente.</li>
+            <li>â€¢ EjecuciÃ³n con materiales certificados.</li>
+            <li>â€¢ Checklist y evidencias cargadas en portal.</li>
           </ul>
         </div>
-        <div className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-          <h2 className="text-xl font-semibold text-slate-900">Entregables</h2>
-          <ul className="mt-3 space-y-2 text-sm text-slate-700">
-            <li>• Planos y esquemas as-built.</li>
-            <li>• Manual de uso y accesos.</li>
-            <li>• Certificados / mediciones (si aplica).</li>
+        <div className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+          <h2 className="text-xl font-semibold text-brand-text">Entregables</h2>
+          <ul className="mt-3 space-y-2 text-sm text-brand-text-muted">
+            <li>â€¢ Planos y esquemas as-built.</li>
+            <li>â€¢ Manual de uso y accesos.</li>
+            <li>â€¢ Certificados / mediciones (si aplica).</li>
           </ul>
         </div>
       </section>
 
-      <section className="mt-8 rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-        <h3 className="text-lg font-semibold text-slate-900">
-          Galería (placeholder)
+      <section className="mt-8 rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+        <h3 className="text-lg font-semibold text-brand-text">
+          GalerÃ­a (placeholder)
         </h3>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
           {gallery.map((item) => (
             <div
               key={item}
-              className="rounded-xl border border-dashed border-slate-300 bg-white/50 px-3 py-6 text-center text-sm text-slate-600 backdrop-blur-sm"
+              className="rounded-xl border border-dashed border-brand-border bg-brand-surface/50 px-3 py-6 text-center text-sm text-brand-text-muted backdrop-blur-sm"
             >
               {item}
             </div>

@@ -1,4 +1,4 @@
-export type PlanAsset = {
+﻿export type PlanAsset = {
   url: string;
   page?: number;
 };

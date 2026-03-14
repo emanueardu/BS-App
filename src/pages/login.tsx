@@ -1,4 +1,4 @@
-import { useAuth } from "@/context/AuthContext";
+﻿import { useAuth } from "@/context/AuthContext";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -36,19 +36,19 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Ingresar | BS</title>
+        <title>Ingresar | SUR INGENIERÍA</title>
       </Head>
       <div className="mx-auto max-w-2xl space-y-4">
-        <div className="rounded-3xl bg-white/60 p-8 shadow-xl shadow-orange-100 backdrop-blur-sm">
-          <h1 className="text-3xl font-semibold text-slate-900">Ingresar</h1>
-          <p className="mt-2 text-sm text-slate-600">
+        <div className="rounded-3xl bg-brand-surface/60 p-8 shadow-xl shadow-brand-sand backdrop-blur-sm">
+          <h1 className="text-3xl font-semibold text-brand-text">Ingresar</h1>
+          <p className="mt-2 text-sm text-brand-text-muted">
             Si ya tienes cuenta, desde aqui accedes a tu portal con avance de
             obra, documentacion y modulo Mi Home.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-800">
+              <label className="block text-sm font-semibold text-brand-text">
                 Correo
               </label>
               <input
@@ -56,12 +56,12 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="mt-2 w-full rounded-lg border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+                className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-3 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
                 placeholder="cliente@correo.com"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-800">
+              <label className="block text-sm font-semibold text-brand-text">
                 Contrasena
               </label>
               <input
@@ -69,35 +69,35 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="mt-2 w-full rounded-lg border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+                className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-3 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
                 placeholder="********"
               />
             </div>
             {error && (
-              <p className="rounded-lg bg-orange-50 px-3 py-2 text-sm text-orange-700">
+              <p className="rounded-lg bg-brand-bg-alt px-3 py-2 text-sm text-brand-copper">
                 {error}
               </p>
             )}
             <button
               type="submit"
               disabled={submitting}
-              className="w-full rounded-full bg-orange-600 px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-orange-500 disabled:cursor-not-allowed disabled:bg-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+              className="w-full rounded-full bg-brand-copper px-4 py-3 text-sm font-semibold text-brand-text-on-dark transition hover:-translate-y-0.5 hover:bg-brand-copper disabled:cursor-not-allowed disabled:bg-brand-border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
             >
               {submitting ? "Ingresando..." : "Ingresar"}
             </button>
           </form>
         </div>
 
-        <div className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-          <p className="text-sm text-slate-700">
+        <div className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+          <p className="text-sm text-brand-text-muted">
             Aun no tienes cuenta cliente?
-            <Link href="/registro" className="ml-1 font-semibold text-orange-700">
+            <Link href="/registro" className="ml-1 font-semibold text-brand-copper">
               Crear cuenta
             </Link>
           </p>
-          <p className="mt-2 text-sm text-slate-700">
+          <p className="mt-2 text-sm text-brand-text-muted">
             Quieres conocer el flujo antes de registrarte?
-            <Link href="/portal" className="ml-1 font-semibold text-slate-900">
+            <Link href="/portal" className="ml-1 font-semibold text-brand-text">
               Ver Demo Portal
             </Link>
           </p>

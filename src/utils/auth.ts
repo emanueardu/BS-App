@@ -1,4 +1,4 @@
-import { User } from "@supabase/supabase-js";
+﻿import { User } from "@supabase/supabase-js";
 
 const parseInternalEmails = () =>
   (process.env.NEXT_PUBLIC_INTERNAL_EMAILS ?? "")

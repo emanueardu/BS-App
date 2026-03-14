@@ -1,4 +1,4 @@
-import {
+﻿import {
   ArrowBigRight,
   BadgeCheck,
   ClipboardList,
@@ -42,7 +42,7 @@ export type Step = { title: string; detail: string; icon: IconName };
 export type Project = {
   id: string;
   title: string;
-  category: "Electrica" | "Domotica" | "Seguridad" | "Automatizacion";
+  category: "Electrica" | "Domótica" | "Seguridad" | "Automatizacion";
   summary: string;
   tags: string[];
 };
@@ -80,8 +80,8 @@ export const services: Service[] = [
     icon: "Zap",
   },
   {
-    id: "pre-domotica",
-    title: "Preparacion domotica",
+    id: "pre-domótica",
+    title: "Preparacion domótica",
     description:
       "Infraestructura lista para IoT, sensores y escenarios sin rehacer obra.",
     for: ["Obras en obra gruesa", "Viviendas en reforma", "Oficinas"],
@@ -99,8 +99,8 @@ export const services: Service[] = [
     icon: "Home",
   },
   {
-    id: "domotica",
-    title: "Domotica integral",
+    id: "domótica",
+    title: "Domótica integral",
     description:
       "Escenas, control de iluminacion, clima y accesos con monitoreo en tiempo real.",
     for: ["Viviendas premium", "Oficinas boutique", "Locales de alto estandar"],
@@ -112,7 +112,7 @@ export const services: Service[] = [
     excludes: ["Hardware no soportado", "Sistemas sin licencias"],
     deliverables: [
       "Manual de uso y accesos",
-      "Planos as-built de domotica",
+      "Planos as-built de domótica",
       "Registro de configuraciones",
     ],
     icon: "Lightbulb",
@@ -167,10 +167,10 @@ export const projects: Project[] = [
   {
     id: "p1",
     title: "Vivienda inteligente en Nordelta",
-    category: "Domotica",
+    category: "Domótica",
     summary:
       "Iluminacion por escenas, clima centralizado y tablero inteligente con monitoreo.",
-    tags: ["Domotica", "Residencial", "Escenas"],
+    tags: ["Domótica", "Residencial", "Escenas"],
   },
   {
     id: "p2",
@@ -185,7 +185,7 @@ export const projects: Project[] = [
     title: "Locales boutique con control de accesos",
     category: "Seguridad",
     summary:
-      "Control de accesos, CCTV y domotica de ambiente con portal de seguimiento.",
+      "Control de accesos, CCTV y domótica de ambiente con portal de seguimiento.",
     tags: ["Seguridad", "Accesos", "Portal"],
   },
   {

@@ -1,4 +1,4 @@
-export type HeroActionVariant = "primary" | "secondary";
+﻿export type HeroActionVariant = "primary" | "secondary";
 
 export type HeroAction = {
   label: string;

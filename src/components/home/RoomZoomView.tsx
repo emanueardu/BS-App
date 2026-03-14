@@ -1,4 +1,4 @@
-import { DeviceMarker } from "@/components/home/DeviceMarker";
+﻿import { DeviceMarker } from "@/components/home/DeviceMarker";
 import { Device, PlanImage, Room } from "@/types/home";
 import { getRoomBBox, getRoomStatus, toSvgPoints } from "@/utils/homeGeometry";
 import { Lightbulb, Snowflake, XCircle } from "lucide-react";
@@ -26,7 +26,7 @@ export const RoomZoomView = ({
 }: Props) => {
   if (!room) {
     return (
-      <div className="rounded-3xl border border-dashed border-slate-300 bg-white/80 p-6 text-sm text-slate-700">
+      <div className="rounded-3xl border border-dashed border-brand-border bg-brand-surface/80 p-6 text-sm text-brand-text-muted">
         Selecciona un ambiente en el plano para ver sus dispositivos.
       </div>
     );
@@ -52,15 +52,15 @@ export const RoomZoomView = ({
   const { lightsOn, acOn } = getRoomStatus(room.id, devices);
 
   return (
-    <div className="rounded-3xl border border-slate-200/70 bg-white/80 p-6 shadow-xl shadow-emerald-50 backdrop-blur">
+    <div className="rounded-3xl border border-brand-border/70 bg-brand-surface/80 p-6 shadow-xl shadow-emerald-50 backdrop-blur">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
             Ambiente
           </p>
           <div className="flex items-center gap-2">
-            <h3 className="text-2xl font-semibold text-slate-900">{room.name}</h3>
-            <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-slate-700">
+            <h3 className="text-2xl font-semibold text-brand-text">{room.name}</h3>
+            <span className="rounded-full bg-brand-bg-alt px-3 py-1 text-[11px] font-semibold text-brand-text-muted">
               {roomDevices.length} dispositivos
             </span>
           </div>
@@ -74,21 +74,21 @@ export const RoomZoomView = ({
               {acOn ? "Aires ON" : "Aires OFF"}
             </span>
             {room.telemetry?.temperature_c && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-3 py-1 text-orange-700 ring-1 ring-orange-100">
+              <span className="inline-flex items-center gap-1 rounded-full bg-brand-bg-alt px-3 py-1 text-brand-copper ring-1 ring-brand-sand">
                 {room.telemetry.temperature_c.toFixed(1)}
                 {"\u00b0"}C
               </span>
             )}
             {editMode && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-slate-900/10 px-3 py-1 text-[11px] font-semibold text-slate-800 ring-1 ring-slate-200">
-                Modo edición
+              <span className="inline-flex items-center gap-1 rounded-full bg-brand-navy/10 px-3 py-1 text-[11px] font-semibold text-brand-text ring-1 ring-brand-border">
+                Modo ediciÃ³n
               </span>
             )}
           </div>
         </div>
         <button
           onClick={onClose}
-          className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
+          className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-4 py-2 text-xs font-semibold text-brand-text-on-dark transition hover:-translate-y-0.5 hover:bg-brand-blue"
         >
           <XCircle className="h-4 w-4" />
           Salir del zoom
@@ -96,7 +96,7 @@ export const RoomZoomView = ({
       </div>
 
       <div
-        className="mt-4 relative w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-950/80"
+        className="mt-4 relative w-full overflow-hidden rounded-2xl border border-brand-border bg-brand-navy/80"
         style={{ aspectRatio }}
       >
         {planImage && (

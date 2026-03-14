@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Service } from "@/data/services";
 import {
   HeroActionVariant,
@@ -12,20 +12,20 @@ type Props = {
 };
 
 const sectionClass =
-  "rounded-3xl border border-slate-200 bg-white/70 p-8 shadow-sm backdrop-blur-sm";
+  "rounded-3xl border border-brand-border bg-brand-surface/70 p-8 shadow-sm backdrop-blur-sm";
 
 const actionBaseClasses =
-  "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200";
+  "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand";
 
 const primaryActionClasses =
-  " bg-orange-600 text-white hover:bg-orange-500 focus-visible:outline-white";
+  " bg-brand-copper text-brand-text-on-dark hover:bg-brand-copper focus-visible:outline-white";
 const secondaryActionClasses =
-  " border border-white/70 text-white hover:bg-white/10";
+  " border border-white/70 text-brand-text-on-dark hover:bg-brand-surface/10";
 
 const finalPrimaryClasses =
-  " bg-orange-600 text-white hover:bg-orange-500 focus-visible:outline-white";
+  " bg-brand-copper text-brand-text-on-dark hover:bg-brand-copper focus-visible:outline-white";
 const finalSecondaryClasses =
-  " border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white focus-visible:outline-slate-900";
+  " border border-brand-navy text-brand-text hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline-brand-navy";
 
 const defaultGalleryStyle = {
   backgroundImage:
@@ -42,7 +42,7 @@ function getActionClass(variant: HeroActionVariant, isFinal = false) {
 function renderSectionContent(section: ServiceDetailSection) {
   if (section.type === "text") {
     return (
-      <p className="mt-3 text-sm text-slate-600">
+      <p className="mt-3 text-sm text-brand-text-muted">
         {section.copy}
       </p>
     );
@@ -52,13 +52,13 @@ function renderSectionContent(section: ServiceDetailSection) {
     return (
       <>
         {section.copy && (
-          <p className="mt-3 text-sm text-slate-600">{section.copy}</p>
+          <p className="mt-3 text-sm text-brand-text-muted">{section.copy}</p>
         )}
-        <ul className="mt-4 grid gap-2 text-sm text-slate-600 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-4 grid gap-2 text-sm text-brand-text-muted sm:grid-cols-2 lg:grid-cols-3">
           {section.bullets.map((bullet) => (
             <li key={bullet} className="flex items-start gap-2">
-              <span aria-hidden className="text-orange-500">
-                •
+              <span aria-hidden className="text-brand-copper">
+                â€¢
               </span>
               <span>{bullet}</span>
             </li>
@@ -71,9 +71,9 @@ function renderSectionContent(section: ServiceDetailSection) {
   return (
     <>
       {section.copy && (
-        <p className="text-sm text-slate-600">{section.copy}</p>
+        <p className="text-sm text-brand-text-muted">{section.copy}</p>
       )}
-      <div className="mt-4 space-y-3 text-sm text-slate-600">
+      <div className="mt-4 space-y-3 text-sm text-brand-text-muted">
         {section.steps.map((step) => (
           <p key={step}>{step}</p>
         ))}
@@ -94,18 +94,18 @@ export function ServiceDetailLayout({ service, config }: Props) {
   return (
     <div className="space-y-12 px-6 py-10 sm:px-10 lg:px-16">
       <section
-        className="relative overflow-hidden rounded-3xl bg-slate-900/90 p-8 text-white shadow-lg backdrop-blur-sm"
+        className="relative overflow-hidden rounded-3xl bg-brand-navy/90 p-8 text-brand-text-on-dark shadow-lg backdrop-blur-sm"
         style={heroBackgroundStyle}
       >
         <div className="relative z-10">
-          <p className="text-sm font-semibold uppercase tracking-wide text-orange-200">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-sand">
             Servicios
           </p>
           <h1 className="mt-4 text-3xl font-semibold">{service.title}</h1>
           {service.subtitle && (
-            <p className="mt-2 text-base text-slate-200">{service.subtitle}</p>
+            <p className="mt-2 text-base text-brand-text-on-dark/85">{service.subtitle}</p>
           )}
-          <p className="mt-4 text-sm text-slate-200">{config.heroDescription}</p>
+          <p className="mt-4 text-sm text-brand-text-on-dark/85">{config.heroDescription}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             {config.heroActions.map((action) => (
               <Link
@@ -121,16 +121,16 @@ export function ServiceDetailLayout({ service, config }: Props) {
             ))}
           </div>
         </div>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/70 to-slate-900/90" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-brand-navy/45 via-brand-blue/70 to-brand-navy/90" />
       </section>
 
       {config.sections.map((section) => (
         <section key={section.title} className={sectionClass}>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className="text-xl font-semibold text-brand-text">
             {section.title}
           </h2>
           {section.note && (
-            <p className="mt-3 text-sm italic text-slate-500">{section.note}</p>
+            <p className="mt-3 text-sm italic text-brand-text-muted">{section.note}</p>
           )}
           {renderSectionContent(section)}
         </section>
@@ -138,15 +138,15 @@ export function ServiceDetailLayout({ service, config }: Props) {
 
       {config.galleryItems.length > 0 && (
         <section className={sectionClass}>
-          <h2 className="text-xl font-semibold text-slate-900">Galería</h2>
+          <h2 className="text-xl font-semibold text-brand-text">GalerÃ­a</h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             {config.galleryItems.map((item) => {
               const hasImage = Boolean(item.imageSrc);
               return (
                 <div
                   key={item.title}
-                  className={`flex h-44 flex-col items-end justify-end rounded-2xl border border-dashed border-slate-300 bg-gradient-to-br from-slate-100 to-slate-200 p-4 text-xs font-semibold uppercase tracking-wide ${
-                    hasImage ? "text-white" : "text-slate-600"
+                  className={`flex h-44 flex-col items-end justify-end rounded-2xl border border-dashed border-brand-border bg-gradient-to-br from-brand-bg-alt to-brand-bg p-4 text-xs font-semibold uppercase tracking-wide ${
+                    hasImage ? "text-brand-text-on-dark" : "text-brand-text-muted"
                   }`}
                   style={
                     hasImage
@@ -167,10 +167,10 @@ export function ServiceDetailLayout({ service, config }: Props) {
       )}
 
       <section className={sectionClass}>
-        <h2 className="text-xl font-semibold text-slate-900">
+        <h2 className="text-xl font-semibold text-brand-text">
           {config.finalCta.title}
         </h2>
-        <p className="mt-3 text-sm text-slate-600">{config.finalCta.text}</p>
+        <p className="mt-3 text-sm text-brand-text-muted">{config.finalCta.text}</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href={config.finalCta.primary.href}
@@ -192,7 +192,7 @@ export function ServiceDetailLayout({ service, config }: Props) {
           </Link>
         </div>
         {config.finalCta.footnote && (
-          <p className="mt-3 text-xs italic text-slate-500">
+          <p className="mt-3 text-xs italic text-brand-text-muted">
             {config.finalCta.footnote}
           </p>
         )}

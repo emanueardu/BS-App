@@ -1,4 +1,4 @@
-import Head from "next/head";
+﻿import Head from "next/head";
 import Link from "next/link";
 import { useCallback } from "react";
 import { services } from "@/data/services";
@@ -17,23 +17,23 @@ export default function Servicios() {
   return (
     <>
       <Head>
-        <title>Servicios | BS</title>
+        <title>Servicios | SUR INGENIERÍA</title>
         <meta
           name="description"
-          content="Servicios eléctricos, domóticos y de seguridad con seguimiento premium."
+          content="Servicios elÃ©ctricos, domÃ³ticos y de seguridad con seguimiento premium."
         />
       </Head>
 
-      <section className="space-y-10 rounded-3xl bg-white/60 backdrop-blur-sm p-8 shadow-sm shadow-orange-100">
+      <section className="space-y-10 rounded-3xl bg-brand-surface/60 backdrop-blur-sm p-8 shadow-sm shadow-brand-sand">
         <div className="space-y-3 max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
             Servicios
           </p>
-          <h1 className="text-3xl font-semibold text-slate-900">
-            Instalaciones eléctricas, domótica y sistemas inteligentes a medida.
+          <h1 className="text-3xl font-semibold text-brand-text">
+            Instalaciones elÃ©ctricas, domÃ³tica y sistemas inteligentes a medida.
           </h1>
-          <p className="text-base text-slate-700">
-            Ejecutamos cada etapa con documentación actualizada, materiales certificados y seguimiento digital para
+          <p className="text-base text-brand-text-muted">
+            Ejecutamos cada etapa con documentaciÃ³n actualizada, materiales certificados y seguimiento digital para
             que tengas visibilidad completa del avance.
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function Servicios() {
           {services.map((service) => (
             <article
               key={service.id}
-            className="flex flex-col overflow-hidden rounded-3xl border border-white/30 bg-slate-900/80 text-white shadow-lg transition hover:-translate-y-1 hover:shadow-xl backdrop-blur-sm"
+            className="flex flex-col overflow-hidden rounded-3xl border border-white/30 bg-brand-navy/80 text-brand-text-on-dark shadow-lg transition hover:-translate-y-1 hover:shadow-xl backdrop-blur-sm"
             >
               <div
                 className="relative h-56 w-full transition duration-300"
@@ -53,7 +53,7 @@ export default function Servicios() {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col justify-between p-5">
-                  <p className="max-w-xs text-xs font-semibold uppercase tracking-widest text-orange-200">
+                  <p className="max-w-xs text-xs font-semibold uppercase tracking-widest text-brand-sand">
                     {service.subtitle}
                   </p>
                   <h2 className="text-2xl font-semibold leading-tight">{service.title}</h2>
@@ -63,10 +63,10 @@ export default function Servicios() {
                 <button
                   type="button"
                   onClick={() => onCardClick(service.id)}
-                  aria-label={`Ver más sobre ${service.title}`}
-                  className="rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+                  aria-label={`Ver mÃ¡s sobre ${service.title}`}
+                  className="rounded-full bg-brand-surface/80 px-4 py-2 text-sm font-semibold text-brand-text transition hover:bg-brand-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
                 >
-                  Ver más
+                  Ver mÃ¡s
                 </button>
               </div>
             </article>
@@ -78,38 +78,38 @@ export default function Servicios() {
             <article
               key={service.id}
               id={service.id}
-            className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm"
+            className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm"
             >
               <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                 <div className="space-y-2">
-                  <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
                     {service.subtitle}
                   </p>
-                  <h2 className="text-2xl font-semibold text-slate-900">{service.title}</h2>
-                  <p className="text-base text-slate-600">{service.description}</p>
+                  <h2 className="text-2xl font-semibold text-brand-text">{service.title}</h2>
+                  <p className="text-base text-brand-text-muted">{service.description}</p>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href="/contacto"
                     aria-label={`Consultar por ${service.title}`}
-                    className="inline-flex items-center justify-center rounded-full border border-slate-900 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+                    className="inline-flex items-center justify-center rounded-full border border-brand-navy px-5 py-3 text-sm font-semibold text-brand-text transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
                   >
                     Consultar
                   </Link>
                   <Link
                     href={`/servicios/${service.slug}`}
-                    aria-label={`Ver más detalles de ${service.title}`}
-                    className="inline-flex items-center justify-center rounded-full bg-orange-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+                    aria-label={`Ver mÃ¡s detalles de ${service.title}`}
+                    className="inline-flex items-center justify-center rounded-full bg-brand-copper px-5 py-3 text-sm font-semibold text-brand-text-on-dark transition hover:bg-brand-copper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
                   >
-                    Ver más
+                    Ver mÃ¡s
                   </Link>
                 </div>
               </div>
-              <ul className="mt-4 grid gap-2 text-sm text-slate-600 sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="mt-4 grid gap-2 text-sm text-brand-text-muted sm:grid-cols-2 lg:grid-cols-3">
                 {service.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-2">
-                    <span aria-hidden className="text-orange-500">
-                      •
+                    <span aria-hidden className="text-brand-copper">
+                      â€¢
                     </span>
                     <span>{bullet}</span>
                   </li>

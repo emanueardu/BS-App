@@ -1,4 +1,4 @@
-export type Service = {
+﻿export type Service = {
   id: string;
   slug: string;
   title: string;
@@ -13,83 +13,83 @@ export const services: Service[] = [
   {
     id: "instalaciones-electricas",
     slug: "instalaciones-electricas",
-    title: "Instalaciones eléctricas",
+    title: "Instalaciones elÃ©ctricas",
     subtitle: "Instalaciones nuevas y reformas seguras, prolijas y normalizadas.",
     description:
-      "Ejecutamos instalaciones completas con tableros certificados, canalizaciones ordenadas y pruebas de puesta en marcha para que todo funcione desde el primer día.",
+      "Ejecutamos instalaciones completas con tableros certificados, canalizaciones ordenadas y pruebas de puesta en marcha para que todo funcione desde el primer dÃ­a.",
     bullets: [
       "Proyecto ejecutivo con planos unifilares y cuadro de cargas",
       "Montaje con cableado certificado, protecciones selectivas y etiquetado claro",
-      "Verificación final con mediciones, pruebas de puesta en marcha y registro fotográfico",
+      "VerificaciÃ³n final con mediciones, pruebas de puesta en marcha y registro fotogrÃ¡fico",
     ],
     imageSrc: "/images/services/instalaciones-electricas.jpg",
   },
   {
     id: "planos-y-proyectos",
     slug: "planos-y-proyectos",
-    title: "Planos y proyectos eléctricos",
-    subtitle: "Diseño eléctrico profesional para viviendas nuevas y reformas.",
+    title: "Planos y proyectos elÃ©ctricos",
+    subtitle: "DiseÃ±o elÃ©ctrico profesional para viviendas nuevas y reformas.",
     description:
-      "Diseñamos memoria de cálculo, planimetría y especificaciones de materiales para que tu obra avance sin dudas ni retrabajos.",
+      "DiseÃ±amos memoria de cÃ¡lculo, planimetrÃ­a y especificaciones de materiales para que tu obra avance sin dudas ni retrabajos.",
     bullets: [
-      "Diagrama eléctrico y marcos de control detallados",
-      "Coordinación con arquitectos y equipo de obra para evitar interferencias",
-      "Documentación lista para permisos, distribuidora y aprobación AEA/IRAM",
+      "Diagrama elÃ©ctrico y marcos de control detallados",
+      "CoordinaciÃ³n con arquitectos y equipo de obra para evitar interferencias",
+      "DocumentaciÃ³n lista para permisos, distribuidora y aprobaciÃ³n AEA/IRAM",
     ],
     imageSrc: "/images/services/planos-y-proyectos.jpg",
   },
   {
     id: "habilitacion",
     slug: "habilitacion",
-    title: "Habilitación de servicios eléctricos",
-    subtitle: "Asesoramiento técnico y adecuación para altas y regularizaciones.",
+    title: "HabilitaciÃ³n de servicios elÃ©ctricos",
+    subtitle: "Asesoramiento tÃ©cnico y adecuaciÃ³n para altas y regularizaciones.",
     description:
-      "Confirmamos que tu instalación cumple la normativa, preparamos los expedientes y acompañamos la habilitación ante distribuidoras.",
+      "Confirmamos que tu instalaciÃ³n cumple la normativa, preparamos los expedientes y acompaÃ±amos la habilitaciÃ³n ante distribuidoras.",
     bullets: [
       "Relevamiento y reporte de estado de los tableros existentes",
-      "Presentación técnica con planos, memoria y listado de materiales",
-      "Seguimiento del trámite con la distribuidora y certificaciones finales",
+      "PresentaciÃ³n tÃ©cnica con planos, memoria y listado de materiales",
+      "Seguimiento del trÃ¡mite con la distribuidora y certificaciones finales",
     ],
     imageSrc: "/images/services/habilitacion.jpg",
   },
   {
-    id: "domotica",
-    slug: "domotica",
-    title: "Domótica",
-    subtitle: "Control inteligente del hogar: confort, eficiencia y tecnología.",
+    id: "domótica",
+    slug: "domótica",
+    title: "DomÃ³tica",
+    subtitle: "Control inteligente del hogar: confort, eficiencia y tecnologÃ­a.",
     description:
-      "Integramos climatización, iluminación, accesos y escenas con paneles táctiles, app y asistencia remota para vivir más cómodo.",
+      "Integramos climatizaciÃ³n, iluminaciÃ³n, accesos y escenas con paneles tÃ¡ctiles, app y asistencia remota para vivir mÃ¡s cÃ³modo.",
     bullets: [
-      "Programación de escenas, horarios y escenarios personalizados",
-      "Integración de clima, luces y accesos en un mismo ecosistema",
-      "Capacitación y soporte en el portal privado para ajustar parámetros",
+      "ProgramaciÃ³n de escenas, horarios y escenarios personalizados",
+      "IntegraciÃ³n de clima, luces y accesos en un mismo ecosistema",
+      "CapacitaciÃ³n y soporte en el portal privado para ajustar parÃ¡metros",
     ],
-    imageSrc: "/images/services/domotica.jpg",
+    imageSrc: "/images/services/domótica.jpg",
   },
   {
     id: "automatizacion-exteriores",
     slug: "automatizacion-exteriores",
-    title: "Automatización de exteriores",
-    subtitle: "Riego y piscina automatizados, con control y programación.",
+    title: "AutomatizaciÃ³n de exteriores",
+    subtitle: "Riego y piscina automatizados, con control y programaciÃ³n.",
     description:
-      "Automatizamos el riego, la piscina y los paisajes luminosos para que el exterior esté listo con un solo toque.",
+      "Automatizamos el riego, la piscina y los paisajes luminosos para que el exterior estÃ© listo con un solo toque.",
     bullets: [
-      "Programación de sistemas de riego y fertilización inteligente",
+      "ProgramaciÃ³n de sistemas de riego y fertilizaciÃ³n inteligente",
       "Control remoto de bombas, filtros y luminarias exteriores",
-      "Sensores climáticos y alarmas que reaccionan a variaciones de suelo y clima",
+      "Sensores climÃ¡ticos y alarmas que reaccionan a variaciones de suelo y clima",
     ],
     imageSrc: "/images/services/automatizacion-exteriores.jpg",
   },
   {
     id: "climatizacion",
     slug: "climatizacion",
-    title: "Climatización",
-    subtitle: "Asesoramiento e instalación de aires y sistemas de climatización.",
+    title: "ClimatizaciÃ³n",
+    subtitle: "Asesoramiento e instalaciÃ³n de aires y sistemas de climatizaciÃ³n.",
     description:
-      "Dimensionamos, seleccionamos y montamos equipos para lograr confort térmico sin desperdiciar energía.",
+      "Dimensionamos, seleccionamos y montamos equipos para lograr confort tÃ©rmico sin desperdiciar energÃ­a.",
     bullets: [
-      "Cálculo térmico y selección de equipos con eficiencia energética",
-      "Montaje de ductos, rejillas y mandos con estética cuidada",
+      "CÃ¡lculo tÃ©rmico y selecciÃ³n de equipos con eficiencia energÃ©tica",
+      "Montaje de ductos, rejillas y mandos con estÃ©tica cuidada",
       "Puesta en marcha con balanceo, mediciones y entrega de manuales",
     ],
     imageSrc: "/images/services/climatizacion.jpg",
@@ -97,14 +97,14 @@ export const services: Service[] = [
   {
     id: "seguridad-electronica",
     slug: "seguridad-electronica",
-    title: "Seguridad electrónica",
-    subtitle: "Cámaras, alarmas y cerraduras electrónicas integradas.",
+    title: "Seguridad electrÃ³nica",
+    subtitle: "CÃ¡maras, alarmas y cerraduras electrÃ³nicas integradas.",
     description:
       "Instalamos circuitos de seguridad completos con monitoreo, notificaciones y respaldo remoto.",
     bullets: [
-      "Diseño de circuitos con cámaras, sensores perimetrales y control de accesos",
-      "Integración con alarmas, cerraduras y monitoreo en el portal",
-      "Alertas y soporte 24/7 para que la operación esté siempre bajo control",
+      "DiseÃ±o de circuitos con cÃ¡maras, sensores perimetrales y control de accesos",
+      "IntegraciÃ³n con alarmas, cerraduras y monitoreo en el portal",
+      "Alertas y soporte 24/7 para que la operaciÃ³n estÃ© siempre bajo control",
     ],
     imageSrc: "/images/services/seguridad-electronica.jpg",
   },

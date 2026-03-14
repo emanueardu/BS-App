@@ -1,4 +1,4 @@
-import { Device, Room, RoomBBox, RoomPolygonPoint } from "@/types/home";
+﻿import { Device, Room, RoomBBox, RoomPolygonPoint } from "@/types/home";
 
 export const parsePolygon = (raw: unknown): RoomPolygonPoint[] => {
   if (Array.isArray(raw)) {

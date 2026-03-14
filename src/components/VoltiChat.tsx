@@ -79,13 +79,13 @@ export const VoltiChat = () => {
   return (
     <div className="fixed bottom-4 right-4 z-40">
       {open && (
-        <div className="mb-3 w-80 rounded-2xl border border-slate-200 bg-white shadow-2xl">
-          <div className="flex items-center justify-between rounded-t-2xl bg-slate-900 px-4 py-3 text-white">
+        <div className="mb-3 w-80 rounded-2xl border border-brand-border bg-brand-surface shadow-2xl">
+          <div className="flex items-center justify-between rounded-t-2xl bg-brand-navy px-4 py-3 text-brand-text-on-dark">
             <div className="flex items-center gap-2">
               <ChatBubbleLeftRightIcon className="h-5 w-5" />
               <p className="text-sm font-semibold">Volti (asistente)</p>
             </div>
-            <span className="rounded-full bg-white/20 px-2 py-0.5 text-xs">
+            <span className="rounded-full bg-brand-surface/20 px-2 py-0.5 text-xs">
               beta
             </span>
           </div>
@@ -97,10 +97,10 @@ export const VoltiChat = () => {
                 className={clsx(
                   "rounded-xl px-3 py-2 text-sm shadow-sm",
                   message.role === "user"
-                    ? "ml-auto bg-orange-50 text-slate-900"
+                    ? "ml-auto bg-brand-bg-alt text-brand-text"
                     : message.role === "assistant"
-                      ? "bg-white text-slate-900"
-                      : "border border-dashed border-slate-300 bg-slate-100 text-slate-700"
+                      ? "bg-brand-surface text-brand-text"
+                      : "border border-dashed border-brand-border bg-brand-bg-alt text-brand-text-muted"
                 )}
               >
                 {message.text}
@@ -109,19 +109,19 @@ export const VoltiChat = () => {
             <div ref={bottomRef} />
           </div>
 
-          <div className="border-t border-slate-200 px-4 py-3">
+          <div className="border-t border-brand-border px-4 py-3">
             <div className="flex items-end gap-2">
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 rows={2}
-                className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+                className="w-full resize-none rounded-lg border border-brand-border bg-brand-bg px-3 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
                 placeholder="Escribe tu consulta"
               />
               <button
                 onClick={sendMessage}
                 disabled={loading}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-600 text-white transition hover:bg-orange-500 disabled:cursor-not-allowed disabled:bg-slate-300"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-copper text-brand-text-on-dark transition hover:bg-brand-copper disabled:cursor-not-allowed disabled:bg-brand-border"
               >
                 <PaperAirplaneIcon className="h-5 w-5" />
               </button>
@@ -132,7 +132,7 @@ export const VoltiChat = () => {
 
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-xl ring-2 ring-orange-200 transition hover:-translate-y-0.5 hover:shadow-2xl"
+        className="flex h-20 w-20 items-center justify-center rounded-full bg-brand-surface shadow-xl ring-2 ring-brand-sand transition hover:-translate-y-0.5 hover:shadow-2xl"
         aria-label={open ? "Cerrar chat Volti" : "Abrir chat Volti"}
       >
         <Image

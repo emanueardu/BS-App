@@ -1,4 +1,4 @@
-# BS Portal � Client Platform (Next.js + Supabase)
+# SUR INGENIERÍA Portal — Client Platform (Next.js + Supabase)
 
 Public website + private client app for an electrical and home automation business. It includes a marketing landing, contact flow, authentication, a project dashboard, and a "My Home" interactive module. Supabase powers auth, database, storage, and realtime, and a Volti assistant is configurable via API.
 

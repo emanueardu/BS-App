@@ -1,4 +1,4 @@
-import {
+﻿import {
   ArrowRightIcon,
   ClipboardDocumentCheckIcon,
   DocumentTextIcon,
@@ -32,21 +32,21 @@ export default function PortalLanding() {
   return (
     <>
       <Head>
-        <title>Demo Portal | BS</title>
+        <title>Demo Portal | SUR INGENIERÍA</title>
         <meta
           name="description"
           content="Demo del portal de cliente: Mi Home, documentacion y avance de obra en una sola experiencia."
         />
       </Head>
 
-      <section className="rounded-3xl bg-white/60 p-8 shadow-sm shadow-orange-100 backdrop-blur-sm">
-        <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+      <section className="rounded-3xl bg-brand-surface/60 p-8 shadow-sm shadow-brand-sand backdrop-blur-sm">
+        <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
           Demo Portal
         </p>
-        <h1 className="mt-2 text-3xl font-semibold text-slate-900">
+        <h1 className="mt-2 text-3xl font-semibold text-brand-text">
           Conoce como vas a gestionar tu proyecto y tu vivienda desde un solo portal.
         </h1>
-        <p className="mt-3 text-sm text-slate-600">
+        <p className="mt-3 text-sm text-brand-text-muted">
           Antes de ingresar, podes recorrer esta demo para ver como se visualizan
           el avance de obra, la documentacion y Mi Home. Con tu cuenta activa,
           accederas a esta misma experiencia desde Ingresar a mi portal.
@@ -54,14 +54,14 @@ export default function PortalLanding() {
         <div className="mt-5 flex flex-wrap gap-3">
           <Link
             href="/portal/demo"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-orange-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-copper px-5 py-2 text-sm font-semibold text-brand-text-on-dark transition hover:bg-brand-copper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
           >
             Ver demo
             <ArrowRightIcon className="h-4 w-4" />
           </Link>
           <Link
             href="/login"
-            className="rounded-full border border-slate-900 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
+            className="rounded-full border border-brand-navy px-5 py-2 text-sm font-semibold text-brand-text transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
           >
             Ingresar a mi portal
           </Link>
@@ -74,15 +74,15 @@ export default function PortalLanding() {
           return (
             <article
               key={feature.title}
-              className="rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm"
+              className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50 text-orange-600">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-bg-alt text-brand-copper">
                 <Icon className="h-6 w-6" />
               </div>
-              <h2 className="mt-4 text-xl font-semibold text-slate-900">
+              <h2 className="mt-4 text-xl font-semibold text-brand-text">
                 {feature.title}
               </h2>
-              <p className="mt-2 text-sm text-slate-600">
+              <p className="mt-2 text-sm text-brand-text-muted">
                 {feature.description}
               </p>
             </article>
@@ -90,11 +90,11 @@ export default function PortalLanding() {
         })}
       </section>
 
-      <section className="mt-8 rounded-3xl border border-slate-300 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
-        <h3 className="text-lg font-semibold text-slate-900">
+      <section className="mt-8 rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm">
+        <h3 className="text-lg font-semibold text-brand-text">
           Flujo previsto para clientes con cuenta
         </h3>
-        <ol className="mt-3 space-y-2 text-sm text-slate-700">
+        <ol className="mt-3 space-y-2 text-sm text-brand-text-muted">
           <li>1. Ingresa con su usuario y accede a Mi Portal.</li>
           <li>2. Revisa el avance de obra, visitas y evidencias cargadas.</li>
           <li>3. Descarga documentacion tecnica y administrativa.</li>

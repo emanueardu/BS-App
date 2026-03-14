@@ -1,11 +1,11 @@
-import { ServiceDetailConfig } from "@/types/serviceDetails";
+﻿import { ServiceDetailConfig } from "@/types/serviceDetails";
 
 export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
   "instalaciones-electricas": {
     metaDescription:
-      "Instalaciones eléctricas residenciales con criterio técnico, materiales certificados y terminaciones prolijas para cada etapa de la obra.",
+      "Instalaciones elÃ©ctricas residenciales con criterio tÃ©cnico, materiales certificados y terminaciones prolijas para cada etapa de la obra.",
     heroDescription:
-      "Realizamos instalaciones eléctricas residenciales con criterio técnico, materiales certificados y terminaciones prolijas. Seguridad, cumplimiento y previsibilidad en cada obra.",
+      "Realizamos instalaciones elÃ©ctricas residenciales con criterio tÃ©cnico, materiales certificados y terminaciones prolijas. Seguridad, cumplimiento y previsibilidad en cada obra.",
     heroActions: [
       { label: "Consultar", href: "/contacto", variant: "primary" },
       { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
@@ -13,75 +13,75 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
     sections: [
       {
         type: "text",
-        title: "Qué hacemos",
+        title: "QuÃ© hacemos",
         copy:
-          "Ejecutamos instalaciones eléctricas completas y reformas para viviendas, priorizando la seguridad de las personas y la confiabilidad del sistema. Trabajamos con planificación previa, protecciones correctas, circuitos bien definidos y documentación mínima entregada. Enfoque: no hacemos “parches”; armamos un sistema eléctrico mantenible y escalable.",
+          "Ejecutamos instalaciones elÃ©ctricas completas y reformas para viviendas, priorizando la seguridad de las personas y la confiabilidad del sistema. Trabajamos con planificaciÃ³n previa, protecciones correctas, circuitos bien definidos y documentaciÃ³n mÃ­nima entregada. Enfoque: no hacemos â€œparchesâ€; armamos un sistema elÃ©ctrico mantenible y escalable.",
       },
       {
         type: "bullets",
-        title: "Qué incluye el servicio",
+        title: "QuÃ© incluye el servicio",
         bullets: [
           "Instalaciones nuevas (obra nueva)",
           "Reformas y recableados completos",
-          "Ampliaciones de circuitos (tomas, iluminación, líneas dedicadas)",
-          "Armado y adecuación de tableros eléctricos",
-          "Protecciones: térmicas, diferencial, seccionamiento correcto",
-          "Puesta a tierra y verificación de seguridad",
-          "Ordenamiento, rotulado y prolijidad de instalación",
-          "Pruebas básicas de funcionamiento y entrega",
+          "Ampliaciones de circuitos (tomas, iluminaciÃ³n, lÃ­neas dedicadas)",
+          "Armado y adecuaciÃ³n de tableros elÃ©ctricos",
+          "Protecciones: tÃ©rmicas, diferencial, seccionamiento correcto",
+          "Puesta a tierra y verificaciÃ³n de seguridad",
+          "Ordenamiento, rotulado y prolijidad de instalaciÃ³n",
+          "Pruebas bÃ¡sicas de funcionamiento y entrega",
         ],
       },
       {
         type: "text",
-        title: "Tableros eléctricos normalizados",
+        title: "Tableros elÃ©ctricos normalizados",
         copy:
-          "Un tablero bien resuelto es el corazón de la instalación. Diseñamos tableros claros, ordenados y preparados para el uso real de la vivienda.",
+          "Un tablero bien resuelto es el corazÃ³n de la instalaciÃ³n. DiseÃ±amos tableros claros, ordenados y preparados para el uso real de la vivienda.",
       },
       {
         type: "bullets",
         title: "Seguridad y cumplimiento",
         copy:
-          "Trabajamos respetando buenas prácticas y reglamentación vigente, con prioridad absoluta en:",
+          "Trabajamos respetando buenas prÃ¡cticas y reglamentaciÃ³n vigente, con prioridad absoluta en:",
         note:
-          "No realizamos trabajos que comprometan seguridad o normas, aunque sean más rápidos o más baratos.",
+          "No realizamos trabajos que comprometan seguridad o normas, aunque sean mÃ¡s rÃ¡pidos o mÃ¡s baratos.",
         bullets: [
-          "Protección de personas",
-          "Protección de equipos y líneas",
+          "ProtecciÃ³n de personas",
+          "ProtecciÃ³n de equipos y lÃ­neas",
           "Puesta a tierra adecuada",
           "Materiales certificados y terminaciones seguras",
-          "Instalación ordenada y mantenible",
+          "InstalaciÃ³n ordenada y mantenible",
         ],
       },
       {
         type: "steps",
-        title: "Cómo trabajamos",
+        title: "CÃ³mo trabajamos",
         steps: [
           "Relevamiento previo: visitamos/analizamos la vivienda para entender alcance, estado actual y necesidades reales.",
           "Propuesta clara: presupuesto con alcance detallado, materiales incluidos, exclusiones y plazos realistas.",
-          "Ejecución prolija: trabajo ordenado, cableado identificado, tablero limpio y accesible.",
-          "Entrega y explicación: dejamos el sistema funcionando y el cliente entiende cómo operar y qué protecciones tiene.",
+          "EjecuciÃ³n prolija: trabajo ordenado, cableado identificado, tablero limpio y accesible.",
+          "Entrega y explicaciÃ³n: dejamos el sistema funcionando y el cliente entiende cÃ³mo operar y quÃ© protecciones tiene.",
         ],
       },
       {
         type: "bullets",
-        title: "Cuándo conviene",
+        title: "CuÃ¡ndo conviene",
         bullets: [
-          "Obra nueva o ampliación",
-          "Instalación vieja sin protecciones o con fallas recurrentes",
+          "Obra nueva o ampliaciÃ³n",
+          "InstalaciÃ³n vieja sin protecciones o con fallas recurrentes",
           "Tablero desordenado o sin diferencial",
-          "Reformas (cocina/baño) y aumento de consumo (aires, hornos, bombas)",
-          "Necesidad de regularizar/adecuar instalación",
+          "Reformas (cocina/baÃ±o) y aumento de consumo (aires, hornos, bombas)",
+          "Necesidad de regularizar/adecuar instalaciÃ³n",
         ],
       },
     ],
     galleryItems: [
       {
-        title: "Tablero eléctrico moderno, ordenado",
+        title: "Tablero elÃ©ctrico moderno, ordenado",
         imageSrc:
           "/images/services/Gallery/Instalaciones-electricas/tablero-electrico-moderno-ordenado.jpg",
       },
       {
-        title: "Canalización/cableado en obra",
+        title: "CanalizaciÃ³n/cableado en obra",
         imageSrc:
           "/images/services/Gallery/Instalaciones-electricas/canalizacion-cableado.jfif",
       },
@@ -91,15 +91,15 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
           "/images/services/Gallery/Instalaciones-electricas/tomas-llaves-instaladas.jpg",
       },
       {
-        title: "Medición/verificación (instrumentación)",
+        title: "MediciÃ³n/verificaciÃ³n (instrumentaciÃ³n)",
         imageSrc:
           "/images/services/Gallery/Instalaciones-electricas/medicion-verificacion.jfif",
       },
     ],
     finalCta: {
-      title: "¿Querés hacer la instalación bien desde el inicio?",
+      title: "Â¿QuerÃ©s hacer la instalaciÃ³n bien desde el inicio?",
       text:
-        "Contanos tu proyecto y coordinamos un relevamiento para definir la mejor solución.",
+        "Contanos tu proyecto y coordinamos un relevamiento para definir la mejor soluciÃ³n.",
       primary: { label: "Consultar", href: "/contacto", variant: "primary" },
       secondary: {
         label: "Volver a Servicios",
@@ -110,9 +110,9 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
   },
   "planos-y-proyectos": {
     metaDescription:
-      "Proyectos eléctricos claros y documentados para viviendas, evitando errores durante la obra y garantizando cumplimiento normativo.",
+      "Proyectos elÃ©ctricos claros y documentados para viviendas, evitando errores durante la obra y garantizando cumplimiento normativo.",
     heroDescription:
-      "Desarrollamos proyectos eléctricos claros y documentados, fundamentales para una obra segura, ordenada y sin sobrecostos. Un buen proyecto evita errores durante la ejecución y problemas futuros.",
+      "Desarrollamos proyectos elÃ©ctricos claros y documentados, fundamentales para una obra segura, ordenada y sin sobrecostos. Un buen proyecto evita errores durante la ejecuciÃ³n y problemas futuros.",
     heroActions: [
       { label: "Consultar", href: "/contacto", variant: "primary" },
       { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
@@ -120,60 +120,60 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
     sections: [
       {
         type: "text",
-        title: "Qué hacemos",
+        title: "QuÃ© hacemos",
         copy:
-          "Diseñamos proyectos eléctricos completos para viviendas, contemplando circuitos, cargas, protecciones y crecimiento futuro. El proyecto es la base para que la instalación sea segura, eficiente y mantenible.",
+          "DiseÃ±amos proyectos elÃ©ctricos completos para viviendas, contemplando circuitos, cargas, protecciones y crecimiento futuro. El proyecto es la base para que la instalaciÃ³n sea segura, eficiente y mantenible.",
       },
       {
         type: "bullets",
-        title: "Qué incluye el servicio",
+        title: "QuÃ© incluye el servicio",
         bullets: [
-          "Planos eléctricos unifilares",
-          "Definición y separación de circuitos",
-          "Cálculo y asignación de cargas",
+          "Planos elÃ©ctricos unifilares",
+          "DefiniciÃ³n y separaciÃ³n de circuitos",
+          "CÃ¡lculo y asignaciÃ³n de cargas",
           "Dimensionamiento de protecciones",
-          "Ubicación técnica de tomas, llaves y tableros",
-          "Documentación base para ejecución de obra",
+          "UbicaciÃ³n tÃ©cnica de tomas, llaves y tableros",
+          "DocumentaciÃ³n base para ejecuciÃ³n de obra",
         ],
       },
       {
         type: "bullets",
-        title: "Por qué es importante un buen proyecto",
+        title: "Por quÃ© es importante un buen proyecto",
         copy:
-          "Un proyecto eléctrico bien definido permite:",
+          "Un proyecto elÃ©ctrico bien definido permite:",
         bullets: [
           "Reducir errores durante la obra",
           "Evitar retrabajos y sobrecostos",
-          "Facilitar la ejecución por terceros",
+          "Facilitar la ejecuciÃ³n por terceros",
           "Garantizar cumplimiento normativo",
-          "Dejar la instalación preparada para ampliaciones futuras",
+          "Dejar la instalaciÃ³n preparada para ampliaciones futuras",
         ],
       },
       {
         type: "steps",
-        title: "Cómo trabajamos",
+        title: "CÃ³mo trabajamos",
         steps: [
-          "Relevamiento y análisis de necesidades.",
-          "Diseño del esquema eléctrico.",
-          "Revisión y ajustes con el cliente.",
-          "Entrega de documentación técnica.",
+          "Relevamiento y anÃ¡lisis de necesidades.",
+          "DiseÃ±o del esquema elÃ©ctrico.",
+          "RevisiÃ³n y ajustes con el cliente.",
+          "Entrega de documentaciÃ³n tÃ©cnica.",
         ],
       },
       {
         type: "bullets",
-        title: "Cuándo conviene contratar este servicio",
+        title: "CuÃ¡ndo conviene contratar este servicio",
         bullets: [
           "Viviendas nuevas",
           "Reformas integrales",
           "Ampliaciones de vivienda",
-          "Obras que requieren planificación previa",
+          "Obras que requieren planificaciÃ³n previa",
           "Clientes que quieren evitar improvisaciones",
         ],
       },
     ],
     galleryItems: [
       {
-        title: "Plano eléctrico unifilar",
+        title: "Plano elÃ©ctrico unifilar",
         imageSrc:
           "/images/services/Gallery/planos-y-proyectos-electricos/plano-electrico-unifilar.gif",
       },
@@ -183,12 +183,12 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
           "/images/services/Gallery/planos-y-proyectos-electricos/planos-sobre-mesa-trabajo.jpg",
       },
       {
-        title: "Detalle de esquema eléctrico",
+        title: "Detalle de esquema elÃ©ctrico",
         imageSrc:
           "/images/services/Gallery/planos-y-proyectos-electricos/detalle-esquema-electrico.webp",
       },
       {
-        title: "Documentación técnica impresa/digital",
+        title: "DocumentaciÃ³n tÃ©cnica impresa/digital",
         imageSrc:
           "/images/services/Gallery/planos-y-proyectos-electricos/documentacion-tecnica.jpg",
       },
@@ -196,7 +196,7 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
     finalCta: {
       title: "Un buen proyecto evita problemas en la obra",
       text:
-        "Consultanos y planificamos tu instalación eléctrica antes de construir o reformar.",
+        "Consultanos y planificamos tu instalaciÃ³n elÃ©ctrica antes de construir o reformar.",
       primary: { label: "Consultar", href: "/contacto", variant: "primary" },
       secondary: {
         label: "Volver a Servicios",
@@ -207,9 +207,9 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
   },
   habilitacion: {
     metaDescription:
-      "Acompañamos la habilitación y regularización eléctrica con relevamiento técnico, correcciones y documentación clara para avanzar sin improvisaciones.",
+      "AcompaÃ±amos la habilitaciÃ³n y regularizaciÃ³n elÃ©ctrica con relevamiento tÃ©cnico, correcciones y documentaciÃ³n clara para avanzar sin improvisaciones.",
     heroDescription:
-      "Acompañamos el proceso de alta o regularización del servicio eléctrico con relevamiento técnico, correcciones necesarias y documentación mínima. Un camino claro, sin improvisaciones.",
+      "AcompaÃ±amos el proceso de alta o regularizaciÃ³n del servicio elÃ©ctrico con relevamiento tÃ©cnico, correcciones necesarias y documentaciÃ³n mÃ­nima. Un camino claro, sin improvisaciones.",
     heroActions: [
       { label: "Consultar", href: "/contacto", variant: "primary" },
       { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
@@ -217,53 +217,53 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
     sections: [
       {
         type: "text",
-        title: "Qué hacemos",
+        title: "QuÃ© hacemos",
         copy:
-          "Realizamos el relevamiento de la instalación y definimos las adecuaciones necesarias para que el sistema cumpla criterios de seguridad y reglamentos vigentes. Te acompañamos en el proceso con explicaciones claras y pasos concretos.",
+          "Realizamos el relevamiento de la instalaciÃ³n y definimos las adecuaciones necesarias para que el sistema cumpla criterios de seguridad y reglamentos vigentes. Te acompaÃ±amos en el proceso con explicaciones claras y pasos concretos.",
       },
       {
         type: "bullets",
-        title: "Qué incluye el servicio",
+        title: "QuÃ© incluye el servicio",
         bullets: [
-          "Relevamiento técnico de la instalación",
-          "Detección de desvíos o riesgos",
-          "Adecuación de protecciones eléctricas",
+          "Relevamiento tÃ©cnico de la instalaciÃ³n",
+          "DetecciÃ³n de desvÃ­os o riesgos",
+          "AdecuaciÃ³n de protecciones elÃ©ctricas",
           "Recomendaciones y correcciones necesarias",
-          "Documentación mínima para presentar/avanzar",
-          "Acompañamiento técnico durante el proceso",
+          "DocumentaciÃ³n mÃ­nima para presentar/avanzar",
+          "AcompaÃ±amiento tÃ©cnico durante el proceso",
         ],
       },
       {
         type: "bullets",
-        title: "Qué se revisa en la instalación",
+        title: "QuÃ© se revisa en la instalaciÃ³n",
         copy:
-          "Según el caso, se verifican puntos críticos que impactan en seguridad y funcionamiento.",
+          "SegÃºn el caso, se verifican puntos crÃ­ticos que impactan en seguridad y funcionamiento.",
         bullets: [
-          "Tablero eléctrico: orden, protecciones y circuitos",
-          "Protección diferencial (si aplica)",
-          "Termomagnéticas y dimensionamiento",
+          "Tablero elÃ©ctrico: orden, protecciones y circuitos",
+          "ProtecciÃ³n diferencial (si aplica)",
+          "TermomagnÃ©ticas y dimensionamiento",
           "Puesta a tierra y continuidad",
           "Estado general de conductores y conexiones",
-          "Separación de circuitos y cargas",
+          "SeparaciÃ³n de circuitos y cargas",
         ],
       },
       {
         type: "steps",
-        title: "Cómo trabajamos",
+        title: "CÃ³mo trabajamos",
         steps: [
-          "Relevamiento previo y diagnóstico.",
-          "Definición de alcance: qué hay que corregir y por qué.",
-          "Ejecución de adecuaciones (si corresponde) con terminación prolija.",
-          "Entrega de documentación mínima y guía de próximos pasos.",
+          "Relevamiento previo y diagnÃ³stico.",
+          "DefiniciÃ³n de alcance: quÃ© hay que corregir y por quÃ©.",
+          "EjecuciÃ³n de adecuaciones (si corresponde) con terminaciÃ³n prolija.",
+          "Entrega de documentaciÃ³n mÃ­nima y guÃ­a de prÃ³ximos pasos.",
         ],
       },
       {
         type: "bullets",
-        title: "Cuándo conviene",
+        title: "CuÃ¡ndo conviene",
         bullets: [
           "Alta de un servicio nuevo",
-          "Regularización de una instalación existente",
-          "Viviendas con instalación antigua",
+          "RegularizaciÃ³n de una instalaciÃ³n existente",
+          "Viviendas con instalaciÃ³n antigua",
           "Tableros sin protecciones o desordenados",
           "Antes de una reforma importante",
         ],
@@ -273,7 +273,7 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
     finalCta: {
       title: "Hacemos el proceso claro y seguro",
       text:
-        "Contanos tu situación y te indicamos el camino correcto para habilitar o regularizar tu servicio.",
+        "Contanos tu situaciÃ³n y te indicamos el camino correcto para habilitar o regularizar tu servicio.",
       primary: { label: "Consultar", href: "/contacto", variant: "primary" },
       secondary: {
         label: "Volver a Servicios",
@@ -283,11 +283,11 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
       footnote: "Priorizamos seguridad y cumplimiento por encima de atajos.",
     },
   },
-  domotica: {
+  domótica: {
     metaDescription:
-      "Domótica residencial escalable para controlar iluminación, clima, audio y accesos desde un único panel inteligente.",
+      "DomÃ³tica residencial escalable para controlar iluminaciÃ³n, clima, audio y accesos desde un Ãºnico panel inteligente.",
     heroDescription:
-      "Diseñamos e implementamos sistemas de domótica residencial que integran tecnología útil al día a día. Soluciones pensadas para simplificar el uso de la vivienda, mejorar el confort y optimizar consumos.",
+      "DiseÃ±amos e implementamos sistemas de domÃ³tica residencial que integran tecnologÃ­a Ãºtil al dÃ­a a dÃ­a. Soluciones pensadas para simplificar el uso de la vivienda, mejorar el confort y optimizar consumos.",
     heroActions: [
       { label: "Consultar", href: "/contacto", variant: "primary" },
       { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
@@ -295,19 +295,19 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
     sections: [
       {
         type: "text",
-        title: "Qué hacemos",
+        title: "QuÃ© hacemos",
         copy:
-          "Implementamos sistemas de domótica residencial que permiten controlar y automatizar distintos aspectos de la vivienda desde un único entorno. Cada solución se diseña según las necesidades reales del cliente y preparada para crecer en el futuro.",
+          "Implementamos sistemas de domÃ³tica residencial que permiten controlar y automatizar distintos aspectos de la vivienda desde un Ãºnico entorno. Cada soluciÃ³n se diseÃ±a segÃºn las necesidades reales del cliente y preparada para crecer en el futuro.",
       },
       {
         type: "bullets",
-        title: "Qué se puede automatizar",
+        title: "QuÃ© se puede automatizar",
         bullets: [
-          "Iluminación interior y exterior",
+          "IluminaciÃ³n interior y exterior",
           "Escenas y rutinas personalizadas",
-          "Control de tomas y circuitos eléctricos",
-          "Climatización (integración con aires y sistemas existentes)",
-          "Sonorización y multimedia",
+          "Control de tomas y circuitos elÃ©ctricos",
+          "ClimatizaciÃ³n (integraciÃ³n con aires y sistemas existentes)",
+          "SonorizaciÃ³n y multimedia",
           "Acceso y control remoto desde el celular",
         ],
       },
@@ -315,48 +315,48 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
         type: "bullets",
         title: "Nuestro enfoque",
         copy:
-          "La domótica debe ser confiable, simple de usar y mantenible. Evitamos soluciones cerradas o experimentales que luego no puedan ampliarse o mantenerse.",
+          "La domÃ³tica debe ser confiable, simple de usar y mantenible. Evitamos soluciones cerradas o experimentales que luego no puedan ampliarse o mantenerse.",
         bullets: [
           "Soluciones escalables",
-          "Integración entre sistemas",
-          "Tecnología probada",
+          "IntegraciÃ³n entre sistemas",
+          "TecnologÃ­a probada",
           "Uso simple para el usuario",
           "Preparada para futuras ampliaciones",
         ],
       },
       {
         type: "steps",
-        title: "Cómo trabajamos",
+        title: "CÃ³mo trabajamos",
         steps: [
-          "Relevamiento de la vivienda y hábitos de uso.",
-          "Definición de funcionalidades y alcances.",
-          "Selección de tecnología adecuada.",
-          "Instalación, configuración y pruebas.",
-          "Explicación de uso al cliente.",
+          "Relevamiento de la vivienda y hÃ¡bitos de uso.",
+          "DefiniciÃ³n de funcionalidades y alcances.",
+          "SelecciÃ³n de tecnologÃ­a adecuada.",
+          "InstalaciÃ³n, configuraciÃ³n y pruebas.",
+          "ExplicaciÃ³n de uso al cliente.",
         ],
       },
       {
         type: "bullets",
-        title: "Cuándo conviene implementar domótica",
+        title: "CuÃ¡ndo conviene implementar domÃ³tica",
         bullets: [
           "Viviendas nuevas",
           "Reformas integrales",
           "Mejora de confort y eficiencia",
-          "Centralización de controles",
-          "Usuarios que buscan tecnología útil, no compleja",
+          "CentralizaciÃ³n de controles",
+          "Usuarios que buscan tecnologÃ­a Ãºtil, no compleja",
         ],
       },
     ],
     galleryItems: [
-      { title: "Iluminación inteligente en vivienda" },
-      { title: "Control domótico desde celular" },
+      { title: "IluminaciÃ³n inteligente en vivienda" },
+      { title: "Control domÃ³tico desde celular" },
       { title: "Panel / interfaz de control" },
-      { title: "Integración de dispositivos en el hogar" },
+      { title: "IntegraciÃ³n de dispositivos en el hogar" },
     ],
     finalCta: {
-      title: "La tecnología tiene que simplificar la vida",
+      title: "La tecnologÃ­a tiene que simplificar la vida",
       text:
-        "Consultanos y diseñamos una solución de domótica adaptada a tu vivienda y a tu forma de vivir.",
+        "Consultanos y diseÃ±amos una soluciÃ³n de domÃ³tica adaptada a tu vivienda y a tu forma de vivir.",
       primary: { label: "Consultar", href: "/contacto", variant: "primary" },
       secondary: {
         label: "Volver a Servicios",
@@ -368,9 +368,9 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
   },
   "automatizacion-exteriores": {
     metaDescription:
-      "Automatizamos sistemas de riego, bombas y piscina con programación y control remoto para exteriores eficientes.",
+      "Automatizamos sistemas de riego, bombas y piscina con programaciÃ³n y control remoto para exteriores eficientes.",
     heroDescription:
-      "Diseñamos e instalamos automatizaciones para espacios exteriores: riego, bombas, válvulas y funcionamiento de piscina. Soluciones confiables para reducir trabajo manual y optimizar consumo.",
+      "DiseÃ±amos e instalamos automatizaciones para espacios exteriores: riego, bombas, vÃ¡lvulas y funcionamiento de piscina. Soluciones confiables para reducir trabajo manual y optimizar consumo.",
     heroActions: [
       { label: "Consultar", href: "/contacto", variant: "primary" },
       { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
@@ -378,53 +378,53 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
     sections: [
       {
         type: "text",
-        title: "Qué hacemos",
+        title: "QuÃ© hacemos",
         copy:
-          "Automatizamos sistemas exteriores para que funcionen de forma previsible y eficiente. Integramos control de riego y piscina, con programación por horarios y posibilidad de control remoto según el caso.",
+          "Automatizamos sistemas exteriores para que funcionen de forma previsible y eficiente. Integramos control de riego y piscina, con programaciÃ³n por horarios y posibilidad de control remoto segÃºn el caso.",
       },
       {
         type: "bullets",
-        title: "Qué podemos automatizar",
+        title: "QuÃ© podemos automatizar",
         bullets: [
-          "Programación de riego por zonas",
-          "Control de electroválvulas",
+          "ProgramaciÃ³n de riego por zonas",
+          "Control de electrovÃ¡lvulas",
           "Control de bombas (encendido/apagado y tiempos)",
           "Filtrado y limpieza de piscina",
-          "Temporizaciones y rutinas automáticas",
-          "Integración con domótica (si aplica)",
+          "Temporizaciones y rutinas automÃ¡ticas",
+          "IntegraciÃ³n con domÃ³tica (si aplica)",
         ],
       },
       {
         type: "bullets",
         title: "Beneficios",
-        copy: "La automatización exterior mejora confort y reduce desperdicios.",
+        copy: "La automatizaciÃ³n exterior mejora confort y reduce desperdicios.",
         bullets: [
-          "Menor consumo de agua y energía",
-          "Menos intervención manual",
+          "Menor consumo de agua y energÃ­a",
+          "Menos intervenciÃ³n manual",
           "Funcionamiento previsible",
-          "Mayor vida útil de equipos por uso controlado",
+          "Mayor vida Ãºtil de equipos por uso controlado",
           "Control centralizado y ordenado",
         ],
       },
       {
         type: "steps",
-        title: "Cómo trabajamos",
+        title: "CÃ³mo trabajamos",
         steps: [
           "Relevamiento del exterior y de los equipos existentes.",
-          "Definición de zonas, rutinas y necesidades reales.",
-          "Diseño de la solución (tablero, protecciones y control).",
-          "Instalación y configuración.",
-          "Pruebas y explicación de uso.",
+          "DefiniciÃ³n de zonas, rutinas y necesidades reales.",
+          "DiseÃ±o de la soluciÃ³n (tablero, protecciones y control).",
+          "InstalaciÃ³n y configuraciÃ³n.",
+          "Pruebas y explicaciÃ³n de uso.",
         ],
       },
       {
         type: "bullets",
-        title: "Cuándo conviene",
+        title: "CuÃ¡ndo conviene",
         bullets: [
-          "Casas con jardín y riego por sectores",
+          "Casas con jardÃ­n y riego por sectores",
           "Piscinas con filtrado manual o poco ordenado",
           "Usuarios que quieren previsibilidad y ahorro",
-          "Necesidad de centralizar control de bombas y válvulas",
+          "Necesidad de centralizar control de bombas y vÃ¡lvulas",
           "Proyectos que buscan confort y mantenimiento simple",
         ],
       },
@@ -432,13 +432,13 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
     galleryItems: [
       { title: "Piscina exterior moderna" },
       { title: "Riego automatizado funcionando" },
-      { title: "Tablero/control exterior (detalle técnico prolijo)" },
+      { title: "Tablero/control exterior (detalle tÃ©cnico prolijo)" },
       { title: "Control desde celular (si aplica)" },
     ],
     finalCta: {
       title: "Exteriores funcionando solos, sin complicaciones",
       text:
-        "Consultanos y diseñamos una automatización confiable para tu jardín y piscina.",
+        "Consultanos y diseÃ±amos una automatizaciÃ³n confiable para tu jardÃ­n y piscina.",
       primary: { label: "Consultar", href: "/contacto", variant: "primary" },
       secondary: {
         label: "Volver a Servicios",
@@ -450,9 +450,9 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
   },
   climatizacion: {
     metaDescription:
-      "Asesoramiento e instalación de sistemas de climatización eficientes en cada ambiente del hogar.",
+      "Asesoramiento e instalaciÃ³n de sistemas de climatizaciÃ³n eficientes en cada ambiente del hogar.",
     heroDescription:
-      "Te ayudamos a definir la mejor solución de climatización para cada ambiente: asesoramiento de compra, instalación y configuración. Confort, eficiencia y una instalación prolija.",
+      "Te ayudamos a definir la mejor soluciÃ³n de climatizaciÃ³n para cada ambiente: asesoramiento de compra, instalaciÃ³n y configuraciÃ³n. Confort, eficiencia y una instalaciÃ³n prolija.",
     heroActions: [
       { label: "Consultar", href: "/contacto", variant: "primary" },
       { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
@@ -460,19 +460,19 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
     sections: [
       {
         type: "text",
-        title: "Qué hacemos",
+        title: "QuÃ© hacemos",
         copy:
-          "Brindamos soluciones integrales de climatización para viviendas: desde la elección del equipo hasta la instalación final. Nuestro enfoque es técnico: cada ambiente requiere un equipo adecuado, con una instalación segura y eficiente.",
+          "Brindamos soluciones integrales de climatizaciÃ³n para viviendas: desde la elecciÃ³n del equipo hasta la instalaciÃ³n final. Nuestro enfoque es tÃ©cnico: cada ambiente requiere un equipo adecuado, con una instalaciÃ³n segura y eficiente.",
       },
       {
         type: "bullets",
-        title: "Qué incluye el servicio",
+        title: "QuÃ© incluye el servicio",
         bullets: [
-          "Asesoramiento para selección de equipos",
-          "Instalación de aires acondicionados",
-          "Definición de ubicación óptima (unidad interior/exterior)",
-          "Alimentación eléctrica y protecciones (si aplica)",
-          "Configuración y pruebas de funcionamiento",
+          "Asesoramiento para selecciÃ³n de equipos",
+          "InstalaciÃ³n de aires acondicionados",
+          "DefiniciÃ³n de ubicaciÃ³n Ã³ptima (unidad interior/exterior)",
+          "AlimentaciÃ³n elÃ©ctrica y protecciones (si aplica)",
+          "ConfiguraciÃ³n y pruebas de funcionamiento",
           "Recomendaciones de uso eficiente",
         ],
       },
@@ -480,81 +480,81 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
         type: "text",
         title: "Asesoramiento de compra",
         copy:
-          "Antes de comprar, definimos qué equipo conviene según el ambiente y el uso. Esto evita sobredimensionar (más costo) o quedarse corto (bajo rendimiento).",
+          "Antes de comprar, definimos quÃ© equipo conviene segÃºn el ambiente y el uso. Esto evita sobredimensionar (mÃ¡s costo) o quedarse corto (bajo rendimiento).",
       },
       {
         type: "bullets",
         title: "Factores que estudiamos",
         bullets: [
-          "Superficie y características del ambiente",
-          "Aislación y orientación",
+          "Superficie y caracterÃ­sticas del ambiente",
+          "AislaciÃ³n y orientaciÃ³n",
           "Uso real y cantidad de personas",
-          "Eficiencia energética y consumo",
+          "Eficiencia energÃ©tica y consumo",
         ],
       },
       {
         type: "text",
-        title: "Instalación prolija y segura",
+        title: "InstalaciÃ³n prolija y segura",
         copy:
-          "Una buena instalación impacta en rendimiento y vida útil del equipo. Priorizamos terminaciones prolijas, seguridad eléctrica y funcionamiento estable.",
+          "Una buena instalaciÃ³n impacta en rendimiento y vida Ãºtil del equipo. Priorizamos terminaciones prolijas, seguridad elÃ©ctrica y funcionamiento estable.",
       },
       {
         type: "bullets",
-        title: "Qué garantizamos",
+        title: "QuÃ© garantizamos",
         bullets: [
           "Terminaciones limpias",
           "Soportes y fijaciones seguras",
           "Tendido ordenado",
-          "Protecciones eléctricas cuando corresponde",
-          "Pruebas y verificación final",
+          "Protecciones elÃ©ctricas cuando corresponde",
+          "Pruebas y verificaciÃ³n final",
         ],
       },
       {
         type: "steps",
-        title: "Cómo trabajamos",
+        title: "CÃ³mo trabajamos",
         steps: [
           "Relevamiento del ambiente y necesidades.",
-          "Recomendación de equipo (si el cliente lo solicita).",
-          "Definición de ubicación y trazado de instalación.",
-          "Instalación y pruebas.",
-          "Explicación de uso y recomendaciones.",
+          "RecomendaciÃ³n de equipo (si el cliente lo solicita).",
+          "DefiniciÃ³n de ubicaciÃ³n y trazado de instalaciÃ³n.",
+          "InstalaciÃ³n y pruebas.",
+          "ExplicaciÃ³n de uso y recomendaciones.",
         ],
       },
       {
         type: "bullets",
-        title: "Cuándo conviene",
+        title: "CuÃ¡ndo conviene",
         bullets: [
-          "Instalación en vivienda nueva",
+          "InstalaciÃ³n en vivienda nueva",
           "Recambio de equipos antiguos",
           "Ambientes que no climatizan bien",
-          "Búsqueda de eficiencia y menor consumo",
-          "Integración con domótica (si aplica)",
+          "BÃºsqueda de eficiencia y menor consumo",
+          "IntegraciÃ³n con domÃ³tica (si aplica)",
         ],
       },
     ],
     galleryItems: [
       { title: "Aire acondicionado instalado en living moderno" },
       { title: "Unidad exterior instalada prolija" },
-      { title: "Detalle de instalación / terminaciones" },
+      { title: "Detalle de instalaciÃ³n / terminaciones" },
       { title: "Ambiente confortable y moderno" },
     ],
     finalCta: {
-      title: "Confort real, con instalación profesional",
-      text: "Consultanos y definimos la mejor solución de climatización para tu casa.",
+      title: "Confort real, con instalaciÃ³n profesional",
+      text: "Consultanos y definimos la mejor soluciÃ³n de climatizaciÃ³n para tu casa.",
       primary: { label: "Consultar", href: "/contacto", variant: "primary" },
       secondary: {
         label: "Volver a Servicios",
         href: "/servicios",
         variant: "secondary",
       },
-      footnote: "Priorizamos soluciones eficientes y fáciles de mantener.",
+      footnote: "Priorizamos soluciones eficientes y fÃ¡ciles de mantener.",
     },
   },
   "seguridad-electronica": {
     metaDescription:
-      "Diseñamos sistemas de seguridad electrónica con cámaras, alarmas y control de accesos integrados para viviendas.",
+      "DiseÃ±amos sistemas de seguridad electrÃ³nica con cÃ¡maras, alarmas y control de accesos integrados para viviendas.",
     heroDescription:
-      "Diseñamos e instalamos sistemas de seguridad electrónica confiables y fáciles de usar: cámaras, alarmas y control de accesos. Priorizamos cobertura real, instalación prolija y configuración clara.",
+      "DiseÃ±amos e instalamos sistemas de seguridad electrÃ³nica confiables y fÃ¡ciles de usar: cÃ¡maras, alarmas y control de accesos. Priorizamos cobertura real, instalaciÃ³n prolija y configuraciÃ³n clara.",
     heroActions: [
       { label: "Consultar", href: "/contacto", variant: "primary" },
       { label: "Ver otros servicios", href: "/servicios", variant: "secondary" },
@@ -562,94 +562,94 @@ export const serviceDetailConfigs: Record<string, ServiceDetailConfig> = {
     sections: [
       {
         type: "text",
-        title: "Qué hacemos",
+        title: "QuÃ© hacemos",
         copy:
-          "Implementamos soluciones de seguridad adaptadas a cada vivienda. Definimos puntos críticos, alcance y nivel de integración deseado, para lograr un sistema efectivo y mantenible.",
+          "Implementamos soluciones de seguridad adaptadas a cada vivienda. Definimos puntos crÃ­ticos, alcance y nivel de integraciÃ³n deseado, para lograr un sistema efectivo y mantenible.",
       },
       {
         type: "bullets",
         title: "Soluciones disponibles",
         bullets: [
-          "Cámaras de seguridad (CCTV)",
+          "CÃ¡maras de seguridad (CCTV)",
           "Sistemas de alarma",
-          "Cerraduras electrónicas y control de accesos",
+          "Cerraduras electrÃ³nicas y control de accesos",
           "Monitoreo y acceso remoto (si aplica)",
-          "Integración con domótica (si corresponde)",
+          "IntegraciÃ³n con domÃ³tica (si corresponde)",
         ],
       },
       {
         type: "text",
-        title: "Diseño de cobertura",
+        title: "DiseÃ±o de cobertura",
         copy:
-          "La seguridad no es poner ‘una cámara’. Es diseñar cobertura: qué se ve, desde dónde y con qué calidad.",
+          "La seguridad no es poner â€˜una cÃ¡maraâ€™. Es diseÃ±ar cobertura: quÃ© se ve, desde dÃ³nde y con quÃ© calidad.",
       },
       {
         type: "bullets",
         title: "Cobertura bien pensada",
         bullets: [
-          "Definición de puntos críticos",
-          "Ángulos, alcance y zonas ciegas",
-          "Ubicación y protección de equipos",
-          "Orden y trazado de cableado/alimentación",
-          "Configuración y pruebas finales",
+          "DefiniciÃ³n de puntos crÃ­ticos",
+          "Ãngulos, alcance y zonas ciegas",
+          "UbicaciÃ³n y protecciÃ³n de equipos",
+          "Orden y trazado de cableado/alimentaciÃ³n",
+          "ConfiguraciÃ³n y pruebas finales",
         ],
       },
       {
         type: "text",
-        title: "Instalación prolija y configuración",
+        title: "InstalaciÃ³n prolija y configuraciÃ³n",
         copy:
-          "Una instalación prolija mejora confiabilidad y evita problemas futuros. Dejamos el sistema configurado, probado y explicado al usuario.",
+          "Una instalaciÃ³n prolija mejora confiabilidad y evita problemas futuros. Dejamos el sistema configurado, probado y explicado al usuario.",
       },
       {
         type: "bullets",
-        title: "Qué garantizamos",
+        title: "QuÃ© garantizamos",
         bullets: [
           "Cableado ordenado y seguro",
           "Montaje firme y discreto",
-          "Configuración de grabación/notificaciones (si aplica)",
+          "ConfiguraciÃ³n de grabaciÃ³n/notificaciones (si aplica)",
           "Acceso y uso claro para el cliente",
-          "Preparado para mantenimiento y ampliación",
+          "Preparado para mantenimiento y ampliaciÃ³n",
         ],
       },
       {
         type: "steps",
-        title: "Cómo trabajamos",
+        title: "CÃ³mo trabajamos",
         steps: [
           "Relevamiento del lugar y objetivos del cliente.",
-          "Definición de alcance y cobertura.",
-          "Propuesta técnica clara.",
-          "Instalación y configuración.",
-          "Pruebas, ajustes y explicación de uso.",
+          "DefiniciÃ³n de alcance y cobertura.",
+          "Propuesta tÃ©cnica clara.",
+          "InstalaciÃ³n y configuraciÃ³n.",
+          "Pruebas, ajustes y explicaciÃ³n de uso.",
         ],
       },
       {
         type: "bullets",
-        title: "Cuándo conviene",
+        title: "CuÃ¡ndo conviene",
         bullets: [
           "Mejorar seguridad en accesos",
-          "Monitoreo de perímetro y exteriores",
+          "Monitoreo de perÃ­metro y exteriores",
           "Control de ingresos/salidas",
           "Necesidad de acceso remoto",
-          "Integración con domótica y automatizaciones",
+          "IntegraciÃ³n con domÃ³tica y automatizaciones",
         ],
       },
     ],
     galleryItems: [
-      { title: "Cámara de seguridad instalada (exterior)" },
-      { title: "Cerradura electrónica en puerta moderna" },
-      { title: "App / monitoreo (pantalla genérica sin marcas)" },
-      { title: "Instalación prolija / detalle de montaje" },
+      { title: "CÃ¡mara de seguridad instalada (exterior)" },
+      { title: "Cerradura electrÃ³nica en puerta moderna" },
+      { title: "App / monitoreo (pantalla genÃ©rica sin marcas)" },
+      { title: "InstalaciÃ³n prolija / detalle de montaje" },
     ],
     finalCta: {
       title: "Seguridad clara, sin complejidad",
-      text: "Consultanos y definimos una solución de seguridad adaptada a tu vivienda.",
+      text: "Consultanos y definimos una soluciÃ³n de seguridad adaptada a tu vivienda.",
       primary: { label: "Consultar", href: "/contacto", variant: "primary" },
       secondary: {
         label: "Volver a Servicios",
         href: "/servicios",
         variant: "secondary",
       },
-      footnote: "Todo sistema se entrega configurado y probado, con explicación de uso.",
+      footnote: "Todo sistema se entrega configurado y probado, con explicaciÃ³n de uso.",
     },
   },
 };

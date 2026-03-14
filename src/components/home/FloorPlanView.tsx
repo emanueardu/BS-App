@@ -1,4 +1,4 @@
-import { Device, PlanImage, Room } from "@/types/home";
+﻿import { Device, PlanImage, Room } from "@/types/home";
 import { getRoomBBox, getRoomStatus, toSvgPoints } from "@/utils/homeGeometry";
 import { AlertCircle, Lightbulb, Snowflake } from "lucide-react";
 import { useMemo } from "react";
@@ -40,19 +40,19 @@ export const FloorPlanView = ({
   const aspectRatio = width && height ? `${width} / ${height}` : "4 / 3";
 
   return (
-    <div className="rounded-3xl border border-slate-200/70 bg-white/80 p-6 shadow-xl shadow-orange-50 backdrop-blur">
+    <div className="rounded-3xl border border-brand-border/70 bg-brand-surface/80 p-6 shadow-xl shadow-brand-sand/40 backdrop-blur">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-amber-600">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-copper">
             Plano general
           </p>
-          <h2 className="text-2xl font-semibold text-slate-900">Mi casa</h2>
-          <p className="text-sm text-slate-600">
+          <h2 className="text-2xl font-semibold text-brand-text">Mi casa</h2>
+          <p className="text-sm text-brand-text-muted">
             Click en un ambiente para hacer zoom y ver dispositivos.
           </p>
           {editMode && (
-            <p className="text-xs font-semibold text-amber-700">
-              Modo edición: Alt+click en el plano para mover el polígono del ambiente activo.
+            <p className="text-xs font-semibold text-brand-copper">
+              Modo ediciÃ³n: Alt+click en el plano para mover el polÃ­gono del ambiente activo.
             </p>
           )}
         </div>
@@ -65,14 +65,14 @@ export const FloorPlanView = ({
             <Snowflake className="h-4 w-4" />
             Aires
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-slate-700 ring-1 ring-slate-200">
+          <span className="inline-flex items-center gap-2 rounded-full bg-brand-bg-alt px-3 py-1 text-brand-text-muted ring-1 ring-brand-border">
             Click = zoom
           </span>
         </div>
       </div>
 
       <div
-        className="mt-4 relative w-full overflow-hidden rounded-2xl bg-slate-950/70"
+        className="mt-4 relative w-full overflow-hidden rounded-2xl bg-brand-navy/70"
         style={{ aspectRatio }}
       >
         {planImage ? (
@@ -220,14 +220,14 @@ export const FloorPlanView = ({
             </svg>
 
             {activeRoomId && (
-              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-2 ring-amber-400/80" />
+              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-2 ring-brand-copper-soft/80" />
             )}
           </>
         ) : (
-          <div className="flex h-full min-h-[360px] flex-col items-center justify-center gap-3 text-slate-100">
-            <AlertCircle className="h-10 w-10 text-amber-300" />
+          <div className="flex h-full min-h-[360px] flex-col items-center justify-center gap-3 text-brand-text-on-dark/90">
+            <AlertCircle className="h-10 w-10 text-brand-sand" />
             <p className="text-sm font-semibold">Cargando plano...</p>
-            <p className="max-w-md text-center text-xs text-slate-200/70">
+            <p className="max-w-md text-center text-xs text-brand-text-on-dark/70">
               Servimos el PDF desde {planAssetUrl}. Asegurate de que el archivo exista en
               public/planos o en Supabase Storage.
             </p>
@@ -235,7 +235,7 @@ export const FloorPlanView = ({
               <button
                 onClick={onReloadPlan}
                 disabled={loadingPlan}
-                className="rounded-full bg-white/20 px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/30"
+                className="rounded-full bg-brand-surface/20 px-4 py-2 text-xs font-semibold text-brand-text-on-dark transition hover:bg-brand-surface/30"
               >
                 {loadingPlan ? "Renderizando..." : "Reintentar"}
               </button>
