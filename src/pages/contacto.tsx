@@ -19,6 +19,44 @@ const initialData: FormData = {
 export default function Contacto() {
   const [form, setForm] = useState<FormData>(initialData);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    setSubmitted(false);
+    setError(null);
+    setSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = (await response.json().catch(() => ({}))) as {
+        error?: string;
+      };
+
+      if (!response.ok) {
+        throw new Error(data.error ?? "No se pudo enviar la consulta.");
+      }
+
+      setSubmitted(true);
+      setForm(initialData);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "No se pudo enviar la consulta."
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -58,11 +96,7 @@ export default function Contacto() {
         </div>
 
         <form
-          onSubmit={(event: FormEvent) => {
-            event.preventDefault();
-            setSubmitted(true);
-            setForm(initialData);
-          }}
+          onSubmit={handleSubmit}
           className="space-y-4 rounded-2xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm"
         >
           <div>
@@ -73,6 +107,7 @@ export default function Contacto() {
               type="text"
               value={form.nombre}
               onChange={(e) => setForm({ ...form, nombre: e.target.value })}
+              required
               className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
               placeholder="Ej: Sofía Rodríguez"
             />
@@ -86,6 +121,7 @@ export default function Contacto() {
               type="text"
               value={form.zona}
               onChange={(e) => setForm({ ...form, zona: e.target.value })}
+              required
               className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
               placeholder="Ej: Nordelta, Palermo, Zona Norte"
             />
@@ -98,6 +134,7 @@ export default function Contacto() {
             <select
               value={form.servicio}
               onChange={(e) => setForm({ ...form, servicio: e.target.value })}
+              required
               className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
             >
               <option>Instalacion electrica segura</option>
@@ -114,6 +151,7 @@ export default function Contacto() {
               value={form.mensaje}
               onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
               rows={4}
+              required
               className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
               placeholder="Contanos sobre tu obra, medidas y urgencia."
             />
@@ -121,10 +159,15 @@ export default function Contacto() {
 
           <button
             type="submit"
-            className="w-full rounded-full bg-brand-copper px-4 py-3 text-sm font-semibold text-brand-text-on-dark transition hover:-translate-y-0.5 hover:bg-brand-copper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
+            disabled={submitting}
+            className="w-full rounded-full bg-brand-copper px-4 py-3 text-sm font-semibold text-brand-text-on-dark transition hover:-translate-y-0.5 hover:bg-brand-copper disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
           >
-            Enviar mensaje
+            {submitting ? "Enviando..." : "Enviar mensaje"}
           </button>
+
+          {error && (
+            <p className="text-sm font-semibold text-red-600">{error}</p>
+          )}
 
           {submitted && (
             <p className="text-sm font-semibold text-brand-copper">
