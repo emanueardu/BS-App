@@ -31,11 +31,12 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>SUR INGENIERÍA | Portal de clientes</title>
+        <title>Sur Ingeniería SRL | Ingeniería y Servicios</title>
         <meta
           name="description"
-          content="Portal publico y app privada para clientes de SUR INGENIERÍA."
+          content="Sur Ingeniería SRL ofrece ingeniería eléctrica, domótica, automatización y servicios técnicos para viviendas, comercios y proyectos a medida."
         />
+        <link rel="canonical" href="https://www.suringenieriasrl.com/" />
       </Head>
 
       <section className="relative isolate -mx-6 overflow-hidden rounded-none bg-gradient-to-br from-brand-navy/85 via-brand-blue/80 to-brand-blue-mid/70 p-6 shadow-2xl shadow-brand-navy/30 backdrop-blur-sm lg:-mx-10 lg:rounded-3xl lg:p-12">
