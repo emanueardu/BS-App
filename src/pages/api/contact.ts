@@ -4,6 +4,8 @@ import nodemailer from "nodemailer";
 type ContactPayload = {
   nombre?: string;
   zona?: string;
+  email?: string;
+  telefono?: string;
   servicio?: string;
   mensaje?: string;
 };
@@ -44,11 +46,12 @@ export default async function handler(
     });
   }
 
-  const { nombre, zona, servicio, mensaje } = (req.body ?? {}) as ContactPayload;
+  const { nombre, zona, email, telefono, servicio, mensaje } = (req.body ??
+    {}) as ContactPayload;
 
-  if (!nombre || !zona || !servicio || !mensaje) {
+  if (!nombre || !zona || !email || !telefono || !servicio || !mensaje) {
     return res.status(400).json({
-      error: "Completa nombre, zona, servicio y mensaje.",
+      error: "Completa nombre, zona, email, teléfono, servicio y mensaje.",
     });
   }
 
@@ -57,6 +60,8 @@ export default async function handler(
     "",
     `Nombre: ${nombre}`,
     `Zona: ${zona}`,
+    `Email: ${email}`,
+    `Telefono: ${telefono}`,
     `Servicio: ${servicio}`,
     "",
     "Mensaje:",
@@ -68,6 +73,8 @@ export default async function handler(
       <h2 style="margin: 0 0 16px;">Nueva consulta desde SUR INGENIERIA</h2>
       <p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p>
       <p><strong>Zona:</strong> ${escapeHtml(zona)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      <p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p>
       <p><strong>Servicio:</strong> ${escapeHtml(servicio)}</p>
       <p><strong>Mensaje:</strong></p>
       <p style="white-space: pre-wrap;">${escapeHtml(mensaje)}</p>
@@ -78,7 +85,7 @@ export default async function handler(
     await transporter.sendMail({
       from: smtpFrom,
       to: contactTo,
-      replyTo: smtpFrom,
+      replyTo: email,
       subject: `Nueva consulta web - ${servicio}`,
       text,
       html,

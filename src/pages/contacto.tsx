@@ -1,10 +1,13 @@
-﻿import Head from "next/head";
+import Head from "next/head";
 import { FormEvent, useState } from "react";
+import { services } from "@/data/services";
 import { openVoltiChat } from "@/utils/volti";
 
 type FormData = {
   nombre: string;
   zona: string;
+  email: string;
+  telefono: string;
   servicio: string;
   mensaje: string;
 };
@@ -12,7 +15,9 @@ type FormData = {
 const initialData: FormData = {
   nombre: "",
   zona: "",
-  servicio: "Instalacion electrica segura",
+  email: "",
+  telefono: "",
+  servicio: services[0]?.title ?? "",
   mensaje: "",
 };
 
@@ -123,8 +128,38 @@ export default function Contacto() {
               onChange={(e) => setForm({ ...form, zona: e.target.value })}
               required
               className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
-              placeholder="Ej: Nordelta, Palermo, Zona Norte"
+              placeholder="Ej: Canning, San Vicente, Zona Norte"
             />
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="block text-sm font-semibold text-brand-text">
+                Email
+              </label>
+              <input
+                type="email"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                required
+                className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
+                placeholder="Ej: nombre@correo.com"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-brand-text">
+                Teléfono
+              </label>
+              <input
+                type="tel"
+                value={form.telefono}
+                onChange={(e) => setForm({ ...form, telefono: e.target.value })}
+                required
+                className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
+                placeholder="Ej: 11 2520-7068"
+              />
+            </div>
           </div>
 
           <div>
@@ -137,9 +172,11 @@ export default function Contacto() {
               required
               className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
             >
-              <option>Instalacion electrica segura</option>
-              <option>Preparacion domótica</option>
-              <option>Domótica integral</option>
+              {services.map((service) => (
+                <option key={service.id} value={service.title}>
+                  {service.title}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -153,7 +190,7 @@ export default function Contacto() {
               rows={4}
               required
               className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-2 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
-              placeholder="Contanos sobre tu obra, medidas y urgencia."
+              placeholder="Contanos sobre tu obra, medidas, plazos y cualquier dato útil para preparar la propuesta."
             />
           </div>
 
