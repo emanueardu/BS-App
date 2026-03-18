@@ -79,7 +79,7 @@ export default function Contacto() {
           </h1>
           <p className="text-base text-brand-text-muted">
             Completa el formulario y coordinamos una visita para evaluar tu
-            obra. Te tespondneremos en la brevedad.
+            obra. Te responderemos a la brevedad.
           </p>
 
           <div className="rounded-2xl border border-brand-border/70 bg-brand-surface/50 p-4 backdrop-blur-sm">
