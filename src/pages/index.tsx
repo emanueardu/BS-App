@@ -7,6 +7,7 @@ import {
   BoltIcon,
   DocumentTextIcon,
   ShieldCheckIcon,
+  SparklesIcon,
 } from "@heroicons/react/24/outline";
 const portfolio = [
   {
