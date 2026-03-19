@@ -3,7 +3,6 @@ import Link from "next/link";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { projects, SHOW_PROJECTS_SECTION } from "@/data/site";
-import { openVoltiChat } from "@/utils/volti";
 
 const gallery = ["Vista general", "Tablero", "Domótica", "Documentacion"];
 
@@ -43,12 +42,6 @@ export default function ProyectoDetalle() {
           >
             Pedir relevamiento
           </Link>
-          <button
-            onClick={openVoltiChat}
-            className="rounded-full border border-brand-navy px-5 py-2 text-sm font-semibold text-brand-text transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-          >
-            Hablar con Volti
-          </button>
         </div>
       </section>
 

@@ -7,7 +7,6 @@ import {
   BoltIcon,
   DocumentTextIcon,
   ShieldCheckIcon,
-  SparklesIcon,
 } from "@heroicons/react/24/outline";
 const portfolio = [
   {
@@ -68,21 +67,6 @@ export default function Home() {
               >
                 Ingresar a mi panel
               </Link>
-            </div>
-            <div className="grid max-w-xs gap-4">
-              {[
-                { label: "Visitas coordinadas", value: "<24h" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-2xl border border-white/10 bg-brand-surface/5 px-4 py-3 shadow-sm"
-                >
-                  <p className="text-2xl font-bold text-brand-sand">
-                    {stat.value}
-                  </p>
-                  <p className="text-sm text-brand-text-on-dark/80">{stat.label}</p>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -231,11 +215,6 @@ export default function Home() {
               title: "Documentos",
               description: "Planos, certificaciones y fotos en la nube.",
               icon: ShieldCheckIcon,
-            },
-            {
-              title: "Chat Volti",
-              description: "Consultas rapidas sobre el proyecto.",
-              icon: SparklesIcon,
             },
           ].map((item) => {
             const Icon = item.icon;

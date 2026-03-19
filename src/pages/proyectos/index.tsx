@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { GetServerSideProps } from "next";
 import { projects, SHOW_PROJECTS_SECTION } from "@/data/site";
-import { openVoltiChat } from "@/utils/volti";
 
 const categories = ["Todos", "Electrica", "Domótica", "Seguridad", "Automatizacion"] as const;
 
@@ -29,12 +28,6 @@ export default function Proyectos() {
           >
             Pedir relevamiento
           </Link>
-          <button
-            onClick={openVoltiChat}
-            className="rounded-full border border-brand-navy px-5 py-2 text-sm font-semibold text-brand-text transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-          >
-            Hablar con Volti
-          </button>
         </div>
       </section>
 

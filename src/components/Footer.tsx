@@ -1,7 +1,6 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
 import { SHOW_PROJECTS_SECTION } from "@/data/site";
-import { openVoltiChat } from "@/utils/volti";
 
 export const Footer = () => {
   return (
@@ -36,12 +35,6 @@ export const Footer = () => {
           <Link href="/portal" className="hover:text-brand-copper">
             Demo Portal
           </Link>
-          <button
-            onClick={openVoltiChat}
-            className="rounded-full border border-brand-navy px-4 py-2 text-sm font-semibold text-brand-text transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-          >
-            Hablar con Volti
-          </button>
         </div>
       </div>
     </footer>

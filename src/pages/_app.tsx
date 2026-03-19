@@ -1,6 +1,5 @@
 ﻿import "@/styles/globals.css";
 import { Navbar } from "@/components/Navbar";
-import { VoltiChat } from "@/components/VoltiChat";
 import { AuthProvider } from "@/context/AuthContext";
 import { Footer } from "@/components/Footer";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -50,7 +49,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </main>
         <Footer />
-        <VoltiChat />
       </div>
     </AuthProvider>
   );

@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   Wrench,
 } from "lucide-react";
-import { openVoltiChat } from "@/utils/volti";
 
 const workflow = [
   {
@@ -113,12 +112,6 @@ export default function Proceso() {
                   Pedir relevamiento
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <button
-                  onClick={openVoltiChat}
-                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-3 text-sm font-semibold text-brand-text transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-                >
-                  Hablar con Volti
-                </button>
               </div>
             </div>
 

@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { FormEvent, useState } from "react";
 import { services } from "@/data/services";
-import { openVoltiChat } from "@/utils/volti";
 
 type FormData = {
   nombre: string;
@@ -92,12 +91,6 @@ export default function Contacto() {
               Email: info@suringenieriasrl.com
             </p>
           </div>
-          <button
-            onClick={openVoltiChat}
-            className="rounded-full border border-brand-navy px-4 py-2 text-sm font-semibold text-brand-text transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-          >
-            Hablar con Volti
-          </button>
         </div>
 
         <form
