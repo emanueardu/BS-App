@@ -69,11 +69,9 @@ export default function Home() {
                 Ingresar a mi panel
               </Link>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid max-w-xs gap-4">
               {[
                 { label: "Visitas coordinadas", value: "<24h" },
-                { label: "Obras activas", value: "30+" },
-                { label: "Satisfaccion", value: "4.9/5" },
               ].map((stat) => (
                 <div
                   key={stat.label}
