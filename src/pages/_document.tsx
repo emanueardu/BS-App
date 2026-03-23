@@ -22,7 +22,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-BCP6FKVREY');`,
+gtag('config', 'G-BCP6FKVREY');
+gtag('config', 'AW-18021036837');`,
           }}
         />
       </Head>
