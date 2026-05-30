@@ -1,4 +1,4 @@
-﻿import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 import Head from "next/head";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
@@ -18,7 +18,7 @@ export default function Registro() {
     setError(null);
 
     if (password !== confirm) {
-      setError("Las contraseñas no coinciden.");
+      setError("Las contrasenas no coinciden.");
       return;
     }
 
@@ -32,10 +32,10 @@ export default function Registro() {
       setPassword("");
       setConfirm("");
     } catch (err) {
-      const errMsg =
+      setError(
         (err as Error)?.message ??
-        "No pudimos registrar la cuenta. Intenta más tarde.";
-      setError(errMsg);
+          "No pudimos registrar la cuenta. Intenta mas tarde."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -44,84 +44,81 @@ export default function Registro() {
   return (
     <>
       <Head>
-        <title>Registro | SUR INGENIERÍA</title>
+        <title>Registro | SUR INGENIERIA</title>
       </Head>
 
-      <div className="mx-auto max-w-xl rounded-3xl bg-brand-surface/60 p-8 shadow-xl shadow-brand-sand backdrop-blur-sm">
-        <h1 className="text-3xl font-semibold text-brand-text">
-          Crear cuenta de cliente
-        </h1>
-        <p className="text-sm text-brand-text-muted">
-          Registra tu correo para seguir tus obras y descargar documentos.
-        </p>
+      <div className="mx-auto max-w-xl pt-6">
+        <div className="section-shell px-8 py-9">
+          <p className="eyebrow">Portal privado</p>
+          <h1 className="mt-2 text-3xl font-semibold text-brand-text">
+            Crear cuenta de cliente
+          </h1>
+          <p className="mt-2 text-sm leading-6 text-brand-text-muted">
+            Registra tu correo para seguir obras, descargar documentos y acceder a Mi Home.
+          </p>
 
-        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-          <div>
-            <label className="block text-sm font-semibold text-brand-text">
-              Correo
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-3 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
-              placeholder="cliente@correo.com"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-brand-text">
-              Contraseña
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-3 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
-              placeholder="Mínimo 6 caracteres"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-brand-text">
-              Confirmar contraseña
-            </label>
-            <input
-              type="password"
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
-              required
-              className="mt-2 w-full rounded-lg border border-brand-border bg-brand-surface/80 px-4 py-3 text-sm text-brand-text outline-none focus:border-brand-copper focus:ring-2 focus:ring-brand-sand"
-              placeholder="Repite tu contraseña"
-            />
-          </div>
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <div>
+              <label className="block text-sm font-semibold text-brand-text">Correo</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="form-input mt-2"
+                placeholder="cliente@correo.com"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-brand-text">
+                Contrasena
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="form-input mt-2"
+                placeholder="Minimo 6 caracteres"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-brand-text">
+                Confirmar contrasena
+              </label>
+              <input
+                type="password"
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                required
+                className="form-input mt-2"
+                placeholder="Repite tu contrasena"
+              />
+            </div>
 
-          {error && (
-            <p className="rounded-lg bg-brand-bg-alt px-3 py-2 text-sm text-brand-copper">
-              {error}
-            </p>
-          )}
-          {message && (
-            <p className="rounded-lg bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700">
-              {message}
-            </p>
-          )}
+            {error ? (
+              <p className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
+                {error}
+              </p>
+            ) : null}
+            {message ? (
+              <p className="rounded-2xl bg-brand-energy/14 px-4 py-3 text-sm font-semibold text-[#17784a]">
+                {message}
+              </p>
+            ) : null}
 
-          <button
-            type="submit"
-            disabled={submitting}
-            className="w-full rounded-full bg-brand-copper px-4 py-3 text-sm font-semibold text-brand-text-on-dark transition hover:-translate-y-0.5 hover:bg-brand-copper disabled:cursor-not-allowed disabled:bg-brand-border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-          >
-            {submitting ? "Creando..." : "Crear cuenta"}
-          </button>
-        </form>
+            <button type="submit" disabled={submitting} className="btn btn-primary w-full">
+              {submitting ? "Creando..." : "Crear cuenta"}
+            </button>
+          </form>
 
-        <p className="mt-4 text-sm text-brand-text-muted">
-          ¿Ya tienes cuenta?{" "}
-          <Link href="/login" className="font-semibold text-brand-copper">
-            Ingresar
-          </Link>
-        </p>
+          <p className="mt-4 text-sm text-brand-text-muted">
+            Ya tienes cuenta?
+            <Link href="/login" className="ml-1 font-semibold text-brand-copper">
+              Ingresar
+            </Link>
+          </p>
+        </div>
       </div>
     </>
   );

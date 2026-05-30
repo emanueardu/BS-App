@@ -59,10 +59,13 @@ export const DeviceMarker = ({
       style={{
         left: `${device.position.x * 100}%`,
         top: `${device.position.y * 100}%`,
-        backgroundColor: isOn ? "rgba(34,197,94,0.92)" : "rgba(239,68,68,0.92)",
-        color: isOn ? "#052e16" : "#1f2937",
+        backgroundColor: isOn ? "rgba(91,201,138,0.94)" : "rgba(239,68,68,0.92)",
+        color: isOn ? "#08231f" : "#fff5f5",
         opacity: dragging ? 0.85 : 1,
         cursor: editable ? "grab" : undefined,
+        boxShadow: isOn
+          ? "0 12px 32px -8px rgba(91,201,138,.55)"
+          : "0 12px 28px -10px rgba(239,68,68,.42)",
       }}
       onClick={() => onToggle(device.id, !isOn)}
       onPointerDown={handlePointerDown}
@@ -73,11 +76,11 @@ export const DeviceMarker = ({
         <Icon className="h-4 w-4" />
         {device.type === "light" ? "Luz" : "Aire"}
       </span>
-      <span className="ml-2 rounded-full bg-black/15 px-2 py-0.5 text-[10px] font-black tracking-tight text-brand-text-on-dark">
+      <span className="ml-2 rounded-full bg-black/18 px-2 py-0.5 text-[10px] font-black tracking-tight text-brand-text-on-dark">
         {isOn ? "ON" : "OFF"}
       </span>
       {editable && (
-        <span className="ml-2 rounded-full bg-brand-surface/20 px-2 py-0.5 text-[10px] font-semibold text-brand-text-on-dark">
+        <span className="ml-2 rounded-full bg-white/18 px-2 py-0.5 text-[10px] font-semibold text-brand-text-on-dark">
           Mover
         </span>
       )}

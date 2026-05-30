@@ -1,4 +1,4 @@
-﻿import { useProtectedRoute } from "@/hooks/useProtectedRoute";
+import { useProtectedRoute } from "@/hooks/useProtectedRoute";
 import { supabase } from "@/lib/supabaseClient";
 import Head from "next/head";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 type Project = {
   id: string;
   name: string;
-  status: "En ejecución" | "Finalizado" | "Planificado" | string;
+  status: "En ejecucion" | "Finalizado" | "Planificado" | string;
   progress: number;
   next_visit?: string | null;
 };
@@ -23,28 +23,28 @@ type ProjectRow = {
 const fallbackProjects: Project[] = [
   {
     id: "demo-1",
-    name: "Obra domótica - Casa Martínez",
-    status: "En ejecución",
+    name: "Obra domotica - Casa Martinez",
+    status: "En ejecucion",
     progress: 68,
     next_visit: "Martes 10:00",
   },
   {
     id: "demo-2",
-    name: "Oficinas zona norte - Tablero BT",
+    name: "Tablero BT - oficinas zona norte",
     status: "Planificado",
     progress: 25,
     next_visit: "A coordinar",
   },
 ];
 
-const statusColor = (status: string) => {
+const statusClass = (status: string) => {
   switch (status) {
-    case "En ejecución":
-      return "bg-brand-sand text-brand-blue";
+    case "En ejecucion":
+      return "status-pill status-pill-climate";
     case "Finalizado":
-      return "bg-emerald-100 text-emerald-800";
+      return "status-pill status-pill-on";
     default:
-      return "bg-brand-bg-alt text-brand-text";
+      return "status-pill status-pill-neutral";
   }
 };
 
@@ -72,7 +72,7 @@ export default function Dashboard() {
           (data as ProjectRow[]).map((item) => ({
             id: String(item.id),
             name: item.name ?? "Proyecto",
-            status: item.status ?? "En ejecución",
+            status: item.status ?? "En ejecucion",
             progress: Number(item.progress ?? 0),
             next_visit: item.next_visit ?? "A coordinar",
           }))
@@ -88,34 +88,29 @@ export default function Dashboard() {
   return (
     <>
       <Head>
-        <title>Dashboard | SUR INGENIERÍA</title>
+        <title>Dashboard | SUR INGENIERIA</title>
       </Head>
-      <div className="space-y-6">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+      <div className="space-y-6 pt-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
-              Tus proyectos
-            </p>
-            <h1 className="text-3xl font-semibold text-brand-text">
+            <p className="eyebrow">Tus proyectos</p>
+            <h1 className="mt-2 text-3xl font-semibold text-brand-text">
               Seguimiento de obra
             </h1>
-            <p className="text-sm text-brand-text-muted">
+            <p className="mt-2 text-sm text-brand-text-muted">
               Accede a presupuestos, avance y documentos de cada obra.
             </p>
           </div>
-          <Link
-            href="/contacto"
-            className="inline-flex items-center gap-2 rounded-full border border-brand-navy bg-brand-surface/60 px-4 py-2 text-sm font-semibold text-brand-text backdrop-blur-sm transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-          >
+          <Link href="/contacto" className="btn btn-outline">
             Agendar visita
           </Link>
         </div>
 
-        {error && (
-          <p className="rounded-lg bg-brand-bg-alt px-3 py-2 text-sm text-brand-copper">
+        {error ? (
+          <p className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
             {error}
           </p>
-        )}
+        ) : null}
 
         {fetching || loading ? (
           <p className="text-sm text-brand-text-muted">Cargando tus proyectos...</p>
@@ -125,34 +120,28 @@ export default function Dashboard() {
               <Link
                 key={project.id}
                 href={`/proyecto/${project.id}`}
-                className="group block rounded-2xl border border-brand-border bg-brand-surface/60 p-5 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-sand"
+                className="surface-card block p-5"
               >
-                <div className="flex items-center justify-between">
-                  <p className="text-lg font-semibold text-brand-text">
-                    {project.name}
-                  </p>
-                  <span
-                    className={`rounded-full px-3 py-1 text-xs font-semibold ${statusColor(project.status)}`}
-                  >
-                    {project.status}
-                  </span>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-lg font-semibold text-brand-text">{project.name}</p>
+                    <p className="mt-1 text-sm text-brand-text-muted">
+                      Proxima visita: {project.next_visit ?? "A coordinar"}
+                    </p>
+                  </div>
+                  <span className={statusClass(project.status)}>{project.status}</span>
                 </div>
-                <p className="text-sm text-brand-text-muted">
-                  Próxima visita: {project.next_visit ?? "A coordinar"}
-                </p>
-                <div className="mt-3 h-2 rounded-full bg-brand-bg-alt">
+                <div className="mt-4 h-2 rounded-full bg-brand-bg-alt">
                   <div
-                    className="h-2 rounded-full bg-gradient-to-r from-brand-copper to-brand-copper-soft"
+                    className="h-2 rounded-full bg-gradient-to-r from-brand-copper to-brand-energy"
                     style={{ width: `${Math.min(project.progress, 100)}%` }}
                   />
                 </div>
                 <div className="mt-3 flex items-center gap-3 text-sm text-brand-text-muted">
-                  <span className="font-semibold">
+                  <span className="font-semibold text-brand-text">
                     Avance {Math.min(project.progress, 100)}%
                   </span>
-                  <span className="text-xs text-brand-text-muted group-hover:text-brand-copper">
-                    Ver detalle →
-                  </span>
+                  <span className="text-brand-copper">Ver detalle</span>
                 </div>
               </Link>
             ))}

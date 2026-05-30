@@ -38,12 +38,10 @@ const RoutineList = ({
   if (!routines.length) return null;
 
   return (
-    <div className="rounded-3xl border border-brand-border/70 bg-brand-surface/80 p-6 shadow-xl shadow-brand-sand/40">
+    <div className="section-shell p-6 ambient-grid">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-blue-mid">
-            Rutinas
-          </p>
+          <p className="eyebrow">Rutinas</p>
           <h3 className="text-2xl font-semibold text-brand-text">Automatizaciones</h3>
           <p className="text-sm text-brand-text-muted">
             Simuladas, afectan el estado virtual de luces y aires.
@@ -55,7 +53,7 @@ const RoutineList = ({
         {routines.map((routine) => (
           <div
             key={routine.id}
-            className="flex flex-col gap-2 rounded-2xl border border-brand-border/70 bg-brand-bg/70 p-4"
+            className="surface-card flex flex-col gap-2 p-4"
           >
             <div className="flex items-start justify-between gap-2">
               <div>
@@ -63,10 +61,10 @@ const RoutineList = ({
                 <p className="text-xs text-brand-text-muted">{routine.description}</p>
               </div>
               <span
-                className={`rounded-full px-3 py-1 text-[11px] font-semibold ${
+                className={`status-pill ${
                   routine.status === "active"
-                    ? "bg-emerald-100 text-emerald-700"
-                    : "bg-brand-bg-alt text-brand-text-muted"
+                    ? "status-pill-on"
+                    : "status-pill-neutral"
                 }`}
               >
                 {routine.status === "active" ? "ACTIVA" : "PAUSADA"}
@@ -89,13 +87,13 @@ const RoutineList = ({
                     routine.status === "active" ? "paused" : "active"
                   )
                 }
-                className="rounded-full bg-brand-navy px-3 py-1 text-xs font-semibold text-brand-text-on-dark transition hover:-translate-y-0.5 hover:bg-brand-blue"
+                className="btn btn-navy px-3 py-2 text-xs"
               >
                 {routine.status === "active" ? "Pausar" : "Activar"}
               </button>
               <button
                 onClick={() => onRun(routine.id)}
-                className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800 transition hover:-translate-y-0.5 hover:bg-emerald-200"
+                className="btn btn-energy px-3 py-2 text-xs"
               >
                 Ejecutar ahora
               </button>
@@ -108,32 +106,30 @@ const RoutineList = ({
 };
 
 const ConsumptionPanel = ({ consumption }: { consumption: Consumption }) => (
-  <div className="rounded-3xl border border-brand-border/70 bg-brand-surface/80 p-6 shadow-xl shadow-brand-sand/40">
-    <p className="text-xs font-semibold uppercase tracking-wide text-brand-copper">
-      Consumo simulado
-    </p>
+  <div className="section-shell p-6">
+    <p className="eyebrow">Consumo simulado</p>
     <h3 className="text-2xl font-semibold text-brand-text">Vivienda</h3>
     <p className="text-sm text-brand-text-muted">
       Calculado en base a dispositivos encendidos (luces {LIGHT_WATT}W, aires {AC_WATT}W).
     </p>
     <div className="mt-4 grid gap-3 sm:grid-cols-3">
-      <div className="rounded-2xl bg-brand-navy px-4 py-3 text-brand-text-on-dark shadow">
-        <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-on-dark/85">
+      <div className="rounded-2xl bg-brand-navy px-4 py-3 text-brand-text-on-dark shadow-e4">
+        <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-on-dark/82">
           Potencia instantánea
         </p>
         <p className="text-3xl font-semibold">{consumption.instant.toFixed(0)} W</p>
-        <p className="text-[11px] text-brand-text-on-dark/85">
+        <p className="text-[11px] text-brand-text-on-dark/82">
           Luces ON: {consumption.lightsOn} · Aires ON: {consumption.acOn}
         </p>
       </div>
-      <div className="rounded-2xl border border-brand-copper-soft bg-brand-bg-alt px-4 py-3 text-brand-blue">
+      <div className="rounded-2xl border border-brand-copper/25 bg-brand-copper/8 px-4 py-3 text-brand-blue">
         <p className="text-xs font-semibold uppercase tracking-wide">Consumo diario</p>
         <p className="text-2xl font-semibold">
           {consumption.daily.toFixed(2)} kWh
         </p>
         <p className="text-[11px]">Supone {LIGHT_HOURS}h luces · {AC_HOURS}h aires</p>
       </div>
-      <div className="rounded-2xl border border-brand-border/70 bg-brand-surface px-4 py-3 text-brand-text">
+      <div className="rounded-2xl border border-brand-border bg-brand-surface px-4 py-3 text-brand-text">
         <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-muted">
           Consumo mensual
         </p>
@@ -536,7 +532,7 @@ export default function HomeModule() {
         <Head>
           <title>Mi casa | SUR INGENIERÍA</title>
         </Head>
-        <div className="rounded-3xl border border-brand-border bg-brand-surface p-8 text-sm text-brand-text-muted">
+        <div className="section-shell p-8 text-sm text-brand-text-muted">
           {loading
             ? "Cargando credenciales..."
             : "Esta sección es solo para usuarios internos."}
@@ -550,40 +546,38 @@ export default function HomeModule() {
       <Head>
         <title>Mi casa | SUR INGENIERÍA</title>
       </Head>
-      <div className="space-y-6">
+      <div className="ambient-grid space-y-6 rounded-[1.75rem] bg-brand-navy px-5 py-5 text-brand-text-on-dark shadow-e4 lg:px-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-brand-copper">
-              Home interno
-            </p>
-            <h1 className="text-3xl font-semibold text-brand-text">
+            <p className="eyebrow eyebrow-dark">Home interno</p>
+            <h1 className="text-3xl font-semibold text-brand-text-on-dark">
               {homeState?.home.name ?? "Mi casa"}
             </h1>
-            <p className="text-sm text-brand-text-muted">
+            <p className="text-sm text-brand-text-on-dark/76">
               Plano con zonas por ambiente, control de luminarias / aires y rutinas simuladas.
             </p>
             {error && (
-              <p className="mt-2 rounded-lg bg-brand-bg-alt px-3 py-2 text-xs font-semibold text-brand-copper">
+              <p className="mt-2 rounded-2xl bg-white/10 px-3 py-2 text-xs font-semibold text-brand-sand">
                 {error}
               </p>
             )}
           </div>
           <div className="flex flex-wrap gap-2 text-xs font-semibold">
-            <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-emerald-700 ring-1 ring-emerald-100">
+            <span className={`status-pill ${overallStatus.lightsOn ? "status-pill-on" : "status-pill-off"}`}>
               Luces {overallStatus.lightsOn ? "ON" : "OFF"}
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-sky-700 ring-1 ring-sky-100">
+            <span className={`status-pill ${overallStatus.acOn ? "status-pill-climate" : "status-pill-off"}`}>
               Aires {overallStatus.acOn ? "ON" : "OFF"}
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand-bg-alt px-3 py-1 text-brand-text-muted ring-1 ring-brand-border">
+            <span className="status-pill status-pill-neutral bg-white/90">
               {loadingData ? "Actualizando..." : "Online"}
             </span>
             <button
               onClick={() => setEditMode((v) => !v)}
-              className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold transition ${
+              className={`status-pill transition ${
                 editMode
-                  ? "bg-brand-sand text-brand-blue ring-1 ring-brand-copper-soft"
-                  : "bg-brand-navy text-brand-text-on-dark hover:-translate-y-0.5"
+                  ? "status-pill-climate"
+                  : "bg-white/8 text-brand-text-on-dark hover:-translate-y-0.5"
               }`}
             >
               {editMode ? "Salir de editar" : "Editar"}

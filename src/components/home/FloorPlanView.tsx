@@ -40,12 +40,10 @@ export const FloorPlanView = ({
   const aspectRatio = width && height ? `${width} / ${height}` : "4 / 3";
 
   return (
-    <div className="rounded-3xl border border-brand-border/70 bg-brand-surface/80 p-6 shadow-xl shadow-brand-sand/40 backdrop-blur">
+    <div className="section-shell p-6">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-copper">
-            Plano general
-          </p>
+          <p className="eyebrow">Plano general</p>
           <h2 className="text-2xl font-semibold text-brand-text">Mi casa</h2>
           <p className="text-sm text-brand-text-muted">
             Click en un ambiente para hacer zoom y ver dispositivos.
@@ -57,22 +55,22 @@ export const FloorPlanView = ({
           )}
         </div>
         <div className="flex flex-wrap gap-2 text-xs font-semibold">
-          <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-emerald-700 ring-1 ring-emerald-100">
+          <span className="status-pill status-pill-on">
             <Lightbulb className="h-4 w-4" />
             Luces
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-sky-700 ring-1 ring-sky-100">
+          <span className="status-pill status-pill-climate">
             <Snowflake className="h-4 w-4" />
             Aires
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-brand-bg-alt px-3 py-1 text-brand-text-muted ring-1 ring-brand-border">
+          <span className="status-pill status-pill-neutral">
             Click = zoom
           </span>
         </div>
       </div>
 
       <div
-        className="mt-4 relative w-full overflow-hidden rounded-2xl bg-brand-navy/70"
+        className="relative mt-4 w-full overflow-hidden rounded-2xl bg-brand-navy/88"
         style={{ aspectRatio }}
       >
         {planImage ? (
@@ -119,9 +117,9 @@ export const FloorPlanView = ({
 
                 const { lightsOn, acOn } = getRoomStatus(room.id, devices);
                 const hasActivity = lightsOn || acOn;
-                const stroke = hasActivity ? "#10b981" : "#ef4444";
+                const stroke = hasActivity ? "#5bc98a" : "#ef4444";
                 const fill = hasActivity
-                  ? "rgba(16,185,129,0.18)"
+                  ? "rgba(91,201,138,0.18)"
                   : "rgba(239,68,68,0.12)";
 
                 if (!room.polygon.length && Array.isArray(points) && points.length === 4) {
@@ -198,19 +196,19 @@ export const FloorPlanView = ({
                         width={68}
                         height={24}
                         rx={12}
-                        fill="#0f172a"
+                        fill="#0c2230"
                         opacity={0.8}
                       />
                       <g transform="translate(-26,-2)">
                         <Lightbulb
                           className="h-3 w-3"
-                          color={lightsOn ? "#34d399" : "#f87171"}
+                          color={lightsOn ? "#5bc98a" : "#ef4444"}
                         />
                       </g>
                       <g transform="translate(6,-2)">
                         <Snowflake
                           className="h-3 w-3"
-                          color={acOn ? "#34d399" : "#f87171"}
+                          color={acOn ? "#12b5c9" : "#ef4444"}
                         />
                       </g>
                     </g>
@@ -220,7 +218,7 @@ export const FloorPlanView = ({
             </svg>
 
             {activeRoomId && (
-              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-2 ring-brand-copper-soft/80" />
+              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-2 ring-brand-copper/80" />
             )}
           </>
         ) : (

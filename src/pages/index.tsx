@@ -1,275 +1,353 @@
-﻿import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
+import { VideoHero } from "@/components/VideoHero";
+import { services } from "@/data/services";
 import { SHOW_PROJECTS_SECTION } from "@/data/site";
 import {
-  ArrowLongRightIcon,
-  BoltIcon,
-  DocumentTextIcon,
-  ShieldCheckIcon,
-  SparklesIcon,
-} from "@heroicons/react/24/outline";
+  ArrowRight,
+  FileText,
+  ShieldCheck,
+  Sparkles,
+  Wrench,
+  Zap,
+} from "lucide-react";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+
 const portfolio = [
   {
     title: "Vivienda inteligente",
-    img: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
-    tag: "Domótica",
+    img: "/images/services/domotica.jpg",
+    tag: "Domotica",
   },
   {
-    title: "Oficinas eficientes",
-    img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
-    tag: "Industria",
+    title: "Tableros y distribucion",
+    img: "/images/services/instalaciones-electricas.jpg",
+    tag: "Electricidad",
   },
   {
-    title: "Reforma premium",
-    img: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1100&q=80",
-    tag: "Residencial",
+    title: "Proyecto y documentacion",
+    img: "/images/services/planos-y-proyectos.jpg",
+    tag: "Proyecto",
   },
 ];
+
+const steps = [
+  {
+    title: "Relevamiento",
+    detail: "Visita tecnica con criterios de seguridad, alcance y prioridades del proyecto.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Diseno y propuesta",
+    detail: "Opciones claras con incluye/excluye, materiales, tiempos y documentacion.",
+    icon: Sparkles,
+  },
+  {
+    title: "Ejecucion",
+    detail: "Montaje prolijo, registros fotograficos y avance visible desde el portal.",
+    icon: Wrench,
+  },
+  {
+    title: "Entrega y soporte",
+    detail: "Puesta en marcha, manuales y respaldo tecnico para seguir creciendo.",
+    icon: FileText,
+  },
+];
+
+function HeroPanel() {
+  const rows = [
+    ["Provision de tableros", 80],
+    ["Canalizaciones", 55],
+    ["Automatizacion", 30],
+  ] as const;
+
+  return (
+    <div className="overflow-hidden rounded-[inherit]">
+      <div className="flex items-center justify-between border-b border-white/10 bg-white/10 px-6 py-4">
+        <div>
+          <p className="eyebrow text-brand-sand">Seguimiento en vivo</p>
+          <p className="mt-1 font-display text-lg font-semibold text-brand-text-on-dark">
+            Panel de avance de obra
+          </p>
+        </div>
+        <span className="status-pill bg-brand-copper text-[#04262b]">Cliente</span>
+      </div>
+      <div className="space-y-4 px-6 py-6">
+        {rows.map(([label, pct]) => (
+          <div key={label}>
+            <div className="flex items-center justify-between text-sm font-semibold text-brand-text-on-dark">
+              <span>{label}</span>
+              <span>{pct}%</span>
+            </div>
+            <div className="mt-2 h-2 rounded-full bg-white/14">
+              <div
+                className="h-2 rounded-full bg-gradient-to-r from-brand-copper to-brand-energy"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+          </div>
+        ))}
+        <div className="grid grid-cols-2 gap-3 pt-1">
+          {[
+            ["Proxima visita", "Martes 10:00"],
+            ["Documentos", "12 disponibles"],
+          ].map(([label, value]) => (
+            <div
+              key={label}
+              className="rounded-2xl border border-white/10 bg-white/6 px-4 py-3"
+            >
+              <p className="text-xs text-brand-text-on-dark/70">{label}</p>
+              <p className="mt-1 text-base font-semibold text-brand-text-on-dark">
+                {value}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Sur Ingeniería SRL | Ingeniería y Servicios</title>
+        <title>Sur Ingenieria SRL | Ingenieria y Servicios</title>
         <meta
           name="description"
-          content="Sur Ingeniería SRL ofrece ingeniería eléctrica, domótica, automatización y servicios técnicos para viviendas, comercios y proyectos a medida."
+          content="Sur Ingenieria SRL ofrece ingenieria electrica, domotica, automatizacion y seguimiento digital para viviendas y proyectos residenciales."
         />
         <link rel="canonical" href="https://www.suringenieriasrl.com/" />
       </Head>
 
-      <section className="relative isolate -mx-6 overflow-hidden rounded-none bg-gradient-to-br from-brand-navy/85 via-brand-blue/80 to-brand-blue-mid/70 p-6 shadow-2xl shadow-brand-navy/30 backdrop-blur-sm lg:-mx-10 lg:rounded-3xl lg:p-12">
-        <div className="relative">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="space-y-6 text-brand-text-on-dark">
-            <div className="inline-flex items-center gap-2 rounded-full bg-brand-surface/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-brand-sand">
-              <SparklesIcon className="h-5 w-5" />
-              Servicio tecnico + portal de cliente
-            </div>
-            <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
-              Electricidad segura, domótica a medida y seguimiento en linea.
-            </h1>
-            <p className="max-w-3xl text-lg text-brand-text-on-dark/80">
-              Diseñamos y ejecutamos tu instalacion electrica y domótica con un
-              panel privado para ver presupuestos, avances y documentacion.
+      <VideoHero
+        eyebrow="Servicio tecnico + portal de cliente"
+        title="Electricidad segura, domotica a medida y seguimiento en linea."
+        description="Disenamos y ejecutamos tu instalacion electrica y domotica con un panel privado para ver presupuestos, avances y ahorro energetico en tiempo real."
+        videoSrc="/hero-video.mp4"
+        actions={[
+          {
+            href: "/contacto",
+            label: "Pedir visita tecnica",
+            icon: <ArrowRight className="h-4 w-4" />,
+          },
+          {
+            href: "/login",
+            label: "Ingresar a mi panel",
+            variant: "ghost-dark",
+          },
+        ]}
+        panelAside={<HeroPanel />}
+      />
+
+      <div className="space-y-14 pt-12">
+        <section>
+          <div className="max-w-3xl">
+            <p className="eyebrow">Servicios</p>
+            <h2 className="mt-2 text-3xl font-semibold text-brand-text sm:text-4xl">
+              Ingenieria y obra por un solo equipo.
+            </h2>
+            <p className="mt-3 text-base leading-7 text-brand-text-muted">
+              Proyecto, montaje y puesta en marcha con documentacion, materiales
+              certificados y seguimiento digital.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-copper px-6 py-3 text-sm font-semibold text-brand-text-on-dark shadow-lg shadow-brand-copper/40 transition hover:-translate-y-0.5 hover:bg-brand-copper-soft"
-              >
-                Pedir visita tecnica
-                <ArrowLongRightIcon className="h-5 w-5" />
-              </Link>
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-brand-surface/5 px-6 py-3 text-sm font-semibold text-brand-text-on-dark transition hover:-translate-y-0.5 hover:border-brand-copper-soft hover:text-brand-sand"
-              >
-                Ingresar a mi panel
-              </Link>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-brand-surface/5 shadow-xl shadow-brand-navy/30">
-              <div className="flex items-center justify-between bg-brand-surface/10 px-6 py-4 text-brand-text-on-dark backdrop-blur">
-                <div>
-                  <p className="text-sm uppercase tracking-wide text-brand-sand">
-                    Seguimiento en vivo
-                  </p>
-                  <p className="text-lg font-semibold">
-                    Panel de avance de obra
-                  </p>
-                </div>
-                <div className="rounded-full bg-brand-copper px-4 py-1 text-xs font-semibold">
-                  Cliente
-                </div>
-              </div>
-              <div className="space-y-4 px-6 py-6">
-                {["Provisions tableros", "Canalizaciones", "Automatizacion"].map(
-                  (item, idx) => (
-                    <div key={item}>
-                      <div className="flex items-center justify-between text-sm font-semibold text-brand-text-on-dark">
-                        <span>{item}</span>
-                        <span>{[80, 55, 30][idx]}%</span>
-                      </div>
-                      <div className="mt-2 h-2 rounded-full bg-brand-surface/10">
-                        <div
-                          className="h-2 rounded-full bg-gradient-to-r from-brand-copper-soft to-brand-sand"
-                          style={{ width: `${[80, 55, 30][idx]}%` }}
-                        />
-                      </div>
-                    </div>
-                  )
-                )}
-                <div className="grid grid-cols-2 gap-3 pt-4">
-                  <div className="rounded-xl border border-white/10 bg-brand-surface/5 px-4 py-3 text-brand-text-on-dark">
-                    <p className="text-xs text-brand-text-on-dark/70">Proxima visita</p>
-                    <p className="text-base font-semibold">Martes 10:00</p>
-                  </div>
-                  <div className="rounded-xl border border-white/10 bg-brand-surface/5 px-4 py-3 text-brand-text-on-dark">
-                    <p className="text-xs text-brand-text-on-dark/70">Documentos</p>
-                    <p className="text-base font-semibold">12 disponibles</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </section>
-
-      {SHOW_PROJECTS_SECTION && (
-        <section className="mt-14">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
-                Obras
-              </p>
-              <h3 className="text-2xl font-semibold text-brand-text">
-                Proyectos destacados
-              </h3>
-              <p className="text-sm text-brand-text-muted">
-                Residenciales e industriales con control inteligente y ahorro
-                energetico.
-              </p>
-            </div>
-            <Link
-              href="/contacto"
-              className="inline-flex items-center gap-2 rounded-full border border-brand-navy bg-brand-surface/60 px-4 py-2 text-sm font-semibold text-brand-text backdrop-blur-sm transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-            >
-              Agendar asesoria
-              <ArrowLongRightIcon className="h-5 w-5" />
-            </Link>
           </div>
 
           <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {portfolio.map((item) => (
-              <div
-                key={item.title}
-                className="group overflow-hidden rounded-2xl border border-brand-border bg-brand-surface/60 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-sand"
-              >
-                <div className="relative h-48 w-full overflow-hidden">
+            {services.slice(0, 3).map((service) => (
+              <article key={service.id} className="surface-card overflow-hidden">
+                <div className="relative h-44">
                   <Image
-                    src={item.img}
-                    alt={item.title}
+                    src={service.imageSrc}
+                    alt={service.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
+                    className="object-cover"
                   />
-                  <span className="absolute left-3 top-3 rounded-full bg-brand-surface/90 px-3 py-1 text-xs font-semibold text-brand-text">
-                    {item.tag}
-                  </span>
                 </div>
-                <div className="p-4">
-                  <p className="text-base font-semibold text-brand-text">
-                    {item.title}
-                  </p>
-                  <p className="text-sm text-brand-text-muted">
-                    Integracion de tableros inteligentes, redes y sensorica.
+                <div className="p-5">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-copper/12 text-brand-copper">
+                    <Zap className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-4 text-xl font-semibold text-brand-text">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-brand-text-muted">
+                    {service.description}
                   </p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </section>
-      )}
 
-      <section className="mt-14 grid gap-6 rounded-3xl bg-brand-navy px-8 py-10 text-brand-text-on-dark shadow-lg shadow-brand-navy/20 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-4">
-          <p className="text-sm font-semibold uppercase tracking-wide text-brand-sand">
-            Panel privado
-          </p>
-          <h3 className="text-3xl font-semibold">
-            Presupuestos, avance y documentos en un mismo lugar.
-          </h3>
-          <p className="text-base text-brand-text-on-dark/85">
-            Cada cliente accede con su usuario a un dashboard donde puede seguir
-            el progreso, descargar planos, notas de obra y fotos actualizadas.
-          </p>
-          <div className="flex flex-wrap gap-2 text-sm text-brand-text-on-dark/85">
-            <span className="rounded-full border border-brand-blue-mid px-3 py-1">
-              Presupuestos firmados digitalmente
-            </span>
-            <span className="rounded-full border border-brand-blue-mid px-3 py-1">
-              Checklist de visitas tecnicas
-            </span>
-            <span className="rounded-full border border-brand-blue-mid px-3 py-1">
-              Descarga de planos y memorias
-            </span>
+        <section>
+          <div className="max-w-3xl">
+            <p className="eyebrow">Proceso</p>
+            <h2 className="mt-2 text-3xl font-semibold text-brand-text sm:text-4xl">
+              Como trabajamos.
+            </h2>
           </div>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {[
-            {
-              title: "Presupuestos",
-              description: "Firma y seguimiento de aprobaciones.",
-              icon: DocumentTextIcon,
-            },
-            {
-              title: "Avance de obra",
-              description: "Checklist por etapas y fechas de visita.",
-              icon: BoltIcon,
-            },
-            {
-              title: "Documentos",
-              description: "Planos, certificaciones y fotos en la nube.",
-              icon: ShieldCheckIcon,
-            },
-          ].map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.title}
-                className="rounded-2xl border border-white/10 bg-brand-surface/5 p-4"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-copper/20 text-brand-sand">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <p className="mt-3 text-base font-semibold text-brand-text-on-dark">
-                  {item.title}
+
+          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <article key={step.title} className="surface-card p-5">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-sm font-semibold text-brand-copper">
+                      0{index + 1}
+                    </span>
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-copper/12 text-brand-copper">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-brand-text">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-brand-text-muted">
+                    {step.detail}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        {SHOW_PROJECTS_SECTION ? (
+          <section>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="eyebrow">Obras</p>
+                <h2 className="mt-2 text-3xl font-semibold text-brand-text">
+                  Proyectos destacados
+                </h2>
+                <p className="mt-2 text-sm text-brand-text-muted">
+                  Integracion de tableros inteligentes, redes y sensores con foco en ahorro y control.
                 </p>
-                <p className="text-sm text-brand-text-on-dark/85">{item.description}</p>
               </div>
-            );
-          })}
-        </div>
-      </section>
+              <Link href="/contacto" className="btn btn-outline">
+                Agendar asesoria
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
 
-      <section className="mt-14 rounded-3xl bg-gradient-to-r from-brand-copper to-brand-copper-soft px-8 py-10 text-brand-text shadow-lg shadow-brand-copper-soft/40">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wide">
-              ¿Listo para empezar?
-            </p>
-            <h3 className="text-2xl font-semibold">
-              Agenda una visita tecnica y recibe tu propuesta digital.
-            </h3>
+            <div className="mt-6 grid gap-6 md:grid-cols-3">
+              {portfolio.map((item) => (
+                <article key={item.title} className="surface-card overflow-hidden">
+                  <div className="relative h-48">
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover"
+                    />
+                    <span className="absolute left-3 top-3 rounded-full bg-white/88 px-3 py-1 text-xs font-semibold text-brand-text">
+                      {item.tag}
+                    </span>
+                  </div>
+                  <div className="p-4">
+                    <p className="text-base font-semibold text-brand-text">{item.title}</p>
+                    <p className="mt-1 text-sm text-brand-text-muted">
+                      Integracion de tableros, circuitos, documentacion y puesta en marcha.
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        <section className="section-shell-dark overflow-hidden px-8 py-10">
+          <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+            <div>
+              <p className="eyebrow eyebrow-dark">Panel privado</p>
+              <h2 className="mt-3 text-3xl font-semibold text-brand-text-on-dark sm:text-4xl">
+                Presupuestos, avance y documentos en un mismo lugar.
+              </h2>
+              <p className="mt-4 text-base leading-7 text-brand-text-on-dark/82">
+                Cada cliente accede con su usuario a un dashboard donde puede seguir el progreso,
+                descargar planos, notas de obra y fotos actualizadas.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {[
+                  "Presupuestos firmados digitalmente",
+                  "Checklist de visitas tecnicas",
+                  "Descarga de planos y memorias",
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-brand-blue-mid px-3 py-1 text-sm text-brand-text-on-dark/82"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                {
+                  title: "Presupuestos",
+                  description: "Firma y seguimiento de aprobaciones.",
+                  icon: FileText,
+                },
+                {
+                  title: "Avance de obra",
+                  description: "Checklist por etapas y fechas de visita.",
+                  icon: Zap,
+                },
+                {
+                  title: "Documentos",
+                  description: "Planos, certificaciones y fotos en la nube.",
+                  icon: ShieldCheck,
+                },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                  <article
+                    key={item.title}
+                    className="rounded-2xl border border-white/10 bg-white/6 p-4"
+                  >
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-copper/14 text-brand-copper">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <p className="mt-4 text-base font-semibold text-brand-text-on-dark">
+                      {item.title}
+                    </p>
+                    <p className="mt-1 text-sm text-brand-text-on-dark/80">
+                      {item.description}
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/contacto"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-navy px-6 py-3 text-sm font-semibold !text-white transition hover:-translate-y-0.5 hover:bg-brand-blue hover:!text-white focus-visible:!text-white active:!text-white"
-              style={{ color: "#ffffff" }}
-            >
-              <span className="!text-white" style={{ color: "#ffffff" }}>
+        </section>
+
+        <section className="overflow-hidden rounded-[1.75rem] bg-gradient-to-r from-brand-copper via-brand-copper-soft to-brand-energy px-8 py-10 shadow-glow-electric">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.08em] text-[#063a42]">
+                Listo para empezar
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold text-[#04262b]">
+                Agenda una visita tecnica y recibe tu propuesta digital.
+              </h2>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link href="/contacto" className="btn btn-navy">
                 Pedir visita
-              </span>
-              <ArrowLongRightIcon
-                className="h-5 w-5 !text-white"
-                style={{ color: "#ffffff" }}
-              />
-            </Link>
-            <Link
-              href="/login"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-navy px-6 py-3 text-sm font-semibold text-brand-text transition hover:-translate-y-0.5 hover:bg-brand-surface/70"
-            >
-              Ingresar al panel
-            </Link>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="/login" className="btn btn-outline border-brand-navy/20 bg-white/72">
+                Ingresar al panel
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 }

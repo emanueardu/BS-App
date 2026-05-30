@@ -1,124 +1,198 @@
-﻿import Head from "next/head";
+import { VideoHero } from "@/components/VideoHero";
+import { services } from "@/data/services";
+import { ArrowRight, Check, Gauge, Leaf, ShieldCheck, Zap } from "lucide-react";
+import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback } from "react";
-import { services } from "@/data/services";
 
 const scrollToService = (serviceId: string) => {
   if (typeof document === "undefined") return;
   const target = document.getElementById(serviceId);
-  if (target) {
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  target?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
 export default function Servicios() {
   const onCardClick = useCallback((id: string) => scrollToService(id), []);
+  const featuredServices = services.slice(0, 4);
 
   return (
     <>
       <Head>
-        <title>Servicios | SUR INGENIERÍA</title>
+        <title>Servicios | SUR INGENIERIA</title>
         <meta
           name="description"
-          content="Servicios eléctricos, domóticos y de seguridad con seguimiento premium."
+          content="Servicios electricos, domoticos y de seguridad con seguimiento premium, documentacion y ejecucion tecnica."
         />
       </Head>
 
-      <section className="space-y-10 rounded-3xl bg-brand-surface/60 backdrop-blur-sm p-8 shadow-sm shadow-brand-sand">
-        <div className="space-y-3 max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
-            Servicios
-          </p>
-          <h1 className="text-3xl font-semibold text-brand-text">
-            Instalaciones eléctricas, domótica y sistemas inteligentes a medida.
-          </h1>
-          <p className="text-base text-brand-text-muted">
-            Ejecutamos cada etapa con documentación actualizada, materiales certificados y seguimiento digital para
-            que tengas visibilidad completa del avance.
-          </p>
-        </div>
+      <VideoHero
+        eyebrow="Servicios"
+        title="Ingenieria y obra, por un solo equipo."
+        description="Disenamos, ejecutamos y documentamos cada instalacion con opciones claras de incluye/excluye y seguimiento digital desde tu panel."
+        videoSrc="/servicios-video.mp4"
+        actions={[
+          {
+            href: "/contacto",
+            label: "Pedir relevamiento",
+            icon: <ArrowRight className="h-4 w-4" />,
+          },
+          {
+            href: "/proceso",
+            label: "Ver el proceso",
+            variant: "ghost-dark",
+          },
+        ]}
+        className="min-h-[68svh]"
+      />
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {services.map((service) => (
-            <article
-              key={service.id}
-            className="flex flex-col overflow-hidden rounded-3xl border border-white/30 bg-brand-navy/80 text-brand-text-on-dark shadow-lg transition hover:-translate-y-1 hover:shadow-xl backdrop-blur-sm"
-            >
-              <div
-                className="relative h-56 w-full transition duration-300"
-                style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(15,23,42,0.15), rgba(2,6,23,0.85)), url(${service.imageSrc})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
+      <div className="space-y-14 pt-12">
+        <section className="grid gap-6 xl:grid-cols-2">
+          {featuredServices.map((service) => (
+            <article key={service.id} className="surface-card overflow-hidden">
+              <div className="relative h-44">
+                <Image
+                  src={service.imageSrc}
+                  alt={service.title}
+                  fill
+                  sizes="(max-width: 1280px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-copper/12 text-brand-copper">
+                  <Zap className="h-5 w-5" />
+                </div>
+                <h2 className="mt-4 text-2xl font-semibold text-brand-text">
+                  {service.title}
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-brand-text-muted">
+                  {service.description}
+                </p>
+                <div className="mt-4 space-y-2">
+                  {service.bullets.map((item) => (
+                    <div key={item} className="flex items-start gap-2 text-sm text-brand-text">
+                      <Check className="mt-0.5 h-4 w-4 text-brand-energy" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <button onClick={() => onCardClick(service.id)} className="btn btn-outline">
+                    Ver mas
+                  </button>
+                  <Link href={`/servicios/${service.slug}`} className="btn btn-primary">
+                    Ir al detalle
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="section-shell px-7 py-8">
+          <div className="max-w-3xl">
+            <p className="eyebrow">Detalle de servicios</p>
+            <h2 className="mt-2 text-3xl font-semibold text-brand-text">
+              Alcances claros, prioridades tecnicas y respaldo documental.
+            </h2>
+            <p className="mt-3 text-base leading-7 text-brand-text-muted">
+              Cada servicio mantiene la misma logica: relevamiento serio, propuesta clara,
+              ejecucion prolija y documentacion util para operar o ampliar la instalacion.
+            </p>
+          </div>
+
+          <div className="mt-8 space-y-5">
+            {services.map((service) => (
+              <article
+                key={service.id}
+                id={service.id}
+                className="surface-card scroll-mt-28 p-6"
               >
-                <div className="absolute inset-0 flex flex-col justify-between p-5">
-                  <p className="max-w-xs text-xs font-semibold uppercase tracking-widest text-brand-sand">
-                    {service.subtitle}
-                  </p>
-                  <h2 className="text-2xl font-semibold leading-tight">{service.title}</h2>
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                  <div className="max-w-3xl">
+                    <p className="eyebrow">{service.subtitle}</p>
+                    <h3 className="mt-2 text-2xl font-semibold text-brand-text">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 text-base leading-7 text-brand-text-muted">
+                      {service.description}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    <Link href="/contacto" className="btn btn-outline">
+                      Consultar
+                    </Link>
+                    <Link href={`/servicios/${service.slug}`} className="btn btn-primary">
+                      Ver detalle
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-1 items-end justify-start border-t border-white/10 px-5 py-4">
-                <button
-                  type="button"
-                  onClick={() => onCardClick(service.id)}
-                  aria-label={`Ver más sobre ${service.title}`}
-                  className="rounded-full bg-brand-surface/80 px-4 py-2 text-sm font-semibold text-brand-text transition hover:bg-brand-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-                >
-                  Ver más
-                </button>
-              </div>
-            </article>
-          ))}
-        </div>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {service.bullets.map((bullet) => (
+                    <div
+                      key={bullet}
+                      className="rounded-2xl bg-brand-bg px-4 py-3 text-sm leading-6 text-brand-text"
+                    >
+                      <span className="mr-2 font-semibold text-brand-copper">•</span>
+                      {bullet}
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-        <div className="space-y-8">
-          {services.map((service) => (
-            <article
-              key={service.id}
-              id={service.id}
-            className="rounded-3xl border border-brand-border bg-brand-surface/60 p-6 shadow-sm backdrop-blur-sm"
-            >
-              <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold uppercase tracking-wide text-brand-copper">
-                    {service.subtitle}
+        <section className="section-shell overflow-hidden px-7 py-8">
+          <div className="max-w-3xl">
+            <p className="eyebrow">Por que elegirnos</p>
+            <h2 className="mt-2 text-3xl font-semibold text-brand-text">
+              Confort que tambien ahorra energia.
+            </h2>
+          </div>
+
+          <div className="mt-7 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                icon: Leaf,
+                title: "-18% consumo",
+                description: "Promedio en hogares con escenas y control de clima bien configurado.",
+                accent: "bg-brand-energy/14 text-[#1f8a5b]",
+              },
+              {
+                icon: Gauge,
+                title: "Monitoreo 24/7",
+                description: "Medicion y estados visibles desde tu panel privado y el modulo Mi Home.",
+                accent: "bg-brand-copper/12 text-brand-copper",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Obra documentada",
+                description: "Planos, registro fotografico y respaldo tecnico para futuras ampliaciones.",
+                accent: "bg-brand-copper/12 text-brand-copper",
+              },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <article key={item.title} className="rounded-3xl border border-brand-border bg-brand-bg p-5">
+                  <div
+                    className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${item.accent}`}
+                  >
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-4 text-2xl font-semibold text-brand-text">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-brand-text-muted">
+                    {item.description}
                   </p>
-                  <h2 className="text-2xl font-semibold text-brand-text">{service.title}</h2>
-                  <p className="text-base text-brand-text-muted">{service.description}</p>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  <Link
-                    href="/contacto"
-                    aria-label={`Consultar por ${service.title}`}
-                    className="inline-flex items-center justify-center rounded-full border border-brand-navy px-5 py-3 text-sm font-semibold text-brand-text transition hover:bg-brand-navy hover:text-brand-text-on-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-                  >
-                    Consultar
-                  </Link>
-                  <Link
-                    href={`/servicios/${service.slug}`}
-                    aria-label={`Ver más detalles de ${service.title}`}
-                    className="inline-flex items-center justify-center rounded-full bg-brand-copper px-5 py-3 text-sm font-semibold text-brand-text-on-dark transition hover:bg-brand-copper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand"
-                  >
-                    Ver más
-                  </Link>
-                </div>
-              </div>
-              <ul className="mt-4 grid gap-2 text-sm text-brand-text-muted sm:grid-cols-2 lg:grid-cols-3">
-                {service.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-2">
-                    <span aria-hidden className="text-brand-copper">
-                      •
-                    </span>
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      </div>
     </>
   );
 }
