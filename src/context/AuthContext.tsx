@@ -1,15 +1,11 @@
-﻿import { supabase } from "@/lib/supabaseClient";
-import {
-  AuthChangeEvent,
-  Session,
-  User,
-} from "@supabase/supabase-js";
+import { hasSupabaseConfig, supabase } from "@/lib/supabaseClient";
+import { AuthChangeEvent, Session, User } from "@supabase/supabase-js";
 import { useRouter } from "next/router";
 import {
   ReactNode,
   createContext,
-  useContext,
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useState,
@@ -43,10 +39,14 @@ const makeBypassUser = () =>
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(hasSupabaseConfig || bypassInternal);
   const router = useRouter();
 
   useEffect(() => {
+    if (!hasSupabaseConfig && !bypassInternal) {
+      return;
+    }
+
     const getInitialSession = async () => {
       const { data, error } = await supabase.auth.getSession();
       if (error) {
@@ -96,6 +96,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         return;
       }
 
+      if (!hasSupabaseConfig) {
+        throw new Error(
+          "Supabase no esta configurado en este entorno. Define NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY para usar login."
+        );
+      }
+
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -121,6 +127,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
+    if (!hasSupabaseConfig) {
+      throw new Error(
+        "Supabase no esta configurado en este entorno. Define NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY para registrar usuarios."
+      );
+    }
+
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -133,6 +145,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const signOut = useCallback(async () => {
     if (bypassInternal) {
+      setUser(null);
+      setSession(null);
+      router.push("/");
+      return;
+    }
+
+    if (!hasSupabaseConfig) {
       setUser(null);
       setSession(null);
       router.push("/");

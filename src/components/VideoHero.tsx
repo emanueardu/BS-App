@@ -20,6 +20,7 @@ type Props = {
   children?: ReactNode;
   className?: string;
   contentClassName?: string;
+  flushToTop?: boolean;
 };
 
 const actionClass: Record<NonNullable<HeroAction["variant"]>, string> = {
@@ -44,6 +45,7 @@ export function VideoHero({
   children,
   className,
   contentClassName,
+  flushToTop = false,
 }: Props) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -52,7 +54,13 @@ export function VideoHero({
   }, []);
 
   return (
-    <section className={clsx("full-bleed hero-fullbleed -mt-6 lg:-mt-8", className)}>
+    <section
+      className={clsx(
+        "full-bleed hero-fullbleed",
+        flushToTop ? "" : "-mt-6 lg:-mt-8",
+        className
+      )}
+    >
       <video
         ref={videoRef}
         autoPlay

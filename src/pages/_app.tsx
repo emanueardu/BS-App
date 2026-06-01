@@ -28,7 +28,9 @@ const mono = Geist_Mono({
   variable: "--font-mono",
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, router }: AppProps) {
+  const isLandingPage = router.pathname === "/landingpage";
+
   return (
     <AuthProvider>
       <Head>
@@ -56,11 +58,17 @@ export default function App({ Component, pageProps }: AppProps) {
       <div
         className={`${display.variable} ${sans.variable} ${mono.variable} min-h-screen bg-transparent text-brand-text`}
       >
-        <Navbar />
-        <main className="mx-auto w-full max-w-6xl px-6 pb-20 pt-6 lg:px-6 lg:pt-8">
+        {isLandingPage ? null : <Navbar />}
+        <main
+          className={
+            isLandingPage
+              ? "w-full"
+              : "mx-auto w-full max-w-6xl px-6 pb-20 pt-6 lg:px-6 lg:pt-8"
+          }
+        >
           <Component {...pageProps} />
         </main>
-        <Footer />
+        {isLandingPage ? null : <Footer />}
       </div>
     </AuthProvider>
   );
